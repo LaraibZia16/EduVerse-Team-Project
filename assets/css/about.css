@@ -1,0 +1,840 @@
+/*======================================
+        ABOUT HERO SECTION
+======================================*/
+
+.about-title{
+    font-size: 50px;
+    line-height: 1.05;
+}
+
+.hero-section::before,
+.hero-section::after{
+
+    display:none;
+
+}
+
+/*======================================
+            OUR STORY
+======================================*/
+
+.about-story-section{
+    /* padding:100px 0; */
+    background:#ffffff;
+}
+
+/*=========================
+        Image
+=========================*/
+
+.about-story-image{
+    text-align:center;
+}
+
+.about-story-image img{
+    width:100%;
+    max-width:600px;
+    animation:storyFloat 5s ease-in-out infinite;
+}
+
+@keyframes storyFloat{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-12px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+
+}
+
+/*=========================
+        Content
+=========================*/
+
+.about-story-content{
+    max-width:540px;
+    margin:0 auto;
+}
+
+.about-story-badge{
+
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:#eef4ff;
+
+    color:var(--heading-color);
+
+    font-weight:600;
+
+    margin-bottom:22px;
+
+}
+
+.about-story-title{
+
+    font-size:46px;
+
+    font-weight:800;
+
+    line-height:1.3;
+
+    color:var(--heading-color);
+
+    margin-bottom:20px;
+
+}
+
+.about-story-title span{
+
+    color:var(--primary-color);
+
+}
+
+.about-story-text{
+
+    font-size:16px;
+
+    line-height:1.9;
+
+    color:#6b7280;
+
+    margin-bottom:18px;
+
+}
+
+/*=========================
+      Cards Section
+=========================*/
+
+.about-story-cards{
+
+    margin-top:70px;
+
+}
+
+.about-mini-card{
+
+    background:#fff;
+
+    border-radius:22px;
+
+    padding:35px 25px;
+
+    height:100%;
+
+    text-align:center;
+
+    border:1px solid #edf2f7;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.06);
+
+    transition:.35s ease;
+
+}
+
+.about-mini-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 20px 45px rgba(22,33,77,.12);
+
+}
+
+.mini-icon{
+
+    width:70px;
+
+    height:70px;
+
+    margin:0 auto 20px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#eef4ff;
+
+    color:var(--primary-color);
+
+    font-size:28px;
+
+    transition:.35s;
+
+}
+
+.about-mini-card:hover .mini-icon{
+
+    background:var(--primary-color);
+
+    color:#fff;
+
+    transform:rotateY(180deg);
+
+}
+
+.about-mini-card h5{
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--heading-color);
+
+    margin-bottom:12px;
+
+}
+
+.about-mini-card p{
+
+    margin:0;
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/*=========================
+      Responsive
+=========================*/
+
+@media(max-width:991px){
+
+.about-story-section{
+
+    padding:80px 0;
+
+}
+
+.about-story-image{
+
+    margin-bottom:20px;
+
+}
+
+.about-story-title{
+
+    font-size:38px;
+
+}
+
+.about-story-content{
+
+    max-width:100%;
+
+}
+
+.about-story-cards{
+
+    margin-top:50px;
+
+}
+
+}
+
+@media(max-width:767px){
+
+.about-story-section{
+
+    padding:60px 0;
+
+}
+
+.about-story-title{
+
+    font-size:30px;
+
+}
+
+.about-story-text{
+
+    font-size:15px;
+
+}
+
+.about-mini-card{
+
+    padding:30px 20px;
+
+}
+
+.mini-icon{
+
+    width:60px;
+
+    height:60px;
+
+    font-size:22px;
+
+}
+
+.about-story-cards{
+
+    margin-top:40px;
+
+}
+
+}
+/*======================================
+    MISSION • VISION • VALUES
+======================================*/
+
+.about-purpose-section{
+    padding:100px 0;
+    background:#f8fbff;
+}
+
+/*=========================
+      Heading
+=========================*/
+
+.about-purpose-heading{
+    max-width:700px;
+    margin:0 auto 20px;
+}
+
+.about-purpose-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 22px;
+    background:#eef4ff;
+    color:var(--heading-color);
+    border-radius:50px;
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.about-purpose-title{
+    font-size:46px;
+    font-weight:800;
+    color:var(--heading-color);
+    margin-bottom:18px;
+}
+
+.about-purpose-title span{
+    color:var(--primary-color);
+}
+
+.about-purpose-description{
+    color:#6b7280;
+    font-size:16px;
+    line-height:1.9;
+}
+
+/*=========================
+        Cards
+=========================*/
+
+.purpose-card{
+    background:#fff;
+    border-radius:22px;
+    padding:40px 30px;
+    height:100%;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.purpose-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:0;
+    height:5px;
+    background:var(--primary-color);
+    transition:.4s;
+}
+
+.purpose-card:hover{
+    transform:translateY(-10px);
+}
+
+.purpose-card:hover::before{
+    width:100%;
+}
+
+/*=========================
+        Icon
+=========================*/
+
+.purpose-icon{
+    width:75px;
+    height:75px;
+    border-radius:50%;
+    background:#eef4ff;
+    color:var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:28px;
+    margin-bottom:25px;
+}
+
+.purpose-card h4{
+    font-size:24px;
+    font-weight:700;
+    color:var(--heading-color);
+    margin-bottom:18px;
+}
+
+.purpose-card p{
+    color:#6b7280;
+    line-height:1.9;
+    margin:0;
+}
+
+/*=========================
+        Values
+=========================*/
+
+.purpose-values{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.purpose-values li{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:16px;
+    color:#555;
+    font-weight:500;
+}
+
+.purpose-values i{
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    background:#eef4ff;
+    color:var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:12px;
+}
+
+/*=========================
+      Responsive
+=========================*/
+
+@media(max-width:991px){
+
+.about-purpose-section{
+    padding:80px 0;
+}
+
+.about-purpose-title{
+    font-size:38px;
+}
+
+}
+
+@media(max-width:767px){
+
+.about-purpose-section{
+    padding:60px 0;
+}
+
+.about-purpose-title{
+    font-size:30px;
+}
+
+.purpose-card{
+    padding:30px 25px;
+}
+
+.purpose-icon{
+    width:65px;
+    height:65px;
+    font-size:24px;
+}
+
+}
+
+/*======================================
+        WHY CHOOSE US
+======================================*/
+
+.about-choose-section{
+    padding:100px 0;
+    background:#ffffff;
+}
+
+/*=========================
+      Section Heading
+=========================*/
+
+.about-choose-heading{
+    max-width:720px;
+    margin:0 auto;
+}
+
+.about-choose-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 22px;
+    border-radius:50px;
+    background:#eef4ff;
+    color:var(--heading-color);
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.about-choose-title{
+    font-size:46px;
+    font-weight:800;
+    color:var(--heading-color);
+    margin-bottom:18px;
+}
+
+.about-choose-title span{
+    color:var(--primary-color);
+}
+
+.about-choose-description{
+    color:#6b7280;
+    line-height:1.9;
+    font-size:16px;
+}
+
+/*=========================
+        Cards
+=========================*/
+
+.choose-card{
+    background:#fff;
+    border-radius:22px;
+    padding:40px 30px;
+    text-align:center;
+    height:100%;
+    border:1px solid #edf2f7;
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+    transition:.35s;
+    position:relative;
+    overflow:hidden;
+}
+
+.choose-card::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:0;
+    width:100%;
+    height:5px;
+    background:var(--primary-color);
+    transform:scaleX(0);
+    transition:.4s;
+}
+
+.choose-card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 25px 55px rgba(22,33,77,.12);
+}
+
+.choose-card:hover::before{
+    transform:scaleX(1);
+}
+
+.choose-icon{
+    width:80px;
+    height:80px;
+    margin:0 auto 25px;
+    border-radius:50%;
+    background:#eef4ff;
+    color:var(--primary-color);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:30px;
+    transition:.35s;
+}
+
+.choose-card:hover .choose-icon{
+    background:var(--primary-color);
+    color:#fff;
+    transform:rotateY(180deg);
+}
+
+.choose-card h5{
+    color:var(--heading-color);
+    font-size:22px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.choose-card p{
+    color:#6b7280;
+    line-height:1.8;
+    margin:0;
+}
+
+/*=========================
+      Responsive
+=========================*/
+
+@media(max-width:991px){
+
+.about-choose-section{
+    padding:80px 0;
+}
+
+.about-choose-title{
+    font-size:38px;
+}
+
+}
+
+@media(max-width:767px){
+
+.about-choose-section{
+    padding:60px 0;
+}
+
+.about-choose-title{
+    font-size:30px;
+}
+
+.choose-card{
+    padding:30px 22px;
+}
+
+.choose-icon{
+    width:70px;
+    height:70px;
+    font-size:26px;
+}
+
+}
+/*======================================
+          MEET OUR TEAM
+======================================*/
+
+.about-team-section{
+    padding:100px 0;
+    background:#f8fbff;
+}
+
+/*=========================
+      Section Heading
+=========================*/
+
+.about-team-heading{
+    max-width:720px;
+    margin:0 auto;
+}
+
+.about-team-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    padding:10px 22px;
+    border-radius:50px;
+    background:#eef4ff;
+    color:var(--heading-color);
+    font-weight:600;
+    margin-bottom:20px;
+}
+
+.about-team-title{
+    font-size:46px;
+    font-weight:800;
+    color:var(--heading-color);
+    margin-bottom:18px;
+}
+
+.about-team-title span{
+    color:var(--primary-color);
+}
+
+.about-team-description{
+    color:#6b7280;
+    line-height:1.9;
+    font-size:16px;
+}
+
+/*=========================
+        Team Card
+=========================*/
+
+.team-card{
+    background:#fff;
+    border-radius:24px;
+    overflow:hidden;
+    height:100%;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,.08);
+    transition:.4s ease;
+    position:relative;
+}
+
+.team-card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 25px 60px rgba(22,33,77,.15);
+}
+
+.team-card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:5px;
+    background:var(--primary-color);
+    transform:scaleX(0);
+    transition:.4s;
+}
+
+.team-card:hover::before{
+    transform:scaleX(1);
+}
+
+/*=========================
+        Team Image
+=========================*/
+
+.team-image{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 35px 0 0;
+}
+
+.team-image img{
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    border-radius: 50%;
+    border: 6px solid #eef4ff;
+    transition: .4s;
+}
+
+.team-card:hover .team-image img{
+    transform:scale(1.08);
+}
+
+/*=========================
+        Team Content
+=========================*/
+
+.team-content{
+    padding:30px 25px 35px;
+}
+
+.team-role{
+    display:inline-block;
+    padding:8px 18px;
+    background:#eef4ff;
+    color:var(--primary-color);
+    border-radius:30px;
+    font-size:14px;
+    font-weight:600;
+    margin-bottom:18px;
+}
+
+.team-content h4{
+    color:var(--heading-color);
+    font-size:24px;
+    font-weight:700;
+    margin-bottom:15px;
+}
+
+.team-content p{
+    color:#6b7280;
+    line-height:1.8;
+    margin-bottom:25px;
+}
+
+/*=========================
+      Social Icons
+=========================*/
+
+.team-social{
+    display:flex;
+    justify-content:center;
+    gap:14px;
+}
+
+.team-social a{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:#eef4ff;
+    color:var(--primary-color);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-decoration:none;
+    transition:.35s;
+}
+
+.team-social a:hover{
+    background:var(--primary-color);
+    color:#fff;
+    transform:translateY(-5px);
+}
+
+/*=========================
+      Responsive
+=========================*/
+
+@media(max-width:991px){
+
+.about-team-section{
+    padding:80px 0;
+}
+
+.about-team-title{
+    font-size:38px;
+}
+
+}
+
+@media(max-width:767px){
+
+.about-team-section{
+    padding:60px 0;
+}
+
+.about-team-title{
+    font-size:30px;
+}
+
+.team-image img{
+    width:140px;
+    height:140px;
+}
+
+.team-content{
+    padding:25px 20px 30px;
+}
+
+.team-content h4{
+    font-size:22px;
+}
+
+}

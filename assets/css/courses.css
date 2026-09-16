@@ -1,0 +1,1554 @@
+/*======================================
+        HERO TITLE
+======================================*/
+
+.course-title{
+    font-size:50px;
+    line-height:1.05;
+}
+
+
+/*======================================
+        SEARCH & FILTER SECTION
+======================================*/
+
+.course-filter-section{
+
+    padding:100px 0 70px;
+
+    background:#f8fbff;
+
+}
+
+.section-heading{
+
+    max-width:720px;
+
+    margin:0 auto 50px;
+
+}
+
+.section-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    background:rgba(15,47,116,.08);
+
+    color:var(--primary-hover);
+
+    font-weight:600;
+
+    margin-bottom:20px;
+
+}
+
+.section-heading h2{
+
+    font-size:46px;
+
+    font-weight:800;
+
+    color:var(--heading-color);
+
+    margin-bottom:18px;
+
+}
+
+.section-heading p{
+
+    color:#6b7280;
+
+    font-size:17px;
+
+    line-height:1.8;
+
+}
+
+
+/*======================================
+            FILTER BOX
+======================================*/
+
+.course-filter-box{
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.06);
+
+    margin-bottom:25px;
+
+}
+
+
+/*======================================
+            SEARCH INPUT
+======================================*/
+
+.filter-input{
+
+    position:relative;
+
+}
+
+.filter-input i{
+
+    position:absolute;
+
+    top:50%;
+
+    left:18px;
+
+    transform:translateY(-50%);
+
+    color:#8b95a7;
+
+    z-index:2;
+
+}
+
+.filter-input input{
+
+    height:58px;
+
+    padding-left:50px;
+
+    border:1px solid #dbe4f3;
+
+    border-radius:14px;
+
+    box-shadow:none;
+
+    transition:.3s;
+
+}
+
+.filter-input input:focus{
+
+    border-color:var(--primary-hover);
+
+    box-shadow:none;
+
+}
+
+
+/*======================================
+            SELECT
+======================================*/
+
+.form-select{
+
+    height:58px;
+
+    border-radius:14px;
+
+    border:1px solid #dbe4f3;
+
+    box-shadow:none;
+
+    transition:.3s;
+
+}
+
+.form-select:focus{
+
+    border-color:var(--primary-hover);
+
+    box-shadow:none;
+
+}
+
+
+/*======================================
+            FILTER BUTTON
+======================================*/
+
+.filter-btn{
+
+    width:100%;
+
+    height:58px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.filter-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(15,47,116,.25);
+
+}
+
+
+/*======================================
+            RESULTS
+======================================*/
+
+.course-results{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:15px;
+
+}
+
+.course-results p{
+
+    margin:0;
+
+    color:#6b7280;
+
+    font-size:16px;
+
+}
+
+.course-results strong{
+
+    color:var(--primary-hover);
+
+    font-size:20px;
+
+    font-weight:700;
+
+}
+
+
+/*======================================
+            COURSE GRID
+======================================*/
+
+.courses-grid-section{
+
+    padding:20px 0 100px;
+
+    background:#f8fbff;
+
+}
+
+
+/*======================================
+            COURSE CARD
+======================================*/
+
+.course-card{
+
+    height:100%;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    overflow:hidden;
+
+    box-shadow:0 18px 45px rgba(0,0,0,.06);
+
+    transition:.4s;
+
+}
+
+.course-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 25px 60px rgba(0,0,0,.12);
+
+}
+
+
+/*======================================
+            COURSE IMAGE
+======================================*/
+
+.course-image{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.course-image img{
+
+    width:100%;
+
+    height:240px;
+
+    object-fit:cover;
+
+    transition:.5s;
+
+}
+
+.course-card:hover .course-image img{
+
+    transform:scale(1.08);
+
+}
+
+
+/*======================================
+            COURSE BADGE
+======================================*/
+
+.course-badge{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    padding:8px 16px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+/*======================================
+            COURSE CONTENT
+======================================*/
+
+.course-content{
+
+    padding:28px;
+
+}
+
+.course-content h4{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:var(--heading-color);
+
+    margin-bottom:15px;
+
+}
+
+.course-content p{
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    margin-bottom:22px;
+
+}
+
+
+/*======================================
+            COURSE META
+======================================*/
+
+.course-meta{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0 0 25px;
+
+}
+
+.course-meta li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    color:#6b7280;
+
+    margin-bottom:12px;
+
+    font-size:15px;
+
+}
+
+.course-meta i{
+
+    width:18px;
+
+    color:var(--primary-hover);
+
+}
+
+
+/*======================================
+            BUTTONS
+======================================*/
+
+.course-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+}
+
+.course-buttons .btn{
+
+    flex:1;
+
+    height:50px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+
+/*======================================
+            ENROLL BUTTON
+======================================*/
+
+.enroll-btn{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    border:none;
+
+}
+
+.enroll-btn:hover{
+
+    background:#0b2459;
+
+    color:#fff;
+
+    transform:translateY(-3px);
+
+}
+
+
+/*======================================
+            DETAILS BUTTON
+======================================*/
+
+.details-btn{
+
+    background:#fff;
+
+    color:var(--primary-hover);
+
+    border:2px solid var(--primary-hover);
+
+}
+
+.details-btn:hover{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    transform:translateY(-3px);
+
+}
+
+
+/*======================================
+        COURSE DETAILS MODAL
+======================================*/
+
+.course-modal-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(15,47,116,.55);
+
+    backdrop-filter:blur(8px);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:.35s;
+
+    z-index:9999;
+
+    padding:20px;
+
+}
+
+.course-modal-overlay.active{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+
+/*======================================
+        MODAL BOX
+======================================*/
+
+.course-modal{
+
+    width:100%;
+
+    max-width:1100px;
+
+    max-height:90vh;
+
+    overflow-y:auto;
+
+    background:#fff;
+
+    border-radius:28px;
+
+    padding:40px;
+
+    position:relative;
+
+    animation:modalUp .35s ease;
+
+    scrollbar-width:thin;
+
+    scrollbar-color:var(--primary-hover) #eef3fa;
+
+}
+
+.course-modal::-webkit-scrollbar{
+
+    width:7px;
+
+}
+
+.course-modal::-webkit-scrollbar-track{
+
+    background:#eef3fa;
+
+    border-radius:20px;
+
+}
+
+.course-modal::-webkit-scrollbar-thumb{
+
+    background:var(--primary-hover);
+
+    border-radius:20px;
+
+}
+
+
+@keyframes modalUp{
+
+    from{
+
+        transform:translateY(40px);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*======================================
+        CLOSE BUTTON
+======================================*/
+
+.course-modal-close{
+
+    position:absolute;
+
+    top:20px;
+
+    right:20px;
+
+    width:45px;
+
+    height:45px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#f2f4f8;
+
+    color:var(--heading-color);
+
+    transition:.3s;
+
+    z-index:5;
+
+}
+
+.course-modal-close:hover{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    transform:rotate(90deg);
+
+}
+
+
+/*======================================
+        MODAL IMAGE
+======================================*/
+
+.course-modal-image{
+
+    background:#f8fbff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.course-modal-image img{
+
+    width:100%;
+
+    height:290px;
+
+    object-fit:cover;
+
+    display:block;
+
+}
+
+
+/*======================================
+        TEACHER CARD
+======================================*/
+
+.teacher-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    margin-top:20px;
+
+    padding:18px;
+
+    border-radius:18px;
+
+    background:#f8fbff;
+
+    border:1px solid #edf2f8;
+
+}
+
+.teacher-card img{
+
+    width:70px;
+
+    height:70px;
+
+    flex-shrink:0;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid #fff;
+
+    box-shadow:0 5px 18px rgba(15,47,116,.12);
+
+}
+
+.teacher-card h5{
+
+    margin:0 0 3px;
+
+    color:var(--heading-color);
+
+    font-weight:700;
+
+    font-size:18px;
+
+}
+
+.teacher-card span{
+
+    display:block;
+
+    color:var(--primary-hover);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:4px;
+
+}
+
+.teacher-card small{
+
+    display:block;
+
+    color:#6b7280;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+}
+
+
+/*======================================
+        TEACHER STATS
+======================================*/
+
+.teacher-stats{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    margin-top:14px;
+
+}
+
+.teacher-stats div{
+
+    background:#fff;
+
+    border:1px solid #e8eef7;
+
+    border-radius:14px;
+
+    padding:12px;
+
+    text-align:center;
+
+}
+
+.teacher-stats strong{
+
+    display:block;
+
+    color:var(--primary-hover);
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:3px;
+
+}
+
+.teacher-stats span{
+
+    display:block;
+
+    color:#7a8495;
+
+    font-size:11px;
+
+}
+
+
+/*======================================
+        MODAL CONTENT
+======================================*/
+
+.modal-badge{
+
+    display:inline-block;
+
+    background:rgba(15,47,116,.08);
+
+    color:var(--primary-hover);
+
+    padding:8px 18px;
+
+    border-radius:50px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+    margin-bottom:15px;
+
+}
+
+.course-modal h2{
+
+    font-size:40px;
+
+    font-weight:800;
+
+    color:var(--heading-color);
+
+    margin-bottom:14px;
+
+    line-height:1.2;
+
+}
+
+.course-modal p{
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+}
+
+
+/*======================================
+        INFO GRID
+======================================*/
+
+.modal-info-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:12px;
+
+    margin:25px 0 30px;
+
+}
+
+.modal-info-grid div{
+
+    background:#f8fbff;
+
+    padding:13px 14px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    border:1px solid #edf2f8;
+
+}
+
+.modal-info-grid i{
+
+    width:34px;
+
+    height:34px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:rgba(15,47,116,.08);
+
+    color:var(--primary-hover);
+
+}
+
+.modal-info-grid span{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:2px;
+
+    min-width:0;
+
+}
+
+.modal-info-grid small{
+
+    color:#8a94a5;
+
+    font-size:10px;
+
+    font-weight:500;
+
+    line-height:1.2;
+
+}
+
+.modal-info-grid strong{
+
+    color:var(--heading-color);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+/*======================================
+        MODAL SECTIONS
+======================================*/
+
+.modal-section{
+
+    margin-top:26px;
+
+}
+
+.modal-section h4{
+
+    color:var(--heading-color);
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:14px;
+
+}
+
+.modal-overview{
+
+    background:#f8fbff;
+
+    border-left:3px solid var(--primary-hover);
+
+    border-radius:0 12px 12px 0;
+
+    padding:15px 17px;
+
+    margin:0;
+
+    font-size:14px;
+
+}
+
+
+/*======================================
+        SECTION HEADING
+======================================*/
+
+.modal-section-heading{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    margin-bottom:14px;
+
+}
+
+.modal-section-heading h4{
+
+    margin-bottom:0;
+
+}
+
+#modalContentSummary{
+
+    color:#7a8495;
+
+    font-size:12px;
+
+    white-space:nowrap;
+
+}
+
+
+/*======================================
+        LEARNING LIST
+======================================*/
+
+.modal-list{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.modal-list li{
+
+    position:relative;
+
+    padding-left:28px;
+
+    margin-bottom:10px;
+
+    color:#606b7d;
+
+    font-size:13px;
+
+    line-height:1.7;
+
+}
+
+.modal-list li::before{
+
+    content:"\f00c";
+
+    position:absolute;
+
+    left:0;
+
+    top:3px;
+
+    width:19px;
+
+    height:19px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(15,47,116,.09);
+
+    color:var(--primary-hover);
+
+    font-family:"Font Awesome 6 Free";
+
+    font-weight:900;
+
+    font-size:9px;
+
+}
+
+
+/*======================================
+        COURSE CONTENT ACCORDION
+======================================*/
+
+.course-content-accordion{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+}
+
+.course-module{
+
+    border:1px solid #e5ebf4;
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    background:#fff;
+
+}
+
+.course-module-header{
+
+    width:100%;
+
+    border:none;
+
+    background:#f8fbff;
+
+    padding:15px 16px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    gap:15px;
+
+    text-align:left;
+
+    color:var(--heading-color);
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.course-module-header:hover{
+
+    background:#f1f6fd;
+
+}
+
+.course-module-header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    min-width:0;
+
+}
+
+.course-module-number{
+
+    width:32px;
+
+    height:32px;
+
+    flex-shrink:0;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:10px;
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    font-size:12px;
+
+    font-weight:700;
+
+}
+
+.course-module-title{
+
+    color:var(--heading-color);
+
+    font-size:13px;
+
+    font-weight:600;
+
+    line-height:1.4;
+
+}
+
+.course-module-meta{
+
+    color:#8a94a5;
+
+    font-size:11px;
+
+    margin-top:2px;
+
+}
+
+.course-module-icon{
+
+    color:var(--primary-hover);
+
+    transition:.3s;
+
+}
+
+.course-module.active .course-module-icon{
+
+    transform:rotate(180deg);
+
+}
+
+.course-module-body{
+
+    display:none;
+
+    padding:14px 18px 16px 60px;
+
+    background:#fff;
+
+}
+
+.course-module.active .course-module-body{
+
+    display:block;
+
+}
+
+.course-module-body ul{
+
+    list-style:none;
+
+    padding:0;
+
+    margin:0;
+
+}
+
+.course-module-body li{
+
+    position:relative;
+
+    padding-left:22px;
+
+    margin-bottom:8px;
+
+    color:#697386;
+
+    font-size:12px;
+
+    line-height:1.6;
+
+}
+
+.course-module-body li::before{
+
+    content:"\f144";
+
+    position:absolute;
+
+    left:0;
+
+    top:2px;
+
+    color:var(--primary-hover);
+
+    font-family:"Font Awesome 6 Free";
+
+    font-weight:900;
+
+    font-size:11px;
+
+}
+
+
+/*======================================
+        MODAL BUTTONS
+======================================*/
+
+.modal-buttons{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:28px;
+
+    padding-top:20px;
+
+    border-top:1px solid #edf1f6;
+
+}
+
+.modal-buttons .btn{
+
+    min-height:48px;
+
+    padding:10px 22px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.modal-close-btn{
+
+    border:2px solid var(--primary-hover);
+
+    color:var(--primary-hover);
+
+    background:#fff;
+
+}
+
+.modal-close-btn:hover{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+}
+
+
+/*======================================
+        RESPONSIVE
+======================================*/
+
+@media(max-width:991px){
+
+    .course-modal{
+
+        padding:30px;
+
+    }
+
+    .course-modal h2{
+
+        font-size:32px;
+
+    }
+
+    .course-modal-image img{
+
+        height:250px;
+
+    }
+
+}
+
+
+@media(max-width:767px){
+
+    .course-filter-box{
+
+        padding:20px;
+
+    }
+
+    .section-heading h2{
+
+        font-size:34px;
+
+    }
+
+    .course-content{
+
+        padding:22px;
+
+    }
+
+    .course-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .modal-info-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .course-modal{
+
+        padding:22px;
+
+        max-height:92vh;
+
+        border-radius:22px;
+
+    }
+
+    .course-modal-close{
+
+        top:12px;
+
+        right:12px;
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .course-modal h2{
+
+        font-size:27px;
+
+        padding-right:40px;
+
+    }
+
+    .course-modal-image img{
+
+        height:220px;
+
+    }
+
+    .teacher-card{
+
+        flex-direction:row;
+
+        text-align:left;
+
+    }
+
+    .teacher-stats{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .modal-section-heading{
+
+        align-items:flex-start;
+
+        flex-direction:column;
+
+        gap:5px;
+
+    }
+
+    #modalContentSummary{
+
+        white-space:normal;
+
+    }
+
+    .course-module-body{
+
+        padding-left:18px;
+
+    }
+
+    .modal-buttons{
+
+        flex-direction:column;
+
+    }
+
+    .modal-buttons .btn{
+
+        width:100%;
+
+    }
+
+}
+
+
+@media(max-width:480px){
+
+    .course-modal-overlay{
+
+        padding:10px;
+
+    }
+
+    .course-modal{
+
+        padding:18px;
+
+    }
+
+    .course-modal-image img{
+
+        height:190px;
+
+    }
+
+    .teacher-card{
+
+        padding:14px;
+
+        gap:12px;
+
+    }
+
+    .teacher-card img{
+
+        width:58px;
+
+        height:58px;
+
+    }
+
+    .teacher-card h5{
+
+        font-size:16px;
+
+    }
+
+    .teacher-card span{
+
+        font-size:11px;
+
+    }
+
+    .teacher-card small{
+
+        font-size:10px;
+
+    }
+
+    .teacher-stats strong{
+
+        font-size:14px;
+
+    }
+
+    .teacher-stats span{
+
+        font-size:10px;
+
+    }
+
+}

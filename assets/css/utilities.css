@@ -1,0 +1,237 @@
+/*==========================================
+  EDUVERSE - UTILITY CLASSES
+  Project : EduVerse
+  Version : 1.0
+==========================================*/
+
+
+/*======================================
+  DISPLAY
+======================================*/
+
+.d-block{
+    display:block;
+}
+
+.d-inline-block{
+    display:inline-block;
+}
+
+.d-flex{
+    display:flex;
+}
+
+.d-grid{
+    display:grid;
+}
+
+.d-none{
+    display:none;
+}
+
+
+/*======================================
+  FLEX
+======================================*/
+
+.flex-wrap{
+    flex-wrap:wrap;
+}
+
+.flex-column{
+    flex-direction:column;
+}
+
+.align-center{
+    align-items:center;
+}
+
+.justify-center{
+    justify-content:center;
+}
+
+.justify-between{
+    justify-content:space-between;
+}
+
+.justify-around{
+    justify-content:space-around;
+}
+
+.justify-evenly{
+    justify-content:space-evenly;
+}
+
+
+/*======================================
+  TEXT ALIGN
+======================================*/
+
+.text-start{
+    text-align:left;
+}
+
+.text-center{
+    text-align:center;
+}
+
+.text-end{
+    text-align:right;
+}
+
+
+/*======================================
+  WIDTH
+======================================*/
+
+.w-100{
+    width:100%;
+}
+
+.h-100{
+    height:100%;
+}
+
+
+/*======================================
+  POSITION
+======================================*/
+
+.position-relative{
+    position:relative;
+}
+
+.position-absolute{
+    position:absolute;
+}
+
+
+/*======================================
+  OVERFLOW
+======================================*/
+
+.overflow-hidden{
+    overflow:hidden;
+}
+
+
+/*======================================
+  BORDER RADIUS
+======================================*/
+
+.rounded-sm{
+    border-radius:var(--radius-sm);
+}
+
+.rounded-md{
+    border-radius:var(--radius-md);
+}
+
+.rounded-lg{
+    border-radius:var(--radius-lg);
+}
+
+.rounded-xl{
+    border-radius:var(--radius-xl);
+}
+
+.rounded-pill{
+    border-radius:var(--radius-pill);
+}
+
+.rounded-circle{
+    border-radius:50%;
+}
+
+
+/*======================================
+  SHADOWS
+======================================*/
+
+.shadow-sm{
+    box-shadow:var(--shadow-sm);
+}
+
+.shadow-md{
+    box-shadow:var(--shadow-md);
+}
+
+.shadow-lg{
+    box-shadow:var(--shadow-lg);
+}
+
+.shadow-card{
+    box-shadow:var(--shadow-card);
+}
+
+
+/*======================================
+  BACKGROUND COLORS
+======================================*/
+
+.bg-primary{
+    background:var(--primary-color);
+}
+
+.bg-secondary{
+    background:var(--secondary-color);
+}
+
+.bg-white{
+    background:var(--white-color);
+}
+
+
+/*======================================
+  TEXT COLORS
+======================================*/
+
+.text-primary{
+    color:var(--primary-color);
+}
+
+.text-secondary{
+    color:var(--secondary-color);
+}
+
+.text-heading{
+    color:var(--heading-color);
+}
+
+.text-muted{
+    color:var(--muted-text-color);
+}
+
+
+/*======================================
+  FONT WEIGHT
+======================================*/
+
+.fw-regular{
+    font-weight:var(--font-regular);
+}
+
+.fw-medium{
+    font-weight:var(--font-medium);
+}
+
+.fw-semibold{
+    font-weight:var(--font-semibold);
+}
+
+.fw-bold{
+    font-weight:var(--font-bold);
+}
+
+.fw-extrabold{
+    font-weight:var(--font-extrabold);
+}
+
+
+/*======================================
+  SECTION SPACING
+======================================*/
+
+.section-padding{
+    padding:var(--section-padding) 0;
+}

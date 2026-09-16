@@ -1,0 +1,3571 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!--========== Basic Meta Tags ==========-->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="EduVerse - Learn Smarter. Teach Better. Grow Together.">
+    <meta name="keywords" content="Education, Online Courses, Learning Platform">
+    <meta name="author" content="EduVerse Team">
+
+    <title>EduVerse | Courses</title>
+
+
+    <!--========== Favicon ==========-->
+
+    <link rel="icon" type="image/png" href="assets/images/logo/favicon.png">
+
+
+    <!--========== Google Fonts ==========-->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+
+    <!--========== Font Awesome ==========-->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+
+    <!--========== Bootstrap CSS ==========-->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+
+    <!--========== Global CSS ==========-->
+
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/utilities.css">
+    <link rel="stylesheet" href="assets/css/components.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/courses.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
+
+</head>
+
+<body>
+
+    <!--======================================
+                HEADER START
+    =======================================-->
+
+    <!--========== Navbar Start ==========-->
+
+    <nav class="navbar custom-navbar navbar-expand-lg fixed-top">
+
+        <div class="container">
+
+            <!--========== Logo ==========-->
+
+            <a class="navbar-brand" href="index.html">
+
+                <img
+                    src="assets/images/logo/white-logo.png"
+                    alt="EduVerse Logo"
+                    class="logo">
+
+            </a>
+
+
+            <!--========== Desktop Navigation ==========-->
+
+            <div class="collapse navbar-collapse justify-content-center">
+
+                <ul class="navbar-nav mx-auto">
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="index.html">
+
+                            Home
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link active" href="courses.html">
+
+                            Courses
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="about.html">
+
+                            About
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="contact.html">
+
+                            Contact
+
+                        </a>
+
+                    </li>
+
+                    <li class="nav-item">
+
+                        <a class="nav-link" href="index.html#features">
+
+                            Features
+
+                        </a>
+
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!--========== Desktop Buttons ==========-->
+
+            <div class="navbar-actions d-none d-lg-flex align-items-center">
+
+                <a href="login.html" class="btn btn-login">
+
+                    Login
+
+                </a>
+
+                <a href="register.html" class="btn btn-primary-custom">
+
+                    Get Started
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </a>
+
+            </div>
+
+
+            <!--========== Mobile Toggle ==========-->
+
+            <button
+                class="menu-toggle d-lg-none"
+                id="menuToggle"
+                type="button"
+                aria-label="Open Menu"
+                aria-controls="mobileMenu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+    </nav>
+
+
+    <!--======================================
+            MOBILE OVERLAY
+    =======================================-->
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+
+    <!--======================================
+            MOBILE MENU
+    =======================================-->
+
+    <aside class="mobile-menu" id="mobileMenu">
+
+        <!--========== Close Button ==========-->
+
+        <button
+            class="close-menu"
+            id="closeMenu"
+            type="button"
+            aria-label="Close Menu">
+
+            <i class="fa-solid fa-xmark"></i>
+
+        </button>
+
+
+        <!--========== Mobile Logo ==========-->
+
+        <a href="index.html" class="mobile-logo">
+
+            <img
+                src="assets/images/logo/white-logo.png"
+                alt="EduVerse Logo">
+
+        </a>
+
+
+        <!--========== Mobile Navigation ==========-->
+
+        <ul class="mobile-nav">
+
+            <li>
+
+                <a href="index.html">
+
+                    Home
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a class="active" href="courses.html">
+
+                    Courses
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="about.html">
+
+                    About
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="contact.html">
+
+                    Contact
+
+                </a>
+
+            </li>
+
+            <li>
+
+                <a href="index.html#features">
+
+                    Features
+
+                </a>
+
+            </li>
+
+        </ul>
+
+
+        <!--========== Mobile Buttons ==========-->
+
+        <div class="mobile-buttons">
+
+            <a href="login.html" class="btn btn-login w-100">
+
+                Login
+
+            </a>
+
+            <a href="register.html" class="btn btn-primary-custom w-100">
+
+                Get Started
+
+            </a>
+
+        </div>
+
+
+        <!--========== Social Icons ==========-->
+
+        <div class="mobile-social">
+
+            <a href="#" aria-label="Facebook">
+
+                <i class="fab fa-facebook-f"></i>
+
+            </a>
+
+            <a href="#" aria-label="Instagram">
+
+                <i class="fab fa-instagram"></i>
+
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+
+                <i class="fab fa-linkedin-in"></i>
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!--======================================
+                HEADER END
+    =======================================-->
+
+
+    <!--======================================
+                 MAIN START
+    =======================================-->
+
+    <main>
+
+
+        <!--======================================
+                COURSES HERO SECTION
+        =======================================-->
+
+        <section class="hero-section">
+
+            <div class="container">
+
+                <div class="row align-items-center hero-row">
+
+                    <!--========== Hero Content ==========-->
+
+                    <div class="col-lg-6">
+
+                        <div class="hero-content">
+
+                            <span class="hero-badge">
+
+                                <i class="fa-solid fa-book-open"></i>
+
+                                120+ Professional Courses
+
+                            </span>
+
+                            <h1 class="hero-title course-title">
+
+                                Explore Our
+                                <br>
+                                Premium Courses
+                                <br>
+                                Build Your Future.
+
+                            </h1>
+
+                            <p class="hero-description">
+
+                                Discover expert-led courses designed to help you learn new
+                                skills, achieve your goals, and build a successful career.
+
+                            </p>
+
+
+                            <!--========== Hero Buttons ==========-->
+
+                            <div class="hero-buttons">
+
+                                <a href="#courses" class="hero-card-btn">
+
+                                    <div class="hero-btn-icon">
+
+                                        <i class="fa-solid fa-book-open"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <h6>
+
+                                            Browse Courses
+
+                                        </h6>
+
+                                    </div>
+
+                                </a>
+
+
+                                <a href="register.html" class="hero-card-btn">
+
+                                    <div class="hero-btn-icon">
+
+                                        <i class="fa-solid fa-chalkboard-user"></i>
+
+                                    </div>
+
+                                    <div>
+
+                                        <h6>
+
+                                            Become Instructor
+
+                                        </h6>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+
+                            <!--========== Course Highlights ==========-->
+
+                            <div class="hero-trust">
+
+                                <div class="trust-content">
+
+                                    <p>
+
+                                        <strong>120+</strong> Courses •
+
+                                        <strong>50K+</strong> Students •
+
+                                        <strong>25+</strong> Expert Teachers
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--========== Hero Image ==========-->
+
+                    <div class="col-lg-6">
+
+                        <div class="hero-image-wrapper">
+
+                            <img
+                                src="assets/images/courses/course.png"
+                                alt="EduVerse Courses"
+                                class="img-fluid hero-image">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--======================================
+            COURSES HERO SECTION END
+        =======================================-->
+
+
+        <!--======================================
+            SEARCH & FILTER SECTION
+        =======================================-->
+
+        <section class="course-filter-section" id="courses">
+
+            <div class="container">
+
+                <!--========== Section Header ==========-->
+
+                <div class="section-heading text-center">
+
+                    <span class="section-badge">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+
+                        Find Your Perfect Course
+
+                    </span>
+
+                    <h2>
+
+                        Explore Our Learning Library
+
+                    </h2>
+
+                    <p>
+
+                        Search courses by name or filter them by category and level
+                        to find the perfect course for your learning journey.
+
+                    </p>
+
+                </div>
+
+
+                <!--========== Search Bar ==========-->
+
+                <div class="course-filter-box">
+
+                    <div class="row g-3 align-items-center">
+
+                        <!-- Search -->
+
+                        <div class="col-lg-5">
+
+                            <div class="filter-input">
+
+                                <i class="fa-solid fa-magnifying-glass"></i>
+
+                                <input
+                                    type="text"
+                                    id="courseSearch"
+                                    class="form-control"
+                                    placeholder="Search courses...">
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Category -->
+
+                        <div class="col-lg-3">
+
+                            <select
+                                id="categoryFilter"
+                                class="form-select">
+
+                                <option value="all">
+
+                                    All Categories
+
+                                </option>
+
+                                <option value="ai">
+
+                                    Artificial Intelligence
+
+                                </option>
+
+                                <option value="web">
+
+                                    Web Development
+
+                                </option>
+
+                                <option value="programming">
+
+                                    Programming
+
+                                </option>
+
+                                <option value="microsoft">
+
+                                    Microsoft Office
+
+                                </option>
+
+                                <option value="design">
+
+                                    Graphic Design
+
+                                </option>
+
+                                <option value="cyber">
+
+                                    Cyber Security
+
+                                </option>
+
+                                <option value="digital-marketing">
+                                   
+                                    Digital Marketing
+                                
+                                </option>
+
+                                <option value="data-science">
+                                     
+                                    Data Science
+                                
+                                </option>    
+                            
+                            </select>
+
+                        </div>
+
+
+                        <!-- Level -->
+
+                        <div class="col-lg-2">
+
+                            <select
+                                id="levelFilter"
+                                class="form-select">
+
+                                <option value="all">
+
+                                    All Levels
+
+                                </option>
+
+                                <option value="beginner">
+
+                                    Beginner
+
+                                </option>
+
+                                <option value="intermediate">
+
+                                    Intermediate
+
+                                </option>
+
+                                <option value="advanced">
+
+                                    Advanced
+
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Button -->
+
+                        <div class="col-lg-2">
+
+                            <button
+                                id="clearFilters"
+                                class="btn filter-btn">
+
+                                <i class="fa-solid fa-filter-circle-xmark"></i>
+
+                                Clear
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!--========== Results ==========-->
+
+                <div class="course-results">
+
+                    <p>
+
+                        Showing
+
+                        <strong id="courseCount">
+
+                            18
+
+                        </strong>
+
+                        Courses
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--======================================
+            SEARCH & FILTER SECTION END
+        =======================================-->
+
+
+        <!--======================================
+                COURSES GRID
+        =======================================-->
+
+        <section class="courses-grid-section">
+
+            <div class="container">
+
+                <div class="row g-4" id="coursesContainer">
+
+
+                    <!--==================================
+                            COURSE 1
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="AI Fundamentals"
+                        data-category="ai"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/ai-fundamentals.png"
+                                    alt="AI Fundamentals">
+
+                                <span class="course-badge">
+
+                                    AI
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    AI Fundamentals
+
+                                </h4>
+
+                                <p>
+
+                                    Learn Artificial Intelligence from scratch
+                                    with practical examples.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Sarah Khan
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        8 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="AI Fundamentals">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                            COURSE 2
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Machine Learning"
+                        data-category="ai"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/machine-learning.png"
+                                    alt="Machine Learning">
+
+                                <span class="course-badge">
+
+                                    AI
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Machine Learning
+
+                                </h4>
+
+                                <p>
+
+                                    Build machine learning models using Python
+                                    and real datasets.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Ali Raza
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        10 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Machine Learning">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                            COURSE 3
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Deep Learning"
+                        data-category="ai"
+                        data-level="advanced">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/deep-learning.png"
+                                    alt="Deep Learning">
+
+                                <span class="course-badge">
+
+                                    AI
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Deep Learning
+
+                                </h4>
+
+                                <p>
+
+                                    Master neural networks, TensorFlow and
+                                    modern AI applications.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Ahmed Hassan
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        5.0
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        12 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Deep Learning">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        WEB DEVELOPMENT COURSE 1
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="HTML & CSS Mastery"
+                        data-category="web"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/html-css.png"
+                                    alt="HTML & CSS">
+
+                                <span class="course-badge">
+
+                                    Web
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    HTML & CSS Mastery
+
+                                </h4>
+
+                                <p>
+
+                                    Build responsive and modern websites
+                                    from scratch.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Fatima Noor
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        6 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="HTML & CSS Mastery">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        WEB DEVELOPMENT COURSE 2
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="JavaScript Essentials"
+                        data-category="web"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/javascript.png"
+                                    alt="JavaScript">
+
+                                <span class="course-badge">
+
+                                    Web
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    JavaScript Essentials
+
+                                </h4>
+
+                                <p>
+
+                                    Learn modern JavaScript with real-world
+                                    projects.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Hamza Ali
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        8 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="JavaScript Essentials">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        WEB DEVELOPMENT COURSE 3
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Bootstrap 5"
+                        data-category="web"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/bootstrap.png"
+                                    alt="Bootstrap">
+
+                                <span class="course-badge">
+
+                                    Web
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Bootstrap 5
+
+                                </h4>
+
+                                <p>
+
+                                    Design responsive websites quickly
+                                    using Bootstrap.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Ayesha Khan
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.7
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        5 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Bootstrap 5">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--==================================
+                        WEB DEVELOPMENT COURSE 4
+                    ==================================-->
+
+<div
+    class="col-lg-4 col-md-6 course-card-item"
+    data-course="Complete Web Development Bootcamp"
+    data-category="web"
+    data-level="intermediate">
+
+    <div class="course-card">
+
+        <div class="course-image">
+
+            <img
+                src="assets/images/courses/web-development.png"
+                alt="Complete Web Development Bootcamp">
+
+            <span class="course-badge">
+
+                Web
+
+            </span>
+
+        </div>
+
+
+        <div class="course-content">
+
+            <h4>
+
+                Complete Web Development Bootcamp
+
+            </h4>
+
+            <p>
+
+                Learn HTML, CSS, JavaScript and Bootstrap
+                by building real-world responsive websites.
+
+            </p>
+
+
+            <ul class="course-meta">
+
+                <li>
+
+                    <i class="fa-solid fa-user"></i>
+
+                    Hamza Ali
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-star"></i>
+
+                    4.9
+
+                </li>
+
+                <li>
+
+                    <i class="fa-solid fa-clock"></i>
+
+                    12 Weeks
+
+                </li>
+
+            </ul>
+
+
+            <div class="course-buttons">
+
+                <a
+                    href="login.html"
+                    class="btn enroll-btn">
+
+                    Enroll Now
+
+                </a>
+
+
+                <button
+                    class="btn details-btn"
+                    data-course="Complete Web Development Bootcamp">
+
+                    See Details
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                    <!--==================================
+                        PROGRAMMING COURSE 1
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Python Programming"
+                        data-category="programming"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/python.png"
+                                    alt="Python">
+
+                                <span class="course-badge">
+
+                                    Programming
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Python Programming
+
+                                </h4>
+
+                                <p>
+
+                                    Learn Python from beginner to advanced level.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Bilal Ahmed
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        9 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Python Programming">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        PROGRAMMING COURSE 2
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Java Programming"
+                        data-category="programming"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/java.png"
+                                    alt="Java">
+
+                                <span class="course-badge">
+
+                                    Programming
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Java Programming
+
+                                </h4>
+
+                                <p>
+
+                                    Build desktop and enterprise applications
+                                    using Java.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Hassan Raza
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        10 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Java Programming">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        PROGRAMMING COURSE 3
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="C++ Programming"
+                        data-category="programming"
+                        data-level="advanced">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/cpp.png"
+                                    alt="C++">
+
+                                <span class="course-badge">
+
+                                    Programming
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    C++ Programming
+
+                                </h4>
+
+                                <p>
+
+                                    Master object-oriented programming with C++.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Umar Farooq
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        10 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="C++ Programming">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                        MICROSOFT COURSE 1
+                    ==================================-->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Microsoft Word"
+                        data-category="microsoft"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/ms-word.png"
+                                    alt="Microsoft Word">
+
+                                <span class="course-badge">
+
+                                    Microsoft
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Microsoft Word
+
+                                </h4>
+
+                                <p>
+
+                                    Master professional document creation
+                                    and formatting.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Hina Malik
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        4 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Microsoft Word">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 11 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Microsoft Excel"
+                        data-category="microsoft"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/ms-excel.jpg"
+                                    alt="Excel">
+
+                                <span class="course-badge">
+
+                                    Microsoft
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Microsoft Excel
+
+                                </h4>
+
+                                <p>
+
+                                    Learn formulas, charts, dashboards
+                                    and data analysis.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Asad Khan
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        6 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Microsoft Excel">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 12 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Microsoft PowerPoint"
+                        data-category="microsoft"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/ms-powerpoint.jpg"
+                                    alt="PowerPoint">
+
+                                <span class="course-badge">
+
+                                    Microsoft
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Microsoft PowerPoint
+
+                                </h4>
+
+                                <p>
+
+                                    Create modern presentations
+                                    with animations.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Sana Iqbal
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        5 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Microsoft PowerPoint">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GRAPHIC DESIGN -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Adobe Photoshop"
+                        data-category="design"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/photoshop.jpg"
+                                    alt="Photoshop">
+
+                                <span class="course-badge">
+
+                                    Design
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Adobe Photoshop
+
+                                </h4>
+
+                                <p>
+
+                                    Learn photo editing and professional
+                                    graphic design.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Noor Fatima
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        7 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Adobe Photoshop">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 14 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Adobe Illustrator"
+                        data-category="design"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/illustrator.jpg"
+                                    alt="Illustrator">
+
+                                <span class="course-badge">
+
+                                    Design
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Adobe Illustrator
+
+                                </h4>
+
+                                <p>
+
+                                    Create vector illustrations
+                                    and logo designs.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Maryam Ali
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        8 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Adobe Illustrator">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 15 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="UI UX Design"
+                        data-category="design"
+                        data-level="advanced">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/uiux.jpg"
+                                    alt="UI UX">
+
+                                <span class="course-badge">
+
+                                    Design
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    UI / UX Design
+
+                                </h4>
+
+                                <p>
+
+                                    Design beautiful and user-friendly
+                                    digital products.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Zain Abbas
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        5.0
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        9 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="UI UX Design">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--==================================
+        UI / UX DESIGN MASTERCLASS
+==================================-->
+
+<div
+    class="col-lg-4 col-md-6 course-card-item"
+    data-course="UI / UX Design Masterclass"
+    data-category="design"
+    data-level="intermediate">
+
+    <div class="course-card">
+
+        <div class="course-image">
+
+            <img
+                src="assets/images/courses/uiux-masterclass.jpg"
+                alt="UI / UX Design Masterclass">
+
+            <span class="course-badge">
+                Design
+            </span>
+
+        </div>
+
+        <div class="course-content">
+
+            <h4>
+                UI / UX Design Masterclass
+            </h4>
+
+            <p>
+                Master user interface and user experience design
+                with practical projects and modern design tools.
+            </p>
+
+            <ul class="course-meta">
+
+                <li>
+                    <i class="fa-solid fa-user"></i>
+                    Zain Abbas
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-star"></i>
+                    5.0
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    10 Weeks
+                </li>
+
+            </ul>
+
+            <div class="course-buttons">
+
+                <a
+                    href="login.html"
+                    class="btn enroll-btn">
+                    Enroll Now
+                </a>
+
+                <button
+                    class="btn details-btn"
+                    data-course="UI / UX Design Masterclass">
+                    See Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--==================================
+        DIGITAL MARKETING
+==================================-->
+
+<div
+    class="col-lg-4 col-md-6 course-card-item"
+    data-course="Digital Marketing Fundamentals"
+    data-category="digital-marketing"
+    data-level="beginner">
+
+    <div class="course-card">
+
+        <div class="course-image">
+
+            <img
+                src="assets/images/courses/digital-marketing.jpg"
+                alt="Digital Marketing Fundamentals">
+
+            <span class="course-badge">
+                Marketing
+            </span>
+
+        </div>
+
+        <div class="course-content">
+
+            <h4>
+                Digital Marketing Fundamentals
+            </h4>
+
+            <p>
+                Learn SEO, social media marketing, content strategy
+                and modern digital marketing techniques.
+            </p>
+
+            <ul class="course-meta">
+
+                <li>
+                    <i class="fa-solid fa-user"></i>
+                    Areeba Khan
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-star"></i>
+                    4.9
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    7 Weeks
+                </li>
+
+            </ul>
+
+            <div class="course-buttons">
+
+                <a
+                    href="login.html"
+                    class="btn enroll-btn">
+                    Enroll Now
+                </a>
+
+                <button
+                    class="btn details-btn"
+                    data-course="Digital Marketing Fundamentals">
+                    See Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--==================================
+        DATA SCIENCE & ML
+==================================-->
+
+<div
+    class="col-lg-4 col-md-6 course-card-item"
+    data-course="Data Science & Machine Learning"
+    data-category="data-science"
+    data-level="intermediate">
+
+    <div class="course-card">
+
+        <div class="course-image">
+
+            <img
+                src="assets/images/courses/data-science.jpg"
+                alt="Data Science & Machine Learning">
+
+            <span class="course-badge">
+                Data Science
+            </span>
+
+        </div>
+
+        <div class="course-content">
+
+            <h4>
+                Data Science & Machine Learning
+            </h4>
+
+            <p>
+                Learn data analysis, visualization and machine learning
+                techniques using real-world datasets.
+            </p>
+
+            <ul class="course-meta">
+
+                <li>
+                    <i class="fa-solid fa-user"></i>
+                    Ali Raza
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-star"></i>
+                    4.9
+                </li>
+
+                <li>
+                    <i class="fa-solid fa-clock"></i>
+                    12 Weeks
+                </li>
+
+            </ul>
+
+            <div class="course-buttons">
+
+                <a
+                    href="login.html"
+                    class="btn enroll-btn">
+                    Enroll Now
+                </a>
+
+                <button
+                    class="btn details-btn"
+                    data-course="Data Science & Machine Learning">
+                    See Details
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+                    <!-- CYBER SECURITY -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Cyber Security Basics"
+                        data-category="cyber"
+                        data-level="beginner">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/cyber.jpg"
+                                    alt="Cyber Security">
+
+                                <span class="course-badge">
+
+                                    Cyber
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Cyber Security Basics
+
+                                </h4>
+
+                                <p>
+
+                                    Protect systems and networks
+                                    from cyber threats.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Talha Khan
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.8
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        6 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Cyber Security Basics">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 17 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Ethical Hacking"
+                        data-category="cyber"
+                        data-level="intermediate">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/hacking.jpg"
+                                    alt="Ethical Hacking">
+
+                                <span class="course-badge">
+
+                                    Cyber
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Ethical Hacking
+
+                                </h4>
+
+                                <p>
+
+                                    Learn penetration testing
+                                    using real tools.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Ibrahim Malik
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        4.9
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        8 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Ethical Hacking">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- COURSE 18 -->
+
+                    <div
+                        class="col-lg-4 col-md-6 course-card-item"
+                        data-course="Network Security"
+                        data-category="cyber"
+                        data-level="advanced">
+
+                        <div class="course-card">
+
+                            <div class="course-image">
+
+                                <img
+                                    src="assets/images/courses/network-security.jpg"
+                                    alt="Network Security">
+
+                                <span class="course-badge">
+
+                                    Cyber
+
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <h4>
+
+                                    Network Security
+
+                                </h4>
+
+                                <p>
+
+                                    Secure enterprise networks
+                                    and infrastructure.
+
+                                </p>
+
+                                <ul class="course-meta">
+
+                                    <li>
+
+                                        <i class="fa-solid fa-user"></i>
+
+                                        Abdullah Shah
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-star"></i>
+
+                                        5.0
+
+                                    </li>
+
+                                    <li>
+
+                                        <i class="fa-solid fa-clock"></i>
+
+                                        10 Weeks
+
+                                    </li>
+
+                                </ul>
+
+                                <div class="course-buttons">
+
+                                    <a
+                                        href="login.html"
+                                        class="btn enroll-btn">
+
+                                        Enroll Now
+
+                                    </a>
+
+                                    <button
+                                        class="btn details-btn"
+                                        data-course="Network Security">
+
+                                        See Details
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!--======================================
+                COURSE DETAILS MODAL
+        =======================================-->
+
+        <div
+            class="course-modal-overlay"
+            id="courseModal"
+            aria-hidden="true">
+
+            <div
+                class="course-modal"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="modalTitle">
+
+                <!--========== Close Button ==========-->
+
+                <button
+                    class="course-modal-close"
+                    id="closeCourseModal"
+                    type="button"
+                    aria-label="Close Course Details">
+
+                    <i class="fa-solid fa-xmark"></i>
+
+                </button>
+
+
+                <div class="row g-4 align-items-start">
+
+
+                    <!--==================================
+                            LEFT SIDE
+                    ==================================-->
+
+                    <div class="col-lg-5">
+
+                        <!--========== Course Image ==========-->
+
+                        <div class="course-modal-image">
+
+                            <img
+                                id="modalCourseImage"
+                                src=""
+                                alt="Course Image"
+                                class="img-fluid">
+
+                        </div>
+
+
+                        <!--========== Teacher Card ==========-->
+
+                        <div class="teacher-card">
+
+                            <img
+                                id="modalTeacherImage"
+                                src=""
+                                alt="Course Instructor">
+
+                            <div>
+
+                                <h5 id="modalTeacher">
+
+                                </h5>
+
+                                <span id="modalTeacherRole">
+
+                                </span>
+
+                                <small id="modalEducation">
+
+                                </small>
+
+                                <small id="modalExperience">
+
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <!--========== Teacher Stats ==========-->
+
+                        <div class="teacher-stats">
+
+                            <div>
+
+                                <strong id="modalTeacherRating">
+
+                                    -
+
+                                </strong>
+
+                                <span>
+
+                                    Instructor Rating
+
+                                </span>
+
+                            </div>
+
+                            <div>
+
+                                <strong id="modalTeacherCourses">
+
+                                    -
+
+                                </strong>
+
+                                <span>
+
+                                    Courses
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!--==================================
+                            RIGHT SIDE
+                    ==================================-->
+
+                    <div class="col-lg-7">
+
+
+                        <!--========== Category ==========-->
+
+                        <span
+                            class="modal-badge"
+                            id="modalCategory">
+
+                        </span>
+
+
+                        <!--========== Course Title ==========-->
+
+                        <h2 id="modalTitle">
+
+                        </h2>
+
+
+                        <!--========== Short Description ==========-->
+
+                        <p id="modalDescription">
+
+                        </p>
+
+
+                        <!--==================================
+                                COURSE INFO
+                        ==================================-->
+
+                        <div class="modal-info-grid">
+
+
+                            <!-- Level -->
+
+                            <div>
+
+                                <i class="fa-solid fa-layer-group"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Level
+
+                                    </small>
+
+                                    <strong id="modalLevel">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Duration -->
+
+                            <div>
+
+                                <i class="fa-solid fa-clock"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Duration
+
+                                    </small>
+
+                                    <strong id="modalDuration">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Lessons -->
+
+                            <div>
+
+                                <i class="fa-solid fa-play-circle"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Lessons
+
+                                    </small>
+
+                                    <strong id="modalLessons">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Rating -->
+
+                            <div>
+
+                                <i class="fa-solid fa-star"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Rating
+
+                                    </small>
+
+                                    <strong id="modalRating">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Students -->
+
+                            <div>
+
+                                <i class="fa-solid fa-users"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Students
+
+                                    </small>
+
+                                    <strong id="modalStudents">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Language -->
+
+                            <div>
+
+                                <i class="fa-solid fa-language"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Language
+
+                                    </small>
+
+                                    <strong id="modalLanguage">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+
+                            <!-- Certificate -->
+
+                            <div>
+
+                                <i class="fa-solid fa-certificate"></i>
+
+                                <span>
+
+                                    <small>
+
+                                        Certificate
+
+                                    </small>
+
+                                    <strong id="modalCertificate">
+
+                                    </strong>
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+
+                        <!--==================================
+                            ABOUT THIS COURSE
+                        ==================================-->
+
+                        <div class="modal-section">
+
+                            <h4>
+
+                                About This Course
+
+                            </h4>
+
+                            <p
+                                id="modalOverview"
+                                class="modal-overview">
+
+                            </p>
+
+                        </div>
+
+
+                        <!--==================================
+                            WHAT YOU'LL LEARN
+                        ==================================-->
+
+                        <div class="modal-section">
+
+                            <h4>
+
+                                What You'll Learn
+
+                            </h4>
+
+                            <ul
+                                class="modal-list"
+                                id="modalLearning">
+
+                            </ul>
+
+                        </div>
+
+
+                        <!--==================================
+                            COURSE CONTENT
+                        ==================================-->
+
+                        <div class="modal-section">
+
+                            <div class="modal-section-heading">
+
+                                <h4>
+
+                                    Course Content
+
+                                </h4>
+
+                                <span id="modalContentSummary">
+
+                                </span>
+
+                            </div>
+
+
+                            <div
+                                class="course-content-accordion"
+                                id="modalCourseContent">
+
+                                <!--
+
+                                    Course modules will be
+                                    generated dynamically
+                                    through JavaScript.
+
+                                -->
+
+                            </div>
+
+                        </div>
+
+
+                        <!--==================================
+                            REQUIREMENTS
+                        ==================================-->
+
+                        <div class="modal-section">
+
+                            <h4>
+
+                                Requirements
+
+                            </h4>
+
+                            <ul
+                                class="modal-list"
+                                id="modalRequirements">
+
+                            </ul>
+
+                        </div>
+
+
+                        <!--==================================
+                            BUTTONS
+                        ==================================-->
+
+                        <div class="modal-buttons">
+
+                            <a
+                                href="login.html"
+                                class="btn enroll-btn">
+
+                                <i class="fa-solid fa-user-plus"></i>
+
+                                Enroll Now
+
+                            </a>
+
+                            <button
+                                type="button"
+                                class="btn modal-close-btn">
+
+                                Close
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!--======================================
+            COURSE DETAILS MODAL END
+        =======================================-->
+
+    </main>
+
+
+    <!--======================================
+                  MAIN END
+    =======================================-->
+
+
+    <!--======================================
+                FOOTER START
+    =======================================-->
+
+    <footer class="edu-footer">
+
+        <div class="container">
+
+            <div class="edu-footer-top">
+
+                <div class="row gy-5">
+
+
+                    <!-- Logo -->
+
+                    <div class="col-lg-4 col-md-6">
+
+                        <div class="edu-footer-brand">
+
+                            <a
+                                href="index.html"
+                                class="edu-footer-logo">
+
+                                <img
+                                    src="assets/images/logo/dark-logo.png"
+                                    alt="EduVerse Logo">
+
+                            </a>
+
+                            <p class="edu-footer-text">
+
+                                EduVerse is an AI-powered learning platform that
+                                connects students and teachers through interactive
+                                courses, quizzes and smart education.
+
+                            </p>
+
+                            <div class="edu-footer-social">
+
+                                <a href="#">
+
+                                    <i class="fab fa-facebook-f"></i>
+
+                                </a>
+
+                                <a href="#">
+
+                                    <i class="fab fa-instagram"></i>
+
+                                </a>
+
+                                <a href="#">
+
+                                    <i class="fab fa-linkedin-in"></i>
+
+                                </a>
+
+                                <a href="#">
+
+                                    <i class="fab fa-youtube"></i>
+
+                                </a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Quick Links -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+
+                            Quick Links
+
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li>
+
+                                <a href="index.html">
+
+                                    Home
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="courses.html">
+
+                                    Courses
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="about.html">
+
+                                    About
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="contact.html">
+
+                                    Contact
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- Student -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+
+                            Students
+
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li>
+
+                                <a href="#">
+
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Assignments
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Quizzes
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Certificates
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- Teacher -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+
+                            Teachers
+
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li>
+
+                                <a href="#">
+
+                                    Dashboard
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Upload Course
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Manage Students
+
+                                </a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="#">
+
+                                    Analytics
+
+                                </a>
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+
+
+                    <!-- Newsletter -->
+
+                    <div class="col-lg-2 col-md-12">
+
+                        <h5 class="edu-footer-title">
+
+                            Newsletter
+
+                        </h5>
+
+                        <p class="edu-footer-news-text">
+
+                            Subscribe to receive our latest courses and updates.
+
+                        </p>
+
+                        <form class="edu-footer-newsletter">
+
+                            <input
+                                type="email"
+                                placeholder="Email Address"
+                                required>
+
+                            <button type="submit">
+
+                                <i class="fas fa-paper-plane"></i>
+
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Bottom -->
+
+            <div class="edu-footer-bottom">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6">
+
+                        <p>
+
+                            © 2026 EduVerse. All Rights Reserved.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="edu-footer-bottom-links">
+
+                            <a href="#">
+
+                                Privacy Policy
+
+                            </a>
+
+                            <a href="#">
+
+                                Terms
+
+                            </a>
+
+                            <a href="#">
+
+                                Sitemap
+
+                            </a>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!--======================================
+                FOOTER END
+    =======================================-->
+
+
+    <!--======================================
+                JAVASCRIPT
+    =======================================-->
+
+    <!-- Bootstrap JS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Main JS -->
+
+    <script src="assets/js/main.js"></script>
+
+    <!-- Custom JS -->
+
+    <script src="assets/js/home.js"></script>
+
+    <script src="assets/js/courses.js"></script>
+
+</body>
+
+</html>

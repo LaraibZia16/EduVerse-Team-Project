@@ -1,0 +1,214 @@
+/*==========================================
+  EDUVERSE - CSS VARIABLES
+  Project : EduVerse
+  Version : 1.0
+  Author  : Team EduVerse
+
+  Note:
+  This file contains all global design tokens.
+  Do not use hardcoded values in other CSS files.
+==========================================*/
+
+:root {
+
+    /*======================================
+      BRAND COLORS
+    ======================================*/
+
+    --primary-color: #123A8F;
+    --primary-hover: #0F2F74;
+
+    --secondary-color: #FFC107;
+    --secondary-hover: #E0A800;
+
+    --white-color: #FFFFFF;
+    --black-color: #000000;
+
+    --background-color: #F8FAFF;
+    --surface-color: #FFFFFF;
+
+    --heading-color: #16214D;
+    --text-color: #636f8f;
+    --muted-text-color: #8B94A7;
+
+    --border-color: #E5EAF5;
+
+    --success-color: #22C55E;
+    --warning-color: #F59E0B;
+    --error-color: #EF4444;
+
+    --rating-color: #FFC107;
+
+
+
+    /*======================================
+      TYPOGRAPHY
+    ======================================*/
+
+    --font-family: 'Poppins', sans-serif;
+
+    --font-size-xs: 0.75rem;      /*12px*/
+    --font-size-sm: 0.875rem;     /*14px*/
+    --font-size-base: 1rem;       /*16px*/
+    --font-size-md: 1.125rem;     /*18px*/
+    --font-size-lg: 1.25rem;      /*20px*/
+    --font-size-xl: 1.5rem;       /*24px*/
+    --font-size-2xl: 1.75rem;     /*28px*/
+    --font-size-3xl: 2rem;        /*32px*/
+    --font-size-4xl: 2.5rem;      /*40px*/
+    --font-size-5xl: 3rem;        /*48px*/
+    --font-size-hero: 4rem;       /*64px*/
+
+
+
+    /*======================================
+      FONT WEIGHTS
+    ======================================*/
+
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+    --font-extrabold: 800;
+
+
+
+    /*======================================
+      LINE HEIGHT
+    ======================================*/
+
+    --line-height-small: 1.4;
+    --line-height-normal: 1.6;
+    --line-height-heading: 1.2;
+
+
+
+    /*======================================
+      SPACING SYSTEM
+    ======================================*/
+
+    --space-4: 4px;
+    --space-8: 8px;
+    --space-12: 12px;
+    --space-16: 16px;
+    --space-20: 20px;
+    --space-24: 24px;
+    --space-32: 32px;
+    --space-40: 40px;
+    --space-48: 48px;
+    --space-56: 56px;
+    --space-64: 64px;
+    --space-80: 80px;
+    --space-96: 96px;
+    --space-120: 120px;
+
+
+
+    /*======================================
+      BORDER RADIUS
+    ======================================*/
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 14px;
+    --radius-xl: 18px;
+    --radius-pill: 50px;
+    --radius-circle: 50%;
+
+
+
+    /*======================================
+      SHADOWS
+    ======================================*/
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+
+    --shadow-md: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+    --shadow-lg: 0 15px 40px rgba(0, 0, 0, 0.12);
+
+    --shadow-card: 0 10px 30px rgba(18, 58, 143, 0.08);
+
+    --shadow-button: 0 8px 20px rgba(18, 58, 143, 0.20);
+
+
+
+    /*======================================
+      TRANSITIONS
+    ======================================*/
+
+    --transition-fast: 0.2s ease;
+
+    --transition-normal: 0.3s ease;
+
+    --transition-slow: 0.5s ease;
+
+
+
+  /*======================================
+  LAYOUT
+======================================*/
+
+--container-width: 1320px;
+
+--navbar-height: 80px;
+--navbar-height-mobile: 70px;
+
+--section-padding-desktop: 100px;
+--section-padding-tablet: 80px;
+--section-padding-mobile: 60px;
+
+
+    /*======================================
+      BUTTONS
+    ======================================*/
+
+    --button-height-sm: 42px;
+
+    --button-height-md: 50px;
+
+    --button-height-lg: 58px;
+
+
+
+    /*======================================
+      FORMS
+    ======================================*/
+
+    --input-height: 50px;
+
+    --input-radius: var(--radius-md);
+
+    --input-padding: 0 18px;
+
+
+
+    /*======================================
+      CARDS
+    ======================================*/
+
+    --card-padding: 24px;
+
+    --card-radius: var(--radius-lg);
+
+    --card-shadow: var(--shadow-card);
+
+
+
+    /*======================================
+      Z-INDEX
+    ======================================*/
+
+    --z-dropdown: 1000;
+
+    --z-sticky: 1020;
+
+    --z-fixed: 1030;
+
+    --z-modal: 1050;
+
+    --z-tooltip: 1080;
+
+    --z-loader: 9999;
+
+}

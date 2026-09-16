@@ -1,0 +1,509 @@
+/*======================================
+            GOOGLE FONT
+======================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/*======================================
+            RESET
+======================================*/
+
+*{
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:#f7f9fc;
+
+    overflow-x:hidden;
+
+}
+
+/*======================================
+        LOGOUT SECTION
+======================================*/
+
+.logout-section{
+
+    min-height:100vh;
+
+    padding:70px 0;
+
+    display:flex;
+
+    align-items:center;
+
+    background:
+    radial-gradient(circle at top left,#dfe8ff 0%,transparent 35%),
+    radial-gradient(circle at bottom right,#dfe8ff 0%,transparent 35%),
+    #f8fbff;
+
+}
+
+/*======================================
+        BACK HOME
+======================================*/
+
+.back-home-wrapper{
+
+    margin-bottom:25px;
+
+}
+
+.back-home{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    text-decoration:none;
+
+    color:var(--heading-color);
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.back-home i{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    background:#fff;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+}
+
+.back-home:hover{
+
+    color:var(--primary-hover);
+
+}
+
+.back-home:hover i{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+    transform:translateX(-5px);
+
+}
+
+/*======================================
+            LOGO
+======================================*/
+
+.logout-logo{
+
+    margin-bottom:35px;
+
+}
+
+.logout-logo img{
+
+    height:75px;
+
+}
+
+.logout-tagline{
+
+    margin-top:15px;
+
+    color:#6b7280;
+
+    font-size:16px;
+
+}
+
+/*======================================
+            MAIN CARD
+======================================*/
+
+.logout-card{
+
+    background:#fff;
+
+    border-radius:30px;
+
+    padding:60px;
+
+    text-align:center;
+
+    box-shadow:0 20px 60px rgba(0,0,0,.08);
+
+}
+
+.logout-badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    background:rgba(15,47,116,.08);
+
+    color:var(--primary-hover);
+
+    padding:10px 22px;
+
+    border-radius:50px;
+
+    font-weight:600;
+
+    margin-bottom:25px;
+
+}
+
+.logout-image{
+
+    max-width:320px;
+
+    margin-bottom:30px;
+
+    animation:floatImage 5s ease-in-out infinite;
+
+}
+
+.logout-card h1{
+
+    font-size:48px;
+
+    font-weight:800;
+
+    color:var(--heading-color);
+
+    margin-bottom:20px;
+
+}
+
+.logout-card h1 span{
+
+    color:var(--primary-hover);
+
+}
+
+.logout-card p{
+
+    max-width:650px;
+
+    margin:0 auto 35px;
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+}
+
+/*======================================
+            BUTTONS
+======================================*/
+
+.logout-buttons{
+
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+
+    flex-wrap:wrap;
+
+}
+
+.login-btn,
+
+.home-btn{
+
+    min-width:220px;
+
+    height:56px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    border-radius:14px;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+    transition:.35s;
+
+}
+
+.login-btn{
+
+    background:var(--primary-hover);
+
+    color:#fff;
+
+}
+
+.home-btn{
+
+    border:2px solid var(--primary-hover);
+
+    color:var(--primary-hover);
+
+    background:#fff;
+
+}
+
+.login-btn:hover,
+
+.home-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 15px 35px rgba(15,47,116,.20);
+
+}
+/*======================================
+        FEATURE CARDS
+======================================*/
+
+.logout-feature-card{
+
+    height:100%;
+
+    background:#fff;
+
+    border-radius:24px;
+
+    padding:35px 25px;
+
+    text-align:center;
+
+    box-shadow:0 15px 40px rgba(0,0,0,.06);
+
+    transition:.35s;
+
+}
+
+.logout-feature-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 45px rgba(0,0,0,.10);
+
+}
+
+.logout-feature-card i{
+
+    width:80px;
+
+    height:80px;
+
+    margin:0 auto 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    border-radius:50%;
+
+    background:rgba(15,47,116,.08);
+
+    color:var(--primary-hover);
+
+    font-size:32px;
+
+}
+
+.logout-feature-card h5{
+
+    color:var(--heading-color);
+
+    font-size:22px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+.logout-feature-card p{
+
+    color:#6b7280;
+
+    line-height:1.8;
+
+    margin:0;
+
+}
+
+/*======================================
+            FOOTER
+======================================*/
+
+.logout-footer{
+
+    text-align:center;
+
+    margin-top:50px;
+
+}
+
+.logout-footer p{
+
+    margin-bottom:6px;
+
+    font-weight:600;
+
+    color:var(--heading-color);
+
+}
+
+.logout-footer span{
+
+    color:#6b7280;
+
+    font-size:15px;
+
+}
+
+/*======================================
+            ANIMATION
+======================================*/
+
+@keyframes floatImage{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*======================================
+            RESPONSIVE
+======================================*/
+
+@media(max-width:991px){
+
+.logout-card{
+
+    padding:45px;
+
+}
+
+.logout-card h1{
+
+    font-size:38px;
+
+}
+
+.logout-image{
+
+    max-width:260px;
+
+}
+
+}
+
+@media(max-width:767px){
+
+.logout-section{
+
+    padding:40px 15px;
+
+}
+
+.logout-card{
+
+    padding:30px 20px;
+
+}
+
+.logout-card h1{
+
+    font-size:30px;
+
+}
+
+.logout-buttons{
+
+    flex-direction:column;
+
+}
+
+.login-btn,
+
+.home-btn{
+
+    width:100%;
+
+}
+
+.logout-image{
+
+    max-width:220px;
+
+}
+
+.logout-logo img{
+
+    height:60px;
+
+}
+
+.logout-feature-card{
+
+    padding:25px 20px;
+
+}
+
+.logout-feature-card h5{
+
+    font-size:20px;
+
+}
+
+}
