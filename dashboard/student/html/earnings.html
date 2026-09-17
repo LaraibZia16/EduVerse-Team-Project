@@ -1,0 +1,1902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>EduVerse | Fees & Payments</title>
+
+
+
+
+<!-- Google Font -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+
+<!-- Bootstrap -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+
+
+
+
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+
+
+
+<!-- Custom CSS -->
+
+<link rel="stylesheet" href="../css/style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="dashboard-wrapper">
+
+
+
+
+
+
+<!-- ==================================================
+                    SIDEBAR START
+================================================== -->
+
+
+<aside class="sidebar">
+
+
+
+<div class="logo-area">
+
+
+<div class="logo-icon">
+
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+
+</div>
+
+
+
+<div class="logo-text">
+
+
+<h2>
+
+EduVerse
+
+</h2>
+
+
+<p>
+
+Student Dashboard
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<nav class="sidebar-menu">
+
+
+<ul>
+
+
+
+<li>
+
+<a href="dashboard.html">
+
+
+<i class="fa-solid fa-house"></i>
+
+
+Dashboard
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="courses.html">
+
+
+<i class="fa-solid fa-book-open"></i>
+
+
+My Courses
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="assignments.html">
+
+
+<i class="fa-solid fa-file-lines"></i>
+
+
+Assignments
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="quizzes.html">
+
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+
+Quizzes
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="student-progress.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+My Progress
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="messages.html">
+
+
+<i class="fa-solid fa-envelope"></i>
+
+
+Messages
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+<li class="active">
+
+
+<a href="earnings.html">
+
+
+<i class="fa-solid fa-wallet"></i>
+
+
+Fees
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+
+<li>
+
+<a href="profile.html">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+Profile
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+
+<li>
+
+<a href="settings.html">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+Settings
+
+
+</a>
+
+
+</li>
+
+
+
+
+</ul>
+
+
+</nav>
+
+
+
+</aside>
+
+
+
+
+
+
+<!-- ==================================================
+                    SIDEBAR END
+================================================== -->
+
+
+
+
+
+
+
+
+
+<!-- ==================================================
+                    MAIN CONTENT START
+================================================== -->
+
+
+<main class="main-content">
+
+
+
+
+
+
+
+<!-- ==================================================
+                    TOP NAVBAR START
+================================================== -->
+
+
+<header class="top-navbar">
+
+
+
+
+
+<div class="navbar-left">
+
+
+
+<button class="menu-toggle">
+
+
+<i class="fa-solid fa-bars"></i>
+
+
+</button>
+
+
+
+
+
+
+<div class="search-box">
+
+
+
+<i class="fa-solid fa-search"></i>
+
+
+
+<input
+type="search"
+id="transactionSearch"
+placeholder="Search transactions...">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="navbar-right">
+
+
+
+
+
+<div class="nav-icon">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<span id="notifCount">
+
+0
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="teacher-profile">
+
+
+<img
+src="https://i.pravatar.cc/100?img=32">
+
+
+
+
+
+<div>
+
+
+<h6>
+
+Hamza Sheikh
+
+</h6>
+
+
+<small>
+
+Student
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+</header>
+
+<!-- ==================================================
+                    BUDGET ALERT BANNER
+================================================== -->
+
+<div class="alert alert-warning d-flex align-items-center gap-2 mt-3 d-none" id="budgetAlertBanner" role="alert">
+
+    <i class="fa-solid fa-triangle-exclamation"></i>
+
+    <span id="budgetAlertText"></span>
+
+</div>
+
+<!-- ==================================================
+                    SAVE TOAST
+================================================== -->
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+
+  <div id="feesToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+
+    <div class="d-flex">
+
+      <div class="toast-body" id="feesToastBody">Done.</div>
+
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ==========================================================
+                FEES OVERVIEW START
+========================================================== -->
+
+
+<section class="stats-section mt-4">
+
+
+<div class="row g-4">
+
+
+
+
+
+<!-- TOTAL PAID -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon green">
+
+
+<i class="fa-solid fa-dollar-sign"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2 id="statTotalPaid">$0</h2>
+
+
+<h5>
+
+Total Fees Paid
+
+</h5>
+
+
+<p class="success-text" id="statPaidCourses">
+
+
+0 courses fully paid
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- THIS MONTH -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon purple">
+
+
+<i class="fa-solid fa-calendar"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2 id="statThisMonth">$0</h2>
+
+
+<h5>
+
+Paid This Month
+
+</h5>
+
+
+<p id="statBudgetLine" class="text-muted">
+
+
+Budget not set
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PENDING -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon orange">
+
+
+<i class="fa-solid fa-clock"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2 id="statPending">$0</h2>
+
+
+<h5>
+
+Pending Dues
+
+</h5>
+
+
+<p class="warning-text" id="statPendingCount">
+
+
+0 payments due
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- OVERDUE -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon blue">
+
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2 id="statOverdue">$0</h2>
+
+
+<h5>
+
+Overdue Amount
+
+</h5>
+
+
+<p id="statOverdueCount">
+
+
+0 overdue
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                MAKE PAYMENT CARD START
+========================================================== -->
+
+
+<section class="mt-4">
+
+
+<div class="dashboard-card withdraw-card">
+
+
+
+
+
+<div class="row align-items-center">
+
+
+
+
+
+<div class="col-lg-8">
+
+
+<h3>
+
+Pay Your Fees
+
+</h3>
+
+
+
+<p>
+
+Clear your pending or overdue course fees securely.
+
+</p>
+
+
+
+
+<div class="withdraw-info">
+
+
+<div>
+
+
+<i class="fa-solid fa-building-columns"></i>
+
+
+<span>
+
+Bank Transfer
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+
+<i class="fa-solid fa-credit-card"></i>
+
+
+<span>
+
+Card Payment
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+
+<span>
+
+Mobile Wallet
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+
+
+<button class="btn btn-primary btn-lg" id="payFeesBtn">
+
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+
+Pay Now
+
+
+</button>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                COURSE-WISE FEES START
+========================================================== -->
+
+
+<section class="mt-4">
+
+
+<div class="dashboard-card">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Course-wise Fees
+
+</h4>
+
+
+<p>
+
+Fee status for each enrolled course
+
+</p>
+
+
+</div>
+
+
+
+<select class="form-select form-select-sm w-auto" id="courseFeeFilter">
+
+<option value="all">All Courses</option>
+
+<option value="paid">Paid</option>
+
+<option value="pending">Pending</option>
+
+<option value="overdue">Overdue</option>
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="revenue-list" id="courseFeeList">
+
+<!-- Injected by JS -->
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- ==========================================================
+                SPENDING ANALYTICS START
+========================================================== -->
+
+
+<section class="mt-5">
+
+
+<div class="row g-4">
+
+
+
+
+
+<!-- ================= SPENDING CHART ================= -->
+
+
+<div class="col-lg-8">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Spending Analytics
+
+</h4>
+
+
+<p>
+
+Monthly fee payments
+
+</p>
+
+
+</div>
+
+
+
+
+
+<select class="form-select w-auto" id="chartYearSelect">
+
+
+<option>
+
+2026
+
+</option>
+
+
+<option>
+
+2025
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="chart-container">
+
+
+<canvas id="spendingChart"></canvas>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= FINANCIAL SUMMARY ================= -->
+
+
+<div class="col-lg-4">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Financial Summary
+
+</h4>
+
+
+<p>
+
+Current status
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-book"></i>
+
+
+<span>
+
+Courses Enrolled
+
+</span>
+
+
+</div>
+
+
+<strong id="summaryCourses">
+
+0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-circle-check"></i>
+
+
+<span>
+
+Fully Paid Courses
+
+</span>
+
+
+</div>
+
+
+<strong id="summaryPaidCourses">
+
+0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-tags"></i>
+
+
+<span>
+
+Saved via Coupons
+
+</span>
+
+
+</div>
+
+
+<strong id="summaryCouponSavings">
+
+$0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-rotate-left"></i>
+
+
+<span>
+
+Refunds Received
+
+</span>
+
+
+</div>
+
+
+<strong id="summaryRefunds">
+
+$0
+
+</strong>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+<!-- ==========================================================
+                MONTHLY BUDGET START
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+Monthly Budget
+
+</h4>
+
+<p>
+
+Set a spending limit and get alerted before you cross it
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row g-3 align-items-end">
+
+<div class="col-md-4">
+
+<label class="form-label">Monthly Budget ($)</label>
+
+<input type="number" class="form-control" id="monthlyBudgetInput" placeholder="e.g. 300" min="0">
+
+</div>
+
+<div class="col-md-3">
+
+<button class="btn btn-primary w-100" id="saveBudgetBtn">Save Budget</button>
+
+</div>
+
+</div>
+
+<div class="mt-4">
+
+<div class="d-flex justify-content-between mb-2">
+
+<span>Spent This Month</span>
+
+<strong id="budgetProgressText">$0 / $0</strong>
+
+</div>
+
+<div class="progress">
+
+<div class="progress-bar" id="budgetProgressBar" style="width:0%"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ==========================================================
+                PAYMENT STATUS BREAKDOWN START
+========================================================== -->
+
+
+<section class="mt-4 mb-5">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Payment Status
+
+</h4>
+
+
+<p>
+
+Your payment breakdown across all courses
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Completed Payments
+
+</span>
+
+
+<strong id="perfCompletedPct">0%</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-success" id="perfCompletedBar"
+style="width:0%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress mt-4">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Pending Payments
+
+</span>
+
+
+<strong id="perfPendingPct">0%</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-warning" id="perfPendingBar"
+style="width:0%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress mt-4">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Overdue Payments
+
+</span>
+
+
+<strong id="perfOverduePct">0%</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-danger" id="perfOverdueBar"
+style="width:0%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+<!-- ==========================================================
+                PAYMENT HISTORY START
+========================================================== -->
+
+
+<section class="dashboard-card mt-5">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Payment History
+
+</h4>
+
+
+<p>
+
+Your fee transactions
+
+</p>
+
+
+</div>
+
+
+
+
+<button class="btn btn-sm btn-outline-primary" id="exportHistoryBtn">
+
+
+<i class="fa-solid fa-download"></i>
+
+Export CSV
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="table-responsive">
+
+
+<table class="table earnings-table">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Course
+
+</th>
+
+
+<th>
+
+Amount
+
+</th>
+
+
+<th>
+
+Date
+
+</th>
+
+
+<th>
+
+Method
+
+</th>
+
+
+<th>
+
+Status
+
+</th>
+
+
+<th>
+
+Action
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody id="paymentHistoryBody">
+
+<!-- Injected by JS -->
+
+</tbody>
+
+
+</table>
+
+<p id="noTransactionsMsg" class="text-muted text-center py-4 d-none">
+
+No transactions match your search.
+
+</p>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                REFUND HISTORY START
+========================================================== -->
+
+
+<section class="dashboard-card mt-4 mb-5">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Refund History
+
+</h4>
+
+
+<p>
+
+Refunds issued for cancelled or dropped courses
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="withdraw-history" id="refundHistoryList">
+
+<!-- Injected by JS -->
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                    FOOTER START
+========================================================== -->
+
+
+<footer class="dashboard-footer">
+
+
+<p>
+
+© 2026 EduVerse Student Dashboard.
+All Rights Reserved.
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+<!-- ==========================================================
+                PAY FEES MODAL
+========================================================== -->
+
+<div class="modal fade" id="payFeesModal" tabindex="-1" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title"><i class="fa-solid fa-money-bill-transfer me-2"></i>Pay Fees</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <div class="mb-3">
+
+          <label class="form-label">Select Course</label>
+
+          <select class="form-select" id="payCourseSelect"></select>
+
+        </div>
+
+        <div class="row g-3">
+
+          <div class="col-md-6">
+
+            <label class="form-label">Payment Method</label>
+
+            <select class="form-select" id="payMethodSelect">
+
+              <option>Bank Transfer</option>
+
+              <option>Card Payment</option>
+
+              <option>Mobile Wallet</option>
+
+            </select>
+
+          </div>
+
+          <div class="col-md-6">
+
+            <label class="form-label">Coupon Code (optional)</label>
+
+            <input type="text" class="form-control" id="couponInput" placeholder="e.g. WELCOME10">
+
+          </div>
+
+        </div>
+
+        <div class="form-check form-switch mt-3">
+
+          <input class="form-check-input" type="checkbox" id="installmentToggle">
+
+          <label class="form-check-label">Pay in 2 Installments</label>
+
+        </div>
+
+        <hr>
+
+        <div id="payAmountSummary" class="small"></div>
+
+        <div class="alert alert-success py-2 px-3 mt-2 d-none" id="couponAppliedMsg"></div>
+
+        <div class="alert alert-danger py-2 px-3 mt-2 d-none" id="couponErrorMsg"></div>
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+
+        <button type="button" class="btn btn-success" id="confirmPayBtn">
+
+          <i class="fa-solid fa-lock"></i>
+
+          Confirm Payment
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ==========================================================
+                RECEIPT / INVOICE MODAL
+========================================================== -->
+
+<div class="modal fade" id="receiptModal" tabindex="-1" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title">Payment Receipt</h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+      </div>
+
+      <div class="modal-body" id="receiptModalBody"></div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Close</button>
+
+        <button type="button" class="btn btn-primary" id="downloadReceiptBtn">
+
+          <i class="fa-solid fa-download"></i>
+
+          Download Receipt
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script src="../java/earnings.js"></script>
+
+
+
+
+</body>
+
+
+</html>

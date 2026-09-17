@@ -1,0 +1,6004 @@
+/* ==========================================================
+                    GOOGLE FONT & RESET START
+========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#f5f7fb;
+    color:#2d3748;
+    overflow-x:hidden;
+}
+
+/* ==========================================================
+                    GOOGLE FONT & RESET END
+========================================================== */
+
+
+
+
+
+/* ==========================================================
+                    VARIABLES START
+========================================================== */
+
+:root{
+
+    --primary:#6C63FF;
+    --primary-dark:#5b54e8;
+
+    --secondary:#8b85ff;
+
+    --white:#ffffff;
+
+    --light:#f5f7fb;
+
+    --border:#e7eaf3;
+
+    --text:#2d3748;
+
+    --gray:#7a7d85;
+
+    --success:#27ae60;
+
+    --danger:#ff4d6d;
+
+    --warning:#f4b400;
+
+    --shadow:0 15px 35px rgba(0,0,0,.06);
+
+    --radius:18px;
+
+    --transition:.35s;
+
+}
+
+/* ==========================================================
+                    VARIABLES END
+========================================================== */
+
+
+
+
+
+
+/* ==========================================================
+                    DASHBOARD WRAPPER START
+========================================================== */
+
+.dashboard-wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:var(--light);
+
+}
+
+/* ==========================================================
+                    DASHBOARD WRAPPER END
+========================================================== */
+
+
+
+
+
+
+/* ==========================================================
+                    SIDEBAR START
+========================================================== */
+
+.sidebar{
+
+    width:280px;
+
+    background:var(--white);
+
+    box-shadow:var(--shadow);
+
+    position:fixed;
+
+    left:0;
+
+    top:0;
+
+    height:100vh;
+
+    padding:28px;
+
+    overflow-y:auto;
+
+    z-index:999;
+
+    transition:.4s;
+
+}
+
+/* ==========================================================
+                    SIDEBAR END
+========================================================== */
+
+
+
+
+
+
+
+/* ==========================================================
+                    LOGO START
+========================================================== */
+
+.logo-area{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:45px;
+
+}
+
+.logo-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    background:linear-gradient(135deg,#6C63FF,#8f88ff);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:24px;
+
+}
+
+.logo-text h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    margin-bottom:2px;
+
+}
+
+.logo-text p{
+
+    color:var(--gray);
+
+    font-size:13px;
+
+}
+
+/* ==========================================================
+                    LOGO END
+========================================================== */
+
+
+
+
+
+
+
+
+/* ==========================================================
+                    SIDEBAR MENU START
+========================================================== */
+
+.sidebar-menu ul{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.sidebar-menu li{
+
+    margin-bottom:10px;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    text-decoration:none;
+
+    color:var(--text);
+
+    padding:14px 18px;
+
+    border-radius:14px;
+
+    transition:.35s;
+
+    font-weight:500;
+
+}
+
+.sidebar-menu a span:first-child{
+
+    display:flex;
+
+}
+
+.sidebar-menu a i{
+
+    width:26px;
+
+    font-size:18px;
+
+    color:#6C63FF;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:#6C63FF;
+
+    color:#fff;
+
+    transform:translateX(5px);
+
+}
+
+.sidebar-menu a:hover i{
+
+    color:#fff;
+
+}
+
+.sidebar-menu .active a{
+
+    background:#6C63FF;
+
+    color:#fff;
+
+}
+
+.sidebar-menu .active i{
+
+    color:#fff;
+
+}
+
+.notification-badge{
+
+    background:#ff4d6d;
+
+    color:#fff;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+}
+
+/* ==========================================================
+                    SIDEBAR MENU END
+========================================================== */
+/* ==========================================================
+                    MAIN CONTENT START
+========================================================== */
+
+.main-content{
+
+    flex:1;
+
+    margin-left:280px;
+
+    padding:30px;
+
+    min-height:100vh;
+
+    transition:0.35s;
+
+}
+
+/* ==========================================================
+                    MAIN CONTENT END
+========================================================== */
+
+
+
+
+
+/* ==========================================================
+                    TOP NAVBAR START
+========================================================== */
+
+.top-navbar{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:18px 25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    box-shadow:var(--shadow);
+
+    margin-bottom:30px;
+
+}
+
+.navbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.menu-toggle{
+
+    border:none;
+
+    background:#6C63FF;
+
+    color:#fff;
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:18px;
+
+    transition:.3s;
+
+}
+
+.menu-toggle:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.search-box{
+
+    position:relative;
+
+}
+
+.search-box input{
+
+    width:350px;
+
+    padding:13px 20px 13px 48px;
+
+    border:1px solid var(--border);
+
+    border-radius:50px;
+
+    outline:none;
+
+    background:#f7f8fc;
+
+    transition:.3s;
+
+}
+
+.search-box input:focus{
+
+    border-color:var(--primary);
+
+    background:#fff;
+
+}
+
+.search-box i{
+
+    position:absolute;
+
+    left:18px;
+
+    top:50%;
+
+    transform:translateY(-50%);
+
+    color:#888;
+
+}
+
+/* ==========================================================
+                    TOP NAVBAR END
+========================================================== */
+
+
+
+
+
+
+
+/* ==========================================================
+                    NAVBAR RIGHT START
+========================================================== */
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:20px;
+
+}
+
+.nav-icon{
+
+    position:relative;
+
+    width:48px;
+
+    height:48px;
+
+    background:#f5f7fb;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.nav-icon:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.nav-icon span{
+
+    position:absolute;
+
+    top:-6px;
+
+    right:-2px;
+
+    width:20px;
+
+    height:20px;
+
+    background:#ff4d6d;
+
+    color:#fff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+}
+
+.teacher-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    cursor:pointer;
+
+}
+
+.teacher-profile img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.teacher-profile h6{
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.teacher-profile small{
+
+    color:#777;
+
+}
+
+/* ==========================================================
+                    NAVBAR RIGHT END
+========================================================== */
+
+
+
+
+
+
+
+
+/* ==========================================================
+                    WELCOME SECTION START
+========================================================== */
+
+.welcome-section{
+
+    background:linear-gradient(135deg,#6C63FF,#8d87ff);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    color:#fff;
+
+    margin-bottom:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.welcome-content{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+}
+
+.welcome-text h1{
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.teacher-name{
+
+    color:#FFD166;
+
+}
+
+.welcome-text p{
+
+    opacity:.9;
+
+    font-size:16px;
+
+}
+
+.welcome-actions{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.welcome-actions .btn{
+
+    padding:12px 22px;
+
+    border-radius:12px;
+
+    font-weight:600;
+
+}
+
+.welcome-actions .btn-primary{
+
+    background:#fff;
+
+    color:#6C63FF;
+
+    border:none;
+
+}
+
+.welcome-actions .btn-outline-primary{
+
+    border:2px solid #fff;
+
+    color:#fff;
+
+}
+
+.welcome-actions .btn-outline-primary:hover{
+
+    background:#fff;
+
+    color:#6C63FF;
+
+}
+
+/* ==========================================================
+                    WELCOME SECTION END
+========================================================== */
+/* ==========================================================
+                    STATISTICS SECTION START
+========================================================== */
+
+.statistics-section{
+    margin-bottom:30px;
+}
+
+.stat-card{
+    background:var(--white);
+    border-radius:20px;
+    padding:25px;
+    display:flex;
+    align-items:center;
+    gap:18px;
+    box-shadow:var(--shadow);
+    transition:var(--transition);
+    cursor:pointer;
+    height:100%;
+}
+
+.stat-card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 20px 40px rgba(108,99,255,.15);
+}
+
+.stat-icon{
+    width:65px;
+    height:65px;
+    border-radius:18px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:24px;
+}
+
+.stat-icon.purple{
+    background:linear-gradient(135deg,#6C63FF,#847dff);
+}
+
+.stat-icon.blue{
+    background:linear-gradient(135deg,#2D9CDB,#56CCF2);
+}
+
+.stat-icon.green{
+    background:linear-gradient(135deg,#27AE60,#6FCF97);
+}
+
+.stat-icon.orange{
+    background:linear-gradient(135deg,#F2994A,#F2C94C);
+}
+
+.stat-icon.yellow{
+    background:linear-gradient(135deg,#FFD166,#F4B400);
+}
+
+.stat-info h2{
+    margin:0;
+    font-size:28px;
+    font-weight:700;
+}
+
+.stat-info h5{
+    margin:8px 0;
+    font-size:16px;
+    color:var(--text);
+}
+
+.stat-info p{
+    margin:0;
+    color:#777;
+    font-size:14px;
+}
+
+/* ==========================================================
+                    STATISTICS SECTION END
+========================================================== */
+
+
+
+
+
+
+/* ==========================================================
+                    ANALYTICS SECTION START
+========================================================== */
+
+.analytics-section{
+    margin-bottom:30px;
+}
+
+.dashboard-card{
+    background:#fff;
+    border-radius:22px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    transition:.35s;
+    height:100%;
+}
+
+.dashboard-card:hover{
+    transform:translateY(-5px);
+}
+
+.card-header-custom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+    gap:15px;
+}
+
+.card-header-custom h3{
+    margin:0;
+    font-size:22px;
+    font-weight:700;
+}
+
+.card-header-custom p{
+    margin:5px 0 0;
+    color:#888;
+    font-size:14px;
+}
+
+.analytics-filter{
+    width:170px;
+    border-radius:12px;
+}
+
+.chart-container{
+    width:100%;
+    height:350px;
+}
+
+.chart-container canvas{
+    width:100% !important;
+    height:100% !important;
+}
+
+/* ==========================================================
+                    ANALYTICS SECTION END
+========================================================== */
+
+
+
+
+
+
+
+/* ==========================================================
+                    COURSE CARD START
+========================================================== */
+
+.course-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    padding:15px 0;
+    border-bottom:1px solid #ececec;
+}
+
+.course-item:last-child{
+    border-bottom:none;
+}
+
+.course-item img{
+    width:70px;
+    height:70px;
+    border-radius:14px;
+    object-fit:cover;
+}
+
+.course-details{
+    flex:1;
+}
+
+.course-details h6{
+    margin-bottom:5px;
+    font-size:16px;
+    font-weight:600;
+}
+
+.course-details small{
+    color:#777;
+}
+
+.progress{
+    height:8px;
+    border-radius:20px;
+    margin-top:10px;
+    background:#ececec;
+}
+
+.progress-bar{
+    border-radius:20px;
+    background:#6C63FF;
+}
+
+/* ==========================================================
+                    COURSE CARD END
+========================================================== */
+/* ==========================================================
+                    DASHBOARD BOTTOM SECTION START
+========================================================== */
+
+.dashboard-bottom-section{
+    margin-top:30px;
+    margin-bottom:40px;
+}
+
+/* ==========================================================
+                    DASHBOARD CARD
+========================================================== */
+
+.dashboard-card{
+    background:#fff;
+    border-radius:20px;
+    padding:25px;
+    box-shadow:var(--shadow);
+    height:100%;
+}
+
+/* ==========================================================
+                    RECENT ACTIVITIES
+========================================================== */
+
+.activity-item{
+    display:flex;
+    gap:15px;
+    align-items:flex-start;
+    margin-bottom:20px;
+}
+
+.activity-icon{
+    width:50px;
+    height:50px;
+    border-radius:15px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    font-size:18px;
+    flex-shrink:0;
+}
+
+.activity-item h6{
+    margin:0;
+    font-size:15px;
+    font-weight:600;
+}
+
+.activity-item small{
+    display:block;
+    color:#777;
+    margin-top:3px;
+}
+
+.activity-item p{
+    margin-top:5px;
+    font-size:13px;
+    color:#999;
+}
+
+/* ==========================================================
+                    ASSIGNMENTS
+========================================================== */
+
+.assignment-item{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:18px;
+}
+
+.assignment-item img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+.assignment-item div{
+    flex:1;
+}
+
+.assignment-item h6{
+    margin:0;
+    font-size:15px;
+}
+
+.assignment-item small{
+    color:#777;
+}
+
+/* ==========================================================
+                    UPCOMING CLASSES
+========================================================== */
+
+.class-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:16px 0;
+    border-bottom:1px solid #eee;
+}
+
+.class-item:last-child{
+    border-bottom:none;
+}
+
+.class-item h6{
+    margin:0;
+    font-size:15px;
+}
+
+.class-item small{
+    color:#777;
+}
+
+/* ==========================================================
+                    BUTTONS
+========================================================== */
+
+.btn-primary{
+    background:#6C63FF;
+    border:none;
+}
+
+.btn-primary:hover{
+    background:#5a52e6;
+}
+
+.btn-outline-primary{
+    border:2px solid #6C63FF;
+    color:#6C63FF;
+}
+
+.btn-outline-primary:hover{
+    background:#6C63FF;
+    color:#fff;
+}
+
+/* ==========================================================
+                    PROMO CARD
+========================================================== */
+
+.promo-card{
+    background:linear-gradient(135deg,#6C63FF,#8A84FF);
+    color:#fff;
+    border-radius:20px;
+    padding:25px;
+    text-align:center;
+    margin-top:30px;
+}
+
+.promo-icon{
+    width:70px;
+    height:70px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+    margin-bottom:18px;
+    font-size:28px;
+}
+
+.promo-card h4{
+    font-weight:700;
+    margin-bottom:12px;
+}
+
+.promo-card p{
+    font-size:14px;
+    opacity:.9;
+    margin-bottom:20px;
+}
+
+/* ==========================================================
+                    FOOTER
+========================================================== */
+
+.dashboard-footer{
+    text-align:center;
+    padding:25px 0;
+    color:#777;
+    font-size:14px;
+}
+
+/* ==========================================================
+                    SCROLLBAR
+========================================================== */
+
+::-webkit-scrollbar{
+    width:8px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#6C63FF;
+    border-radius:20px;
+}
+
+::-webkit-scrollbar-track{
+    background:#ececec;
+}
+
+/* ==========================================================
+                    RESPONSIVE
+========================================================== */
+
+@media (max-width:1200px){
+
+    .sidebar{
+        width:240px;
+    }
+
+    .main-content{
+        margin-left:240px;
+    }
+
+}
+
+@media (max-width:992px){
+
+    .sidebar{
+        position:fixed;
+        left:-100%;
+        transition:.4s;
+    }
+
+    .sidebar.active{
+        left:0;
+    }
+
+    .main-content{
+        margin-left:0;
+        padding:20px;
+    }
+
+    .top-navbar{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    .navbar-left,
+    .navbar-right{
+        width:100%;
+        justify-content:space-between;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .welcome-content{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .search-box{
+        width:100%;
+    }
+
+    .search-box input{
+        width:100%;
+    }
+
+    .teacher-profile div{
+        display:none;
+    }
+
+    .stat-card{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .card-header-custom{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+}
+
+@media (max-width:576px){
+
+    .main-content{
+        padding:15px;
+    }
+
+    .welcome-text h1{
+        font-size:26px;
+    }
+
+    .welcome-actions{
+        width:100%;
+    }
+
+    .welcome-actions .btn{
+        width:100%;
+    }
+
+    .course-item{
+        flex-direction:column;
+        align-items:flex-start;
+    }
+
+    .class-item{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}
+
+/* ==========================================================
+                    DASHBOARD CSS END
+========================================================== */
+
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 1
+        GLOBAL COMPONENTS
+=========================================================*/
+
+
+/* =========================
+      SMOOTH SCROLL
+========================= */
+
+html{
+    scroll-behavior:smooth;
+}
+
+
+/* =========================
+      GLOBAL TRANSITIONS
+========================= */
+
+*{
+    transition:all .30s ease;
+}
+
+
+/* =========================
+      IMPROVED DASHBOARD CARD
+========================= */
+
+.dashboard-card{
+
+    background:#ffffff;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    border:1px solid rgba(108,92,231,.08);
+
+    box-shadow:
+    0 8px 30px rgba(0,0,0,.05);
+
+    margin-bottom:24px;
+
+}
+
+.dashboard-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 16px 35px rgba(108,92,231,.12);
+
+}
+
+
+/* =========================
+      CARD HEADER
+========================= */
+
+.card-header-custom{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    margin-bottom:22px;
+
+    flex-wrap:wrap;
+
+}
+
+.card-header-custom h4{
+
+    margin:0;
+
+    font-size:22px;
+
+    font-weight:700;
+
+    color:var(--dark);
+
+}
+
+.card-header-custom p{
+
+    margin-top:4px;
+
+    margin-bottom:0;
+
+    color:#8b8b98;
+
+}
+
+
+/* =========================
+        BUTTONS
+========================= */
+
+.btn{
+
+    border-radius:12px;
+
+    font-weight:600;
+
+    padding:11px 22px;
+
+}
+
+.btn-primary{
+
+    background:var(--primary);
+
+    border:none;
+
+}
+
+.btn-primary:hover{
+
+    background:#5848dc;
+
+    transform:translateY(-2px);
+
+}
+
+.btn-success{
+
+    border:none;
+
+}
+
+.btn-danger{
+
+    border:none;
+
+}
+
+.btn-warning{
+
+    border:none;
+
+}
+
+.btn-outline-primary{
+
+    border-radius:12px;
+
+}
+
+
+/* =========================
+        INPUTS
+========================= */
+
+.form-control,
+.form-select{
+
+    height:52px;
+
+    border-radius:12px;
+
+    border:1px solid #dcdcef;
+
+    box-shadow:none;
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 .15rem rgba(108,92,231,.18);
+
+}
+
+textarea.form-control{
+
+    height:auto;
+
+}
+
+
+/* =========================
+        LABELS
+========================= */
+
+.form-label{
+
+    font-weight:600;
+
+    color:#555;
+
+    margin-bottom:8px;
+
+}
+
+
+/* =========================
+        TABLES
+========================= */
+
+.table{
+
+    vertical-align:middle;
+
+}
+
+.table thead{
+
+    background:#f6f7fb;
+
+}
+
+.table thead th{
+
+    border:none;
+
+    font-weight:700;
+
+    color:#555;
+
+    padding:16px;
+
+}
+
+.table tbody td{
+
+    padding:18px 16px;
+
+}
+
+
+/* =========================
+        BADGES
+========================= */
+
+.badge{
+
+    padding:8px 14px;
+
+    border-radius:30px;
+
+    font-size:12px;
+
+}
+
+
+/* =========================
+        ICON BOXES
+========================= */
+
+.stat-icon{
+
+    width:65px;
+
+    height:65px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:24px;
+
+}
+
+.green{
+
+    background:#16a34a;
+
+}
+
+.blue{
+
+    background:#2563eb;
+
+}
+
+.orange{
+
+    background:#ea580c;
+
+}
+
+.purple{
+
+    background:var(--primary);
+
+}
+
+
+/* =========================
+        STAT CARD
+========================= */
+
+.stat-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    border:1px solid rgba(0,0,0,.05);
+
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.stat-info h2{
+
+    font-weight:800;
+
+    margin-bottom:4px;
+
+}
+
+.stat-info h5{
+
+    font-size:16px;
+
+    color:#666;
+
+}
+
+.success-text{
+
+    color:#16a34a;
+
+    font-weight:600;
+
+}
+
+.warning-text{
+
+    color:#f59e0b;
+
+    font-weight:600;
+
+}
+
+
+/* =========================
+        SECTION GAP
+========================= */
+
+section{
+
+    margin-bottom:10px;
+
+}
+
+
+/* =========================
+        SCROLLBAR
+========================= */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary);
+
+    border-radius:50px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#ececff;
+
+}
+
+
+/* =========================
+        IMAGE STYLE
+========================= */
+
+img{
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+/* =========================
+        LINKS
+========================= */
+
+a{
+
+    text-decoration:none;
+
+}
+
+a:hover{
+
+    text-decoration:none;
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 2
+        SIDEBAR • NAVBAR • LAYOUT
+=========================================================*/
+
+
+/*=========================
+      DASHBOARD LAYOUT
+=========================*/
+
+.dashboard-wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+
+    background:#f5f7fc;
+
+}
+
+.main-content{
+
+    flex:1;
+
+    padding:30px;
+
+    overflow-x:hidden;
+
+}
+
+
+
+/*=========================
+        SIDEBAR
+=========================*/
+
+.sidebar{
+
+    width:280px;
+
+    background:linear-gradient(180deg,#6C5CE7,#5848dc);
+
+    color:#fff;
+
+    position:sticky;
+
+    top:0;
+
+    height:100vh;
+
+    overflow-y:auto;
+
+    box-shadow:5px 0 30px rgba(0,0,0,.12);
+
+    z-index:999;
+
+}
+
+
+
+.sidebar::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.sidebar::-webkit-scrollbar-thumb{
+
+    background:rgba(255,255,255,.35);
+
+}
+
+
+
+.logo-area{
+
+    padding:30px 25px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    border-bottom:1px solid rgba(255,255,255,.12);
+
+}
+
+
+
+.logo-icon{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.15);
+
+    font-size:26px;
+
+}
+
+
+
+.logo-text h2{
+
+    color:#fff;
+
+    font-size:24px;
+
+    margin-bottom:2px;
+
+}
+
+
+
+.logo-text p{
+
+    color:rgba(255,255,255,.75);
+
+    margin:0;
+
+    font-size:13px;
+
+}
+
+
+
+/*=========================
+      SIDEBAR MENU
+=========================*/
+
+.sidebar-menu{
+
+    padding:20px 15px;
+
+}
+
+.sidebar-menu ul{
+
+    padding:0;
+
+    margin:0;
+
+    list-style:none;
+
+}
+
+.sidebar-menu li{
+
+    margin-bottom:8px;
+
+}
+
+.sidebar-menu a{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:14px 18px;
+
+    color:#fff;
+
+    border-radius:14px;
+
+    font-weight:500;
+
+}
+
+.sidebar-menu a:hover{
+
+    background:rgba(255,255,255,.15);
+
+    padding-left:24px;
+
+}
+
+.sidebar-menu .active a{
+
+    background:#fff;
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.sidebar-menu i{
+
+    width:22px;
+
+    text-align:center;
+
+    font-size:17px;
+
+}
+
+
+
+/*=========================
+        NAVBAR
+=========================*/
+
+.top-navbar{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px 25px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-bottom:28px;
+
+    box-shadow:0 8px 30px rgba(0,0,0,.05);
+
+    gap:20px;
+
+    flex-wrap:wrap;
+
+}
+
+
+
+/*=========================
+      SEARCH BOX
+=========================*/
+
+.search-box{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    background:#f5f7fc;
+
+    border-radius:14px;
+
+    padding:12px 18px;
+
+    min-width:300px;
+
+}
+
+.search-box input{
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    width:100%;
+
+}
+
+.search-box i{
+
+    color:#888;
+
+}
+
+
+
+/*=========================
+        MENU BUTTON
+=========================*/
+
+.menu-toggle{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    font-size:18px;
+
+    display:none;
+
+}
+
+
+
+/*=========================
+     NAVBAR RIGHT
+=========================*/
+
+.navbar-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:22px;
+
+}
+
+
+
+/*=========================
+      NOTIFICATION ICON
+=========================*/
+
+.nav-icon{
+
+    position:relative;
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:14px;
+
+    background:#f5f7fc;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    cursor:pointer;
+
+}
+
+.nav-icon:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.nav-icon span{
+
+    position:absolute;
+
+    top:-5px;
+
+    right:-5px;
+
+    background:#ff3b30;
+
+    color:#fff;
+
+    width:20px;
+
+    height:20px;
+
+    border-radius:50%;
+
+    font-size:11px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+
+/*=========================
+     TEACHER PROFILE
+=========================*/
+
+.teacher-profile{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.teacher-profile img{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    border:3px solid rgba(108,92,231,.18);
+
+}
+
+.teacher-profile h6{
+
+    margin:0;
+
+    font-size:15px;
+
+    font-weight:700;
+
+}
+
+.teacher-profile small{
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+        PAGE TITLE
+=========================*/
+
+.page-title h2{
+
+    font-size:32px;
+
+    font-weight:800;
+
+    color:var(--dark);
+
+}
+
+.page-title p{
+
+    color:#888;
+
+}
+
+
+
+/*=========================
+        RESPONSIVE
+=========================*/
+
+@media(max-width:992px){
+
+.sidebar{
+
+    position:fixed;
+
+    left:-100%;
+
+    transition:.35s;
+
+}
+
+.sidebar.active{
+
+    left:0;
+
+}
+
+.menu-toggle{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.main-content{
+
+    width:100%;
+
+    padding:20px;
+
+}
+
+.search-box{
+
+    min-width:220px;
+
+}
+
+}
+
+
+
+@media(max-width:768px){
+
+.top-navbar{
+
+    flex-direction:column;
+
+    align-items:stretch;
+
+}
+
+.navbar-left,
+
+.navbar-right{
+
+    width:100%;
+
+    justify-content:space-between;
+
+}
+
+.search-box{
+
+    min-width:100%;
+
+}
+
+.teacher-profile h6{
+
+    font-size:14px;
+
+}
+
+.page-title h2{
+
+    font-size:26px;
+
+}
+
+}
+
+
+
+@media(max-width:576px){
+
+.main-content{
+
+    padding:15px;
+
+}
+
+.dashboard-card{
+
+    padding:18px;
+
+}
+
+.logo-area{
+
+    padding:22px;
+
+}
+
+.sidebar{
+
+    width:260px;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 3
+        COURSES • STUDENTS
+=========================================================*/
+
+
+/*=========================
+      PAGE HEADER
+=========================*/
+
+.page-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    flex-wrap:wrap;
+
+    gap:20px;
+
+    margin-bottom:25px;
+
+}
+
+.page-header h2{
+
+    font-size:30px;
+
+    font-weight:800;
+
+    color:var(--dark);
+
+}
+
+.page-header p{
+
+    color:#777;
+
+    margin-top:5px;
+
+}
+
+
+
+/*=========================
+      FILTER SECTION
+=========================*/
+
+.filter-bar{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:18px 22px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:15px;
+
+    margin-bottom:25px;
+
+}
+
+.filter-bar .form-control,
+
+.filter-bar .form-select{
+
+    min-width:200px;
+
+}
+
+
+
+/*=========================
+      COURSE CARD
+=========================*/
+
+.course-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.06);
+
+    transition:.3s;
+
+    height:100%;
+
+}
+
+.course-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(108,92,231,.15);
+
+}
+
+.course-card img{
+
+    width:100%;
+
+    height:190px;
+
+    object-fit:cover;
+
+}
+
+.course-content{
+
+    padding:22px;
+
+}
+
+.course-content h4{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.course-content p{
+
+    color:#777;
+
+    line-height:1.6;
+
+}
+
+.course-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    margin-top:18px;
+
+}
+
+
+
+/*=========================
+      COURSE TAG
+=========================*/
+
+.course-tag{
+
+    display:inline-block;
+
+    padding:7px 14px;
+
+    border-radius:50px;
+
+    background:rgba(108,92,231,.12);
+
+    color:var(--primary);
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================
+      STUDENT CARD
+=========================*/
+
+.student-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+
+    text-align:center;
+
+    transition:.3s;
+
+    height:100%;
+
+}
+
+.student-card:hover{
+
+    transform:translateY(-6px);
+
+}
+
+.student-card img{
+
+    width:95px;
+
+    height:95px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+    margin:auto;
+
+    border:4px solid rgba(108,92,231,.12);
+
+}
+
+.student-card h5{
+
+    margin-top:16px;
+
+    margin-bottom:5px;
+
+    font-weight:700;
+
+}
+
+.student-card p{
+
+    color:#777;
+
+    font-size:14px;
+
+}
+
+
+
+/*=========================
+      STUDENT INFO
+=========================*/
+
+.student-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.student-info img{
+
+    width:50px;
+
+    height:50px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.student-info h6{
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.student-info small{
+
+    color:#888;
+
+}
+
+
+
+/*=========================
+      STATUS BADGES
+=========================*/
+
+.status-active{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.status-pending{
+
+    background:#fef3c7;
+
+    color:#d97706;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+.status-inactive{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================
+      ACTION BUTTONS
+=========================*/
+
+.action-buttons{
+
+    display:flex;
+
+    gap:8px;
+
+}
+
+.action-buttons button{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#f5f7fc;
+
+    color:#555;
+
+}
+
+.action-buttons button:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+
+/*=========================
+      TABLE IMPROVEMENTS
+=========================*/
+
+.table-responsive{
+
+    border-radius:16px;
+
+    overflow:hidden;
+
+}
+
+.table tbody tr{
+
+    transition:.25s;
+
+}
+
+.table tbody tr:hover{
+
+    background:#faf9ff;
+
+}
+
+
+
+/*=========================
+      PROGRESS BAR
+=========================*/
+
+.progress{
+
+    height:10px;
+
+    border-radius:30px;
+
+    background:#ececff;
+
+}
+
+.progress-bar{
+
+    border-radius:30px;
+
+}
+
+
+
+/*=========================
+      EMPTY STATE
+=========================*/
+
+.empty-state{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.empty-state i{
+
+    font-size:60px;
+
+    color:#d0d0e8;
+
+    margin-bottom:15px;
+
+}
+
+.empty-state h4{
+
+    font-weight:700;
+
+}
+
+.empty-state p{
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:768px){
+
+.filter-bar{
+
+    flex-direction:column;
+
+}
+
+.filter-bar .form-control,
+
+.filter-bar .form-select,
+
+.filter-bar .btn{
+
+    width:100%;
+
+}
+
+.course-footer{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+.action-buttons{
+
+    justify-content:center;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.student-card{
+
+    padding:18px;
+
+}
+
+.course-content{
+
+    padding:18px;
+
+}
+
+.page-header{
+
+    text-align:center;
+
+    justify-content:center;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 4
+        STUDENT PROGRESS
+=========================================================*/
+
+
+/*=========================
+      PROGRESS SUMMARY CARD
+=========================*/
+
+.progress-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:24px;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+    height:100%;
+
+}
+
+.progress-card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:0 18px 35px rgba(108,92,231,.12);
+
+}
+
+.progress-card h5{
+
+    font-size:18px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.progress-card p{
+
+    color:#777;
+
+    margin-bottom:0;
+
+}
+
+
+
+/*=========================
+      CIRCULAR ICON
+=========================*/
+
+.progress-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    font-size:26px;
+
+    margin-bottom:18px;
+
+}
+
+.progress-blue{
+
+    background:#2563eb;
+
+}
+
+.progress-green{
+
+    background:#16a34a;
+
+}
+
+.progress-orange{
+
+    background:#f59e0b;
+
+}
+
+.progress-purple{
+
+    background:var(--primary);
+
+}
+
+
+
+/*=========================
+      STUDENT PERFORMANCE
+=========================*/
+
+.performance-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.performance-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.performance-item h6{
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+.performance-item small{
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      SCORE BOX
+=========================*/
+
+.score-box{
+
+    background:#f8f8ff;
+
+    border-radius:14px;
+
+    padding:12px 18px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+
+
+/*=========================
+      PROGRESS BARS
+=========================*/
+
+.progress-title{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#555;
+
+}
+
+.progress{
+
+    height:12px;
+
+    background:#ececff;
+
+    border-radius:30px;
+
+}
+
+.progress-bar{
+
+    border-radius:30px;
+
+}
+
+
+
+/*=========================
+      ACHIEVEMENT CARD
+=========================*/
+
+.achievement-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    box-shadow:0 8px 22px rgba(0,0,0,.05);
+
+    margin-bottom:18px;
+
+}
+
+.achievement-card i{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    color:#fff;
+
+    background:linear-gradient(135deg,#6C5CE7,#8E7CF7);
+
+}
+
+.achievement-card h5{
+
+    margin-bottom:4px;
+
+    font-weight:700;
+
+}
+
+.achievement-card p{
+
+    margin:0;
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      ANALYTICS BOX
+=========================*/
+
+.analytics-box{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:24px;
+
+    box-shadow:0 8px 24px rgba(0,0,0,.05);
+
+}
+
+.analytics-box canvas{
+
+    width:100% !important;
+
+    height:320px !important;
+
+}
+
+
+
+/*=========================
+      SUBJECT CARD
+=========================*/
+
+.subject-card{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.05);
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.subject-card:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.subject-card h4{
+
+    margin-top:15px;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.subject-card span{
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      TOP STUDENT
+=========================*/
+
+.top-student{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:16px;
+
+    border-radius:14px;
+
+    background:#faf9ff;
+
+    margin-bottom:15px;
+
+}
+
+.top-student img{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.top-student h6{
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.top-student small{
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      PERFORMANCE BADGES
+=========================*/
+
+.excellent{
+
+    color:#16a34a;
+
+    font-weight:700;
+
+}
+
+.good{
+
+    color:#2563eb;
+
+    font-weight:700;
+
+}
+
+.average{
+
+    color:#f59e0b;
+
+    font-weight:700;
+
+}
+
+.poor{
+
+    color:#dc2626;
+
+    font-weight:700;
+
+}
+
+
+
+/*=========================
+      CHART BOX
+=========================*/
+
+.chart-container{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:768px){
+
+.performance-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:10px;
+
+}
+
+.achievement-card{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.top-student{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.analytics-box canvas{
+
+    height:250px !important;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.progress-card{
+
+    padding:18px;
+
+}
+
+.subject-card{
+
+    padding:18px;
+
+}
+
+.chart-container{
+
+    padding:15px;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 5
+        MESSAGES PAGE
+=========================================================*/
+
+
+/*=========================
+      CHAT LAYOUT
+=========================*/
+
+.chat-wrapper{
+
+    display:flex;
+
+    height:78vh;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.06);
+
+}
+
+
+
+/*=========================
+      CONTACT SIDEBAR
+=========================*/
+
+.chat-sidebar{
+
+    width:340px;
+
+    border-right:1px solid #ececff;
+
+    background:#fafbff;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.chat-sidebar-header{
+
+    padding:24px;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.chat-sidebar-header h4{
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+
+
+/*=========================
+      CHAT SEARCH
+=========================*/
+
+.chat-search{
+
+    display:flex;
+
+    align-items:center;
+
+    background:#fff;
+
+    border-radius:12px;
+
+    padding:10px 15px;
+
+    border:1px solid #e5e7eb;
+
+}
+
+.chat-search input{
+
+    border:none;
+
+    outline:none;
+
+    background:none;
+
+    width:100%;
+
+    margin-left:10px;
+
+}
+
+
+
+/*=========================
+      CONTACT LIST
+=========================*/
+
+.contact-list{
+
+    overflow-y:auto;
+
+    flex:1;
+
+}
+
+.contact-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px 22px;
+
+    cursor:pointer;
+
+    border-bottom:1px solid #f1f1f8;
+
+}
+
+.contact-item:hover{
+
+    background:#f4f2ff;
+
+}
+
+.contact-item.active{
+
+    background:rgba(108,92,231,.10);
+
+    border-left:4px solid var(--primary);
+
+}
+
+.contact-item img{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:50%;
+
+    object-fit:cover;
+
+}
+
+.contact-info{
+
+    flex:1;
+
+}
+
+.contact-info h6{
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.contact-info p{
+
+    margin:4px 0 0;
+
+    color:#777;
+
+    font-size:13px;
+
+}
+
+.unread-count{
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:11px;
+
+}
+
+
+
+/*=========================
+      CHAT AREA
+=========================*/
+
+.chat-content{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:#fff;
+
+}
+
+
+
+/*=========================
+      CHAT HEADER
+=========================*/
+
+.chat-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:20px 25px;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.chat-user{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.chat-user img{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:50%;
+
+}
+
+.chat-user h5{
+
+    margin:0;
+
+    font-weight:700;
+
+}
+
+.chat-user span{
+
+    color:#16a34a;
+
+    font-size:13px;
+
+}
+
+
+
+/*=========================
+      MESSAGE AREA
+=========================*/
+
+.chat-body{
+
+    flex:1;
+
+    padding:25px;
+
+    overflow-y:auto;
+
+    background:#f7f8fc;
+
+}
+
+
+
+/*=========================
+      MESSAGE BUBBLES
+=========================*/
+
+.message{
+
+    display:flex;
+
+    margin-bottom:20px;
+
+}
+
+.message.received{
+
+    justify-content:flex-start;
+
+}
+
+.message.sent{
+
+    justify-content:flex-end;
+
+}
+
+.message-text{
+
+    max-width:70%;
+
+    padding:14px 18px;
+
+    border-radius:16px;
+
+    line-height:1.6;
+
+    font-size:15px;
+
+}
+
+.message.received .message-text{
+
+    background:#fff;
+
+    border:1px solid #ececff;
+
+}
+
+.message.sent .message-text{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+
+/*=========================
+      MESSAGE TIME
+=========================*/
+
+.message-time{
+
+    display:block;
+
+    margin-top:8px;
+
+    font-size:12px;
+
+    opacity:.75;
+
+}
+
+
+
+/*=========================
+      CHAT INPUT
+=========================*/
+
+.chat-footer{
+
+    padding:18px 22px;
+
+    border-top:1px solid #ececff;
+
+    background:#fff;
+
+}
+
+.chat-input{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.chat-input input{
+
+    flex:1;
+
+    border:none;
+
+    background:#f5f7fc;
+
+    border-radius:30px;
+
+    padding:14px 18px;
+
+    outline:none;
+
+}
+
+.chat-input button{
+
+    width:52px;
+
+    height:52px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+
+/*=========================
+      TYPING
+=========================*/
+
+.typing{
+
+    color:#16a34a;
+
+    font-size:13px;
+
+    font-style:italic;
+
+}
+
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:992px){
+
+.chat-wrapper{
+
+    flex-direction:column;
+
+    height:auto;
+
+}
+
+.chat-sidebar{
+
+    width:100%;
+
+    height:350px;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.message-text{
+
+    max-width:90%;
+
+}
+
+.chat-header{
+
+    flex-direction:column;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+}
+
+.contact-item{
+
+    padding:15px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.chat-body{
+
+    padding:15px;
+
+}
+
+.chat-footer{
+
+    padding:15px;
+
+}
+
+.chat-sidebar{
+
+    height:300px;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 6
+        PROFILE PAGE
+=========================================================*/
+
+
+/*=========================
+      PROFILE HEADER
+=========================*/
+
+.profile-header-card{
+
+    background:linear-gradient(135deg,#6C5CE7,#7F6DF2);
+
+    border-radius:22px;
+
+    padding:35px;
+
+    color:#fff;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    flex-wrap:wrap;
+
+    gap:30px;
+
+    box-shadow:0 15px 35px rgba(108,92,231,.25);
+
+}
+
+.profile-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.profile-avatar{
+
+    width:140px;
+
+    height:140px;
+
+    border-radius:50%;
+
+    border:6px solid rgba(255,255,255,.25);
+
+    object-fit:cover;
+
+}
+
+.profile-info h2{
+
+    font-size:32px;
+
+    font-weight:700;
+
+    margin-bottom:8px;
+
+}
+
+.profile-info p{
+
+    opacity:.9;
+
+    margin-bottom:6px;
+
+}
+
+.profile-badge{
+
+    display:inline-block;
+
+    background:rgba(255,255,255,.18);
+
+    padding:8px 16px;
+
+    border-radius:30px;
+
+    font-size:14px;
+
+}
+
+
+
+/*=========================
+      PROFILE STATS
+=========================*/
+
+.profile-stat{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:22px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.profile-stat:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.profile-stat h3{
+
+    color:var(--primary);
+
+    font-size:32px;
+
+    font-weight:800;
+
+    margin-bottom:8px;
+
+}
+
+.profile-stat p{
+
+    color:#777;
+
+    margin:0;
+
+}
+
+
+
+/*=========================
+      INFORMATION CARD
+=========================*/
+
+.info-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+
+    height:100%;
+
+}
+
+.info-card h4{
+
+    margin-bottom:22px;
+
+    font-weight:700;
+
+}
+
+.info-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.info-row:last-child{
+
+    border:none;
+
+}
+
+.info-row span{
+
+    color:#777;
+
+}
+
+.info-row strong{
+
+    color:#333;
+
+}
+
+
+
+/*=========================
+      SKILLS
+=========================*/
+
+.skills-container{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+
+}
+
+.skill-tag{
+
+    background:rgba(108,92,231,.12);
+
+    color:var(--primary);
+
+    padding:10px 18px;
+
+    border-radius:30px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================
+      EXPERIENCE
+=========================*/
+
+.experience-list{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:20px;
+
+}
+
+.experience-item{
+
+    display:flex;
+
+    gap:18px;
+
+}
+
+.experience-icon{
+
+    width:55px;
+
+    height:55px;
+
+    border-radius:14px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:22px;
+
+}
+
+.experience-item h5{
+
+    margin-bottom:5px;
+
+    font-weight:700;
+
+}
+
+.experience-item p{
+
+    margin:0;
+
+    color:#777;
+
+}
+
+
+
+/*=========================
+      SOCIAL LINKS
+=========================*/
+
+.social-links{
+
+    display:flex;
+
+    gap:15px;
+
+    flex-wrap:wrap;
+
+}
+
+.social-links a{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f5f7fc;
+
+    color:var(--primary);
+
+    font-size:18px;
+
+}
+
+.social-links a:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+
+/*=========================
+      QUALIFICATIONS
+=========================*/
+
+.qualification-item{
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:flex-start;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.qualification-item:last-child{
+
+    border:none;
+
+}
+
+.qualification-item i{
+
+    color:var(--primary);
+
+    font-size:22px;
+
+    margin-top:4px;
+
+}
+
+
+
+/*=========================
+      LANGUAGES
+=========================*/
+
+.language-item{
+
+    margin-bottom:18px;
+
+}
+
+.language-item h6{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    margin-bottom:8px;
+
+}
+
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:992px){
+
+.profile-header-card{
+
+    flex-direction:column;
+
+    text-align:center;
+
+}
+
+.profile-info{
+
+    flex-direction:column;
+
+}
+
+}
+
+@media(max-width:768px){
+
+.info-row{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:8px;
+
+}
+
+.profile-avatar{
+
+    width:110px;
+
+    height:110px;
+
+}
+
+.profile-info h2{
+
+    font-size:26px;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.profile-header-card{
+
+    padding:24px;
+
+}
+
+.info-card{
+
+    padding:18px;
+
+}
+
+.profile-stat{
+
+    padding:18px;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 7
+        EARNINGS PAGE
+=========================================================*/
+
+
+/*=========================
+      EARNING CARD
+=========================*/
+
+.earning-card{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.05);
+
+    position:relative;
+
+    overflow:hidden;
+
+    transition:.35s;
+
+    height:100%;
+
+}
+
+.earning-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(108,92,231,.15);
+
+}
+
+.earning-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+    background:linear-gradient(90deg,#6C5CE7,#8E7CF7);
+
+}
+
+.earning-card h6{
+
+    color:#777;
+
+    margin-bottom:12px;
+
+}
+
+.earning-card h2{
+
+    font-size:34px;
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+.earning-card small{
+
+    color:#16a34a;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================
+      FINANCIAL SUMMARY
+=========================*/
+
+.financial-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.financial-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.financial-item h6{
+
+    margin:0;
+
+    font-weight:600;
+
+}
+
+.financial-item strong{
+
+    font-size:18px;
+
+}
+
+
+
+/*=========================
+      WITHDRAW CARD
+=========================*/
+
+.withdraw-card{
+
+    background:linear-gradient(135deg,#6C5CE7,#7F6DF2);
+
+    color:#fff;
+
+    border-radius:22px;
+
+    padding:30px;
+
+    box-shadow:0 18px 35px rgba(108,92,231,.20);
+
+}
+
+.withdraw-card h3{
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.withdraw-card p{
+
+    opacity:.9;
+
+}
+
+.withdraw-card .btn{
+
+    margin-top:15px;
+
+}
+
+
+
+/*=========================
+      PAYMENT HISTORY
+=========================*/
+
+.payment-history{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.payment-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.payment-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.payment-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+.payment-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:14px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#f4f2ff;
+
+    color:var(--primary);
+
+    font-size:20px;
+
+}
+
+
+
+/*=========================
+      TRANSACTION STATUS
+=========================*/
+
+.status-paid{
+
+    background:#dcfce7;
+
+    color:#16a34a;
+
+    padding:7px 16px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status-processing{
+
+    background:#fef3c7;
+
+    color:#d97706;
+
+    padding:7px 16px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+.status-failed{
+
+    background:#fee2e2;
+
+    color:#dc2626;
+
+    padding:7px 16px;
+
+    border-radius:25px;
+
+    font-size:13px;
+
+    font-weight:600;
+
+}
+
+
+
+/*=========================
+      PAYMENT METHOD
+=========================*/
+
+.payment-method{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:18px;
+
+    border:1px solid #ececff;
+
+    border-radius:16px;
+
+    margin-bottom:15px;
+
+    cursor:pointer;
+
+}
+
+.payment-method:hover{
+
+    border-color:var(--primary);
+
+    background:#faf9ff;
+
+}
+
+.payment-method i{
+
+    font-size:26px;
+
+    color:var(--primary);
+
+}
+
+
+
+/*=========================
+      CHART BOX
+=========================*/
+
+.earning-chart{
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:25px;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.05);
+
+}
+
+.earning-chart canvas{
+
+    width:100% !important;
+
+    height:340px !important;
+
+}
+
+
+
+/*=========================
+      QUICK STATS
+=========================*/
+
+.quick-stat{
+
+    background:#fff;
+
+    border-radius:18px;
+
+    padding:20px;
+
+    text-align:center;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+    transition:.3s;
+
+}
+
+.quick-stat:hover{
+
+    transform:translateY(-5px);
+
+}
+
+.quick-stat i{
+
+    font-size:28px;
+
+    color:var(--primary);
+
+    margin-bottom:12px;
+
+}
+
+.quick-stat h3{
+
+    font-weight:800;
+
+    color:var(--primary);
+
+}
+
+
+
+/*=========================
+      RESPONSIVE
+=========================*/
+
+@media(max-width:768px){
+
+.payment-item,
+
+.financial-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:12px;
+
+}
+
+.withdraw-card{
+
+    text-align:center;
+
+}
+
+.earning-chart canvas{
+
+    height:250px !important;
+
+}
+
+}
+
+@media(max-width:576px){
+
+.earning-card,
+
+.payment-history,
+
+.earning-chart{
+
+    padding:18px;
+
+}
+
+.quick-stat{
+
+    margin-bottom:20px;
+
+}
+
+}
+/*=========================================================
+        EDUVERSE CSS UPGRADE - PART 8
+        SETTINGS + FINAL POLISH
+=========================================================*/
+
+
+/*=========================
+      SETTINGS ROW
+=========================*/
+
+.setting-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:20px;
+    padding:18px 0;
+    border-bottom:1px solid #ececff;
+}
+
+.setting-row:last-child{
+    border-bottom:none;
+}
+
+
+/*=========================
+      DANGER CARD
+=========================*/
+
+.danger-card{
+
+    background:#fff5f5;
+
+    border:1px solid #fecaca;
+
+    border-radius:18px;
+
+    padding:25px;
+
+    height:100%;
+
+}
+
+.danger-card h5{
+
+    color:#dc2626;
+
+    font-weight:700;
+
+    margin-bottom:12px;
+
+}
+
+.danger-card p{
+
+    color:#666;
+
+}
+
+
+/*=========================
+      STORAGE BOX
+=========================*/
+
+.storage-box{
+
+    background:#faf9ff;
+
+    border-radius:16px;
+
+    padding:20px;
+
+}
+
+
+/*=========================
+      CONNECTED ACCOUNT
+=========================*/
+
+.connected-account{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 0;
+
+    border-bottom:1px solid #ececff;
+
+}
+
+.connected-account:last-child{
+
+    border:none;
+
+}
+
+
+/*=========================
+      HELP LINKS
+=========================*/
+
+.list-group-item{
+
+    border:none;
+
+    border-radius:12px !important;
+
+    margin-bottom:10px;
+
+    padding:16px 18px;
+
+}
+
+.list-group-item:hover{
+
+    background:#f4f2ff;
+
+    color:var(--primary);
+
+}
+
+
+/*=========================
+      FOOTER
+=========================*/
+
+.dashboard-footer{
+
+    margin-top:40px;
+
+    padding:25px;
+
+    background:#fff;
+
+    border-radius:18px;
+
+    box-shadow:0 8px 25px rgba(0,0,0,.05);
+
+}
+
+.dashboard-footer p{
+
+    margin:0;
+
+    color:#777;
+
+}
+
+.dashboard-footer a{
+
+    color:#777;
+
+    font-weight:500;
+
+}
+
+.dashboard-footer a:hover{
+
+    color:var(--primary);
+
+}
+
+
+/*=========================
+      SWITCHES
+=========================*/
+
+.form-switch .form-check-input{
+
+    width:50px;
+
+    height:25px;
+
+    cursor:pointer;
+
+}
+
+.form-switch .form-check-input:checked{
+
+    background-color:var(--primary);
+
+    border-color:var(--primary);
+
+}
+
+
+/*=========================
+      PROGRESS
+=========================*/
+
+.progress{
+
+    overflow:hidden;
+
+}
+
+
+/*=========================
+      CHARTS
+=========================*/
+
+canvas{
+
+    max-width:100%;
+
+}
+
+
+/*=========================
+      MODALS
+=========================*/
+
+.modal-content{
+
+    border:none;
+
+    border-radius:20px;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.12);
+
+}
+
+
+/*=========================
+      DROPDOWNS
+=========================*/
+
+.dropdown-menu{
+
+    border:none;
+
+    border-radius:15px;
+
+    box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+}
+
+
+/*=========================
+      PAGINATION
+=========================*/
+
+.pagination .page-link{
+
+    border:none;
+
+    border-radius:10px;
+
+    margin:0 4px;
+
+    color:var(--primary);
+
+}
+
+.pagination .active .page-link{
+
+    background:var(--primary);
+
+}
+
+
+/*=========================
+      ALERTS
+=========================*/
+
+.alert{
+
+    border:none;
+
+    border-radius:15px;
+
+}
+
+
+/*=========================
+      LOADER
+=========================*/
+
+.loader{
+
+    width:45px;
+
+    height:45px;
+
+    border:5px solid #ececff;
+
+    border-top-color:var(--primary);
+
+    border-radius:50%;
+
+    animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+
+/*=========================
+      HOVER EFFECTS
+=========================*/
+
+.table tbody tr,
+.student-card,
+.course-card,
+.dashboard-card,
+.profile-stat,
+.quick-stat,
+.progress-card{
+
+    transition:.30s ease;
+
+}
+
+
+/*=========================
+      SELECTION
+=========================*/
+
+::selection{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+
+/*=========================
+      RESPONSIVE FIXES
+=========================*/
+
+@media(max-width:1200px){
+
+.dashboard-card{
+
+padding:20px;
+
+}
+
+}
+
+
+@media(max-width:992px){
+
+.setting-row,
+
+.connected-account{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+.dashboard-footer{
+
+text-align:center;
+
+}
+
+.dashboard-footer .d-flex{
+
+flex-direction:column;
+
+gap:15px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.table-responsive{
+
+overflow-x:auto;
+
+}
+
+.stat-card{
+
+flex-direction:column;
+
+text-align:center;
+
+}
+
+.profile-info{
+
+text-align:center;
+
+}
+
+.card-header-custom{
+
+flex-direction:column;
+
+align-items:flex-start;
+
+}
+
+}
+
+
+@media(max-width:576px){
+
+body{
+
+font-size:14px;
+
+}
+
+.page-header h2{
+
+font-size:24px;
+
+}
+
+.dashboard-card{
+
+padding:16px;
+
+}
+
+.btn{
+
+width:100%;
+
+margin-bottom:10px;
+
+}
+
+.action-buttons{
+
+flex-wrap:wrap;
+
+}
+
+.teacher-profile{
+
+width:100%;
+
+justify-content:center;
+
+}
+
+.search-box{
+
+width:100%;
+
+}
+
+}
+
+
+/*=========================
+      PRINT
+=========================*/
+
+@media print{
+
+.sidebar,
+
+.top-navbar,
+
+.dashboard-footer{
+
+display:none;
+
+}
+
+.main-content{
+
+padding:0;
+
+}
+
+.dashboard-card{
+
+box-shadow:none;
+
+border:1px solid #ddd;
+
+}
+
+}
+/*=========================================
+        JS DASHBOARD SUPPORT
+=========================================*/
+
+.rotating{
+
+    animation:rotateIcon .9s linear;
+
+}
+
+@keyframes rotateIcon{
+
+from{
+
+transform:rotate(0deg);
+
+}
+
+to{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.quick-action.active{
+
+transform:scale(.95);
+
+}
+
+
+/*=========================================
+        STUDENTS JS SUPPORT
+=========================================*/
+
+tbody tr{
+
+transition:.30s;
+
+}
+
+.student-status{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.attendance-btn{
+
+transition:.3s;
+
+}
+
+.student-check{
+
+cursor:pointer;
+
+}
+/*=========================================
+        STUDENT PROGRESS JS
+=========================================*/
+
+.performance-badge{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.progress-card{
+
+transition:.3s;
+
+}
+
+.progress-bar{
+
+transition:width 1s ease;
+
+}
+
+.attendance-toggle{
+
+transition:.3s;
+
+}
+
+/*=========================================
+        MESSAGES JS SUPPORT
+=========================================*/
+
+.chat-user{
+
+cursor:pointer;
+
+transition:.3s;
+
+}
+
+.chat-user.active{
+
+background:#f4f2ff;
+
+border-left:4px solid var(--primary);
+
+}
+
+.message{
+
+margin-bottom:18px;
+
+animation:fadeMessage .3s ease;
+
+}
+
+.message.outgoing{
+
+display:flex;
+
+flex-direction:column;
+
+align-items:flex-end;
+
+}
+
+.message-content{
+
+padding:12px 18px;
+
+border-radius:16px;
+
+background:var(--primary);
+
+color:#fff;
+
+max-width:70%;
+
+word-break:break-word;
+
+}
+
+.typing-indicator{
+
+display:none;
+
+font-size:13px;
+
+color:#888;
+
+padding:8px;
+
+}
+
+@keyframes fadeMessage{
+
+from{
+
+opacity:0;
+
+transform:translateY(15px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+@media(max-width:992px){
+
+.chat-sidebar.hide{
+
+display:none;
+
+}
+
+.chat-area{
+
+display:none;
+
+}
+
+.chat-area.show{
+
+display:block;
+
+}
+
+}
+/*=========================================
+        PART 8 JS SUPPORT
+=========================================*/
+
+.dark-mode{
+
+background:#121212;
+
+color:#fff;
+
+}
+
+.dark-mode .dashboard-card,
+
+.dark-mode .card,
+
+.dark-mode .table{
+
+background:#1f1f1f;
+
+color:#fff;
+
+}
+
+.eduverse-toast{
+
+position:fixed;
+
+top:30px;
+
+right:30px;
+
+background:#6C5CE7;
+
+color:#fff;
+
+padding:14px 24px;
+
+border-radius:12px;
+
+opacity:0;
+
+transform:translateY(-20px);
+
+transition:.35s;
+
+z-index:9999;
+
+}
+
+.eduverse-toast.show{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+/*=========================================================
+        FINAL RESPONSIVE POLISH
+=========================================================*/
+
+
+/* Smooth Scrolling */
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+
+/* Better Images */
+
+img{
+
+max-width:100%;
+
+height:auto;
+
+display:block;
+
+}
+
+
+/* Better Button Animation */
+
+.btn{
+
+transition:all .3s ease;
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+
+/* Cards */
+
+.card,
+.dashboard-card,
+.course-card,
+.student-card,
+.progress-card,
+.profile-card,
+.message-card,
+.earning-card{
+
+transition:all .3s ease;
+
+}
+
+.card:hover,
+.dashboard-card:hover,
+.course-card:hover,
+.student-card:hover,
+.progress-card:hover,
+.profile-card:hover,
+.message-card:hover,
+.earning-card:hover{
+
+transform:translateY(-5px);
+
+}
+
+
+/* Tables */
+
+.table-responsive{
+
+overflow-x:auto;
+
+-webkit-overflow-scrolling:touch;
+
+}
+
+
+/* Inputs */
+
+input,
+select,
+textarea{
+
+transition:.3s;
+
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+
+box-shadow:0 0 0 .2rem rgba(108,92,231,.15);
+
+}
+
+
+/* Scrollbar */
+
+::-webkit-scrollbar{
+
+width:8px;
+
+height:8px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#6C5CE7;
+
+border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#ECECEC;
+
+}
+
+
+/* Long Text */
+
+p,
+td,
+th{
+
+word-break:break-word;
+
+}
+
+
+/* Better Tables */
+
+table{
+
+width:100%;
+
+}
+
+
+/* Better Badges */
+
+.badge{
+
+padding:8px 14px;
+
+font-weight:500;
+
+}
+
+
+/* Better Progress */
+
+.progress{
+
+overflow:hidden;
+
+border-radius:20px;
+
+}
+
+
+/* Better Dropdown */
+
+.dropdown-menu{
+
+border:none;
+
+box-shadow:0 15px 40px rgba(0,0,0,.08);
+
+}
+
+
+/* Better Modals */
+
+.modal-content{
+
+border:none;
+
+border-radius:20px;
+
+}
+
+
+/* Better Navbar */
+
+.navbar{
+
+backdrop-filter:blur(15px);
+
+}
+
+
+/* Better Sidebar */
+
+.sidebar{
+
+overflow-y:auto;
+
+scroll-behavior:smooth;
+
+}
+
+
+/* Better Links */
+
+a{
+
+text-decoration:none;
+
+}
+
+
+/* Better Icons */
+
+i{
+
+vertical-align:middle;
+
+}
+
+
+/* Better Avatar */
+
+.avatar img{
+
+object-fit:cover;
+
+}
+
+
+/* Selection Color */
+
+::selection{
+
+background:#6C5CE7;
+
+color:#fff;
+
+}
+
+
+/* Prevent Layout Breaking */
+
+*{
+
+box-sizing:border-box;
+
+}
+
+
+/*=========================================================
+        EXTRA RESPONSIVE
+=========================================================*/
+
+@media(max-width:1200px){
+
+.dashboard-grid{
+
+grid-template-columns:repeat(2,1fr);
+
+}
+
+}
+
+
+@media(max-width:992px){
+
+.sidebar{
+
+position:fixed;
+
+left:-100%;
+
+width:280px;
+
+height:100vh;
+
+z-index:9999;
+
+transition:.4s;
+
+}
+
+.sidebar.active{
+
+left:0;
+
+}
+
+.main-content{
+
+width:100%;
+
+margin-left:0;
+
+padding:20px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.dashboard-grid{
+
+grid-template-columns:1fr;
+
+}
+
+.table{
+
+font-size:14px;
+
+}
+
+.card{
+
+padding:18px;
+
+}
+
+h1{
+
+font-size:30px;
+
+}
+
+h2{
+
+font-size:25px;
+
+}
+
+}
+
+
+@media(max-width:576px){
+
+body{
+
+font-size:14px;
+
+}
+
+.card{
+
+padding:15px;
+
+}
+
+.btn{
+
+width:100%;
+
+margin-bottom:10px;
+
+}
+
+.table{
+
+font-size:13px;
+
+}
+
+input,
+
+select,
+
+textarea{
+
+font-size:14px;
+
+}
+
+}
+
+
+@media(max-width:400px){
+
+h1{
+
+font-size:24px;
+
+}
+
+h2{
+
+font-size:20px;
+
+}
+
+.card{
+
+padding:12px;
+
+}
+
+}
+.scroll-top-btn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:50px;
+height:50px;
+border:none;
+border-radius:50%;
+background:#6C5CE7;
+color:#fff;
+font-size:18px;
+cursor:pointer;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:999;
+}
+
+.scroll-top-btn.show{
+opacity:1;
+pointer-events:auto;
+}
+
+.dashboard-toast{
+position:fixed;
+top:25px;
+right:25px;
+background:#6C5CE7;
+color:#fff;
+padding:12px 22px;
+border-radius:10px;
+font-weight:600;
+opacity:0;
+transform:translateY(-20px);
+transition:.3s;
+z-index:9999;
+}
+
+.dashboard-toast.show{
+opacity:1;
+transform:translateY(0);
+}
+@keyframes fadeInUp{
+
+from{
+
+opacity:0;
+
+transform:translateY(35px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.loaded{
+
+animation:fadeIn .5s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+
+opacity:.6;
+
+}
+
+to{
+
+opacity:1;
+
+}
+
+}/*=========================================================
+        STUDENT PROGRESS PAGE — BUG FIXES (append-only)
+        No existing rules changed. No HTML changed.
+=========================================================*/
+
+
+/*=========================
+  BUG FIX #1 — Student Profile Card
+  Cause: .profile-header-card / .profile-info use a
+  horizontal flex layout (avatar beside text) meant for a
+  full-width header. In this page it sits inside a
+  col-lg-4 (~33% width) column, so the fixed-size avatar
+  and unconstrained heading force the card to overflow.
+  Fix: stack the card vertically ONLY inside this card
+  (#studentProfileCard), and let long text wrap safely.
+  Colors, fonts, sizes, and every other profile-header-card
+  usage (e.g. profile.html) are untouched.
+=========================*/
+
+#studentProfileCard{
+    flex-direction:column;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+}
+
+#studentProfileCard .profile-info{
+    flex-direction:column;
+    text-align:center;
+    width:100%;
+    min-width:0;
+}
+
+#studentProfileCard .profile-info > div{
+    width:100%;
+    min-width:0;
+}
+
+#studentProfileCard .profile-avatar{
+    margin:0 auto;
+    flex-shrink:0;
+}
+
+#studentProfileCard h2,
+#studentProfileCard p{
+    word-break:break-word;
+    overflow-wrap:break-word;
+    white-space:normal;
+    width:100%;
+}
+
+#studentProfileCard .profile-badge{
+    white-space:normal;
+    word-break:break-word;
+    max-width:100%;
+}
+
+
+/*=========================
+  BUG FIX #2 — Assignment Table
+  Cause: the global rule `p, td, th { word-break:break-word; }`
+  breaks short header words ("Subject", "Marks", "Pending",
+  etc.) onto multiple lines whenever the column narrows,
+  and the table has no min-width, so columns squeeze instead
+  of using the horizontal scroll .table-responsive already
+  supports (overflow-x:auto).
+  Fix: keep headers and badges on one line, and give the
+  table a min-width so small screens scroll horizontally
+  instead of squishing/wrapping text. Bootstrap's responsive
+  wrapper and existing padding/typography are unchanged.
+=========================*/
+
+#assignmentsTable{
+    min-width:720px;
+}
+
+#assignmentsTable thead th{
+    white-space:nowrap;
+}
+
+#assignmentsTable td .badge{
+    white-space:nowrap;
+}

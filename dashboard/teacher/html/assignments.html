@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Assignments</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+<!-- ==========================================
+                SIDEBAR START
+========================================== -->
+
+<aside class="sidebar">
+
+<div class="logo-area">
+
+<div class="logo-icon">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+</div>
+
+<div class="logo-text">
+
+<h2>EduVerse</h2>
+
+<p>Teacher Dashboard</p>
+
+</div>
+
+</div>
+
+<nav class="sidebar-menu">
+
+<ul>
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+Dashboard
+
+</a>
+
+</li>
+
+<li>
+
+<a href="courses.html">
+
+<i class="fa-solid fa-book-open"></i>
+
+My Courses
+
+</a>
+
+</li>
+
+<li>
+
+<a href="upload-lecture.html">
+
+<i class="fa-solid fa-circle-plus"></i>
+
+Upload Lecture
+
+</a>
+
+</li>
+
+<li class="active">
+
+<a href="assignments.html">
+
+<i class="fa-solid fa-file-lines"></i>
+
+Assignments
+
+</a>
+
+</li>
+
+<li>
+
+<a href="quizzes.html">
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+Quizzes
+
+</a>
+
+</li>
+
+<li>
+
+<a href="students.html">
+
+<i class="fa-solid fa-users"></i>
+
+Students
+
+</a>
+
+</li>
+
+<li>
+
+<a href="messages.html">
+
+<i class="fa-regular fa-envelope"></i>
+
+Messages
+
+</a>
+
+</li>
+
+<li>
+
+<a href="calendar.html">
+
+<i class="fa-regular fa-calendar"></i>
+
+Calendar
+
+</a>
+
+</li>
+
+<li>
+
+<a href="profile.html">
+
+<i class="fa-regular fa-user"></i>
+
+Profile
+
+</a>
+
+</li>
+
+<li>
+
+<a href="settings.html">
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</a>
+
+</li>
+
+</ul>
+
+</nav>
+
+</aside>
+
+<!-- ==========================================
+                MAIN CONTENT
+========================================== -->
+
+<main class="main-content">
+
+<header class="top-navbar">
+
+<div class="navbar-left">
+
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input type="search"
+placeholder="Search assignments...">
+
+</div>
+
+</div>
+
+<div class="teacher-profile">
+
+<img src="https://i.pravatar.cc/100?img=15">
+
+<div>
+
+<h6>Usman Ali</h6>
+
+<small>Teacher</small>
+
+</div>
+
+</div>
+
+</header>
+<!-- ==========================================================
+                PAGE HEADER START
+========================================================== -->
+
+<section class="page-header">
+
+    <div class="page-header-left">
+
+        <h2>Create Assignment</h2>
+
+        <p>Create, schedule and manage assignments for your students.</p>
+
+    </div>
+
+    <div class="page-header-right">
+
+        <button class="btn btn-primary">
+
+            <i class="fa-solid fa-plus"></i>
+
+            New Assignment
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                PAGE HEADER END
+========================================================== -->
+
+
+
+
+
+<!-- ==========================================================
+                CREATE ASSIGNMENT FORM START
+========================================================== -->
+
+<section class="assignment-section">
+
+    <div class="dashboard-card">
+
+        <form>
+
+            <div class="row g-4">
+
+                <!-- Assignment Title -->
+
+                <div class="col-lg-6">
+
+                    <label class="form-label">
+
+                        Assignment Title
+
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Enter assignment title">
+
+                </div>
+
+
+
+
+
+                <!-- Select Course -->
+
+                <div class="col-lg-6">
+
+                    <label class="form-label">
+
+                        Select Course
+
+                    </label>
+
+                    <select class="form-select">
+
+                        <option>Choose Course</option>
+
+                        <option>HTML & CSS</option>
+
+                        <option>JavaScript</option>
+
+                        <option>React JS</option>
+
+                        <option>Python</option>
+
+                    </select>
+
+                </div>
+
+
+
+
+
+                <!-- Due Date -->
+
+                <div class="col-lg-4">
+
+                    <label class="form-label">
+
+                        Due Date
+
+                    </label>
+
+                    <input
+                        type="date"
+                        class="form-control">
+
+                </div>
+
+
+
+
+
+                <!-- Total Marks -->
+
+                <div class="col-lg-4">
+
+                    <label class="form-label">
+
+                        Total Marks
+
+                    </label>
+
+                    <input
+                        type="number"
+                        class="form-control"
+                        placeholder="100">
+
+                </div>
+
+
+
+
+
+                <!-- Time Limit -->
+
+                <div class="col-lg-4">
+
+                    <label class="form-label">
+
+                        Time Limit
+
+                    </label>
+
+                    <input
+                        type="text"
+                        class="form-control"
+                        placeholder="2 Hours">
+
+                </div>
+
+
+
+
+
+                <!-- Assignment Description -->
+
+                <div class="col-12">
+
+                    <label class="form-label">
+
+                        Assignment Description
+
+                    </label>
+
+                    <textarea
+                        rows="6"
+                        class="form-control"
+                        placeholder="Write assignment instructions..."></textarea>
+
+                </div>
+
+
+
+
+
+                <!-- Upload File -->
+
+                <div class="col-12">
+
+                    <label class="form-label">
+
+                        Upload Resources
+
+                    </label>
+
+                    <input
+                        type="file"
+                        class="form-control">
+
+                    <small class="text-muted">
+
+                        Upload PDF, DOCX, ZIP or PPT.
+
+                    </small>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                CREATE ASSIGNMENT FORM END
+========================================================== -->
+<!-- ==========================================================
+                ASSIGNMENT STATISTICS START
+========================================================== -->
+
+<section class="stats-section mt-4">
+
+    <div class="row g-4">
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon purple">
+                    <i class="fa-solid fa-file-lines"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>20</h2>
+
+                    <h5>Total Assignments</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon green">
+                    <i class="fa-solid fa-check"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>12</h2>
+
+                    <h5>Submitted</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon orange">
+                    <i class="fa-solid fa-clock"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>8</h2>
+
+                    <h5>Pending</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 col-md-6">
+
+            <div class="stat-card">
+
+                <div class="stat-icon blue">
+                    <i class="fa-solid fa-star"></i>
+                </div>
+
+                <div class="stat-info">
+
+                    <h2>94%</h2>
+
+                    <h5>Completion</h5>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                SUBMITTED ASSIGNMENTS START
+========================================================== -->
+
+<section class="dashboard-card mt-5">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h4>Submitted Assignments</h4>
+
+            <p class="text-muted">
+
+                Review and grade student submissions.
+
+            </p>
+
+        </div>
+
+        <input
+            type="text"
+            class="form-control"
+            placeholder="Search Student..."
+            style="max-width:280px;">
+
+    </div>
+
+
+
+
+
+    <div class="table-responsive">
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-light">
+
+                <tr>
+
+                    <th>Student</th>
+
+                    <th>Assignment</th>
+
+                    <th>Course</th>
+
+                    <th>Marks</th>
+
+                    <th>Status</th>
+
+                    <th>Submitted</th>
+
+                    <th>Actions</th>
+
+                </tr>
+
+            </thead>
+
+
+
+
+
+            <tbody>
+
+                <tr>
+
+                    <td>Ali Khan</td>
+
+                    <td>HTML Portfolio</td>
+
+                    <td>HTML & CSS</td>
+
+                    <td>85 / 100</td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+
+                            Submitted
+
+                        </span>
+
+                    </td>
+
+                    <td>28 Jul 2026</td>
+
+                    <td>
+
+                        <button class="btn btn-sm btn-primary">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-success">
+
+                            Grade
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+
+
+                <tr>
+
+                    <td>Fatima Noor</td>
+
+                    <td>Bootstrap Landing Page</td>
+
+                    <td>HTML & CSS</td>
+
+                    <td>Pending</td>
+
+                    <td>
+
+                        <span class="badge bg-warning text-dark">
+
+                            Waiting
+
+                        </span>
+
+                    </td>
+
+                    <td>27 Jul 2026</td>
+
+                    <td>
+
+                        <button class="btn btn-sm btn-primary">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-success">
+
+                            Grade
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+
+
+                <tr>
+
+                    <td>Ahmed Raza</td>
+
+                    <td>JavaScript Quiz</td>
+
+                    <td>JavaScript</td>
+
+                    <td>91 / 100</td>
+
+                    <td>
+
+                        <span class="badge bg-info">
+
+                            Reviewed
+
+                        </span>
+
+                    </td>
+
+                    <td>26 Jul 2026</td>
+
+                    <td>
+
+                        <button class="btn btn-sm btn-primary">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-success">
+
+                            Grade
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+
+
+
+
+                <tr>
+
+                    <td>Zain Ali</td>
+
+                    <td>React Components</td>
+
+                    <td>React JS</td>
+
+                    <td>88 / 100</td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+
+                            Submitted
+
+                        </span>
+
+                    </td>
+
+                    <td>25 Jul 2026</td>
+
+                    <td>
+
+                        <button class="btn btn-sm btn-primary">
+
+                            <i class="fa-solid fa-eye"></i>
+
+                        </button>
+
+                        <button class="btn btn-sm btn-success">
+
+                            Grade
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+<!-- ==========================================================
+                UPCOMING DEADLINES START
+========================================================== -->
+
+<section class="mt-5">
+
+    <div class="row g-4">
+
+        <!-- ================= Deadlines ================= -->
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card">
+
+                <h4 class="mb-4">
+
+                    Upcoming Deadlines
+
+                </h4>
+
+                <div class="assignment-item">
+
+                    <div>
+
+                        <h6>JavaScript Project</h6>
+
+                        <small>Due: 30 Jul 2026</small>
+
+                    </div>
+
+                    <span class="badge bg-danger">
+
+                        2 Days Left
+
+                    </span>
+
+                </div>
+
+                <hr>
+
+                <div class="assignment-item">
+
+                    <div>
+
+                        <h6>HTML Portfolio</h6>
+
+                        <small>Due: 02 Aug 2026</small>
+
+                    </div>
+
+                    <span class="badge bg-warning text-dark">
+
+                        Upcoming
+
+                    </span>
+
+                </div>
+
+                <hr>
+
+                <div class="assignment-item">
+
+                    <div>
+
+                        <h6>React Components</h6>
+
+                        <small>Due: 05 Aug 2026</small>
+
+                    </div>
+
+                    <span class="badge bg-info">
+
+                        Scheduled
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= Activity ================= -->
+
+        <div class="col-lg-6">
+
+            <div class="dashboard-card">
+
+                <h4 class="mb-4">
+
+                    Recent Activity
+
+                </h4>
+
+                <div class="activity-list">
+
+                    <div class="activity-item">
+
+                        <i class="fa-solid fa-circle-check text-success me-3"></i>
+
+                        Assignment Published Successfully
+
+                    </div>
+
+                    <hr>
+
+                    <div class="activity-item">
+
+                        <i class="fa-solid fa-user-plus text-primary me-3"></i>
+
+                        8 New Students Submitted Work
+
+                    </div>
+
+                    <hr>
+
+                    <div class="activity-item">
+
+                        <i class="fa-solid fa-star text-warning me-3"></i>
+
+                        Assignment Average Score: 91%
+
+                    </div>
+
+                    <hr>
+
+                    <div class="activity-item">
+
+                        <i class="fa-solid fa-clock text-danger me-3"></i>
+
+                        3 Assignments Need Review
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                ACTION BUTTONS
+========================================================== -->
+
+<section class="mt-5 mb-5">
+
+    <div class="d-flex flex-wrap justify-content-end gap-3">
+
+        <button class="btn btn-outline-secondary">
+
+            <i class="fa-solid fa-floppy-disk"></i>
+
+            Save Draft
+
+        </button>
+
+        <button class="btn btn-warning">
+
+            <i class="fa-solid fa-eye"></i>
+
+            Preview
+
+        </button>
+
+        <button class="btn btn-success">
+
+            <i class="fa-solid fa-paper-plane"></i>
+
+            Publish Assignment
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                FOOTER
+========================================================== -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        © 2026 EduVerse Teacher Dashboard.
+        All Rights Reserved.
+
+    </p>
+
+</footer>
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Main JavaScript -->
+
+<script src="../java/assignments.js"></script>
+
+</body>
+
+</html>
