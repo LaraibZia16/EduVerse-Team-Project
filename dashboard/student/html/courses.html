@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | My Courses</title>
+
+    <!-- Google Font -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+    <!-- ==========================================
+                    SIDEBAR START
+    ========================================== -->
+
+    <aside class="sidebar">
+
+        <div class="logo-area">
+
+            <div class="logo-icon">
+
+                <i class="fa-solid fa-graduation-cap"></i>
+
+            </div>
+
+            <div class="logo-text">
+
+                <h2>EduVerse</h2>
+
+                <p>Student Panel</p>
+
+            </div>
+
+        </div>
+
+        <nav class="sidebar-menu">
+
+            <ul>
+
+                <li>
+
+                    <a href="dashboard.html">
+
+                        <i class="fa-solid fa-house"></i>
+
+                        Dashboard
+
+                    </a>
+
+                </li>
+
+                <li class="active">
+
+                    <a href="courses.html">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                        My Courses
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="student-progress.html">
+
+                        <i class="fa-solid fa-chart-line"></i>
+
+                        My Progress
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="quizzes.html">
+
+                        <i class="fa-solid fa-clipboard-question"></i>
+
+                        Quizzes
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="assignments.html">
+
+                        <i class="fa-solid fa-file-lines"></i>
+
+                        Assignments
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="calendar.html">
+
+                        <i class="fa-regular fa-calendar"></i>
+
+                        Calendar
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="messages.html">
+
+                        <i class="fa-regular fa-envelope"></i>
+
+                        Messages
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="profile.html">
+
+                        <i class="fa-regular fa-user"></i>
+
+                        Profile
+
+                    </a>
+
+                </li>
+
+                <li>
+
+                    <a href="settings.html">
+
+                        <i class="fa-solid fa-gear"></i>
+
+                        Settings
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </aside>
+
+    <!-- ==========================================
+                    MAIN CONTENT
+    ========================================== -->
+
+    <main class="main-content">
+
+        <!-- Top Navbar -->
+
+        <header class="top-navbar">
+
+            <div class="navbar-left">
+
+                <button class="menu-toggle">
+
+                    <i class="fa-solid fa-bars"></i>
+
+                </button>
+
+                <div class="search-box">
+
+                    <i class="fa-solid fa-magnifying-glass"></i>
+
+                    <input type="search"
+                        placeholder="Search Courses...">
+
+                </div>
+
+            </div>
+
+            <div class="teacher-profile">
+
+                <img src="https://i.pravatar.cc/100?img=47">
+
+                <div>
+
+                    <h6>Ayesha Khan</h6>
+
+                    <small>Student</small>
+
+                </div>
+
+            </div>
+
+        </header>
+        <!-- ==========================================================
+                    COURSES HEADER START
+========================================================== -->
+
+<section class="page-header">
+
+    <div class="page-header-left">
+
+        <h2>My Courses</h2>
+
+        <p>
+            Continue learning, track your progress, or explore new courses.
+        </p>
+
+    </div>
+
+    <div class="page-header-right">
+
+        <button class="btn btn-primary create-course-btn" id="browseCoursesBtn">
+
+            <i class="fa-solid fa-compass"></i>
+
+            Browse Courses
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    COURSES HEADER END
+========================================================== -->
+
+
+
+
+
+<!-- ==========================================================
+                    COURSE TOOLBAR START
+========================================================== -->
+
+<section class="course-toolbar">
+
+    <div class="course-search">
+
+        <i class="fa-solid fa-magnifying-glass"></i>
+
+        <input
+            type="text"
+            id="courseSearch"
+            placeholder="Search your courses...">
+
+    </div>
+
+    <div class="toolbar-actions">
+
+        <select class="form-select" id="courseStatusFilter">
+
+            <option value="all">All Courses</option>
+            <option value="enrolled">Enrolled</option>
+            <option value="completed">Completed</option>
+            <option value="not-enrolled">Not Enrolled</option>
+
+        </select>
+
+        <select class="form-select" id="courseSortSelect">
+
+            <option value="newest">Newest</option>
+            <option value="oldest">Oldest</option>
+            <option value="a-z">A-Z</option>
+
+        </select>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    COURSE TOOLBAR END
+========================================================== -->
+
+
+
+
+
+<!-- ==========================================================
+                    COURSE GRID START
+========================================================== -->
+
+<section class="courses-grid">
+
+    <div class="row g-4" id="coursesGrid">
+
+        <!-- ================= COURSE 1 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="enrolled" data-name="HTML & CSS Masterclass">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=21"
+                        alt="HTML Course">
+
+                    <span class="course-badge published">
+
+                        Enrolled
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>HTML & CSS Masterclass</h4>
+
+                    <p>
+
+                        Learn HTML5, CSS3 and Responsive Web Design from scratch.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            35 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="progress mt-3">
+
+                        <div class="progress-bar"
+                            style="width:78%">
+
+                            78%
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 4.9</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary">
+
+                                Continue Learning
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= COURSE 2 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="enrolled" data-name="JavaScript Bootcamp">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=22"
+                        alt="JavaScript">
+
+                    <span class="course-badge published">
+
+                        Enrolled
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>JavaScript Bootcamp</h4>
+
+                    <p>
+
+                        Become a JavaScript developer with practical projects.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            42 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="progress mt-3">
+
+                        <div class="progress-bar bg-success"
+                            style="width:92%">
+
+                            92%
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 4.8</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary">
+
+                                Continue Learning
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= COURSE 3 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="not-enrolled" data-name="React Development">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=23"
+                        alt="React">
+
+                    <span class="course-badge draft">
+
+                        Not Enrolled
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>React Development</h4>
+
+                    <p>
+
+                        Build modern applications using React and reusable components.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            28 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 4.7</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary enroll-btn">
+
+                                Enroll
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= COURSE 4 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="completed" data-name="Python Programming">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=24"
+                        alt="Python">
+
+                    <span class="course-badge published">
+
+                        Completed
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>Python Programming</h4>
+
+                    <p>
+
+                        Master Python programming with practical projects and exercises.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            38 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="progress mt-3">
+
+                        <div class="progress-bar bg-info"
+                            style="width:100%">
+
+                            100%
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 4.9</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary">
+
+                                View Certificate
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= COURSE 5 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="not-enrolled" data-name="Database Management">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=25"
+                        alt="Database">
+
+                    <span class="course-badge draft">
+
+                        Not Enrolled
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>Database Management</h4>
+
+                    <p>
+
+                        Learn SQL, MySQL and complete database management concepts.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            26 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 4.6</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary enroll-btn">
+
+                                Enroll
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <!-- ================= COURSE 6 ================= -->
+
+        <div class="col-xl-4 col-lg-6 course-col"
+             data-status="enrolled" data-name="UI / UX Design">
+
+            <div class="course-card">
+
+                <div class="course-image">
+
+                    <img src="https://picsum.photos/600/350?random=26"
+                        alt="UI UX">
+
+                    <span class="course-badge published">
+
+                        Enrolled
+
+                    </span>
+
+                </div>
+
+                <div class="course-content">
+
+                    <h4>UI / UX Design</h4>
+
+                    <p>
+
+                        Learn Figma, UI Design and User Experience from beginner to advanced.
+
+                    </p>
+
+                    <div class="course-meta">
+
+                        <span>
+
+                            <i class="fa-solid fa-user"></i>
+
+                            Usman Ali
+
+                        </span>
+
+                        <span>
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                            31 Lessons
+
+                        </span>
+
+                    </div>
+
+                    <div class="progress mt-3">
+
+                        <div class="progress-bar bg-success"
+                            style="width:94%">
+
+                            94%
+
+                        </div>
+
+                    </div>
+
+                    <div class="course-footer">
+
+                        <span>⭐ 5.0</span>
+
+                        <div>
+
+                            <button class="btn btn-sm btn-outline-primary">
+
+                                View Details
+
+                            </button>
+
+                            <button class="btn btn-sm btn-primary">
+
+                                Continue Learning
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    COURSE GRID END
+========================================================== -->
+<!-- ==========================================================
+                    COURSE SUMMARY START
+========================================================== -->
+
+<section class="course-summary mt-5">
+
+    <div class="row g-4">
+
+        <!-- Card 1 -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card text-center">
+
+                <i class="fa-solid fa-book-open fa-3x text-primary mb-3"></i>
+
+                <h3 id="statEnrolled">4</h3>
+
+                <p>Enrolled Courses</p>
+
+            </div>
+
+        </div>
+
+        <!-- Card 2 -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card text-center">
+
+                <i class="fa-solid fa-graduation-cap fa-3x text-success mb-3"></i>
+
+                <h3 id="statCompleted">1</h3>
+
+                <p>Completed Courses</p>
+
+            </div>
+
+        </div>
+
+        <!-- Card 3 -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card text-center">
+
+                <i class="fa-solid fa-star fa-3x text-warning mb-3"></i>
+
+                <h3>4.8</h3>
+
+                <p>Average Course Rating</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                    RECENT ACTIVITY START
+========================================================== -->
+
+<section class="dashboard-card mt-5">
+
+    <div class="card-header-custom">
+
+        <div>
+
+            <h4>Recent Activity</h4>
+
+            <p>Your latest course updates</p>
+
+        </div>
+
+    </div>
+
+    <div class="activity-list">
+
+        <div class="activity-item">
+
+            <i class="fa-solid fa-circle-check text-success me-3"></i>
+
+            Completed "Python Programming"
+
+        </div>
+
+        <hr>
+
+        <div class="activity-item">
+
+            <i class="fa-solid fa-video text-primary me-3"></i>
+
+            Watched New Lecture in JavaScript Bootcamp
+
+        </div>
+
+        <hr>
+
+        <div class="activity-item">
+
+            <i class="fa-solid fa-user-plus text-info me-3"></i>
+
+            Enrolled in HTML & CSS Masterclass
+
+        </div>
+
+        <hr>
+
+        <div class="activity-item">
+
+            <i class="fa-solid fa-star text-warning me-3"></i>
+
+            Rated UI / UX Design 5 Stars
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                    PAGINATION START
+========================================================== -->
+
+<nav class="mt-5">
+
+    <ul class="pagination justify-content-center">
+
+        <li class="page-item disabled">
+
+            <a class="page-link">Previous</a>
+
+        </li>
+
+        <li class="page-item active">
+
+            <a class="page-link">1</a>
+
+        </li>
+
+        <li class="page-item">
+
+            <a class="page-link">2</a>
+
+        </li>
+
+        <li class="page-item">
+
+            <a class="page-link">3</a>
+
+        </li>
+
+        <li class="page-item">
+
+            <a class="page-link">Next</a>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+
+
+<!-- ==========================================================
+                    FOOTER START
+========================================================== -->
+
+<footer class="dashboard-footer mt-5">
+
+    <p>
+
+        © 2026 EduVerse Student Dashboard | All Rights Reserved.
+
+    </p>
+
+</footer>
+
+</main>
+
+</div>
+
+
+
+
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Chart JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Main JS -->
+
+<script src="../java/courses.js"></script>
+
+</body>
+
+</html>
