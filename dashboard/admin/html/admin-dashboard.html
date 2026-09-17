@@ -1,0 +1,261 @@
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Admin Dashboard</title>
+
+    <!-- Main EduVerse CSS -->
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         ADMIN SIDEBAR
+    ========================== -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>EduVerse</h2>
+            <p>Admin Dashboard</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html" class="active">
+                Dashboard
+            </a>
+
+            <a href="users.html">
+                Users
+            </a>
+
+            <a href="students.html">
+                Students
+            </a>
+
+            <a href="teachers.html">
+                Teachers
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../index.html">
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="main-content">
+
+        <!-- Header -->
+        <header class="dashboard-header">
+
+            <div>
+                <h1>Admin Dashboard</h1>
+                <p>Welcome back, Admin</p>
+            </div>
+
+            <div class="admin-profile">
+                <div class="profile-avatar">A</div>
+
+                <div>
+                    <strong>Admin</strong>
+                    <span>Administrator</span>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             STATISTICS
+        ========================== -->
+<section class="stats-grid">
+
+    <div class="stat-card">
+        <div class="stat-icon">👥</div>
+        <div>
+            <p>Total Users</p>
+            <h2 id="totalUsers">0</h2>
+        </div>
+    </div>
+
+
+    <div class="stat-card">
+        <div class="stat-icon">🎓</div>
+        <div>
+            <p>Students</p>
+            <h2 id="totalStudents">0</h2>
+        </div>
+    </div>
+
+
+    <div class="stat-card">
+        <div class="stat-icon">👨‍🏫</div>
+        <div>
+            <p>Teachers</p>
+            <h2 id="totalTeachers">0</h2>
+        </div>
+    </div>
+
+
+    <div class="stat-card">
+        <div class="stat-icon">📚</div>
+        <div>
+            <p>Courses</p>
+            <h2 id="totalCourses">0</h2>
+        </div>
+    </div>
+
+</section>
+
+        <!-- =========================
+             RECENT USERS
+        ========================== -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Recent Users</h2>
+                    <p>Recently registered users</p>
+                </div>
+
+                <a href="users.html" class="view-all">
+                    View All
+                </a>
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="recentUsersTable">
+
+                        <tr>
+                            <td colspan="4">
+                                Loading users...
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             QUICK ACTIONS
+        ========================== -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Quick Management</h2>
+                    <p>Manage your EduVerse platform</p>
+                </div>
+            </div>
+
+
+            <div class="quick-actions">
+
+                <a href="users.html" class="quick-action">
+                    <span>👥</span>
+                    <div>
+                        <h3>Manage Users</h3>
+                        <p>View and manage all users</p>
+                    </div>
+                </a>
+
+
+                <a href="students.html" class="quick-action">
+                    <span>🎓</span>
+                    <div>
+                        <h3>Manage Students</h3>
+                        <p>View student information</p>
+                    </div>
+                </a>
+
+
+                <a href="teachers.html" class="quick-action">
+                    <span>👨‍🏫</span>
+                    <div>
+                        <h3>Manage Teachers</h3>
+                        <p>View teacher information</p>
+                    </div>
+                </a>
+
+
+                <a href="courses.html" class="quick-action">
+                    <span>📚</span>
+                    <div>
+                        <h3>Manage Courses</h3>
+                        <p>Monitor available courses</p>
+                    </div>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECENT ACTIVITY
+        ========================== -->
+        <section class="dashboard-section">
+
+            <div class="section-header">
+                <div>
+                    <h2>Recent Activity</h2>
+                    <p>Latest platform activity</p>
+                </div>
+            </div>
+
+
+            <div id="recentActivity" class="activity-list">
+
+                <div class="activity-item">
+                    <span>🔔</span>
+                    <div>
+                        <strong>Admin Dashboard</strong>
+                        <p>Dashboard loaded successfully.</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Admin Dashboard JavaScript -->
+   <script src="../java/admin-dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Students</title>
+
+    <link rel="stylesheet" href="../css/student.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>EduVerse</h2>
+            <p>Admin Dashboard</p>
+        </div>
+
+        <nav class="sidebar-nav">
+
+            <a href="admin-dashboard.html">
+                Dashboard
+            </a>
+
+            <a href="users.html">
+                Users
+            </a>
+
+            <a href="students.html" class="active">
+                Students
+            </a>
+
+            <a href="teachers.html">
+                Teachers
+            </a>
+
+            <a href="courses.html">
+                Courses
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../../index.html">
+                Logout
+            </a>
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+        <!-- HEADER -->
+
+        <header class="page-header">
+
+            <div>
+                <h1>Students</h1>
+                <p>Manage all EduVerse students</p>
+            </div>
+
+            <button
+                class="add-student-btn"
+                id="addStudentBtn"
+            >
+                + Add Student
+            </button>
+
+        </header>
+
+
+        <!-- STATISTICS -->
+
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🎓
+                </div>
+
+                <div>
+                    <p>Total Students</p>
+                    <h2 id="totalStudents">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ✅
+                </div>
+
+                <div>
+                    <p>Active Students</p>
+                    <h2 id="activeStudents">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    ⏸️
+                </div>
+
+                <div>
+                    <p>Inactive Students</p>
+                    <h2 id="inactiveStudents">0</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📚
+                </div>
+
+                <div>
+                    <p>Programs</p>
+                    <h2 id="totalPrograms">0</h2>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STUDENTS SECTION -->
+
+        <section class="students-section">
+
+            <!-- CONTROLS -->
+
+            <div class="controls">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search student by name or email..."
+                >
+
+
+                <select id="programFilter">
+
+                    <option value="all">
+                        All Programs
+                    </option>
+
+                </select>
+
+
+                <select id="statusFilter">
+
+                    <option value="all">
+                        All Status
+                    </option>
+
+                    <option value="Active">
+                        Active
+                    </option>
+
+                    <option value="Inactive">
+                        Inactive
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Student</th>
+
+                            <th>Email</th>
+
+                            <th>Program</th>
+
+                            <th>Level</th>
+
+                            <th>Status</th>
+
+                            <th>Joined</th>
+
+                            <th>Actions</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="studentsTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- EMPTY STATE -->
+
+            <div
+                id="noStudents"
+                class="no-students"
+            >
+                No students found.
+            </div>
+
+
+            <!-- PAGINATION -->
+
+            <div class="pagination">
+
+                <button id="prevBtn">
+                    Previous
+                </button>
+
+                <span id="pageInfo">
+                    Page 1
+                </span>
+
+                <button id="nextBtn">
+                    Next
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- VIEW STUDENT MODAL -->
+
+    <div
+        class="modal"
+        id="viewModal"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2>Student Details</h2>
+
+                <button
+                    class="close-btn"
+                    data-close="viewModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div class="student-profile">
+
+                <div
+                    class="student-avatar"
+                    id="viewAvatar"
+                >
+                    S
+                </div>
+
+                <h3 id="viewName"></h3>
+
+                <p id="viewEmail"></p>
+
+            </div>
+
+
+            <div class="details-grid">
+
+                <div class="detail-item">
+                    <span>Program</span>
+                    <strong id="viewProgram"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Level</span>
+                    <strong id="viewLevel"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Status</span>
+                    <strong id="viewStatus"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Joined</span>
+                    <strong id="viewJoined"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ADD / EDIT STUDENT MODAL -->
+
+    <div
+        class="modal"
+        id="studentFormModal"
+    >
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2 id="formTitle">
+                    Add Student
+                </h2>
+
+                <button
+                    class="close-btn"
+                    data-close="studentFormModal"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="studentForm">
+
+                <input
+                    type="hidden"
+                    id="editIndex"
+                >
+
+
+                <div class="form-group">
+
+                    <label for="studentName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentName"
+                        placeholder="Enter student name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="studentEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="studentEmail"
+                        placeholder="Enter email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="studentProgram">
+                        Program
+                    </label>
+
+                    <input
+                        type="text"
+                        id="studentProgram"
+                        placeholder="e.g. Web Development"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="studentLevel">
+                        Level
+                    </label>
+
+                    <select id="studentLevel">
+
+                        <option value="Beginner">
+                            Beginner
+                        </option>
+
+                        <option value="Intermediate">
+                            Intermediate
+                        </option>
+
+                        <option value="Advanced">
+                            Advanced
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="studentStatus">
+                        Status
+                    </label>
+
+                    <select id="studentStatus">
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        data-close="studentFormModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save Student
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- DELETE MODAL -->
+
+    <div
+        class="modal"
+        id="deleteModal"
+    >
+
+        <div class="modal-box delete-box">
+
+            <div class="delete-icon">
+                🗑️
+            </div>
+
+            <h2>Delete Student?</h2>
+
+            <p>
+                Are you sure you want to delete
+                <strong id="deleteStudentName"></strong>?
+            </p>
+
+
+            <div class="form-actions">
+
+                <button
+                    class="cancel-btn"
+                    data-close="deleteModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="delete-btn"
+                    id="confirmDeleteBtn"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../java/students.js"></script>
+
+</body>
+</html>

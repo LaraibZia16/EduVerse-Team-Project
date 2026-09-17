@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Users</title>
+
+    <link rel="stylesheet" href="../css/users.css">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <h2>EduVerse</h2>
+            <p>Admin Dashboard</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="users.html" class="active">Users</a>
+            <a href="students.html">Students</a>
+            <a href="teachers.html">Teachers</a>
+            <a href="courses.html">Courses</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <a href="../../index.html">Logout</a>
+        </div>
+
+    </aside>
+
+
+    <!-- Main Content -->
+    <main class="main-content">
+
+        <header class="page-header">
+            <div>
+                <h1>Users</h1>
+                <p>Manage all EduVerse users</p>
+            </div>
+
+            <button class="add-user-btn" id="addUserBtn">
+                + Add User
+            </button>
+        </header>
+
+
+        <!-- Statistics -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+                <span>👥</span>
+                <div>
+                    <p>Total Users</p>
+                    <h2 id="totalUsers">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span>🎓</span>
+                <div>
+                    <p>Students</p>
+                    <h2 id="totalStudents">0</h2>
+                </div>
+            </div>
+
+            <div class="stat-card">
+                <span>👨‍🏫</span>
+                <div>
+                    <p>Teachers</p>
+                    <h2 id="totalTeachers">0</h2>
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- Search & Filter -->
+        <section class="users-section">
+
+            <div class="controls">
+
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search by name or email..."
+                >
+
+                <select id="roleFilter">
+                    <option value="all">All Roles</option>
+                    <option value="Student">Students</option>
+                    <option value="Teacher">Teachers</option>
+                    <option value="Admin">Admins</option>
+                </select>
+
+            </div>
+
+
+            <!-- Users Table -->
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Joined</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="usersTableBody"></tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- No Users -->
+            <div id="noUsers" class="no-users">
+                No users found.
+            </div>
+
+
+            <!-- Pagination -->
+            <div class="pagination">
+
+                <button id="prevBtn">
+                    Previous
+                </button>
+
+                <span id="pageInfo">
+                    Page 1
+                </span>
+
+                <button id="nextBtn">
+                    Next
+                </button>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- View User Modal -->
+    <div class="modal" id="viewModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h2>User Details</h2>
+                <button class="close-btn" data-close="viewModal">
+                    ×
+                </button>
+            </div>
+
+            <div class="user-details">
+
+                <div class="detail-item">
+                    <span>Name</span>
+                    <strong id="viewName"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Email</span>
+                    <strong id="viewEmail"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Role</span>
+                    <strong id="viewRole"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Joined</span>
+                    <strong id="viewJoined"></strong>
+                </div>
+
+                <div class="detail-item">
+                    <span>Status</span>
+                    <strong id="viewStatus"></strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- Add/Edit User Modal -->
+    <div class="modal" id="userFormModal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+
+                <h2 id="formTitle">
+                    Add User
+                </h2>
+
+                <button class="close-btn" data-close="userFormModal">
+                    ×
+                </button>
+
+            </div>
+
+
+            <form id="userForm">
+
+                <input type="hidden" id="editIndex">
+
+
+                <div class="form-group">
+
+                    <label for="userName">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        placeholder="Enter full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="userEmail">
+                        Email
+                    </label>
+
+                    <input
+                        type="email"
+                        id="userEmail"
+                        placeholder="Enter email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="userRole">
+                        Role
+                    </label>
+
+                    <select id="userRole" required>
+
+                        <option value="Student">
+                            Student
+                        </option>
+
+                        <option value="Teacher">
+                            Teacher
+                        </option>
+
+                        <option value="Admin">
+                            Admin
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="userStatus">
+                        Status
+                    </label>
+
+                    <select id="userStatus" required>
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-actions">
+
+                    <button
+                        type="button"
+                        class="cancel-btn"
+                        data-close="userFormModal"
+                    >
+                        Cancel
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-btn"
+                    >
+                        Save User
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal" id="deleteModal">
+
+        <div class="modal-box delete-box">
+
+            <div class="delete-icon">
+                🗑️
+            </div>
+
+            <h2>Delete User?</h2>
+
+            <p>
+                Are you sure you want to delete
+                <strong id="deleteUserName"></strong>?
+            </p>
+
+            <div class="form-actions">
+
+                <button
+                    class="cancel-btn"
+                    data-close="deleteModal"
+                >
+                    Cancel
+                </button>
+
+                <button
+                    class="delete-btn"
+                    id="confirmDeleteBtn"
+                >
+                    Delete
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <script src="../java/users.js"></script>
+
+</body>
+</html>
