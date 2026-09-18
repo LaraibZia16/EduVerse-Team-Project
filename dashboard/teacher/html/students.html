@@ -1,0 +1,1377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Student Dashboard</title>
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+        
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- Google Font -->
+
+    <link rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+ <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+<!-- ==========================================================
+                    SIDEBAR START
+========================================================== -->
+
+<aside class="sidebar">
+
+
+
+<!-- ===== Logo Start ===== -->
+
+<div class="logo-area">
+
+    <div class="logo-icon">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+    </div>
+
+    <div class="logo-text">
+
+        <h2>EduVerse</h2>
+
+        <p>Teacher Panel</p>
+
+    </div>
+
+</div>
+
+<!-- ===== Logo End ===== -->
+
+
+
+
+
+<!-- ==========================================================
+                    SIDEBAR MENU START
+========================================================== -->
+
+<nav class="sidebar-menu">
+
+<ul>
+
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="courses.html">
+
+<i class="fa-solid fa-book-open"></i>
+
+<span>My Courses</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="upload-lecture.html">
+
+<i class="fa-solid fa-circle-plus"></i>
+
+<span>Upload Lecture</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="assignments.html">
+
+<i class="fa-solid fa-file-lines"></i>
+
+<span>Assignments</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="quizzes.html">
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+<span>Quizzes</span>
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+<a href="students.html">
+
+<i class="fa-solid fa-users"></i>
+
+<span>Students</span>
+
+</a>
+
+</li>
+<!-- ==========================================================
+                    MORE MENU START
+========================================================== -->
+
+<li>
+
+    <a href="student-progress.html">
+
+        <i class="fa-solid fa-chart-line"></i>
+
+        <span>Student Progress</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="earnings.html">
+
+        <i class="fa-solid fa-wallet"></i>
+
+        <span>Earnings</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="messages.html">
+
+        <i class="fa-regular fa-envelope"></i>
+
+        <span>Messages</span>
+
+        <span class="notification-badge">4</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="calendar.html">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <span>Calendar</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="profile.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>Profile</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="settings.html">
+
+        <i class="fa-solid fa-gear"></i>
+
+        <span>Settings</span>
+
+    </a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<!-- ==========================================================
+                    SIDEBAR MENU END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM START
+========================================================== -->
+
+<div class="sidebar-bottom">
+
+    <a href="help-center.html" class="bottom-link">
+
+        <i class="fa-regular fa-circle-question"></i>
+
+        <span>Help Center</span>
+
+    </a>
+
+    <a href="#" class="bottom-link">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    PROMO CARD START
+========================================================== -->
+
+<div class="promo-card">
+
+    <div class="promo-icon">
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+    </div>
+
+    <h4>Keep Teaching!</h4>
+
+    <p>
+
+        Inspire your students by creating engaging courses and interactive lessons.
+
+    </p>
+
+    <a href="courses.html" class="btn btn-primary w-100">
+
+        Create Course
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    PROMO CARD END
+========================================================== -->
+
+</aside>
+
+<!-- ==========================================================
+                    SIDEBAR END
+========================================================== -->
+
+<!-- ======================================
+MAIN
+======================================= -->
+
+<main class="main-content">
+
+<!-- ======================================
+TOPBAR
+======================================= -->
+
+<header class="topbar">
+
+<div class="left">
+
+<button id="menuBtn"
+class="btn btn-primary">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<h2>
+
+Welcome,
+
+<span class="student-name">
+
+Fatima
+
+</span>
+
+👋
+
+</h2>
+
+</div>
+
+<div class="right">
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input type="text"
+id="searchInput"
+placeholder="Search courses...">
+
+</div>
+
+<button class="btn btn-light position-relative">
+
+<i class="fa-solid fa-bell"></i>
+
+<span class="notification-count">
+
+4
+
+</span>
+
+</button>
+
+<button id="darkModeBtn"
+class="btn btn-dark">
+
+<i class="fa-solid fa-moon"></i>
+
+</button>
+
+<img
+src="https://i.pravatar.cc/100?img=12"
+class="profile-img">
+
+</div>
+
+</header>
+
+<!-- ======================================
+DASHBOARD CARDS
+======================================= -->
+
+<section id="dashboard">
+
+<div class="row g-4">
+
+<div class="col-lg-3 col-md-6">
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-book"></i>
+
+<h3>6</h3>
+
+<p>Enrolled Courses</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-list-check"></i>
+
+<h3>18</h3>
+
+<p>Assignments</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-award"></i>
+
+<h3>89%</h3>
+
+<p>Average Grade</p>
+
+</div>
+
+</div>
+
+<div class="col-lg-3 col-md-6">
+
+<div class="dashboard-card">
+
+<i class="fa-solid fa-calendar-check"></i>
+
+<h3>95%</h3>
+
+<p>Attendance</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- ======================================
+MY COURSES
+======================================= -->
+
+<section
+id="courses"
+class="mt-5">
+
+<div class="section-header">
+
+<h3>
+
+My Courses
+
+</h3>
+
+<button
+class="btn btn-primary">
+
+View All
+
+</button>
+
+</div>
+
+<div class="row g-4">
+
+<!-- Course -->
+
+<div class="col-lg-4">
+
+<div class="course-card">
+
+<img
+src="https://picsum.photos/600/350?1"
+class="img-fluid">
+
+<div class="course-content">
+
+<h4>
+
+Web Development
+
+</h4>
+
+<p>
+
+Learn HTML, CSS, JavaScript & Bootstrap.
+
+</p>
+
+<div class="progress mb-3">
+
+<div
+class="progress-bar"
+style="width:75%">
+
+75%
+
+</div>
+
+</div>
+
+<button
+class="btn btn-success w-100 continue-btn">
+
+Continue Learning
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Course -->
+
+<div class="col-lg-4">
+
+<div class="course-card">
+
+<img
+src="https://picsum.photos/600/350?2"
+class="img-fluid">
+
+<div class="course-content">
+
+<h4>
+
+Python Programming
+
+</h4>
+
+<p>
+
+Beginner to Advanced Python Course.
+
+</p>
+
+<div class="progress mb-3">
+
+<div
+class="progress-bar bg-warning"
+style="width:50%">
+
+50%
+
+</div>
+
+</div>
+
+<button
+class="btn btn-success w-100 continue-btn">
+
+Continue Learning
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Course -->
+
+<div class="col-lg-4">
+
+<div class="course-card">
+
+<img
+src="https://picsum.photos/600/350?3"
+class="img-fluid">
+
+<div class="course-content">
+
+<h4>
+
+UI / UX Design
+
+</h4>
+
+<p>
+
+Master modern UI & UX Design.
+
+</p>
+
+<div class="progress mb-3">
+
+<div
+class="progress-bar bg-info"
+style="width:92%">
+
+92%
+
+</div>
+
+</div>
+
+<button
+class="btn btn-success w-100 continue-btn">
+
+Continue Learning
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ======================================
+LIVE CLASSES
+====================================== -->
+
+<section id="classes" class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Upcoming Live Classes</h3>
+
+        <button class="btn btn-danger">
+            <i class="fa-solid fa-video"></i>
+            Join Next Class
+        </button>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover align-middle">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th>Course</th>
+
+                    <th>Teacher</th>
+
+                    <th>Date</th>
+
+                    <th>Time</th>
+
+                    <th>Status</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Web Development</td>
+
+                    <td>Ahmed Ali</td>
+
+                    <td>25 July</td>
+
+                    <td>7:00 PM</td>
+
+                    <td>
+                        <span class="badge bg-success">
+                            Upcoming
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-primary join-class">
+
+                            Join
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Python</td>
+
+                    <td>Sarah Khan</td>
+
+                    <td>26 July</td>
+
+                    <td>5:00 PM</td>
+
+                    <td>
+
+                        <span class="badge bg-warning">
+
+                            Tomorrow
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-primary join-class">
+
+                            Join
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+RECORDED LECTURES
+====================================== -->
+
+<section id="recordings" class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Recorded Lectures</h3>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <img src="https://picsum.photos/500/300?11"
+                    class="img-fluid">
+
+                <div class="p-3">
+
+                    <h5>HTML Basics</h5>
+
+                    <p>Duration : 35 Minutes</p>
+
+                    <button class="btn btn-success watch-video">
+
+                        Watch Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <img src="https://picsum.photos/500/300?12"
+                    class="img-fluid">
+
+                <div class="p-3">
+
+                    <h5>CSS Flexbox</h5>
+
+                    <p>Duration : 42 Minutes</p>
+
+                    <button class="btn btn-success watch-video">
+
+                        Watch Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="video-card">
+
+                <img src="https://picsum.photos/500/300?13"
+                    class="img-fluid">
+
+                <div class="p-3">
+
+                    <h5>Bootstrap Grid</h5>
+
+                    <p>Duration : 58 Minutes</p>
+
+                    <button class="btn btn-success watch-video">
+
+                        Watch Now
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+ASSIGNMENTS
+====================================== -->
+
+<section id="assignments" class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Assignments</h3>
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-striped">
+
+            <thead>
+
+                <tr>
+
+                    <th>Assignment</th>
+
+                    <th>Course</th>
+
+                    <th>Deadline</th>
+
+                    <th>Status</th>
+
+                    <th>Upload</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+
+                    <td>Portfolio Website</td>
+
+                    <td>HTML</td>
+
+                    <td>30 July</td>
+
+                    <td>
+
+                        <span class="badge bg-warning">
+
+                            Pending
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-primary upload-btn">
+
+                            Upload
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+                <tr>
+
+                    <td>Python Calculator</td>
+
+                    <td>Python</td>
+
+                    <td>2 August</td>
+
+                    <td>
+
+                        <span class="badge bg-success">
+
+                            Submitted
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <button class="btn btn-secondary" disabled>
+
+                            Uploaded
+
+                        </button>
+
+                    </td>
+
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+QUIZZES
+====================================== -->
+
+<section id="quiz" class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Upcoming Quizzes</h3>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+
+            <div class="quiz-card">
+
+                <h4>HTML Quiz</h4>
+
+                <p>20 MCQs</p>
+
+                <button class="btn btn-primary start-quiz">
+
+                    Start Quiz
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="quiz-card">
+
+                <h4>CSS Quiz</h4>
+
+                <p>25 MCQs</p>
+
+                <button class="btn btn-primary start-quiz">
+
+                    Start Quiz
+
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="quiz-card">
+
+                <h4>JavaScript Quiz</h4>
+
+                <p>30 MCQs</p>
+
+                <button class="btn btn-primary start-quiz">
+
+                    Start Quiz
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+<!-- ======================================
+ATTENDANCE
+====================================== -->
+
+<section id="attendance" class="mt-5">
+
+    <div class="section-header">
+        <h3>Attendance Record</h3>
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-bordered align-middle">
+
+            <thead class="table-primary">
+
+                <tr>
+                    <th>Course</th>
+                    <th>Classes</th>
+                    <th>Present</th>
+                    <th>Absent</th>
+                    <th>Attendance</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                <tr>
+                    <td>Web Development</td>
+                    <td>30</td>
+                    <td>28</td>
+                    <td>2</td>
+                    <td>
+                        <span class="badge bg-success">93%</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Python</td>
+                    <td>25</td>
+                    <td>24</td>
+                    <td>1</td>
+                    <td>
+                        <span class="badge bg-success">96%</span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>UI / UX</td>
+                    <td>18</td>
+                    <td>16</td>
+                    <td>2</td>
+                    <td>
+                        <span class="badge bg-warning">89%</span>
+                    </td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+GRADES
+====================================== -->
+
+<section id="grades" class="mt-5">
+
+    <div class="section-header">
+        <h3>Grades</h3>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <h5>HTML</h5>
+
+                <h2>A+</h2>
+
+                <p>96%</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <h5>CSS</h5>
+
+                <h2>A</h2>
+
+                <p>90%</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <h5>JavaScript</h5>
+
+                <h2>A</h2>
+
+                <p>91%</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+PROGRESS
+====================================== -->
+
+<section class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Overall Progress</h3>
+
+    </div>
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <div class="progress mb-4" style="height:30px;">
+
+                <div class="progress-bar bg-success"
+                    style="width:78%;">
+
+                    78% Completed
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+CHAT
+====================================== -->
+
+<section id="chat" class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Teacher Chat</h3>
+
+    </div>
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <div class="chat-box">
+
+                <div class="message received">
+
+                    <strong>Teacher:</strong>
+
+                    Complete Assignment 3 before Friday.
+
+                </div>
+
+            </div>
+
+            <textarea
+                class="form-control mt-3"
+                rows="3"
+                placeholder="Type message..."></textarea>
+
+            <button
+                class="btn btn-primary mt-3">
+
+                Send Message
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+ANNOUNCEMENTS
+====================================== -->
+
+<section class="mt-5">
+
+    <div class="section-header">
+
+        <h3>Latest Announcements</h3>
+
+    </div>
+
+    <div class="alert alert-info">
+
+        📢 Quiz has been rescheduled to Monday.
+
+    </div>
+
+    <div class="alert alert-warning">
+
+        📢 Submit assignments before deadline.
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+PROFILE
+====================================== -->
+
+<section id="profile" class="mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <div class="row align-items-center">
+
+                <div class="col-md-3 text-center">
+
+                    <img
+                        src="https://i.pravatar.cc/150?img=12"
+                        class="rounded-circle img-fluid">
+
+                </div>
+
+                <div class="col-md-9">
+
+                    <h3>Fatima Hussain</h3>
+
+                    <p>Email : student@eduverse.com</p>
+
+                    <p>Roll No : ST1024</p>
+
+                    <p>Department : Computer Science</p>
+
+                    <button class="btn btn-success">
+
+                        Edit Profile
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ======================================
+SETTINGS
+====================================== -->
+
+<section id="settings" class="mt-5 mb-5">
+
+    <div class="card shadow">
+
+        <div class="card-body">
+
+            <h3 class="mb-4">
+
+                Settings
+
+            </h3>
+
+            <div class="form-check form-switch">
+
+                <input class="form-check-input"
+                    type="checkbox"
+                    id="notifications">
+
+                <label class="form-check-label">
+
+                    Enable Notifications
+
+                </label>
+
+            </div>
+
+            <div class="form-check form-switch mt-3">
+
+                <input class="form-check-input"
+                    type="checkbox"
+                    id="emails">
+
+                <label class="form-check-label">
+
+                    Receive Email Updates
+
+                </label>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</main>
+
+</div>
+
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Student JS -->
+
+<script src="../java/students.js"></script>
+
+
+</body>
+
+</html>

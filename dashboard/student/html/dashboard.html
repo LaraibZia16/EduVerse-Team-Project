@@ -1,0 +1,1276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <!-- ==========================================================
+                        META TAGS START
+    =========================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | Student Dashboard</title>
+
+    <!-- ==========================================================
+                        META TAGS END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        GOOGLE FONT START
+    =========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+                        GOOGLE FONT END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        BOOTSTRAP START
+    =========================================================== -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+                        BOOTSTRAP END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        FONT AWESOME START
+    =========================================================== -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================================
+                        FONT AWESOME END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        CUSTOM CSS
+    =========================================================== -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+
+<!-- ==========================================================
+                    DASHBOARD WRAPPER START
+========================================================== -->
+
+<div class="dashboard-wrapper">
+
+
+
+<!-- ==========================================================
+                    SIDEBAR START
+========================================================== -->
+
+<aside class="sidebar">
+
+
+
+<!-- ===== Logo Start ===== -->
+
+<div class="logo-area">
+
+    <div class="logo-icon">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+    </div>
+
+    <div class="logo-text">
+
+        <h2>EduVerse</h2>
+
+        <p>Student Panel</p>
+
+    </div>
+
+</div>
+
+<!-- ===== Logo End ===== -->
+
+
+
+
+
+<!-- ==========================================================
+                    SIDEBAR MENU START
+========================================================== -->
+
+<nav class="sidebar-menu">
+
+<ul>
+
+
+
+<li class="active">
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="courses.html">
+
+<i class="fa-solid fa-book-open"></i>
+
+<span>My Courses</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="student-progress.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>My Progress</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="quizzes.html">
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+<span>Quizzes</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="assignments.html">
+
+<i class="fa-solid fa-file-lines"></i>
+
+<span>Assignments</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+    <a href="calendar.html">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <span>Calendar</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="messages.html">
+
+        <i class="fa-regular fa-envelope"></i>
+
+        <span>Messages</span>
+
+        <span class="notification-badge">4</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="profile.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>Profile</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="settings.html">
+
+        <i class="fa-solid fa-gear"></i>
+
+        <span>Settings</span>
+
+    </a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<!-- ==========================================================
+                    SIDEBAR MENU END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM START
+========================================================== -->
+
+<div class="sidebar-bottom">
+
+    <a href="help-center.html" class="bottom-link">
+
+        <i class="fa-regular fa-circle-question"></i>
+
+        <span>Help Center</span>
+
+    </a>
+
+    <a href="#" class="bottom-link">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    PROMO CARD START
+========================================================== -->
+
+<div class="promo-card">
+
+    <div class="promo-icon">
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+    </div>
+
+    <h4>Keep Learning!</h4>
+
+    <p>
+
+        Explore new courses and sharpen your skills every single day.
+
+    </p>
+
+    <a href="courses.html" class="btn btn-primary w-100">
+
+        Browse Courses
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    PROMO CARD END
+========================================================== -->
+
+</aside>
+
+<!-- ==========================================================
+                    SIDEBAR END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    MAIN CONTENT START
+========================================================== -->
+
+<main class="main-content">
+
+
+
+<!-- ==========================================================
+                    TOP NAVBAR START
+========================================================== -->
+
+<header class="top-navbar">
+
+<div class="navbar-left">
+
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+placeholder="Search courses, lectures, quizzes...">
+
+</div>
+
+</div>
+
+
+
+<div class="navbar-right">
+
+<div class="nav-icon">
+
+<i class="fa-regular fa-envelope"></i>
+
+<span>3</span>
+
+</div>
+
+<div class="nav-icon">
+
+<i class="fa-regular fa-bell"></i>
+
+<span>5</span>
+
+</div>
+
+<div class="teacher-profile">
+
+<img
+src="https://i.pravatar.cc/100?img=47"
+alt="Student">
+
+<div>
+
+<h6>Ayesha Khan</h6>
+
+<small>Web Development Student</small>
+
+</div>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ==========================================================
+                    TOP NAVBAR END
+========================================================== -->
+<!-- ==========================================================
+                    WELCOME SECTION START
+========================================================== -->
+
+<section class="welcome-section">
+
+    <div class="welcome-content">
+
+        <div class="welcome-text">
+
+            <h1>
+
+                Welcome Back,
+                <span class="teacher-name">Ayesha Khan 👋</span>
+
+            </h1>
+
+            <p>
+
+                Here's what's happening with your learning today.
+
+            </p>
+
+        </div>
+
+        <div class="welcome-actions">
+
+            <button class="btn btn-primary">
+
+                <i class="fa-solid fa-circle-play"></i>
+
+                Continue Learning
+
+            </button>
+
+            <button class="btn btn-outline-primary">
+
+                <i class="fa-regular fa-calendar"></i>
+
+                View Calendar
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    WELCOME SECTION END
+========================================================== -->
+
+
+
+
+
+<!-- ==========================================================
+                    STATISTICS START
+========================================================== -->
+
+<section class="statistics-section">
+
+<div class="row g-4">
+
+
+
+
+<!-- ===== Card 1 Start ===== -->
+
+<div class="col-xl col-lg-4 col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon purple">
+
+<i class="fa-solid fa-book-open"></i>
+
+</div>
+
+<div class="stat-info">
+
+<h2 id="statEnrolledCourses">8</h2>
+
+<h5>Enrolled Courses</h5>
+
+<p>
+
+<i class="fa-solid fa-arrow-trend-up"></i>
+
++2 This Month
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Card 1 End ===== -->
+
+
+
+
+
+
+
+<!-- ===== Card 2 Start ===== -->
+
+<div class="col-xl col-lg-4 col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon blue">
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+</div>
+
+<div class="stat-info">
+
+<h2 id="statCompletedCourses">5</h2>
+
+<h5>Completed Courses</h5>
+
+<p>
+
+<i class="fa-solid fa-arrow-trend-up"></i>
+
++1 This Month
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Card 2 End ===== -->
+
+
+
+
+
+
+
+
+<!-- ===== Card 3 Start ===== -->
+
+<div class="col-xl col-lg-4 col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon green">
+
+<i class="fa-solid fa-circle-play"></i>
+
+</div>
+
+<div class="stat-info">
+
+<h2 id="statLecturesWatched">84</h2>
+
+<h5>Lectures Watched</h5>
+
+<p>
+
+<i class="fa-solid fa-video"></i>
+
+This Month
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Card 3 End ===== -->
+
+
+
+
+
+
+
+
+<!-- ===== Card 4 Start ===== -->
+
+<div class="col-xl col-lg-4 col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon orange">
+
+<i class="fa-solid fa-file-lines"></i>
+
+</div>
+
+<div class="stat-info">
+
+<h2 id="statAssignmentsDue">6</h2>
+
+<h5>Assignments Due</h5>
+
+<p>
+
+Pending Submission
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Card 4 End ===== -->
+
+
+
+
+
+
+
+
+<!-- ===== Card 5 Start ===== -->
+
+<div class="col-xl col-lg-4 col-md-6">
+
+<div class="stat-card">
+
+<div class="stat-icon yellow">
+
+<i class="fa-solid fa-star"></i>
+
+</div>
+
+<div class="stat-info">
+
+<h2 id="statOverallGrade">92%</h2>
+
+<h5>Overall Grade</h5>
+
+<p>
+
+Excellent Performance
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ===== Card 5 End ===== -->
+
+</div>
+
+</section>
+
+<!-- ==========================================================
+                    STATISTICS END
+========================================================== -->
+<!-- ==========================================================
+                ANALYTICS SECTION START
+========================================================== -->
+
+<section class="analytics-section">
+
+    <div class="row g-4">
+
+        <!-- ==================================================
+                        MY PROGRESS ANALYTICS START
+        =================================================== -->
+
+        <div class="col-lg-8">
+
+            <div class="dashboard-card">
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <h3>My Progress</h3>
+
+                        <p>Your quiz &amp; assignment performance</p>
+
+                    </div>
+
+                    <select class="form-select analytics-filter" id="progressFilter">
+
+                        <option>This Month</option>
+                        <option>Last Month</option>
+                        <option>This Year</option>
+
+                    </select>
+
+                </div>
+
+                <div class="chart-container">
+
+                    <canvas id="progressChart"></canvas>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================================================
+                        MY PROGRESS ANALYTICS END
+        =================================================== -->
+
+
+
+
+
+        <!-- ==================================================
+                        MY COURSES CARD START
+        =================================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <h3>My Courses</h3>
+
+                        <p>Continue Learning</p>
+
+                    </div>
+
+                    <a href="courses.html"
+                       class="btn btn-primary btn-sm">
+
+                        View All
+
+                    </a>
+
+                </div>
+
+
+
+
+
+                <!-- ===== Course Item 1 ===== -->
+
+                <div class="course-item">
+
+                    <img src="https://picsum.photos/100?random=21"
+                         alt="Course">
+
+                    <div class="course-details">
+
+                        <h6>Web Development</h6>
+
+                        <small>82% Completed</small>
+
+                        <div class="progress mt-2">
+
+                            <div class="progress-bar"
+                                 style="width:82%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!-- ===== Course Item 2 ===== -->
+
+                <div class="course-item">
+
+                    <img src="https://picsum.photos/100?random=22"
+                         alt="Course">
+
+                    <div class="course-details">
+
+                        <h6>JavaScript</h6>
+
+                        <small>74% Completed</small>
+
+                        <div class="progress mt-2">
+
+                            <div class="progress-bar bg-success"
+                                 style="width:74%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!-- ===== Course Item 3 ===== -->
+
+                <div class="course-item">
+
+                    <img src="https://picsum.photos/100?random=23"
+                         alt="Course">
+
+                    <div class="course-details">
+
+                        <h6>React JS</h6>
+
+                        <small>45% Completed</small>
+
+                        <div class="progress mt-2">
+
+                            <div class="progress-bar bg-warning"
+                                 style="width:45%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+
+                <!-- ===== Course Item 4 ===== -->
+
+                <div class="course-item">
+
+                    <img src="https://picsum.photos/100?random=24"
+                         alt="Course">
+
+                    <div class="course-details">
+
+                        <h6>Python</h6>
+
+                        <small>68% Completed</small>
+
+                        <div class="progress mt-2">
+
+                            <div class="progress-bar bg-info"
+                                 style="width:68%;">
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================================================
+                        MY COURSES CARD END
+        =================================================== -->
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                ANALYTICS SECTION END
+========================================================== -->
+<!-- ==========================================================
+                DASHBOARD BOTTOM SECTION START
+========================================================== -->
+
+<section class="dashboard-bottom-section">
+
+    <div class="row g-4">
+
+        <!-- ==================================================
+                    RECENT ACTIVITIES START
+        =================================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <h3>Recent Activities</h3>
+
+                        <p>Your latest learning updates</p>
+
+                    </div>
+
+                </div>
+
+                <div class="activity-list" id="recentActivityList">
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon bg-primary">
+
+                            <i class="fa-solid fa-video"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Lecture Completed</h6>
+
+                            <small>JavaScript DOM Manipulation</small>
+
+                            <p>10 Minutes Ago</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon bg-success">
+
+                            <i class="fa-solid fa-clipboard-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Quiz Attempted</h6>
+
+                            <small>Scored 85% in HTML Quiz</small>
+
+                            <p>35 Minutes Ago</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon bg-warning">
+
+                            <i class="fa-solid fa-file-circle-check"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Assignment Submitted</h6>
+
+                            <small>Bootstrap Landing Page</small>
+
+                            <p>1 Hour Ago</p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="activity-item">
+
+                        <div class="activity-icon bg-danger">
+
+                            <i class="fa-solid fa-star"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h6>Achievement Unlocked</h6>
+
+                            <small>You earned ⭐ Perfect Attendance</small>
+
+                            <p>Today</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================================================
+                    RECENT ACTIVITIES END
+        =================================================== -->
+
+
+
+
+
+        <!-- ==================================================
+                MY PENDING ASSIGNMENTS START
+        =================================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <h3>My Assignments</h3>
+
+                        <p>Due soon</p>
+
+                    </div>
+
+                </div>
+
+                <div class="assignment-list" id="myAssignmentsList">
+
+                    <div class="assignment-item">
+
+                        <img src="https://picsum.photos/60?random=31">
+
+                        <div>
+
+                            <h6>HTML Portfolio</h6>
+
+                            <small>Due Aug 15</small>
+
+                        </div>
+
+                        <span class="badge bg-warning text-dark">
+
+                            Pending
+
+                        </span>
+
+                    </div>
+
+                    <div class="assignment-item">
+
+                        <img src="https://picsum.photos/60?random=32">
+
+                        <div>
+
+                            <h6>Bootstrap Project</h6>
+
+                            <small>Due Aug 12</small>
+
+                        </div>
+
+                        <span class="badge bg-danger">
+
+                            Urgent
+
+                        </span>
+
+                    </div>
+
+                    <div class="assignment-item">
+
+                        <img src="https://picsum.photos/60?random=33">
+
+                        <div>
+
+                            <h6>JavaScript Quiz Prep</h6>
+
+                            <small>Due Aug 20</small>
+
+                        </div>
+
+                        <span class="badge bg-success">
+
+                            Submitted
+
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================================================
+                MY PENDING ASSIGNMENTS END
+        =================================================== -->
+
+
+
+
+
+
+
+        <!-- ==================================================
+                    UPCOMING CLASSES START
+        =================================================== -->
+
+        <div class="col-lg-4">
+
+            <div class="dashboard-card">
+
+                <div class="card-header-custom">
+
+                    <div>
+
+                        <h3>Upcoming Classes</h3>
+
+                        <p>Today's Schedule</p>
+
+                    </div>
+
+                </div>
+
+                <div class="class-list" id="upcomingClassesList">
+
+                    <div class="class-item">
+
+                        <div>
+
+                            <h6>Web Development</h6>
+
+                            <small>09:00 AM - 10:30 AM</small>
+
+                        </div>
+
+                        <button class="btn btn-sm btn-primary">
+
+                            Join
+
+                        </button>
+
+                    </div>
+
+                    <div class="class-item">
+
+                        <div>
+
+                            <h6>Python Programming</h6>
+
+                            <small>11:00 AM - 12:30 PM</small>
+
+                        </div>
+
+                        <button class="btn btn-sm btn-success">
+
+                            Join
+
+                        </button>
+
+                    </div>
+
+                    <div class="class-item">
+
+                        <div>
+
+                            <h6>React Development</h6>
+
+                            <small>02:00 PM - 03:30 PM</small>
+
+                        </div>
+
+                        <button class="btn btn-sm btn-warning">
+
+                            Join
+
+                        </button>
+
+                    </div>
+
+                    <div class="class-item">
+
+                        <div>
+
+                            <h6>UI / UX Design</h6>
+
+                            <small>05:00 PM - 06:30 PM</small>
+
+                        </div>
+
+                        <button class="btn btn-sm btn-info">
+
+                            Join
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ==================================================
+                    UPCOMING CLASSES END
+        =================================================== -->
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                DASHBOARD BOTTOM SECTION END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    FOOTER START
+========================================================== -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        © 2026 EduVerse Student Dashboard. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<!-- ==========================================================
+                    FOOTER END
+========================================================== -->
+
+
+
+</main>
+
+</div>
+
+
+
+<!-- ==========================================================
+                BOOTSTRAP JS
+========================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- ==========================================================
+                CHART JS
+========================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<!-- ==========================================================
+                CUSTOM JS
+========================================================== -->
+
+<script src="../java/dashboard.js"></script>
+
+
+</body>
+
+</html>

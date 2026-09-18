@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <!-- ==========================================================
+                        META TAGS START
+    =========================================================== -->
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduVerse | My Progress</title>
+
+    <!-- ==========================================================
+                        META TAGS END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        GOOGLE FONT START
+    =========================================================== -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+                        GOOGLE FONT END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        BOOTSTRAP START
+    =========================================================== -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- ==========================================================
+                        BOOTSTRAP END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        FONT AWESOME START
+    =========================================================== -->
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ==========================================================
+                        FONT AWESOME END
+    =========================================================== -->
+
+
+
+    <!-- ==========================================================
+                        CUSTOM CSS
+    =========================================================== -->
+
+    <link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+
+
+<!-- ==========================================================
+                    DASHBOARD WRAPPER START
+========================================================== -->
+
+<div class="dashboard-wrapper">
+
+
+
+<!-- ==========================================================
+                    SIDEBAR START
+========================================================== -->
+
+<aside class="sidebar">
+
+
+
+<!-- ===== Logo Start ===== -->
+
+<div class="logo-area">
+
+    <div class="logo-icon">
+
+        <i class="fa-solid fa-graduation-cap"></i>
+
+    </div>
+
+    <div class="logo-text">
+
+        <h2>EduVerse</h2>
+
+        <p>Student Panel</p>
+
+    </div>
+
+</div>
+
+<!-- ===== Logo End ===== -->
+
+
+
+
+
+<!-- ==========================================================
+                    SIDEBAR MENU START
+========================================================== -->
+
+<nav class="sidebar-menu">
+
+<ul>
+
+
+
+<li>
+
+<a href="dashboard.html">
+
+<i class="fa-solid fa-house"></i>
+
+<span>Dashboard</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="courses.html">
+
+<i class="fa-solid fa-book-open"></i>
+
+<span>My Courses</span>
+
+</a>
+
+</li>
+
+
+
+<li class="active">
+
+<a href="student-progress.html">
+
+<i class="fa-solid fa-chart-line"></i>
+
+<span>My Progress</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="quizzes.html">
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+<span>Quizzes</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+<a href="assignments.html">
+
+<i class="fa-solid fa-file-lines"></i>
+
+<span>Assignments</span>
+
+</a>
+
+</li>
+
+
+
+<li>
+
+    <a href="calendar.html">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <span>Calendar</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="messages.html">
+
+        <i class="fa-regular fa-envelope"></i>
+
+        <span>Messages</span>
+
+        <span class="notification-badge">4</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="profile.html">
+
+        <i class="fa-regular fa-user"></i>
+
+        <span>Profile</span>
+
+    </a>
+
+</li>
+
+<li>
+
+    <a href="settings.html">
+
+        <i class="fa-solid fa-gear"></i>
+
+        <span>Settings</span>
+
+    </a>
+
+</li>
+
+</ul>
+
+</nav>
+
+<!-- ==========================================================
+                    SIDEBAR MENU END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM START
+========================================================== -->
+
+<div class="sidebar-bottom">
+
+    <a href="help-center.html" class="bottom-link">
+
+        <i class="fa-regular fa-circle-question"></i>
+
+        <span>Help Center</span>
+
+    </a>
+
+    <a href="#" class="bottom-link">
+
+        <i class="fa-solid fa-right-from-bracket"></i>
+
+        <span>Logout</span>
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    SIDEBAR BOTTOM END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    PROMO CARD START
+========================================================== -->
+
+<div class="promo-card">
+
+    <div class="promo-icon">
+
+        <i class="fa-solid fa-lightbulb"></i>
+
+    </div>
+
+    <h4>Keep Learning!</h4>
+
+    <p>
+
+        Explore new courses and sharpen your skills every single day.
+
+    </p>
+
+    <a href="courses.html" class="btn btn-primary w-100">
+
+        Browse Courses
+
+    </a>
+
+</div>
+
+<!-- ==========================================================
+                    PROMO CARD END
+========================================================== -->
+
+</aside>
+
+<!-- ==========================================================
+                    SIDEBAR END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    MAIN CONTENT START
+========================================================== -->
+
+<main class="main-content">
+
+
+
+<!-- ==========================================================
+                    TOP NAVBAR START
+========================================================== -->
+
+<header class="top-navbar">
+
+<div class="navbar-left">
+
+<button class="menu-toggle">
+
+<i class="fa-solid fa-bars"></i>
+
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-magnifying-glass"></i>
+
+<input
+type="text"
+id="globalAssignmentSearch"
+placeholder="Search your assignments, quizzes, subjects...">
+
+</div>
+
+</div>
+
+
+
+<div class="navbar-right">
+
+<div class="nav-icon">
+
+<i class="fa-regular fa-envelope"></i>
+
+<span>3</span>
+
+</div>
+
+<div class="nav-icon">
+
+<i class="fa-regular fa-bell"></i>
+
+<span>5</span>
+
+</div>
+
+<div class="teacher-profile">
+
+<img
+src="https://i.pravatar.cc/100?img=47"
+alt="Student">
+
+<div>
+
+<h6>Ayesha Khan</h6>
+
+<small>Web Development Student</small>
+
+</div>
+
+<i class="fa-solid fa-chevron-down"></i>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ==========================================================
+                    TOP NAVBAR END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    PAGE HEADER START
+========================================================== -->
+
+<section class="page-header">
+
+    <div>
+
+        <h2>My Progress</h2>
+
+        <p>Track your assignments, quizzes, attendance and growth in one place.</p>
+
+    </div>
+
+    <div class="d-flex gap-2 flex-wrap">
+
+        <button class="btn btn-outline-primary" id="printReportBtn">
+
+            <i class="fa-solid fa-print"></i>
+            Print
+
+        </button>
+
+        <button class="btn btn-outline-primary" id="exportCsvBtn">
+
+            <i class="fa-solid fa-file-csv"></i>
+            Export CSV
+
+        </button>
+
+        <button class="btn btn-primary" id="exportPdfBtn">
+
+            <i class="fa-solid fa-file-pdf"></i>
+            Download Report
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    PAGE HEADER END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    FILTER BAR START
+========================================================== -->
+
+<section class="filter-bar" id="filterBar">
+
+    <select class="form-select" id="filterCourse">
+
+        <option value="all">All Courses</option>
+
+    </select>
+
+    <select class="form-select" id="filterSubject">
+
+        <option value="all">All Subjects</option>
+
+    </select>
+
+    <select class="form-select" id="filterMonth">
+
+        <option value="all">All Months</option>
+
+    </select>
+
+    <select class="form-select" id="filterSemester">
+
+        <option value="all">All Semesters</option>
+
+    </select>
+
+    <button class="btn btn-primary" id="applyFilterBtn">
+
+        <i class="fa-solid fa-filter"></i>
+        Apply
+
+    </button>
+
+</section>
+
+<!-- ==========================================================
+                    FILTER BAR END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                PERFORMANCE ALERTS START
+========================================================== -->
+
+<section id="alertsSection"></section>
+
+<!-- ==========================================================
+                PERFORMANCE ALERTS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    MY PROFILE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+
+            <div class="profile-header-card" id="studentProfileCard">
+
+                <div class="profile-info">
+
+                    <img src="" alt="Student" class="profile-avatar" id="studentAvatar">
+
+                    <div>
+
+                        <h2 id="studentName">-</h2>
+
+                        <p id="studentCourseBatch">-</p>
+                        <span class="profile-badge" id="studentStatusBadge">-</span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-8">
+
+            <div class="info-card">
+
+                <h4>My Information</h4>
+
+                <div class="info-row">
+                    <span>Student ID</span>
+                    <strong id="infoStudentId">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Roll Number</span>
+                    <strong id="infoRollNo">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Email</span>
+                    <strong id="infoEmail">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Phone</span>
+                    <strong id="infoPhone">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Join Date</span>
+                    <strong id="infoJoinDate">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                    MY PROFILE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+            OVERALL PROGRESS DASHBOARD START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="card-header-custom">
+
+        <div>
+            <h4>Overall Progress</h4>
+            <p>Snapshot of your academic performance</p>
+        </div>
+
+    </div>
+
+    <div class="row g-4" id="overallStatsGrid"></div>
+
+</section>
+
+<!-- ==========================================================
+            OVERALL PROGRESS DASHBOARD END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                ATTENDANCE MODULE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="row g-4">
+
+        <div class="col-lg-5">
+
+            <div class="dashboard-card h-100">
+
+                <div class="card-header-custom">
+                    <div>
+                        <h4>Attendance</h4>
+                        <p>Your overall attendance summary</p>
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-3" id="attendanceStatsGrid"></div>
+
+                <div class="progress-title">
+                    <span>Attendance Percentage</span>
+                    <span id="attendancePercentLabel">0%</span>
+                </div>
+
+                <div class="progress">
+                    <div class="progress-bar bg-success" id="attendanceProgressBar" style="width:0%;"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-7">
+
+            <div class="analytics-box h-100">
+
+                <div class="card-header-custom">
+                    <div>
+                        <h4>Monthly Attendance History</h4>
+                        <p>Your attendance trend across months</p>
+                    </div>
+                </div>
+
+                <canvas id="attendanceChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                ATTENDANCE MODULE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                ASSIGNMENT MODULE START
+        (Done / Pending / Deadline tracker — enhanced)
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>My Assignments</h4>
+                <p>How many you've done, how many are left, and when they're due</p>
+            </div>
+
+            <a href="assignments.html" class="btn btn-primary btn-sm">
+
+                <i class="fa-solid fa-file-lines"></i>
+                Go to Assignments
+
+            </a>
+
+        </div>
+
+        <!-- ===== Assignment Snapshot Cards ===== -->
+
+        <div class="row g-3 mb-4" id="assignmentStatsGrid"></div>
+
+        <!-- ===== Completion Ring / Bar ===== -->
+
+        <div class="progress-title">
+            <span>Assignment Completion</span>
+            <span id="assignmentCompletionLabel">0%</span>
+        </div>
+
+        <div class="progress mb-4">
+            <div class="progress-bar bg-primary" id="assignmentCompletionBar" style="width:0%;"></div>
+        </div>
+
+        <!-- ===== Next Deadline Banner ===== -->
+
+        <div class="dashboard-card mb-4" id="nextDeadlineBanner" style="border-left:4px solid var(--bs-danger, #dc3545);">
+
+            <div class="d-flex justify-content-between align-items-center flex-wrap gap-2">
+
+                <div>
+                    <h6 class="mb-1" id="nextDeadlineTitle">No upcoming deadlines</h6>
+                    <small class="text-muted" id="nextDeadlineSubtitle">You're all caught up!</small>
+                </div>
+
+                <span class="badge bg-danger" id="nextDeadlineBadge" style="display:none;"></span>
+
+            </div>
+
+        </div>
+
+        <!-- ===== Assignment Toolbar: search / filter / sort ===== -->
+
+        <div class="course-toolbar mb-3">
+
+            <div class="course-search">
+
+                <i class="fa-solid fa-magnifying-glass"></i>
+
+                <input
+                    type="text"
+                    id="assignmentTableSearch"
+                    placeholder="Search assignments by title or subject...">
+
+            </div>
+
+            <div class="toolbar-actions">
+
+                <select class="form-select" id="assignmentStatusFilter">
+
+                    <option value="all">All Status</option>
+                    <option value="completed">Completed</option>
+                    <option value="pending">Pending</option>
+                    <option value="overdue">Overdue</option>
+
+                </select>
+
+                <select class="form-select" id="assignmentSortSelect">
+
+                    <option value="deadline">Sort: Nearest Deadline</option>
+                    <option value="recent">Sort: Recently Added</option>
+                    <option value="az">Sort: A-Z</option>
+
+                </select>
+
+            </div>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table" id="assignmentsTable">
+
+                <thead>
+                    <tr>
+                        <th>Title</th>
+                        <th>Subject</th>
+                        <th>Due Date</th>
+                        <th>Days Left</th>
+                        <th>Submitted</th>
+                        <th>Marks</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+                    </tr>
+                </thead>
+
+                <tbody id="assignmentsTableBody"></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                ASSIGNMENT MODULE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                QUIZ MODULE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Quizzes</h4>
+                <p>Your attempts and scores</p>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table" id="quizzesTable">
+
+                <thead>
+                    <tr>
+                        <th>Quiz</th>
+                        <th>Attempt Date</th>
+                        <th>Score</th>
+                        <th>Percentage</th>
+                        <th>Result</th>
+                        <th>Time Taken</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                QUIZ MODULE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+            SUBJECT-WISE PERFORMANCE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h4>Subject-wise Performance</h4>
+            <p>Your breakdown across every subject</p>
+        </div>
+    </div>
+
+    <div class="row g-4" id="subjectsGrid"></div>
+
+</section>
+
+<!-- ==========================================================
+            SUBJECT-WISE PERFORMANCE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                PREVIOUS RESULTS START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Previous Results</h4>
+                <p>Your semester history</p>
+            </div>
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table" id="resultsTable">
+
+                <thead>
+                    <tr>
+                        <th>Semester</th>
+                        <th>GPA</th>
+                        <th>Percentage</th>
+                        <th>Rank</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody></tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                PREVIOUS RESULTS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                PROGRESS ANALYTICS START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h4>Progress Analytics</h4>
+            <p>Visual breakdown of your performance</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-6">
+            <div class="analytics-box">
+                <h5 class="mb-3">Monthly Progress</h5>
+                <canvas id="monthlyProgressChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="analytics-box">
+                <h5 class="mb-3">Subject-wise Performance</h5>
+                <canvas id="subjectPerformanceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="analytics-box">
+                <h5 class="mb-3">Quiz Performance</h5>
+                <canvas id="quizPerformanceChart"></canvas>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="analytics-box">
+                <h5 class="mb-3">Assignment Performance</h5>
+                <canvas id="assignmentPerformanceChart"></canvas>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                PROGRESS ANALYTICS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+            FEEDBACK FROM MY TEACHERS START
+   (read-only — replaces teacher-authored "Teacher Notes")
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Feedback From My Teachers</h4>
+                <p>Remarks your teachers have shared about your work</p>
+            </div>
+        </div>
+
+        <div id="teacherNotesList"></div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+            FEEDBACK FROM MY TEACHERS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                ASK MY TEACHER START
+   (replaces teacher's "Contact Student" management panel)
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h4>Ask My Teacher</h4>
+            <p>Message your teacher about your progress</p>
+        </div>
+
+    </div>
+
+    <div class="row g-4">
+
+        <div class="col-lg-8">
+
+            <div class="chat-wrapper" style="height:520px;">
+
+                <div class="chat-content">
+
+                    <div class="chat-header">
+
+                        <div class="chat-user">
+                            <img src="" id="chatUserAvatar" alt="Teacher">
+                            <div>
+                                <h5 id="chatUserName">-</h5>
+                                <span>Online</span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="chat-body" id="chatBody"></div>
+
+                    <div class="chat-footer">
+
+                        <div class="d-flex gap-2 flex-wrap mb-2" id="quickReplyRow"></div>
+
+                        <div class="chat-input">
+                            <input type="text" id="chatMessageInput" placeholder="Type a message...">
+                            <button id="sendMessageBtn">
+                                <i class="fa-solid fa-paper-plane"></i>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-lg-4">
+
+            <div class="info-card h-100">
+
+                <h4>My Teacher</h4>
+
+                <div class="info-row">
+                    <span>Name</span>
+                    <strong id="teacherName">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Subject</span>
+                    <strong id="teacherSubject">-</strong>
+                </div>
+
+                <div class="info-row">
+                    <span>Email</span>
+                    <strong id="teacherEmail">-</strong>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                ASK MY TEACHER END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                ACTIVITY TIMELINE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Activity Timeline</h4>
+                <p>Your latest learning activity</p>
+            </div>
+        </div>
+
+        <div class="activity-list" id="activityTimeline"></div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                ACTIVITY TIMELINE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    ACHIEVEMENTS START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="card-header-custom">
+        <div>
+            <h4>Achievements</h4>
+            <p>Badges and certificates you've earned</p>
+        </div>
+    </div>
+
+    <div id="achievementsList"></div>
+
+</section>
+
+<!-- ==========================================================
+                    ACHIEVEMENTS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                LEARNING RECOMMENDATIONS START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Learning Recommendations</h4>
+                <p>Suggestions based on your current performance</p>
+            </div>
+        </div>
+
+        <div id="recommendationsList"></div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                LEARNING RECOMMENDATIONS END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                UPCOMING SCHEDULE START
+========================================================== -->
+
+<section class="mb-4">
+
+    <div class="dashboard-card">
+
+        <div class="card-header-custom">
+            <div>
+                <h4>Upcoming Schedule</h4>
+                <p>Your classes, deadlines, quizzes and exams</p>
+            </div>
+        </div>
+
+        <div id="scheduleList"></div>
+
+    </div>
+
+</section>
+
+<!-- ==========================================================
+                UPCOMING SCHEDULE END
+========================================================== -->
+
+
+
+<!-- ==========================================================
+                    FOOTER START
+========================================================== -->
+
+<footer class="dashboard-footer">
+
+    <p>
+
+        © 2026 EduVerse Student Dashboard. All Rights Reserved.
+
+    </p>
+
+</footer>
+
+<!-- ==========================================================
+                    FOOTER END
+========================================================== -->
+
+
+
+</main>
+
+</div>
+
+<!-- Toast used for notifications -->
+<div class="dashboard-toast" id="dashboardToast"></div>
+
+
+
+<!-- ==========================================================
+                BOOTSTRAP JS
+========================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- ==========================================================
+                CHART JS
+========================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<!-- ==========================================================
+                DASHBOARD BASE JS (sidebar toggle etc.)
+========================================================== -->
+
+<script src="../java/dashboard.js"></script>
+
+
+
+<!-- ==========================================================
+                MY PROGRESS JS
+========================================================== -->
+
+<script src="../java/student-progress.js"></script>
+
+
+</body>
+
+</html>

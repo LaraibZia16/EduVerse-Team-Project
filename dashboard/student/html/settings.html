@@ -1,0 +1,2197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EduVerse | Settings</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="../css/style.css">
+
+<!-- Scoped page-only overrides for the Dark Mode / Font Size preview toggles.
+     Does not touch style.css, so every other page is unaffected. -->
+<style>
+  body.eduverse-dark-preview {
+    background-color: #14151a;
+    color: #e7e7ea;
+  }
+  body.eduverse-dark-preview .dashboard-card,
+  body.eduverse-dark-preview .sidebar,
+  body.eduverse-dark-preview .top-navbar {
+    background-color: #1d1e25;
+    color: #e7e7ea;
+  }
+  body.eduverse-dark-preview .form-control,
+  body.eduverse-dark-preview .form-select {
+    background-color: #26272f;
+    color: #e7e7ea;
+    border-color: #34353e;
+  }
+  body.eduverse-fontsize-small { font-size: 14px; }
+  body.eduverse-fontsize-medium { font-size: 16px; }
+  body.eduverse-fontsize-large { font-size: 18px; }
+</style>
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+<!-- ===================== SIDEBAR ===================== -->
+
+<aside class="sidebar">
+
+<div class="logo-area">
+
+<div class="logo-icon">
+<i class="fa-solid fa-graduation-cap"></i>
+</div>
+
+<div class="logo-text">
+<h2>EduVerse</h2>
+<p>Student Dashboard</p>
+</div>
+
+</div>
+
+<nav class="sidebar-menu">
+
+<ul>
+
+<li>
+<a href="dashboard.html">
+<i class="fa-solid fa-house"></i>
+Dashboard
+</a>
+</li>
+
+<li>
+<a href="courses.html">
+<i class="fa-solid fa-book-open"></i>
+My Courses
+</a>
+</li>
+
+<li>
+<a href="assignments.html">
+<i class="fa-solid fa-file-lines"></i>
+Assignments
+</a>
+</li>
+
+<li>
+<a href="quizzes.html">
+<i class="fa-solid fa-circle-question"></i>
+Quizzes
+</a>
+</li>
+
+<li>
+<a href="student-progress.html">
+<i class="fa-solid fa-chart-line"></i>
+My Progress
+</a>
+</li>
+
+<li>
+<a href="messages.html">
+<i class="fa-solid fa-envelope"></i>
+Messages
+</a>
+</li>
+
+<li>
+<a href="calendar.html">
+<i class="fa-regular fa-calendar"></i>
+Calendar
+</a>
+</li>
+
+<li>
+<a href="profile.html">
+<i class="fa-solid fa-user"></i>
+Profile
+</a>
+</li>
+
+<li class="active">
+<a href="settings.html">
+<i class="fa-solid fa-gear"></i>
+Settings
+</a>
+</li>
+
+</ul>
+
+</nav>
+
+</aside>
+
+<!-- ===================== MAIN CONTENT ===================== -->
+
+<main class="main-content">
+
+<header class="top-navbar">
+
+<div class="navbar-left">
+
+<button class="menu-toggle">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<div class="search-box">
+
+<i class="fa-solid fa-search"></i>
+
+<input
+type="search"
+placeholder="Search settings...">
+
+</div>
+
+</div>
+
+<div class="navbar-right">
+
+<div class="nav-icon">
+
+<i class="fa-solid fa-bell"></i>
+
+<span>3</span>
+
+</div>
+
+<div class="teacher-profile">
+
+<img src="https://i.pravatar.cc/100?img=32">
+
+<div>
+
+<h6>Hamza Sheikh</h6>
+
+<small>Student</small>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ===================== SAVE STATUS TOAST ===================== -->
+
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+
+  <div id="settingsToast" class="toast align-items-center text-white bg-success border-0" role="alert">
+
+    <div class="d-flex">
+
+      <div class="toast-body" id="settingsToastBody">
+
+        Settings saved successfully.
+
+      </div>
+
+      <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- ===================== PAGE TITLE ===================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="d-flex justify-content-between align-items-center flex-wrap">
+
+<div>
+
+<h2>
+
+<i class="fa-solid fa-gear"></i>
+
+Settings
+
+</h2>
+
+<p>
+
+Manage your account, dashboard and learning preferences.
+
+</p>
+
+</div>
+
+<button class="btn btn-primary" id="saveAllTopBtn">
+
+Save Changes
+
+</button>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================================
+                ACCOUNT SETTINGS START
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="row g-4">
+
+<!-- ================= ACCOUNT ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-user"></i>
+
+Account Settings
+
+</h4>
+
+<p>
+
+Update your personal information
+
+</p>
+
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Full Name
+
+</label>
+
+<input
+type="text"
+class="form-control"
+id="fullNameInput"
+value="Hamza Sheikh">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Email
+
+</label>
+
+<input
+type="email"
+class="form-control"
+id="emailInput"
+value="hamza.sheikh@email.com">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Phone Number
+
+</label>
+
+<input
+type="text"
+class="form-control"
+id="phoneInput"
+value="+92 300 7654321">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Student ID
+
+</label>
+
+<input
+type="text"
+class="form-control"
+value="EDU-STU-2031"
+readonly>
+
+</div>
+
+<button class="btn btn-primary" id="updateProfileBtn">
+
+Update Profile
+
+</button>
+
+<span class="ms-2 text-success small d-none" id="profileSavedMsg">
+
+<i class="fa-solid fa-circle-check"></i> Profile updated
+
+</span>
+
+</div>
+
+</div>
+
+<!-- ================= SECURITY ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-shield-halved"></i>
+
+Security
+
+</h4>
+
+<p>
+
+Protect your account
+
+</p>
+
+</div>
+
+</div>
+
+<form id="passwordForm">
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Current Password
+
+</label>
+
+<input
+type="password"
+class="form-control"
+id="currentPassword"
+placeholder="********">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+New Password
+
+</label>
+
+<input
+type="password"
+class="form-control"
+id="newPassword"
+placeholder="********">
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Confirm Password
+
+</label>
+
+<input
+type="password"
+class="form-control"
+id="confirmPassword"
+placeholder="********">
+
+</div>
+
+<div class="invalid-feedback d-block d-none mb-2" id="passwordError">
+
+Passwords do not match or are too short (min 6 characters).
+
+</div>
+
+<button type="button" class="btn btn-success" id="changePasswordBtn">
+
+Change Password
+
+</button>
+
+</form>
+
+<hr>
+
+<div class="form-check form-switch mt-3">
+
+<input
+class="form-check-input setting-toggle"
+type="checkbox"
+id="toggle2fa"
+data-setting="twoFactor"
+checked>
+
+<label class="form-check-label">
+
+Enable Two Factor Authentication
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mt-3">
+
+<input
+class="form-check-input setting-toggle"
+type="checkbox"
+id="toggleRememberDevice"
+data-setting="rememberDevice"
+checked>
+
+<label class="form-check-label">
+
+Remember this Device
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+                NOTIFICATION SETTINGS
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-bell"></i>
+
+Notifications
+
+</h4>
+
+<p>
+
+Choose what notifications you receive
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifTeacherMessages"
+data-setting="notifTeacherMessages"
+checked>
+
+<label class="form-check-label">
+
+Teacher Messages
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifAssignmentReminders"
+data-setting="notifAssignmentReminders"
+checked>
+
+<label class="form-check-label">
+
+Assignment Reminders
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifQuizReminders"
+data-setting="notifQuizReminders"
+checked>
+
+<label class="form-check-label">
+
+Quiz Reminders
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifWeeklyReport"
+data-setting="notifWeeklyReport">
+
+<label class="form-check-label">
+
+Weekly Progress Report
+
+</label>
+
+</div>
+
+</div>
+
+<div class="col-md-6">
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifEmail"
+data-setting="notifEmail"
+checked>
+
+<label class="form-check-label">
+
+Email Notifications
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifBrowser"
+data-setting="notifBrowser"
+checked>
+
+<label class="form-check-label">
+
+Browser Notifications
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifSms"
+data-setting="notifSms">
+
+<label class="form-check-label">
+
+SMS Alerts
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="notifGrades"
+data-setting="notifGrades"
+checked>
+
+<label class="form-check-label">
+
+Grade Updates
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================================
+                APPEARANCE SETTINGS
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="row g-4">
+
+<!-- ================= APPEARANCE ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-palette"></i>
+
+Appearance
+
+</h4>
+
+<p>
+
+Customize your dashboard
+
+</p>
+
+</div>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Theme
+
+</label>
+
+<select class="form-select" id="themeSelect">
+
+<option value="light" selected>Light Mode</option>
+
+<option value="dark">Dark Mode</option>
+
+<option value="system">System Default</option>
+
+</select>
+
+</div>
+
+<div class="mb-4">
+
+<label class="form-label">
+
+Font Size
+
+</label>
+
+<select class="form-select" id="fontSizeSelect">
+
+<option value="small">Small</option>
+
+<option value="medium" selected>Medium</option>
+
+<option value="large">Large</option>
+
+</select>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="toggleCollapseSidebar"
+data-setting="collapseSidebar"
+checked>
+
+<label class="form-check-label">
+
+Collapse Sidebar Automatically
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="toggleAnimations"
+data-setting="animations"
+checked>
+
+<label class="form-check-label">
+
+Enable Dashboard Animations
+
+</label>
+
+</div>
+
+<div class="form-check form-switch">
+
+<input class="form-check-input setting-toggle"
+type="checkbox"
+id="toggleCompactLayout"
+data-setting="compactLayout">
+
+<label class="form-check-label">
+
+Compact Layout
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- ================= LANGUAGE ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-globe"></i>
+
+Language & Region
+
+</h4>
+
+<p>
+
+Regional preferences
+
+</p>
+
+</div>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Language
+
+</label>
+
+<select class="form-select setting-select" id="languageSelect" data-setting="language">
+
+<option selected>English</option>
+
+<option>Urdu</option>
+
+<option>Arabic</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Time Zone
+
+</label>
+
+<select class="form-select setting-select" id="timezoneSelect" data-setting="timezone">
+
+<option selected>(GMT +5) Pakistan</option>
+
+<option>(GMT +4) UAE</option>
+
+<option>(GMT +3) Saudi Arabia</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Date Format
+
+</label>
+
+<select class="form-select setting-select" id="dateFormatSelect" data-setting="dateFormat">
+
+<option>DD/MM/YYYY</option>
+
+<option selected>DD-MMM-YYYY</option>
+
+<option>MM/DD/YYYY</option>
+
+</select>
+
+</div>
+
+<div class="mb-3">
+
+<label class="form-label">
+
+Preferred Currency (for paid courses)
+
+</label>
+
+<select class="form-select setting-select" id="currencySelect" data-setting="currency">
+
+<option selected>PKR</option>
+
+<option>USD</option>
+
+<option>SAR</option>
+
+<option>AED</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+                LEARNING PREFERENCES
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-book-open"></i>
+
+Learning Preferences
+
+</h4>
+
+<p>
+
+Default settings for how you learn on EduVerse
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-lg-6">
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleAutoplay"
+data-setting="autoplayLecture"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Auto-play Next Lecture
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleProgressBar"
+data-setting="showProgressBar"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Show Course Progress Bar
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleRecommendations"
+data-setting="courseRecommendations"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Allow Course Recommendations
+
+</label>
+
+</div>
+
+<div class="form-check form-switch">
+
+<input class="form-check-input setting-toggle"
+id="toggleOfflineDownload"
+data-setting="offlineDownload"
+type="checkbox">
+
+<label class="form-check-label">
+
+Allow Offline Downloads of Course Materials
+
+</label>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<label class="form-label">
+
+Default Course View
+
+</label>
+
+<select class="form-select mb-4 setting-select" id="courseViewSelect" data-setting="courseView">
+
+<option selected>Grid View</option>
+
+<option>List View</option>
+
+</select>
+
+<label class="form-label">
+
+Preferred Difficulty Level
+
+</label>
+
+<select class="form-select setting-select" id="difficultySelect" data-setting="difficulty">
+
+<option>Beginner</option>
+
+<option selected>Intermediate</option>
+
+<option>Advanced</option>
+
+</select>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ==========================================================
+                ASSIGNMENT & QUIZ PREFERENCES
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-file-circle-check"></i>
+
+Assignment & Quiz Preferences
+
+</h4>
+
+<p>
+
+Configure how you're reminded and assessed
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Remind Me Before Due Date (Days)
+
+</label>
+
+<input
+type="number"
+class="form-control setting-input"
+id="reminderDaysInput"
+data-setting="reminderDays"
+value="2"
+min="0"
+max="14">
+
+</div>
+
+<div class="col-md-6">
+
+<label class="form-label">
+
+Focus Mode Timer During Quiz (Minutes)
+
+</label>
+
+<input
+type="number"
+class="form-control setting-input"
+id="focusTimerInput"
+data-setting="focusTimer"
+value="30"
+min="5">
+
+</div>
+
+</div>
+
+<hr>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleAutoSaveDraft"
+data-setting="autoSaveDraft"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Auto-Save Draft While Writing Answers
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleInstantScore"
+data-setting="instantScore"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Show Score Immediately After Quiz Submission
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+id="toggleFocusMode"
+data-setting="focusMode"
+type="checkbox">
+
+<label class="form-check-label">
+
+Enable Focus Mode During Quiz (hides notifications)
+
+</label>
+
+</div>
+
+<div class="form-check form-switch">
+
+<input class="form-check-input setting-toggle"
+id="toggleQuizReminderPush"
+data-setting="quizReminderPush"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Send Push Reminder 1 Hour Before Quiz Starts
+
+</label>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================================
+                CHAT & ACCESSIBILITY
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="row g-4">
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-comments"></i>
+
+Chat Preferences
+
+</h4>
+
+<p>
+
+Control your messaging experience
+
+</p>
+
+</div>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="allowChat" type="checkbox" id="toggleAllowChat" checked>
+
+<label class="form-check-label">
+
+Allow Classmate Chat
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="allowFileShare" type="checkbox" id="toggleAllowFileShare" checked>
+
+<label class="form-check-label">
+
+Allow File Sharing
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="allowVoiceMsg" type="checkbox" id="toggleAllowVoiceMsg">
+
+<label class="form-check-label">
+
+Allow Voice Messages
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-4">
+
+<input class="form-check-input setting-toggle" data-setting="readReceipts" type="checkbox" id="toggleReadReceipts" checked>
+
+<label class="form-check-label">
+
+Enable Read Receipts
+
+</label>
+
+</div>
+
+<hr>
+
+<button class="btn btn-outline-danger btn-sm" id="clearChatHistoryBtn">
+
+<i class="fa-solid fa-trash"></i>
+
+Clear My Chat History
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ================= ACCESSIBILITY ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-universal-access"></i>
+
+Accessibility
+
+</h4>
+
+<p>
+
+Make EduVerse easier to use
+
+</p>
+
+</div>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="reduceMotion" type="checkbox" id="toggleReduceMotion">
+
+<label class="form-check-label">
+
+Reduce Motion
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="highContrast" type="checkbox" id="toggleHighContrast">
+
+<label class="form-check-label">
+
+High Contrast Mode
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle" data-setting="screenReader" type="checkbox" id="toggleScreenReader">
+
+<label class="form-check-label">
+
+Optimize for Screen Readers
+
+</label>
+
+</div>
+
+<div class="form-check form-switch">
+
+<input class="form-check-input setting-toggle" data-setting="keyboardShortcuts" type="checkbox" id="toggleKeyboardShortcuts" checked>
+
+<label class="form-check-label">
+
+Enable Keyboard Shortcuts
+
+</label>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                BACKUP & EXPORT
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-cloud-arrow-up"></i>
+
+My Data & Exports
+
+</h4>
+
+<p>
+
+Download your own EduVerse records
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row g-3">
+
+<div class="col-lg-3">
+
+<button class="btn btn-primary w-100" id="exportGradesBtn">
+
+<i class="fa-solid fa-download"></i><br>
+
+Export My Grades
+
+</button>
+
+</div>
+
+<div class="col-lg-3">
+
+<button class="btn btn-success w-100" id="exportSubmissionsBtn">
+
+<i class="fa-solid fa-file-arrow-down"></i><br>
+
+Export My Submissions
+
+</button>
+
+</div>
+
+<div class="col-lg-3">
+
+<button class="btn btn-warning w-100" id="downloadProgressBtn">
+
+<i class="fa-solid fa-chart-column"></i><br>
+
+Download Progress Report
+
+</button>
+
+</div>
+
+<div class="col-lg-3">
+
+<button class="btn btn-info w-100 text-white" id="downloadCertificatesBtn">
+
+<i class="fa-solid fa-certificate"></i><br>
+
+Download Certificates
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                STORAGE USAGE
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-hard-drive"></i>
+
+Storage Usage
+
+</h4>
+
+<p>
+
+Your downloaded materials and submissions
+
+</p>
+
+</div>
+
+</div>
+
+<div class="d-flex justify-content-between">
+
+<span>
+
+Used Storage
+
+</span>
+
+<strong>
+
+450 MB / 2 GB
+
+</strong>
+
+</div>
+
+<div class="progress mt-3">
+
+<div
+class="progress-bar bg-primary"
+style="width:22.5%">
+
+22.5%
+
+</div>
+
+</div>
+
+<div class="mt-4">
+
+<div class="d-flex justify-content-between mb-2">
+
+<span>Downloaded Lectures</span>
+
+<span>260 MB</span>
+
+</div>
+
+<div class="d-flex justify-content-between mb-2">
+
+<span>My Submissions</span>
+
+<span>130 MB</span>
+
+</div>
+
+<div class="d-flex justify-content-between">
+
+<span>Course Documents</span>
+
+<span>60 MB</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================================
+                CONNECTED ACCOUNTS
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="row g-4">
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-link"></i>
+
+Connected Accounts
+
+</h4>
+
+<p>
+
+Manage connected services
+
+</p>
+
+</div>
+
+</div>
+
+<div class="setting-row" id="googleConnectRow">
+
+<div>
+
+<i class="fa-brands fa-google text-danger"></i>
+
+<strong> Google Account </strong>
+
+<p class="mb-0 text-muted connect-status">
+
+Connected
+
+</p>
+
+</div>
+
+<button class="btn btn-outline-danger btn-sm connect-toggle-btn">
+
+Disconnect
+
+</button>
+
+</div>
+
+<hr>
+
+<div class="setting-row" id="githubConnectRow">
+
+<div>
+
+<i class="fa-brands fa-github"></i>
+
+<strong> GitHub </strong>
+
+<p class="mb-0 text-muted connect-status">
+
+Connected
+
+</p>
+
+</div>
+
+<button class="btn btn-outline-dark btn-sm connect-toggle-btn">
+
+Disconnect
+
+</button>
+
+</div>
+
+<hr>
+
+<div class="setting-row" id="microsoftConnectRow">
+
+<div>
+
+<i class="fa-brands fa-microsoft text-primary"></i>
+
+<strong> Microsoft </strong>
+
+<p class="mb-0 text-muted connect-status">
+
+Not Connected
+
+</p>
+
+</div>
+
+<button class="btn btn-primary btn-sm connect-toggle-btn">
+
+Connect
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+
+
+<!-- ================= HELP & SUPPORT ================= -->
+
+<div class="col-lg-6">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-headset"></i>
+
+Help & Support
+
+</h4>
+
+<p>
+
+Need assistance?
+
+</p>
+
+</div>
+
+</div>
+
+<div class="list-group">
+
+<a href="#" class="list-group-item list-group-item-action">
+
+<i class="fa-solid fa-circle-question me-2"></i>
+
+Frequently Asked Questions
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action">
+
+<i class="fa-solid fa-book me-2"></i>
+
+Student Guide
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action">
+
+<i class="fa-solid fa-bug me-2"></i>
+
+Report a Bug
+
+</a>
+
+<a href="#" class="list-group-item list-group-item-action">
+
+<i class="fa-solid fa-envelope me-2"></i>
+
+Contact Teacher / Admin
+
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                LOGIN ACTIVITY
+========================================================== -->
+
+<section class="mt-4">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-clock-rotate-left"></i>
+
+Recent Login Activity
+
+</h4>
+
+<p>
+
+Monitor account access
+
+</p>
+
+</div>
+
+</div>
+
+<div class="table-responsive">
+
+<table class="table">
+
+<thead>
+
+<tr>
+
+<th>Device</th>
+
+<th>Location</th>
+
+<th>Date</th>
+
+<th>Status</th>
+
+<th></th>
+
+</tr>
+
+</thead>
+
+<tbody id="loginActivityBody">
+
+<!-- Injected by JS -->
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                PRIVACY SETTINGS
+========================================================== -->
+
+<section class="mt-4 mb-5">
+
+<div class="dashboard-card">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4>
+
+<i class="fa-solid fa-user-shield"></i>
+
+Privacy
+
+</h4>
+
+<p>
+
+Control your privacy options
+
+</p>
+
+</div>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+data-setting="showProfile"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Show Profile to Classmates & Teachers
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+data-setting="allowDirectMessage"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Allow Classmates to Message Directly
+
+</label>
+
+</div>
+
+<div class="form-check form-switch mb-3">
+
+<input class="form-check-input setting-toggle"
+data-setting="displayEmail"
+type="checkbox">
+
+<label class="form-check-label">
+
+Display Email Address
+
+</label>
+
+</div>
+
+<div class="form-check form-switch">
+
+<input class="form-check-input setting-toggle"
+data-setting="promoEmails"
+checked
+type="checkbox">
+
+<label class="form-check-label">
+
+Receive Promotional Emails
+
+</label>
+
+</div>
+
+</div>
+
+</section>
+<!-- ==========================================================
+                DANGER ZONE
+========================================================== -->
+
+<section class="mt-4 mb-5">
+
+<div class="dashboard-card border border-danger">
+
+<div class="card-header-custom">
+
+<div>
+
+<h4 class="text-danger">
+
+<i class="fa-solid fa-triangle-exclamation"></i>
+
+Danger Zone
+
+</h4>
+
+<p>
+
+These actions are irreversible. Please proceed carefully.
+
+</p>
+
+</div>
+
+</div>
+
+<div class="row g-4">
+
+<div class="col-lg-6">
+
+<div class="danger-card">
+
+<h5>
+
+<i class="fa-solid fa-right-from-bracket"></i>
+
+Logout from All Devices
+
+</h5>
+
+<p>
+
+Sign out your account from every logged-in device for security.
+
+</p>
+
+<button class="btn btn-warning" id="logoutAllBtn">
+
+Logout Everywhere
+
+</button>
+
+</div>
+
+</div>
+
+<div class="col-lg-6">
+
+<div class="danger-card">
+
+<h5>
+
+<i class="fa-solid fa-trash"></i>
+
+Delete Account
+
+</h5>
+
+<p>
+
+Deleting your account will permanently remove your enrolled
+courses, submissions, quizzes and dashboard data.
+
+</p>
+
+<button class="btn btn-danger" id="deleteAccountBtn" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+
+Delete Account
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                SAVE SETTINGS
+========================================================== -->
+
+<section class="mb-5">
+
+<div class="dashboard-card">
+
+<div class="row align-items-center">
+
+<div class="col-lg-8">
+
+<h4>
+
+Save All Changes
+
+</h4>
+
+<p>
+
+Apply all updated settings to your EduVerse Student Dashboard.
+
+</p>
+
+</div>
+
+<div class="col-lg-4 text-lg-end">
+
+<button class="btn btn-success btn-lg me-2" id="saveAllBtn">
+
+<i class="fa-solid fa-floppy-disk"></i>
+
+Save Changes
+
+</button>
+
+<button class="btn btn-outline-secondary btn-lg" id="resetSettingsBtn">
+
+Reset
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+
+
+<!-- ==========================================================
+                FOOTER
+========================================================== -->
+
+<footer class="dashboard-footer">
+
+<div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
+
+<p class="mb-2 mb-lg-0">
+
+© 2026 EduVerse Student Dashboard. All Rights Reserved.
+
+</p>
+
+<div>
+
+<a href="#" class="me-3 text-decoration-none">
+
+Privacy Policy
+
+</a>
+
+<a href="#" class="me-3 text-decoration-none">
+
+Terms
+
+</a>
+
+<a href="#" class="text-decoration-none">
+
+Help Center
+
+</a>
+
+</div>
+
+</div>
+
+</footer>
+
+
+
+
+
+</main>
+
+</div>
+
+<!-- ==========================================================
+                DELETE ACCOUNT CONFIRM MODAL
+========================================================== -->
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-hidden="true">
+
+  <div class="modal-dialog modal-dialog-centered">
+
+    <div class="modal-content">
+
+      <div class="modal-header">
+
+        <h5 class="modal-title text-danger">
+
+          <i class="fa-solid fa-triangle-exclamation"></i>
+
+          Confirm Account Deletion
+
+        </h5>
+
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+
+      </div>
+
+      <div class="modal-body">
+
+        <p>
+
+          This will permanently delete your account, enrolled courses, submissions, quizzes and all dashboard data. This action cannot be undone.
+
+        </p>
+
+        <label class="form-label">Type <strong>DELETE</strong> to confirm</label>
+
+        <input type="text" class="form-control" id="deleteConfirmInput" placeholder="DELETE">
+
+      </div>
+
+      <div class="modal-footer">
+
+        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+
+        <button type="button" class="btn btn-danger" id="confirmDeleteBtn" disabled>Delete My Account</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Chart.js -->
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Main JS -->
+
+<script src="../java/settings.js"></script>
+
+</body>
+
+</html>

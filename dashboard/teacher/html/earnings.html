@@ -1,0 +1,2528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>EduVerse | Earnings</title>
+
+
+
+
+<!-- Google Font -->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+rel="stylesheet">
+
+
+
+
+
+
+<!-- Bootstrap -->
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+
+
+
+
+
+<!-- Font Awesome -->
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+
+
+
+
+
+<!-- Custom CSS -->
+
+<link rel="stylesheet" href="../css/style.css">
+
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="dashboard-wrapper">
+
+
+
+
+
+
+<!-- ==================================================
+                    SIDEBAR START
+================================================== -->
+
+
+<aside class="sidebar">
+
+
+
+<div class="logo-area">
+
+
+<div class="logo-icon">
+
+
+<i class="fa-solid fa-graduation-cap"></i>
+
+
+</div>
+
+
+
+<div class="logo-text">
+
+
+<h2>
+
+EduVerse
+
+</h2>
+
+
+<p>
+
+Teacher Dashboard
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<nav class="sidebar-menu">
+
+
+<ul>
+
+
+
+<li>
+
+<a href="dashboard.html">
+
+
+<i class="fa-solid fa-house"></i>
+
+
+Dashboard
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="courses.html">
+
+
+<i class="fa-solid fa-book-open"></i>
+
+
+Courses
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="students.html">
+
+
+<i class="fa-solid fa-users"></i>
+
+
+Students
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="student-progress.html">
+
+
+<i class="fa-solid fa-chart-line"></i>
+
+
+Student Progress
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="assignments.html">
+
+
+<i class="fa-solid fa-file-lines"></i>
+
+
+Assignments
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="quizzes.html">
+
+
+<i class="fa-solid fa-clipboard-question"></i>
+
+
+Quizzes
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+<li>
+
+<a href="messages.html">
+
+
+<i class="fa-solid fa-envelope"></i>
+
+
+Messages
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+<li class="active">
+
+
+<a href="earnings.html">
+
+
+<i class="fa-solid fa-wallet"></i>
+
+
+Earnings
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+
+<li>
+
+<a href="profile.html">
+
+
+<i class="fa-solid fa-user"></i>
+
+
+Profile
+
+
+</a>
+
+
+</li>
+
+
+
+
+
+
+
+<li>
+
+<a href="settings.html">
+
+
+<i class="fa-solid fa-gear"></i>
+
+
+Settings
+
+
+</a>
+
+
+</li>
+
+
+
+
+</ul>
+
+
+</nav>
+
+
+
+</aside>
+
+
+
+
+
+
+<!-- ==================================================
+                    SIDEBAR END
+================================================== -->
+
+
+
+
+
+
+
+
+
+<!-- ==================================================
+                    MAIN CONTENT START
+================================================== -->
+
+
+<main class="main-content">
+
+
+
+
+
+
+
+<!-- ==================================================
+                    TOP NAVBAR START
+================================================== -->
+
+
+<header class="top-navbar">
+
+
+
+
+
+<div class="navbar-left">
+
+
+
+<button class="menu-toggle">
+
+
+<i class="fa-solid fa-bars"></i>
+
+
+</button>
+
+
+
+
+
+
+<div class="search-box">
+
+
+
+<i class="fa-solid fa-search"></i>
+
+
+
+<input 
+type="search"
+placeholder="Search transactions...">
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="navbar-right">
+
+
+
+
+
+<div class="nav-icon">
+
+
+<i class="fa-solid fa-bell"></i>
+
+
+<span>
+
+5
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="teacher-profile">
+
+
+<img 
+src="https://i.pravatar.cc/100?img=15">
+
+
+
+
+
+<div>
+
+
+<h6>
+
+Usman Ali
+
+</h6>
+
+
+<small>
+
+Teacher
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+
+</header>
+<!-- ==========================================================
+                EARNINGS OVERVIEW START
+========================================================== -->
+
+
+<section class="stats-section mt-4">
+
+
+<div class="row g-4">
+
+
+
+
+
+<!-- TOTAL EARNINGS -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon green">
+
+
+<i class="fa-solid fa-dollar-sign"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2>
+
+$12,450
+
+</h2>
+
+
+<h5>
+
+Total Earnings
+
+</h5>
+
+
+<p class="success-text">
+
+
+<i class="fa-solid fa-arrow-up"></i>
+
+
+18% Growth
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- MONTHLY -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon purple">
+
+
+<i class="fa-solid fa-calendar"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2>
+
+$2,850
+
+</h2>
+
+
+<h5>
+
+This Month
+
+</h5>
+
+
+<p class="success-text">
+
+
+<i class="fa-solid fa-arrow-up"></i>
+
+
+12% Increase
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- PENDING -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon orange">
+
+
+<i class="fa-solid fa-clock"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2>
+
+$650
+
+</h2>
+
+
+<h5>
+
+Pending Payment
+
+</h5>
+
+
+<p class="warning-text">
+
+
+Processing
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- AVAILABLE -->
+
+
+<div class="col-xl-3 col-lg-6 col-md-6">
+
+
+<div class="stat-card">
+
+
+<div class="stat-icon blue">
+
+
+<i class="fa-solid fa-wallet"></i>
+
+
+</div>
+
+
+
+<div class="stat-info">
+
+
+<h2>
+
+$1,950
+
+</h2>
+
+
+<h5>
+
+Available Balance
+
+</h5>
+
+
+<p>
+
+
+Ready to withdraw
+
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                WITHDRAW CARD START
+========================================================== -->
+
+
+<section class="mt-4">
+
+
+<div class="dashboard-card withdraw-card">
+
+
+
+
+
+<div class="row align-items-center">
+
+
+
+
+
+<div class="col-lg-8">
+
+
+<h3>
+
+Withdraw Your Earnings
+
+</h3>
+
+
+
+<p>
+
+Transfer your available balance to your bank account.
+
+</p>
+
+
+
+
+<div class="withdraw-info">
+
+
+<div>
+
+
+<i class="fa-solid fa-building-columns"></i>
+
+
+<span>
+
+Bank Transfer
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+
+<i class="fa-solid fa-credit-card"></i>
+
+
+<span>
+
+Card Payment
+
+</span>
+
+
+</div>
+
+
+
+<div>
+
+
+<i class="fa-solid fa-mobile-screen"></i>
+
+
+<span>
+
+Mobile Wallet
+
+</span>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+
+
+<button class="btn btn-primary btn-lg">
+
+
+<i class="fa-solid fa-money-bill-transfer"></i>
+
+
+Withdraw Now
+
+
+</button>
+
+
+</div>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                COURSE REVENUE SUMMARY START
+========================================================== -->
+
+
+<section class="mt-4">
+
+
+<div class="dashboard-card">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Course Revenue
+
+</h4>
+
+
+<p>
+
+Income generated from each course
+
+</p>
+
+
+</div>
+
+
+
+<button class="btn btn-sm btn-outline-primary">
+
+
+View Details
+
+</button>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="revenue-list">
+
+
+
+
+
+<div class="revenue-item">
+
+
+<div>
+
+
+<h6>
+
+Web Development
+
+</h6>
+
+
+<small>
+
+120 Students
+
+</small>
+
+
+</div>
+
+
+
+
+<strong>
+
+$4,500
+
+</strong>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="revenue-item">
+
+
+<div>
+
+
+<h6>
+
+Python Programming
+
+</h6>
+
+
+<small>
+
+95 Students
+
+</small>
+
+
+</div>
+
+
+
+
+<strong>
+
+$3,200
+
+</strong>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="revenue-item">
+
+
+<div>
+
+
+<h6>
+
+UI / UX Design
+
+</h6>
+
+
+<small>
+
+80 Students
+
+</small>
+
+
+</div>
+
+
+
+
+<strong>
+
+$2,750
+
+</strong>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="revenue-item">
+
+
+<div>
+
+
+<h6>
+
+Database Management
+
+</h6>
+
+
+<small>
+
+60 Students
+
+</small>
+
+
+</div>
+
+
+
+
+<strong>
+
+$2,000
+
+</strong>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+<!-- ==========================================================
+                REVENUE ANALYTICS START
+========================================================== -->
+
+
+<section class="mt-5">
+
+
+<div class="row g-4">
+
+
+
+
+
+<!-- ================= REVENUE CHART ================= -->
+
+
+<div class="col-lg-8">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Revenue Analytics
+
+</h4>
+
+
+<p>
+
+Monthly earning performance
+
+</p>
+
+
+</div>
+
+
+
+
+
+<select class="form-select w-auto">
+
+
+<option>
+
+2026
+
+</option>
+
+
+<option>
+
+2025
+
+</option>
+
+
+</select>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="chart-container">
+
+
+<canvas id="revenueChart"></canvas>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- ================= FINANCIAL SUMMARY ================= -->
+
+
+<div class="col-lg-4">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Financial Summary
+
+</h4>
+
+
+<p>
+
+Current status
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-arrow-trend-up"></i>
+
+
+<span>
+
+Revenue Growth
+
+</span>
+
+
+</div>
+
+
+<strong>
+
++18%
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-users"></i>
+
+
+<span>
+
+New Students
+
+</span>
+
+
+</div>
+
+
+<strong>
+
++42
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-book"></i>
+
+
+<span>
+
+Course Sales
+
+</span>
+
+
+</div>
+
+
+<strong>
+
+85
+
+</strong>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="financial-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-star"></i>
+
+
+<span>
+
+Average Rating
+
+</span>
+
+
+</div>
+
+
+<strong>
+
+4.9
+
+</strong>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                INCOME VS EXPENSE START
+========================================================== -->
+
+
+<section class="mt-4">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Income & Expenses
+
+</h4>
+
+
+<p>
+
+Monthly financial comparison
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="row g-4">
+
+
+
+
+
+<div class="col-md-6">
+
+
+
+<div class="income-box">
+
+
+<i class="fa-solid fa-money-bill-trend-up"></i>
+
+
+<div>
+
+
+<h5>
+
+Total Income
+
+</h5>
+
+
+<h3>
+
+$12,450
+
+</h3>
+
+
+<p>
+
+From course enrollments
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="col-md-6">
+
+
+
+<div class="expense-box">
+
+
+<i class="fa-solid fa-arrow-down"></i>
+
+
+<div>
+
+
+<h5>
+
+Total Expenses
+
+</h5>
+
+
+<h3>
+
+$2,100
+
+</h3>
+
+
+<p>
+
+Platform & service charges
+
+</p>
+
+
+</div>
+
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                PAYMENT PERFORMANCE START
+========================================================== -->
+
+
+<section class="mt-4 mb-5">
+
+
+<div class="dashboard-card">
+
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Payment Performance
+
+</h4>
+
+
+<p>
+
+Student payment tracking
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Completed Payments
+
+</span>
+
+
+<strong>
+
+85%
+
+</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-success"
+style="width:85%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress mt-4">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Pending Payments
+
+</span>
+
+
+<strong>
+
+10%
+
+</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-warning"
+style="width:10%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="payment-progress mt-4">
+
+
+
+<div class="d-flex justify-content-between">
+
+
+<span>
+
+Failed Transactions
+
+</span>
+
+
+<strong>
+
+5%
+
+</strong>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div class="progress-bar bg-danger"
+style="width:5%">
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+</div>
+
+
+</section>
+<!-- ==========================================================
+                PAYMENT HISTORY START
+========================================================== -->
+
+
+<section class="dashboard-card mt-5">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Payment History
+
+</h4>
+
+
+<p>
+
+Recent student transactions
+
+</p>
+
+
+</div>
+
+
+
+
+<button class="btn btn-sm btn-outline-primary">
+
+
+Download Report
+
+
+</button>
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="table-responsive">
+
+
+<table class="table earnings-table">
+
+
+<thead>
+
+
+<tr>
+
+
+<th>
+
+Student
+
+</th>
+
+
+<th>
+
+Course
+
+</th>
+
+
+<th>
+
+Amount
+
+</th>
+
+
+<th>
+
+Date
+
+</th>
+
+
+<th>
+
+Status
+
+</th>
+
+
+</tr>
+
+
+</thead>
+
+
+
+
+
+<tbody>
+
+
+
+<tr>
+
+
+<td>
+
+
+<div class="student-payment">
+
+
+<img src="https://i.pravatar.cc/50?img=12">
+
+
+<span>
+
+Ali Khan
+
+</span>
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+<td>
+
+Web Development
+
+</td>
+
+
+
+
+
+<td>
+
+$120
+
+</td>
+
+
+
+
+
+<td>
+
+20 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+<span class="badge bg-success">
+
+Completed
+
+</span>
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<div class="student-payment">
+
+
+<img src="https://i.pravatar.cc/50?img=32">
+
+
+<span>
+
+Sara Ahmed
+
+</span>
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+<td>
+
+Python Programming
+
+</td>
+
+
+
+
+
+<td>
+
+$150
+
+</td>
+
+
+
+
+
+<td>
+
+18 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+<span class="badge bg-warning text-dark">
+
+Pending
+
+</span>
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<div class="student-payment">
+
+
+<img src="https://i.pravatar.cc/50?img=45">
+
+
+<span>
+
+Ahmed Raza
+
+</span>
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+<td>
+
+UI / UX Design
+
+</td>
+
+
+
+
+
+<td>
+
+$100
+
+</td>
+
+
+
+
+
+<td>
+
+15 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+<span class="badge bg-success">
+
+Completed
+
+</span>
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+
+
+<tr>
+
+
+<td>
+
+
+<div class="student-payment">
+
+
+<img src="https://i.pravatar.cc/50?img=50">
+
+
+<span>
+
+Fatima Noor
+
+</span>
+
+
+</div>
+
+
+</td>
+
+
+
+
+
+<td>
+
+Database Management
+
+</td>
+
+
+
+
+
+<td>
+
+$90
+
+</td>
+
+
+
+
+
+<td>
+
+10 July 2026
+
+</td>
+
+
+
+
+
+<td>
+
+<span class="badge bg-danger">
+
+Failed
+
+</span>
+
+</td>
+
+
+
+</tr>
+
+
+
+
+
+</tbody>
+
+
+</table>
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                WITHDRAWAL HISTORY START
+========================================================== -->
+
+
+<section class="dashboard-card mt-4 mb-5">
+
+
+<div class="card-header-custom">
+
+
+<div>
+
+
+<h4>
+
+Withdrawal History
+
+</h4>
+
+
+<p>
+
+Your previous withdrawals
+
+</p>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+<div class="withdraw-history">
+
+
+
+
+
+
+<div class="withdraw-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-building-columns"></i>
+
+
+<div>
+
+
+<h6>
+
+Bank Transfer
+
+</h6>
+
+
+<small>
+
+15 July 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+
+<strong>
+
+$1000
+
+</strong>
+
+
+
+<span class="badge bg-success">
+
+Paid
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="withdraw-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-wallet"></i>
+
+
+<div>
+
+
+<h6>
+
+Mobile Wallet
+
+</h6>
+
+
+<small>
+
+01 July 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+
+<strong>
+
+$500
+
+</strong>
+
+
+
+<span class="badge bg-warning text-dark">
+
+Processing
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<div class="withdraw-item">
+
+
+<div>
+
+
+<i class="fa-solid fa-credit-card"></i>
+
+
+<div>
+
+
+<h6>
+
+Card Payment
+
+</h6>
+
+
+<small>
+
+20 June 2026
+
+</small>
+
+
+</div>
+
+
+</div>
+
+
+
+<strong>
+
+$800
+
+</strong>
+
+
+
+<span class="badge bg-success">
+
+Completed
+
+</span>
+
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+</section>
+
+
+
+
+
+
+
+
+
+<!-- ==========================================================
+                    FOOTER START
+========================================================== -->
+
+
+<footer class="dashboard-footer">
+
+
+<p>
+
+© 2026 EduVerse Teacher Dashboard.
+All Rights Reserved.
+
+</p>
+
+
+</footer>
+
+
+
+
+
+
+
+</main>
+
+
+</div>
+
+
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+
+<script src="../java/earnings.js"></script>
+
+
+
+
+</body>
+
+
+</html>

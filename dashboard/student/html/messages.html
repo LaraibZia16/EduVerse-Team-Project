@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+```
+<title>EduVerse | Messages</title>
+
+<!-- Google Font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+<!-- Bootstrap -->
+<link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+
+<!-- Font Awesome -->
+<link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+<!-- Existing EduVerse CSS -->
+<link rel="stylesheet" href="../css/style.css">
+
+<style>
+    /* ==========================================================
+       STUDENT MESSAGES
+       Uses the same EduVerse design language
+    ========================================================== */
+
+    .messages-section {
+        padding-bottom: 30px;
+    }
+
+    .messages-wrapper {
+        display: flex;
+        height: 680px;
+        min-height: 500px;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    /* ================= CONTACT LIST ================= */
+
+    .conversation-list {
+        width: 340px;
+        min-width: 340px;
+        background: #fff;
+        border-right: 1px solid #e9ecef;
+        overflow-y: auto;
+    }
+
+    .message-header {
+        padding: 24px 22px 15px;
+    }
+
+    .message-header h4 {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .message-header p {
+        margin: 5px 0 0;
+        color: #8d99ae;
+        font-size: 13px;
+    }
+
+    .message-search {
+        position: relative;
+        padding: 0 18px 18px;
+    }
+
+    .message-search i {
+        position: absolute;
+        left: 32px;
+        top: 13px;
+        color: #8d99ae;
+    }
+
+    .message-search input {
+        width: 100%;
+        border: 1px solid #e5e7eb;
+        border-radius: 10px;
+        padding: 10px 12px 10px 38px;
+        outline: none;
+        font-size: 14px;
+    }
+
+    .message-search input:focus {
+        border-color: #6c63ff;
+        box-shadow: 0 0 0 3px rgba(108, 99, 255, .08);
+    }
+
+    .conversation {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 15px 18px;
+        cursor: pointer;
+        transition: .2s ease;
+        border-left: 3px solid transparent;
+    }
+
+    .conversation:hover {
+        background: #f8f9ff;
+    }
+
+    .conversation.active {
+        background: #f2f1ff;
+        border-left-color: #6c63ff;
+    }
+
+    .conversation img {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        object-fit: cover;
+        flex-shrink: 0;
+    }
+
+    .conversation-info {
+        min-width: 0;
+        flex: 1;
+    }
+
+    .conversation-info h6 {
+        margin: 0 0 4px;
+        font-weight: 600;
+        color: #212529;
+    }
+
+    .conversation-info p {
+        margin: 0;
+        color: #8d99ae;
+        font-size: 12px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .conversation-info small {
+        display: block;
+        color: #adb5bd;
+        margin-top: 3px;
+        font-size: 10px;
+    }
+
+    .online-dot {
+        width: 9px;
+        height: 9px;
+        background: #2a9d8f;
+        border-radius: 50%;
+        position: absolute;
+        left: 53px;
+        bottom: 15px;
+        border: 2px solid #fff;
+    }
+
+    .unread-badge {
+        min-width: 20px;
+        height: 20px;
+        padding: 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #6c63ff;
+        color: #fff;
+        font-size: 10px;
+        font-weight: 700;
+    }
+
+    /* ================= CHAT AREA ================= */
+
+    .chat-area {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+        background: #fff;
+    }
+
+    .chat-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 18px 22px;
+        border-bottom: 1px solid #e9ecef;
+        background: #fff;
+    }
+
+    .chat-header img {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .chat-header h5 {
+        margin: 0;
+        font-weight: 700;
+    }
+
+    .chat-header span {
+        font-size: 12px;
+        color: #2a9d8f;
+    }
+
+    .chat-actions {
+        display: flex;
+        gap: 7px;
+    }
+
+    .chat-actions .btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+    }
+
+    /* ================= CHAT BODY ================= */
+
+    .chat-body {
+        flex: 1;
+        padding: 25px;
+        overflow-y: auto;
+        background: #f8f9fc;
+    }
+
+    .message {
+        max-width: 70%;
+        margin-bottom: 16px;
+        padding: 11px 15px;
+        border-radius: 14px;
+        position: relative;
+        word-wrap: break-word;
+    }
+
+    .message p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .message small {
+        display: block;
+        margin-top: 5px;
+        font-size: 10px;
+        opacity: .65;
+    }
+
+    .message.received {
+        margin-right: auto;
+        background: #fff;
+        border: 1px solid #e8e8ef;
+        border-bottom-left-radius: 4px;
+    }
+
+    .message.sent {
+        margin-left: auto;
+        background: #6c63ff;
+        color: #fff;
+        border-bottom-right-radius: 4px;
+    }
+
+    .message.sent small {
+        text-align: right;
+    }
+
+    .attachment-message {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    /* ================= INPUT ================= */
+
+    .chat-input {
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 14px 18px;
+        background: #fff;
+        border-top: 1px solid #e9ecef;
+    }
+
+    .chat-input input {
+        flex: 1;
+        min-width: 0;
+        border: 1px solid #e2e5eb;
+        border-radius: 10px;
+        padding: 11px 14px;
+        outline: none;
+    }
+
+    .chat-input input:focus {
+        border-color: #6c63ff;
+        box-shadow: 0 0 0 3px rgba(108, 99, 255, .08);
+    }
+
+    .chat-input .btn {
+        width: 42px;
+        height: 42px;
+        flex-shrink: 0;
+        border-radius: 10px;
+    }
+
+    /* ================= EMPTY STATE ================= */
+
+    .empty-chat {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #8d99ae;
+    }
+
+    .empty-chat i {
+        font-size: 45px;
+        margin-bottom: 15px;
+        opacity: .45;
+    }
+
+    /* ================= RESPONSIVE ================= */
+
+    @media (max-width: 992px) {
+
+        .messages-wrapper {
+            height: calc(100vh - 150px);
+            min-height: 520px;
+        }
+
+        .conversation-list {
+            width: 300px;
+            min-width: 300px;
+        }
+    }
+
+    @media (max-width: 768px) {
+
+        .messages-wrapper {
+            height: calc(100vh - 125px);
+            min-height: 500px;
+            position: relative;
+        }
+
+        .conversation-list {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        .chat-area {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+            z-index: 5;
+        }
+
+        .messages-wrapper.mobile-chat-open .conversation-list {
+            display: none;
+        }
+
+        .messages-wrapper.mobile-chat-open .chat-area {
+            display: flex;
+        }
+
+        .mobile-back-btn {
+            display: inline-flex !important;
+        }
+
+        .chat-header {
+            padding: 12px 14px;
+        }
+
+        .chat-header img {
+            width: 42px;
+            height: 42px;
+        }
+
+        .chat-actions .btn {
+            width: 36px;
+            height: 36px;
+        }
+
+        .chat-body {
+            padding: 18px 12px;
+        }
+
+        .message {
+            max-width: 82%;
+        }
+
+        .chat-input {
+            padding: 10px;
+        }
+    }
+
+    .mobile-back-btn {
+        display: none;
+    }
+</style>
+```
+
+</head>
+
+<body>
+
+<div class="dashboard-wrapper">
+
+```
+<!-- ================= SIDEBAR ================= -->
+
+<aside class="sidebar">
+
+    <div class="logo-area">
+
+        <div class="logo-icon">
+            <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+
+        <div class="logo-text">
+            <h2>EduVerse</h2>
+            <p>Student Dashboard</p>
+        </div>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <ul>
+
+            <li>
+                <a href="dashboard.html">
+                    <i class="fa-solid fa-house"></i>
+                    Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="courses.html">
+                    <i class="fa-solid fa-book"></i>
+                    My Courses
+                </a>
+            </li>
+
+            <li>
+                <a href="assignments.html">
+                    <i class="fa-solid fa-file"></i>
+                    Assignments
+                </a>
+            </li>
+
+            <li>
+                <a href="quizzes.html">
+                    <i class="fa-solid fa-circle-question"></i>
+                    Quizzes
+                </a>
+            </li>
+
+            <li>
+                <a href="progress.html">
+                    <i class="fa-solid fa-chart-line"></i>
+                    My Progress
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="messages.html">
+                    <i class="fa-solid fa-envelope"></i>
+                    Messages
+                </a>
+            </li>
+
+            <li>
+                <a href="certificates.html">
+                    <i class="fa-solid fa-certificate"></i>
+                    Certificates
+                </a>
+            </li>
+
+            <li>
+                <a href="profile.html">
+                    <i class="fa-solid fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+            <li>
+                <a href="settings.html">
+                    <i class="fa-solid fa-gear"></i>
+                    Settings
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</aside>
+
+<!-- ================= MAIN CONTENT ================= -->
+
+<main class="main-content">
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header class="top-navbar">
+
+        <div class="navbar-left">
+
+            <button class="menu-toggle" type="button">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="search-box">
+
+                <i class="fa-solid fa-search"></i>
+
+                <input
+                    type="search"
+                    placeholder="Search messages..."
+                    aria-label="Search messages">
+
+            </div>
+
+        </div>
+
+        <div class="navbar-right">
+
+            <div class="nav-icon" id="notificationBell">
+
+                <i class="fa-solid fa-bell"></i>
+
+                <span id="notificationCount">3</span>
+
+            </div>
+
+            <div class="teacher-profile">
+
+                <img
+                    src="https://i.pravatar.cc/100?img=47"
+                    alt="Student profile">
+
+                <div>
+                    <h6>Fatima Noor</h6>
+                    <small>Student</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </header>
+
+    <!-- ================= MESSAGES ================= -->
+
+    <section class="messages-section mt-4">
+
+        <div class="dashboard-card">
+
+            <div class="messages-wrapper" id="messagesWrapper">
+
+                <!-- ================= CONVERSATION LIST ================= -->
+
+                <div class="conversation-list">
+
+                    <div class="message-header">
+
+                        <h4>Messages</h4>
+
+                        <p>Communicate with your teachers</p>
+
+                    </div>
+
+                    <div class="message-search">
+
+                        <i class="fa-solid fa-search"></i>
+
+                        <input
+                            type="text"
+                            id="studentSearch"
+                            placeholder="Search teachers..."
+                            aria-label="Search teachers">
+
+                    </div>
+
+                    <!-- Teacher 1 -->
+
+                    <div
+                        class="conversation active"
+                        data-contact="Dr. Ahmed Khan">
+
+                        <img
+                            src="https://i.pravatar.cc/60?img=11"
+                            alt="Dr. Ahmed Khan">
+
+                        <div class="conversation-info">
+
+                            <h6>Dr. Ahmed Khan</h6>
+
+                            <p>Send your JavaScript question.</p>
+
+                            <small>2 min ago</small>
+
+                        </div>
+
+                        <span class="online-dot"></span>
+
+                        <span class="unread-badge">2</span>
+
+                    </div>
+
+                    <!-- Teacher 2 -->
+
+                    <div
+                        class="conversation"
+                        data-contact="Sara Malik">
+
+                        <img
+                            src="https://i.pravatar.cc/60?img=44"
+                            alt="Sara Malik">
+
+                        <div class="conversation-info">
+
+                            <h6>Sara Malik</h6>
+
+                            <p>Review the Python lecture.</p>
+
+                            <small>15 min ago</small>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Teacher 3 -->
+
+                    <div
+                        class="conversation"
+                        data-contact="Usman Ali">
+
+                        <img
+                            src="https://i.pravatar.cc/60?img=15"
+                            alt="Usman Ali">
+
+                        <div class="conversation-info">
+
+                            <h6>Usman Ali</h6>
+
+                            <p>Your assignment has been reviewed.</p>
+
+                            <small>1 hour ago</small>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Teacher 4 -->
+
+                    <div
+                        class="conversation"
+                        data-contact="Ayesha Noor">
+
+                        <img
+                            src="https://i.pravatar.cc/60?img=49"
+                            alt="Ayesha Noor">
+
+                        <div class="conversation-info">
+
+                            <h6>Ayesha Noor</h6>
+
+                            <p>Let me know if you need help.</p>
+
+                            <small>Yesterday</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!-- ================= CHAT AREA ================= -->
+
+                <div class="chat-area">
+
+                    <div class="chat-header">
+
+                        <div class="d-flex align-items-center gap-3">
+
+                            <button
+                                class="btn btn-light mobile-back-btn"
+                                id="mobileBackBtn"
+                                type="button">
+
+                                <i class="fa-solid fa-arrow-left"></i>
+
+                            </button>
+
+                            <img
+                                id="chatAvatar"
+                                src="https://i.pravatar.cc/60?img=11"
+                                alt="Teacher">
+
+                            <div>
+
+                                <h5 id="chatName">
+                                    Dr. Ahmed Khan
+                                </h5>
+
+                                <span id="chatStatus">
+                                    Online
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <div class="chat-actions">
+
+                            <button
+                                class="btn btn-light"
+                                id="callBtn"
+                                type="button"
+                                title="Voice call">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                            </button>
+
+                            <button
+                                class="btn btn-light"
+                                id="videoBtn"
+                                type="button"
+                                title="Video call">
+
+                                <i class="fa-solid fa-video"></i>
+
+                            </button>
+
+                            <button
+                                class="btn btn-light"
+                                id="optionsBtn"
+                                type="button"
+                                title="More options">
+
+                                <i class="fa-solid fa-ellipsis"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div
+                        class="chat-body"
+                        id="chatBody">
+                    </div>
+
+                    <div class="chat-input">
+
+                        <button
+                            class="btn btn-light"
+                            id="attachmentBtn"
+                            type="button"
+                            title="Attach file">
+
+                            <i class="fa-solid fa-paperclip"></i>
+
+                        </button>
+
+                        <input
+                            type="text"
+                            id="messageInput"
+                            placeholder="Type a message..."
+                            autocomplete="off"
+                            aria-label="Type a message">
+
+                        <button
+                            class="btn btn-primary"
+                            id="sendBtn"
+                            type="button"
+                            title="Send message">
+
+                            <i class="fa-solid fa-paper-plane"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+```
+
+</div>
+
+<!-- Bootstrap JS -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+<!-- Student Messages JS -->
+
+<script src="../java/messages.js"></script>
+</body>
+
+</html>
