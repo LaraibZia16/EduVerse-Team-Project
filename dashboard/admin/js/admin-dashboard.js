@@ -1,3 +1,186 @@
+/* ==========================================================
+        START - FIREBASE ADMIN SECURITY
+========================================================== */
+
+import {
+    auth,
+    db
+} from "../../../assets/js/firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+
+document.documentElement.style.visibility =
+    "hidden";
+
+
+/* ==========================================================
+        ADMIN AUTH PROTECTION
+========================================================== */
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        window.location.replace(
+            "../../../login.html"
+        );
+
+        return;
+    }
+
+
+    try {
+
+        const userSnapshot =
+            await getDoc(
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                )
+            );
+
+
+        if (!userSnapshot.exists()) {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        const userData =
+            userSnapshot.data();
+
+
+        if (userData.role !== "admin") {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        document.documentElement.style.visibility =
+            "visible";
+
+
+    } catch (error) {
+
+        console.error(
+            "Admin Authentication Error:",
+            error
+        );
+
+
+        try {
+
+            await signOut(auth);
+
+        } catch (signOutError) {
+
+            console.error(
+                "Sign Out Error:",
+                signOutError
+            );
+
+        }
+
+
+        window.location.replace(
+            "../../../login.html"
+        );
+
+    }
+
+});
+
+
+/* ==========================================================
+        ADMIN FIREBASE LOGOUT
+========================================================== */
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async (e) => {
+
+            e.preventDefault();
+
+
+            try {
+
+                logoutBtn.style.pointerEvents =
+                    "none";
+
+                logoutBtn.textContent =
+                    "Logging Out...";
+
+
+                /* Firebase Sign Out */
+
+                await signOut(auth);
+
+
+                /* Open Logout Success Page */
+
+                window.location.replace(
+                    "../../../logout.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Admin Logout Error:",
+                    error
+                );
+
+
+                logoutBtn.style.pointerEvents =
+                    "";
+
+                logoutBtn.textContent =
+                    "Logout";
+
+
+                alert(
+                    "Unable to logout. Please try again."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+        END - FIREBASE ADMIN SECURITY
+========================================================== */
+
 "use strict";
 
 /* =========================================================

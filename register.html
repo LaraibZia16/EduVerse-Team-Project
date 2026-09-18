@@ -6,28 +6,21 @@
 
     <meta charset="UTF-8">
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Register | EduVerse</title>
 
     <!-- Bootstrap -->
 
-    <link
-        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Font Awesome -->
 
-    <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 
     <!-- Google Font -->
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
         rel="stylesheet">
 
     <!-- CSS -->
@@ -40,591 +33,519 @@
 
 <body>
 
-<section class="register-section">
+    <section class="register-section">
 
-    <div class="container">
+        <div class="container">
 
-        <!-- Back Home -->
+            <!-- Back Home -->
 
-        <div class="back-home-wrapper">
+            <div class="back-home-wrapper">
 
-            <a
-                href="index.html"
-                class="back-home">
+                <a href="index.html" class="back-home">
 
-                <i class="fa-solid fa-arrow-left"></i>
+                    <i class="fa-solid fa-arrow-left"></i>
 
-                Back To Home
+                    Back To Home
 
-            </a>
+                </a>
 
-        </div>
+            </div>
 
-        <!-- Logo -->
+            <!-- Logo -->
 
-        <div class="register-logo text-center">
+            <div class="register-logo text-center">
 
-            <a href="index.html">
+                <a href="index.html">
 
-                <img
-                    src="assets/images/logo/white-logo.png"
-                    alt="EduVerse Logo">
+                    <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo">
 
-            </a>
+                </a>
 
-            <p class="register-tagline">
+                <p class="register-tagline">
 
-                Join thousands of learners building their future with EduVerse.
+                    Join thousands of learners building their future with EduVerse.
 
-            </p>
+                </p>
 
-        </div>
+            </div>
 
-        <!-- Register Card -->
+            <!-- Register Card -->
 
-        <div class="register-card">
+            <div class="register-card">
 
-            <div class="row g-0">
+                <div class="row g-0">
 
-                <!-- Left -->
+                    <!-- Left -->
 
-                <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                    <div class="register-left">
+                        <div class="register-left">
 
-                        <span class="register-badge">
+                            <span class="register-badge">
 
-                            <i class="fa-solid fa-user-plus"></i>
+                                <i class="fa-solid fa-user-plus"></i>
 
-                            Join EduVerse
-
-                        </span>
-
-                        <h2>
-
-                            Create Your Account
-
-                        </h2>
-
-                        <p>
-
-                            Fill in your details to create your EduVerse account.
-
-                        </p>
-
-                        <p class="role-title">
-
-                            Choose Your Role
-
-                        </p>
-
-                        <div class="role-selector">
-
-                            <button
-                                type="button"
-                                class="role-btn active"
-                                data-role="student">
-
-                                <i class="fa-solid fa-user-graduate"></i>
-
-                                Student
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="role-btn"
-                                data-role="teacher">
-
-                                <i class="fa-solid fa-chalkboard-user"></i>
-
-                                Teacher
-
-                            </button>
-
-                            <button
-                                type="button"
-                                class="role-btn"
-                                data-role="admin">
-
-                                <i class="fa-solid fa-user-shield"></i>
-
-                                Admin
-
-                            </button>
-
-                        </div>
-
-                        <form id="registerForm" novalidate>
-
-                            <!-- Full Name -->
-
-                            <div class="mb-3">
-
-                                <label for="fullName">
-
-                                    Full Name
-
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-
-                                        <i class="fa-regular fa-user"></i>
-
-                                    </span>
-
-                                    <input
-                                        type="text"
-                                        id="fullName"
-                                        class="form-control"
-                                        placeholder="Enter your full name">
-
-                                </div>
-
-                                <small
-                                    id="nameError"
-                                    class="validation-message">
-
-                                </small>
-
-                            </div>
-
-                            <!-- Email -->
-
-                            <div class="mb-3">
-
-                                <label for="email">
-
-                                    Email Address
-
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-
-                                        <i class="fa-regular fa-envelope"></i>
-
-                                    </span>
-
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        class="form-control"
-                                        placeholder="Enter your email">
-
-                                </div>
-
-                                <small
-                                    id="emailError"
-                                    class="validation-message">
-
-                                </small>
-
-                            </div>
-
-                            <!-- Phone -->
-
-                            <div class="mb-3">
-
-                                <label for="phone">
-
-                                    Phone Number
-
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-
-                                        <i class="fa-solid fa-phone"></i>
-
-                                    </span>
-
-                                    <input
-                                        type="tel"
-                                        id="phone"
-                                        class="form-control"
-                                        maxlength="11"
-                                        placeholder="03XXXXXXXXX">
-
-                                </div>
-
-                                <small
-                                    id="phoneError"
-                                    class="validation-message">
-
-                                </small>
-
-                            </div>
-
-                            <!-- Password -->
-
-                            <div class="mb-3">
-
-                                <label for="password">
-
-                                    Password
-
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-
-                                        <i class="fa-solid fa-lock"></i>
-
-                                    </span>
-
-                                    <input
-                                        type="password"
-                                        id="password"
-                                        class="form-control"
-                                        placeholder="Create password">
-
-                                    <button
-                                        type="button"
-                                        class="password-toggle"
-                                        id="togglePassword">
-
-                                        <i class="fa-regular fa-eye"></i>
-
-                                    </button>
-
-                                </div>
-
-                                <small
-                                    id="passwordError"
-                                    class="validation-message">
-
-                                </small>
-
-                            </div>
-
-                            <!-- Confirm Password -->
-
-                            <div class="mb-3">
-
-                                <label for="confirmPassword">
-
-                                    Confirm Password
-
-                                </label>
-
-                                <div class="input-group">
-
-                                    <span class="input-group-text">
-
-                                        <i class="fa-solid fa-lock"></i>
-
-                                    </span>
-
-                                    <input
-                                        type="password"
-                                        id="confirmPassword"
-                                        class="form-control"
-                                        placeholder="Confirm your password">
-
-                                    <button
-                                        type="button"
-                                        class="password-toggle"
-                                        id="toggleConfirmPassword">
-
-                                        <i class="fa-regular fa-eye"></i>
-
-                                    </button>
-
-                                </div>
-
-                                <small
-                                    id="confirmPasswordError"
-                                    class="validation-message">
-
-                                </small>
-
-                            </div>
-                                                        <!-- Password Rules -->
-
-                            <div class="password-rules">
-
-                                <p id="ruleLength">
-
-                                    <i class="fa-solid fa-circle"></i>
-
-                                    At least 8 characters
-
-                                </p>
-
-                                <p id="ruleUpper">
-
-                                    <i class="fa-solid fa-circle"></i>
-
-                                    One uppercase letter
-
-                                </p>
-
-                                <p id="ruleLower">
-
-                                    <i class="fa-solid fa-circle"></i>
-
-                                    One lowercase letter
-
-                                </p>
-
-                                <p id="ruleNumber">
-
-                                    <i class="fa-solid fa-circle"></i>
-
-                                    One number
-
-                                </p>
-
-                                <p id="ruleSpecial">
-
-                                    <i class="fa-solid fa-circle"></i>
-
-                                    One special character
-
-                                </p>
-
-                            </div>
-
-                            <!-- Terms -->
-
-                            <div class="form-check terms-check">
-
-                                <input
-                                    class="form-check-input"
-                                    type="checkbox"
-                                    id="agreeTerms">
-
-                                <label
-                                    class="form-check-label"
-                                    for="agreeTerms">
-
-                                    I agree to the
-
-                                    <a href="#">
-
-                                        Terms & Conditions
-
-                                    </a>
-
-                                    and
-
-                                    <a href="#">
-
-                                        Privacy Policy
-
-                                    </a>
-
-                                </label>
-
-                            </div>
-
-                            <small
-                                id="termsError"
-                                class="terms-error">
-
-                            </small>
-
-                            <!-- Register Button -->
-
-                            <button
-                                type="submit"
-                                id="registerBtn"
-                                class="register-btn">
-
-                                Register Now
-
-                                <i class="fa-solid fa-arrow-right"></i>
-
-                            </button>
-
-                            <!-- Divider -->
-
-                            <div class="register-divider">
-
-                                <span>
-
-                                    OR
-
-                                </span>
-
-                            </div>
-
-                            <!-- Social Login -->
-
-                            <div class="social-login">
-
-                                <button
-                                    type="button"
-                                    class="social-btn">
-
-                                    <i class="fa-brands fa-google"></i>
-
-                                    Continue with Google
-
-                                </button>
-
-                                <button
-                                    type="button"
-                                    class="social-btn">
-
-                                    <i class="fa-brands fa-facebook-f"></i>
-
-                                    Continue with Facebook
-
-                                </button>
-
-                            </div>
-
-                            <!-- Login Link -->
-
-                            <div class="login-link">
-
-                                Already have an account?
-
-                                <a href="login.html">
-
-                                    Login
-
-                                </a>
-
-                            </div>
-
-                        </form>
-
-                    </div>
-
-                </div>
-
-                <!--==========================
-                        RIGHT SIDE
-                ===========================-->
-
-                <div class="col-lg-6">
-
-                    <div class="register-right">
-
-                        <span class="register-badge">
-
-                            <i class="fa-solid fa-graduation-cap"></i>
-
-                            Welcome to EduVerse
-
-                        </span>
-
-                        <h2>
-
-                            Start Your Journey With
-
-                            <span>
-
-                                EduVerse
+                                Join EduVerse
 
                             </span>
 
-                        </h2>
+                            <h2>
 
-                        <p>
+                                Create Your Account
 
-                            Learn new skills, connect with expert teachers, complete quizzes, submit assignments and earn certificates on one modern learning platform.
+                            </h2>
 
-                        </p>
+                            <p>
 
-                        <img
-                            src="assets/images/login/register.png"
-                            class="img-fluid register-image"
-                            alt="Register Illustration">
+                                Fill in your details to create your EduVerse account.
 
-                        <div class="register-features">
+                            </p>
 
-                            <div class="feature-card">
+                            <p class="role-title">
 
-                                <i class="fa-solid fa-book-open"></i>
+                                Choose Your Role
 
-                                <div>
+                            </p>
 
-                                    <h5>
+                            <div class="role-selector">
 
-                                        Interactive Courses
+                                <button type="button" class="role-btn active" data-role="student">
 
-                                    </h5>
+                                    <i class="fa-solid fa-user-graduate"></i>
 
-                                    <p>
+                                    Student
 
-                                        Learn with engaging video lessons and study materials.
+                                </button>
+
+                                <button type="button" class="role-btn" data-role="teacher">
+
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+
+                                    Teacher
+
+                                </button>
+
+                            </div>
+
+                            <form id="registerForm" novalidate>
+
+                                <!-- Full Name -->
+
+                                <div class="mb-3">
+
+                                    <label for="fullName">
+
+                                        Full Name
+
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+
+                                            <i class="fa-regular fa-user"></i>
+
+                                        </span>
+
+                                        <input type="text" id="fullName" class="form-control"
+                                            placeholder="Enter your full name">
+
+                                    </div>
+
+                                    <small id="nameError" class="validation-message">
+
+                                    </small>
+
+                                </div>
+
+                                <!-- Email -->
+
+                                <div class="mb-3">
+
+                                    <label for="email">
+
+                                        Email Address
+
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+
+                                            <i class="fa-regular fa-envelope"></i>
+
+                                        </span>
+
+                                        <input type="email" id="email" class="form-control"
+                                            placeholder="Enter your email">
+
+                                    </div>
+
+                                    <small id="emailError" class="validation-message">
+
+                                    </small>
+
+                                </div>
+
+                                <!-- Phone -->
+
+                                <div class="mb-3">
+
+                                    <label for="phone">
+
+                                        Phone Number
+
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+
+                                            <i class="fa-solid fa-phone"></i>
+
+                                        </span>
+
+                                        <input type="tel" id="phone" class="form-control" maxlength="11"
+                                            placeholder="03XXXXXXXXX">
+
+                                    </div>
+
+                                    <small id="phoneError" class="validation-message">
+
+                                    </small>
+
+                                </div>
+
+                                <!-- Password -->
+
+                                <div class="mb-3">
+
+                                    <label for="password">
+
+                                        Password
+
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+
+                                            <i class="fa-solid fa-lock"></i>
+
+                                        </span>
+
+                                        <input type="password" id="password" class="form-control"
+                                            placeholder="Create password">
+
+                                        <button type="button" class="password-toggle" id="togglePassword">
+
+                                            <i class="fa-regular fa-eye"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                    <small id="passwordError" class="validation-message">
+
+                                    </small>
+
+                                </div>
+
+                                <!-- Confirm Password -->
+
+                                <div class="mb-3">
+
+                                    <label for="confirmPassword">
+
+                                        Confirm Password
+
+                                    </label>
+
+                                    <div class="input-group">
+
+                                        <span class="input-group-text">
+
+                                            <i class="fa-solid fa-lock"></i>
+
+                                        </span>
+
+                                        <input type="password" id="confirmPassword" class="form-control"
+                                            placeholder="Confirm your password">
+
+                                        <button type="button" class="password-toggle" id="toggleConfirmPassword">
+
+                                            <i class="fa-regular fa-eye"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                    <small id="confirmPasswordError" class="validation-message">
+
+                                    </small>
+
+                                </div>
+                                <!-- Password Rules -->
+
+                                <div class="password-rules">
+
+                                    <p id="ruleLength">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        At least 8 characters
+
+                                    </p>
+
+                                    <p id="ruleUpper">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        One uppercase letter
+
+                                    </p>
+
+                                    <p id="ruleLower">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        One lowercase letter
+
+                                    </p>
+
+                                    <p id="ruleNumber">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        One number
+
+                                    </p>
+
+                                    <p id="ruleSpecial">
+
+                                        <i class="fa-solid fa-circle"></i>
+
+                                        One special character
 
                                     </p>
 
                                 </div>
 
-                            </div>
+                                <!-- Terms -->
 
-                            <div class="feature-card">
+                                <div class="form-check terms-check">
 
-                                <i class="fa-solid fa-users"></i>
+                                    <input class="form-check-input" type="checkbox" id="agreeTerms">
 
-                                <div>
+                                    <label class="form-check-label" for="agreeTerms">
 
-                                    <h5>
+                                        I agree to the
 
-                                        Expert Teachers
+                                        <a href="#">
 
-                                    </h5>
+                                            Terms & Conditions
 
-                                    <p>
+                                        </a>
 
-                                        Learn directly from experienced instructors.
+                                        and
 
-                                    </p>
+                                        <a href="#">
 
-                                </div>
+                                            Privacy Policy
 
-                            </div>
+                                        </a>
 
-                            <div class="feature-card">
-
-                                <i class="fa-solid fa-chart-line"></i>
-
-                                <div>
-
-                                    <h5>
-
-                                        Track Progress
-
-                                    </h5>
-
-                                    <p>
-
-                                        Monitor your learning journey with detailed progress reports.
-
-                                    </p>
+                                    </label>
 
                                 </div>
 
-                            </div>
+                                <small id="termsError" class="terms-error">
 
-                            <div class="feature-card">
+                                </small>
 
-                                <i class="fa-solid fa-award"></i>
+                                <!-- Register Button -->
 
-                                <div>
+                                <button type="submit" id="registerBtn" class="register-btn">
 
-                                    <h5>
+                                    Register Now
 
-                                        Earn Certificates
+                                    <i class="fa-solid fa-arrow-right"></i>
 
-                                    </h5>
+                                </button>
 
-                                    <p>
+                                <!-- Divider -->
 
-                                        Get certificates after successfully completing courses.
+                                <div class="register-divider">
 
-                                    </p>
+                                    <span>
+
+                                        OR
+
+                                    </span>
+
+                                </div>
+
+                                <!-- Start - Google Registration -->
+
+                                <div class="social-login">
+
+                                    <button type="button" class="social-btn" id="googleRegisterBtn">
+
+                                        <i class="fa-brands fa-google"></i>
+
+                                        Continue with Google
+
+                                    </button>
+
+                                </div>
+
+                                <!-- End - Google Registration -->
+
+                                <!-- Login Link -->
+
+                                <div class="login-link">
+
+                                    Already have an account?
+
+                                    <a href="login.html">
+
+                                        Login
+
+                                    </a>
+
+                                </div>
+
+                            </form>
+
+                        </div>
+
+                    </div>
+
+                    <!--==========================
+                        RIGHT SIDE
+                ===========================-->
+
+                    <div class="col-lg-6">
+
+                        <div class="register-right">
+
+                            <span class="register-badge">
+
+                                <i class="fa-solid fa-graduation-cap"></i>
+
+                                Welcome to EduVerse
+
+                            </span>
+
+                            <h2>
+
+                                Start Your Journey With
+
+                                <span>
+
+                                    EduVerse
+
+                                </span>
+
+                            </h2>
+
+                            <p>
+
+                                Learn new skills, connect with expert teachers, complete quizzes, submit assignments and
+                                earn certificates on one modern learning platform.
+
+                            </p>
+
+                            <img src="assets/images/login/register.png" class="img-fluid register-image"
+                                alt="Register Illustration">
+
+                            <div class="register-features">
+
+                                <div class="feature-card">
+
+                                    <i class="fa-solid fa-book-open"></i>
+
+                                    <div>
+
+                                        <h5>
+
+                                            Interactive Courses
+
+                                        </h5>
+
+                                        <p>
+
+                                            Learn with engaging video lessons and study materials.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="feature-card">
+
+                                    <i class="fa-solid fa-users"></i>
+
+                                    <div>
+
+                                        <h5>
+
+                                            Expert Teachers
+
+                                        </h5>
+
+                                        <p>
+
+                                            Learn directly from experienced instructors.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="feature-card">
+
+                                    <i class="fa-solid fa-chart-line"></i>
+
+                                    <div>
+
+                                        <h5>
+
+                                            Track Progress
+
+                                        </h5>
+
+                                        <p>
+
+                                            Monitor your learning journey with detailed progress reports.
+
+                                        </p>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="feature-card">
+
+                                    <i class="fa-solid fa-award"></i>
+
+                                    <div>
+
+                                        <h5>
+
+                                            Earn Certificates
+
+                                        </h5>
+
+                                        <p>
+
+                                            Get certificates after successfully completing courses.
+
+                                        </p>
+
+                                    </div>
 
                                 </div>
 
@@ -638,37 +559,35 @@
 
             </div>
 
+            <!-- Footer -->
+
+            <div class="register-footer">
+
+                <p>
+
+                    © 2026 EduVerse. All Rights Reserved.
+
+                </p>
+
+                <span>
+
+                    Empowering education for a better future.
+
+                </span>
+
+            </div>
+
         </div>
 
-        <!-- Footer -->
+    </section>
 
-        <div class="register-footer">
+    <!-- Bootstrap -->
 
-            <p>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-                © 2026 EduVerse. All Rights Reserved.
-
-            </p>
-
-            <span>
-
-                Empowering education for a better future.
-
-            </span>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- Bootstrap -->
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- JavaScript -->
-
-<script src="assets/js/register.js"></script>
+    <!-- Start - Register JavaScript -->
+    <script type="module" src="assets/js/register.js"></script>
+    <!-- End - Register JavaScript -->
 
 </body>
 

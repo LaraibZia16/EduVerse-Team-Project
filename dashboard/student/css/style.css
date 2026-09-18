@@ -34,7 +34,7 @@ body{
 :root{
 
     --primary:#6C63FF;
-    --primary-dark:#5b54e8;
+    --primary-dark:#0f0c44;
 
     --secondary:#8b85ff;
 
@@ -1685,7 +1685,7 @@ a:hover{
 
     width:280px;
 
-    background:linear-gradient(180deg,#6C5CE7,#5848dc);
+    background:linear-gradient(180deg,#180c6f,#291d95);
 
     color:#fff;
 

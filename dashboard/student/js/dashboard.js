@@ -1,7 +1,189 @@
 /* ==========================================================
-   EDUVERSE — STUDENT DASHBOARD JS
+        START - FIREBASE IMPORTS
+========================================================== */
+
+import {
+    auth,
+    db
+} from "../../../assets/js/firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+/* ==========================================================
+        END - FIREBASE IMPORTS
+========================================================== */
+
+
+/* ==========================================================
+        START - STUDENT AUTH PROTECTION
+========================================================== */
+
+onAuthStateChanged(auth, async (user) => {
+
+    /* User Not Logged In */
+
+    if (!user) {
+
+        window.location.replace(
+            "../../../login.html"
+        );
+
+        return;
+    }
+
+
+    try {
+
+        /* Get User Firestore Profile */
+
+        const userRef = doc(
+            db,
+            "users",
+            user.uid
+        );
+
+        const userSnapshot =
+            await getDoc(userRef);
+
+
+        /* Profile Not Found */
+
+        if (!userSnapshot.exists()) {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        const userData =
+            userSnapshot.data();
+
+
+        /* Student Role Protection */
+
+        if (userData.role !== "student") {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        console.log(
+            "Student dashboard access granted."
+        );
+
+
+    } catch (error) {
+
+        console.error(
+            "Student Authentication Error:",
+            error
+        );
+
+        await signOut(auth);
+
+        window.location.replace(
+            "../../../login.html"
+        );
+    }
+
+});
+
+/* ==========================================================
+        END - STUDENT AUTH PROTECTION
+========================================================== */
+
+
+/* ==========================================================
+        START - REAL FIREBASE LOGOUT
+========================================================== */
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async (e) => {
+
+            e.preventDefault();
+
+            try {
+
+                logoutBtn.style.pointerEvents =
+                    "none";
+
+                logoutBtn.innerHTML = `
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Logging Out...</span>
+                `;
+
+
+                /* Firebase Logout */
+
+                await signOut(auth);
+
+
+                /* Open Logout Success Page */
+
+                window.location.replace(
+                    "../../../logout.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Logout Error:",
+                    error
+                );
+
+                logoutBtn.style.pointerEvents =
+                    "";
+
+                logoutBtn.innerHTML = `
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                `;
+
+                alert(
+                    "Unable to logout. Please try again."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+        END - REAL FIREBASE LOGOUT
+========================================================== */
+
+
+/* ==========================================================
+   START - EDUVERSE STUDENT DASHBOARD
    Vanilla ES6, no framework, LocalStorage-backed dummy data.
-   No teacher-authority actions are exposed from this file.
 ========================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,192 +193,481 @@ document.addEventListener("DOMContentLoaded", () => {
     seedDummyData();
     animateStatCounters();
     initProgressChart();
-    document.getElementById("progressFilter")
-        ?.addEventListener("change", (e) => {
-            renderProgressChart(e.target.value);
-        });
+
+    document
+        .getElementById("progressFilter")
+        ?.addEventListener(
+            "change",
+            (e) => {
+
+                renderProgressChart(
+                    e.target.value
+                );
+
+            }
+        );
 
 });
 
+/* ==========================================================
+   END - EDUVERSE STUDENT DASHBOARD
+========================================================== */
+
 
 /* ==========================================================
-   SIDEBAR TOGGLE (mobile)
+        START - SIDEBAR TOGGLE
 ========================================================== */
 
 function initSidebarToggle() {
 
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const wrapper = document.querySelector(".dashboard-wrapper");
+    const toggleBtn =
+        document.querySelector(".menu-toggle");
 
-    if (!toggleBtn || !wrapper) return;
+    const wrapper =
+        document.querySelector(
+            ".dashboard-wrapper"
+        );
 
-    toggleBtn.addEventListener("click", () => {
-        wrapper.classList.toggle("sidebar-collapsed");
-    });
+    if (!toggleBtn || !wrapper) {
+        return;
+    }
+
+    toggleBtn.addEventListener(
+        "click",
+        () => {
+
+            wrapper.classList.toggle(
+                "sidebar-collapsed"
+            );
+
+        }
+    );
 
 }
 
+/* ==========================================================
+        END - SIDEBAR TOGGLE
+========================================================== */
+
 
 /* ==========================================================
-   ACTIVE NAV LINK HIGHLIGHTING
+        START - ACTIVE NAV LINK
 ========================================================== */
 
 function initActiveNavLink() {
 
-    const currentPage = window.location.pathname.split("/").pop() || "dashboard.html";
-    const navItems = document.querySelectorAll(".sidebar-menu ul li");
+    const currentPage =
+        window.location.pathname
+            .split("/")
+            .pop() || "dashboard.html";
+
+    const navItems =
+        document.querySelectorAll(
+            ".sidebar-menu ul li"
+        );
 
     navItems.forEach((li) => {
-        const link = li.querySelector("a");
-        if (!link) return;
 
-        const href = link.getAttribute("href");
-        li.classList.toggle("active", href === currentPage);
+        const link =
+            li.querySelector("a");
+
+        if (!link) {
+            return;
+        }
+
+        const href =
+            link.getAttribute("href");
+
+        li.classList.toggle(
+            "active",
+            href === currentPage
+        );
+
     });
 
 }
 
+/* ==========================================================
+        END - ACTIVE NAV LINK
+========================================================== */
+
 
 /* ==========================================================
-   DUMMY DATA SEEDING (LocalStorage)
-   Keeps this student's own data only — no other students'
-   private information is stored or exposed.
+        START - DUMMY DATA SEEDING
 ========================================================== */
 
 function seedDummyData() {
 
-    if (localStorage.getItem("eduverse_student_progress")) return;
+    if (
+        localStorage.getItem(
+            "eduverse_student_progress"
+        )
+    ) {
+        return;
+    }
 
     const progressData = {
+
         thisMonth: {
-            labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-            quizScores: [72, 78, 85, 90],
-            assignmentScores: [68, 75, 80, 88]
+
+            labels: [
+                "Week 1",
+                "Week 2",
+                "Week 3",
+                "Week 4"
+            ],
+
+            quizScores: [
+                72,
+                78,
+                85,
+                90
+            ],
+
+            assignmentScores: [
+                68,
+                75,
+                80,
+                88
+            ]
+
         },
+
         lastMonth: {
-            labels: ["Week 1", "Week 2", "Week 3", "Week 4"],
-            quizScores: [60, 65, 70, 74],
-            assignmentScores: [58, 62, 66, 70]
+
+            labels: [
+                "Week 1",
+                "Week 2",
+                "Week 3",
+                "Week 4"
+            ],
+
+            quizScores: [
+                60,
+                65,
+                70,
+                74
+            ],
+
+            assignmentScores: [
+                58,
+                62,
+                66,
+                70
+            ]
+
         },
+
         thisYear: {
-            labels: ["Jan", "Mar", "May", "Jul", "Aug"],
-            quizScores: [55, 62, 70, 80, 90],
-            assignmentScores: [50, 58, 65, 76, 88]
+
+            labels: [
+                "Jan",
+                "Mar",
+                "May",
+                "Jul",
+                "Aug"
+            ],
+
+            quizScores: [
+                55,
+                62,
+                70,
+                80,
+                90
+            ],
+
+            assignmentScores: [
+                50,
+                58,
+                65,
+                76,
+                88
+            ]
+
         }
+
     };
 
-    localStorage.setItem("eduverse_student_progress", JSON.stringify(progressData));
+
+    localStorage.setItem(
+        "eduverse_student_progress",
+        JSON.stringify(progressData)
+    );
 
 }
 
+/* ==========================================================
+        END - DUMMY DATA SEEDING
+========================================================== */
+
 
 /* ==========================================================
-   STAT CARD COUNT-UP ANIMATION
+        START - STAT COUNTERS
 ========================================================== */
 
 function animateStatCounters() {
 
     const counters = [
-        { id: "statEnrolledCourses", value: 8, suffix: "" },
-        { id: "statCompletedCourses", value: 5, suffix: "" },
-        { id: "statLecturesWatched", value: 84, suffix: "" },
-        { id: "statAssignmentsDue", value: 6, suffix: "" },
-        { id: "statOverallGrade", value: 92, suffix: "%" }
+
+        {
+            id: "statEnrolledCourses",
+            value: 8,
+            suffix: ""
+        },
+
+        {
+            id: "statCompletedCourses",
+            value: 5,
+            suffix: ""
+        },
+
+        {
+            id: "statLecturesWatched",
+            value: 84,
+            suffix: ""
+        },
+
+        {
+            id: "statAssignmentsDue",
+            value: 6,
+            suffix: ""
+        },
+
+        {
+            id: "statOverallGrade",
+            value: 92,
+            suffix: "%"
+        }
+
     ];
 
-    counters.forEach(({ id, value, suffix }) => {
 
-        const el = document.getElementById(id);
-        if (!el) return;
+    counters.forEach(
+        ({
+            id,
+            value,
+            suffix
+        }) => {
 
-        let current = 0;
-        const step = Math.max(1, Math.round(value / 30));
+            const el =
+                document.getElementById(id);
 
-        const timer = setInterval(() => {
-            current += step;
-
-            if (current >= value) {
-                current = value;
-                clearInterval(timer);
+            if (!el) {
+                return;
             }
 
-            el.textContent = current + suffix;
 
-        }, 20);
+            let current = 0;
 
-    });
+            const step =
+                Math.max(
+                    1,
+                    Math.round(value / 30)
+                );
+
+
+            const timer =
+                setInterval(() => {
+
+                    current += step;
+
+
+                    if (current >= value) {
+
+                        current = value;
+
+                        clearInterval(timer);
+
+                    }
+
+
+                    el.textContent =
+                        current + suffix;
+
+                }, 20);
+
+        }
+    );
 
 }
 
+/* ==========================================================
+        END - STAT COUNTERS
+========================================================== */
+
 
 /* ==========================================================
-   MY PROGRESS CHART (Chart.js)
+        START - PROGRESS CHART
 ========================================================== */
 
 let progressChartInstance = null;
 
+
 function initProgressChart() {
-    renderProgressChart("This Month");
+
+    renderProgressChart(
+        "This Month"
+    );
+
 }
+
 
 function renderProgressChart(rangeLabel) {
 
-    const canvas = document.getElementById("progressChart");
-    if (!canvas) return;
+    const canvas =
+        document.getElementById(
+            "progressChart"
+        );
 
-    const store = JSON.parse(localStorage.getItem("eduverse_student_progress") || "{}");
-
-    const rangeKeyMap = {
-        "This Month": "thisMonth",
-        "Last Month": "lastMonth",
-        "This Year": "thisYear"
-    };
-
-    const dataset = store[rangeKeyMap[rangeLabel] || "thisMonth"];
-    if (!dataset) return;
-
-    if (progressChartInstance) {
-        progressChartInstance.destroy();
+    if (!canvas) {
+        return;
     }
 
-    progressChartInstance = new Chart(canvas, {
-        type: "line",
-        data: {
-            labels: dataset.labels,
-            datasets: [
-                {
-                    label: "Quiz Scores",
-                    data: dataset.quizScores,
-                    borderColor: "#7c3aed",
-                    backgroundColor: "rgba(124, 58, 237, 0.1)",
-                    tension: 0.4,
-                    fill: true
+
+    const store =
+        JSON.parse(
+            localStorage.getItem(
+                "eduverse_student_progress"
+            ) || "{}"
+        );
+
+
+    const rangeKeyMap = {
+
+        "This Month":
+            "thisMonth",
+
+        "Last Month":
+            "lastMonth",
+
+        "This Year":
+            "thisYear"
+
+    };
+
+
+    const dataset =
+        store[
+            rangeKeyMap[rangeLabel] ||
+            "thisMonth"
+        ];
+
+
+    if (!dataset) {
+        return;
+    }
+
+
+    if (progressChartInstance) {
+
+        progressChartInstance.destroy();
+
+    }
+
+
+    progressChartInstance =
+        new Chart(
+            canvas,
+            {
+
+                type: "line",
+
+                data: {
+
+                    labels:
+                        dataset.labels,
+
+                    datasets: [
+
+                        {
+
+                            label:
+                                "Quiz Scores",
+
+                            data:
+                                dataset.quizScores,
+
+                            borderColor:
+                                "#7c3aed",
+
+                            backgroundColor:
+                                "rgba(124, 58, 237, 0.1)",
+
+                            tension:
+                                0.4,
+
+                            fill:
+                                true
+
+                        },
+
+                        {
+
+                            label:
+                                "Assignment Scores",
+
+                            data:
+                                dataset.assignmentScores,
+
+                            borderColor:
+                                "#2563eb",
+
+                            backgroundColor:
+                                "rgba(37, 99, 235, 0.1)",
+
+                            tension:
+                                0.4,
+
+                            fill:
+                                true
+
+                        }
+
+                    ]
+
                 },
-                {
-                    label: "Assignment Scores",
-                    data: dataset.assignmentScores,
-                    borderColor: "#2563eb",
-                    backgroundColor: "rgba(37, 99, 235, 0.1)",
-                    tension: 0.4,
-                    fill: true
+
+
+                options: {
+
+                    responsive:
+                        true,
+
+                    maintainAspectRatio:
+                        false,
+
+                    plugins: {
+
+                        legend: {
+
+                            position:
+                                "bottom"
+
+                        }
+
+                    },
+
+                    scales: {
+
+                        y: {
+
+                            beginAtZero:
+                                true,
+
+                            max:
+                                100
+
+                        }
+
+                    }
+
                 }
-            ]
-        },
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-                legend: {
-                    position: "bottom"
-                }
-            },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    max: 100
-                }
+
             }
-        }
-    });
+        );
 
 }
+
+/* ==========================================================
+        END - PROGRESS CHART
+========================================================== */

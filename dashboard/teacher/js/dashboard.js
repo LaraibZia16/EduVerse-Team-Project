@@ -1,3 +1,169 @@
+/* ==========================================================
+        START - FIREBASE TEACHER SECURITY
+========================================================== */
+
+import {
+    auth,
+    db
+} from "../../../assets/js/firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import {
+    doc,
+    getDoc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+
+document.documentElement.style.visibility =
+    "hidden";
+
+
+onAuthStateChanged(auth, async (user) => {
+
+    if (!user) {
+
+        window.location.replace(
+            "../../../login.html"
+        );
+
+        return;
+    }
+
+
+    try {
+
+        const userSnapshot =
+            await getDoc(
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                )
+            );
+
+
+        if (!userSnapshot.exists()) {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        const userData =
+            userSnapshot.data();
+
+
+        if (userData.role !== "teacher") {
+
+            await signOut(auth);
+
+            window.location.replace(
+                "../../../login.html"
+            );
+
+            return;
+        }
+
+
+        document.documentElement.style.visibility =
+            "visible";
+
+
+    } catch (error) {
+
+        console.error(
+            "Teacher Authentication Error:",
+            error
+        );
+
+        await signOut(auth);
+
+        window.location.replace(
+            "../../../login.html"
+        );
+
+    }
+
+});
+
+
+/* ==========================================================
+        TEACHER FIREBASE LOGOUT
+========================================================== */
+
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async (e) => {
+
+            e.preventDefault();
+
+
+            try {
+
+                logoutBtn.style.pointerEvents =
+                    "none";
+
+                logoutBtn.innerHTML = `
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+                    <span>Logging Out...</span>
+                `;
+
+
+                await signOut(auth);
+
+
+                window.location.replace(
+                    "../../../logout.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Teacher Logout Error:",
+                    error
+                );
+
+
+                logoutBtn.style.pointerEvents =
+                    "";
+
+                logoutBtn.innerHTML = `
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    <span>Logout</span>
+                `;
+
+
+                alert(
+                    "Unable to logout. Please try again."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+        END - FIREBASE TEACHER SECURITY
+========================================================== */
+
 /* ============================================================
    EDUVERSE TEACHER DASHBOARD — dashboard.js
    ------------------------------------------------------------

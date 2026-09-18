@@ -65,6 +65,20 @@
 
     <link rel="stylesheet" href="../css/style.css">
 
+    <!-- ==========================================================
+        START - PROTECTED PAGE INITIAL STATE
+========================================================== -->
+
+<style>
+    html {
+        visibility: hidden;
+    }
+</style>
+
+<!-- ==========================================================
+        END - PROTECTED PAGE INITIAL STATE
+========================================================== -->
+
 </head>
 
 <body>
@@ -282,6 +296,22 @@
 
 </li>
 
+<!-- ==========================================================
+                    LOGOUT START
+========================================================== -->
+
+<a href="#" class="bottom-link" id="logoutBtn">
+
+    <i class="fa-solid fa-right-from-bracket"></i>
+
+    <span>Logout</span>
+
+</a>
+
+<!-- ==========================================================
+                    LOGOUT END
+========================================================== -->
+
 </ul>
 
 </nav>
@@ -306,13 +336,6 @@
 
     </a>
 
-    <a href="#" class="bottom-link">
-
-        <i class="fa-solid fa-right-from-bracket"></i>
-
-        <span>Logout</span>
-
-    </a>
 
 </div>
 
@@ -1307,8 +1330,7 @@ Excellent Performance
                 CUSTOM JS
 ========================================================== -->
 
-<script src="../js/dashboard.js"></script>
-
+<script type="module" src="../js/dashboard.js"></script>
 
 </body>
 

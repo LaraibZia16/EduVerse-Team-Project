@@ -1,5 +1,20 @@
 /*======================================
-        FORGOT PASSWORD
+        START - FIREBASE IMPORTS
+======================================*/
+
+import { auth } from "./firebase-config.js";
+
+import {
+    sendPasswordResetEmail
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+/*======================================
+        END - FIREBASE IMPORTS
+======================================*/
+
+
+/*======================================
+        START - FORGOT PASSWORD
 ======================================*/
 
 const forgotForm = document.getElementById("forgotForm");
@@ -14,17 +29,33 @@ const successCard = document.getElementById("resetSuccess");
 
 const successEmail = document.getElementById("successEmail");
 
+const resendLink =
+    document.querySelector(".resend-link a");
+
+let lastResetEmail = "";
+
 /*======================================
-        EMAIL VALIDATION
+        END - FORGOT PASSWORD
 ======================================*/
 
-const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /*======================================
-        HELPER FUNCTIONS
+        START - EMAIL VALIDATION
 ======================================*/
 
-function showError(message){
+const emailPattern =
+    /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+/*======================================
+        END - EMAIL VALIDATION
+======================================*/
+
+
+/*======================================
+        START - HELPER FUNCTIONS
+======================================*/
+
+function showError(message) {
 
     emailInput.classList.remove("is-valid");
 
@@ -34,7 +65,8 @@ function showError(message){
 
 }
 
-function showSuccess(){
+
+function showSuccess() {
 
     emailInput.classList.remove("is-invalid");
 
@@ -44,104 +76,319 @@ function showSuccess(){
 
 }
 
+
+function resetButton() {
+
+    resetBtn.disabled = false;
+
+    resetBtn.innerHTML = `
+        Send Reset Link
+        <i class="fa-solid fa-arrow-right ms-2"></i>
+    `;
+
+}
+
 /*======================================
-        LIVE VALIDATION
+        END - HELPER FUNCTIONS
 ======================================*/
 
-emailInput.addEventListener("input",()=>{
 
-    if(emailPattern.test(emailInput.value.trim())){
+/*======================================
+        START - LIVE VALIDATION
+======================================*/
+
+emailInput.addEventListener("input", () => {
+
+    if (
+        emailPattern.test(
+            emailInput.value.trim()
+        )
+    ) {
 
         showSuccess();
 
-    }
+    } else {
 
-    else{
-
-        showError("Please enter a valid email address.");
+        showError(
+            "Please enter a valid email address."
+        );
 
     }
 
 });
 
 /*======================================
-        FORM SUBMIT
+        END - LIVE VALIDATION
 ======================================*/
 
-forgotForm.addEventListener("submit",(e)=>{
 
-    e.preventDefault();
+/*======================================
+        START - SEND RESET EMAIL
+======================================*/
 
-    if(!emailPattern.test(emailInput.value.trim())){
+async function sendResetLink(email) {
 
-        showError("Please enter a valid email address.");
+    await sendPasswordResetEmail(
+        auth,
+        email
+    );
 
-        return;
+}
 
-    }
+/*======================================
+        END - SEND RESET EMAIL
+======================================*/
 
-    showSuccess();
 
-    resetBtn.disabled = true;
+/*======================================
+        START - FORM SUBMIT
+======================================*/
 
-    resetBtn.innerHTML = `
+forgotForm.addEventListener(
+    "submit",
+    async (e) => {
 
-        <span class="spinner-border spinner-border-sm me-2"></span>
+        e.preventDefault();
 
-        Sending Reset Link...
 
-    `;
+        const userEmail =
+            emailInput.value.trim();
 
-    const userEmail = emailInput.value.trim();
 
-    setTimeout(()=>{
+        /* Email Validation */
 
-        /* Hide Form */
+        if (
+            !emailPattern.test(userEmail)
+        ) {
 
-        forgotForm.style.display = "none";
+            showError(
+                "Please enter a valid email address."
+            );
 
-        /* Show Success Card */
+            return;
 
-        successCard.classList.add("active");
+        }
 
-        /* Show User Email */
 
-        successEmail.innerHTML = `
+        showSuccess();
 
-            We've sent a password reset link to
 
-            <br><br>
+        /* Loading */
 
-            <strong>${userEmail}</strong>
-
-            <br><br>
-
-            Please check your inbox and spam folder.
-
-        `;
-
-        /* Reset Form */
-
-        forgotForm.reset();
-
-        emailInput.classList.remove("is-valid");
-
-        emailInput.classList.remove("is-invalid");
-
-        emailError.innerText = "";
-
-        /* Reset Button */
-
-        resetBtn.disabled = false;
+        resetBtn.disabled = true;
 
         resetBtn.innerHTML = `
-
-            Send Reset Link
-
-            <i class="fa-solid fa-arrow-right ms-2"></i>
-
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Sending Reset Link...
         `;
 
-    },1800);
 
-});
+        try {
+
+            /* Firebase Reset Email */
+
+            await sendResetLink(
+                userEmail
+            );
+
+
+            lastResetEmail =
+                userEmail;
+
+
+            /* Hide Form */
+
+            forgotForm.style.display =
+                "none";
+
+
+            /* Show Success Card */
+
+            successCard.classList.add(
+                "active"
+            );
+
+
+            /* Show Email */
+
+            successEmail.innerHTML = `
+                We've sent a password reset link to
+
+                <br><br>
+
+                <strong>${userEmail}</strong>
+
+                <br><br>
+
+                Please check your inbox and spam folder.
+            `;
+
+
+            /* Reset Form */
+
+            forgotForm.reset();
+
+            emailInput.classList.remove(
+                "is-valid"
+            );
+
+            emailInput.classList.remove(
+                "is-invalid"
+            );
+
+            emailError.innerText = "";
+
+
+            /* Reset Button */
+
+            resetButton();
+
+
+        } catch (error) {
+
+            console.error(
+                "Firebase Password Reset Error:",
+                error
+            );
+
+
+            if (
+                error.code ===
+                "auth/invalid-email"
+            ) {
+
+                showError(
+                    "Please enter a valid email address."
+                );
+
+            } else if (
+                error.code ===
+                "auth/too-many-requests"
+            ) {
+
+                showError(
+                    "Too many requests. Please try again later."
+                );
+
+            } else if (
+                error.code ===
+                "auth/network-request-failed"
+            ) {
+
+                showError(
+                    "Network error. Please check your internet connection."
+                );
+
+            } else {
+
+                showError(
+                    "Unable to send reset link. Please try again."
+                );
+
+            }
+
+
+            resetButton();
+
+        }
+
+    }
+);
+
+/*======================================
+        END - FORM SUBMIT
+======================================*/
+
+
+/*======================================
+        START - RESEND RESET LINK
+======================================*/
+
+if (resendLink) {
+
+    resendLink.addEventListener(
+        "click",
+        async (e) => {
+
+            e.preventDefault();
+
+
+            if (!lastResetEmail) {
+                return;
+            }
+
+
+            const originalText =
+                resendLink.innerText;
+
+            resendLink.innerText =
+                "Sending...";
+
+            resendLink.style.pointerEvents =
+                "none";
+
+
+            try {
+
+                await sendResetLink(
+                    lastResetEmail
+                );
+
+
+                resendLink.innerText =
+                    "Link Sent ✓";
+
+
+                setTimeout(() => {
+
+                    resendLink.innerText =
+                        originalText;
+
+                    resendLink.style.pointerEvents =
+                        "";
+
+                }, 3000);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Firebase Resend Error:",
+                    error
+                );
+
+
+                if (
+                    error.code ===
+                    "auth/too-many-requests"
+                ) {
+
+                    alert(
+                        "Too many requests. Please wait before requesting another reset email."
+                    );
+
+                } else {
+
+                    alert(
+                        "Unable to resend the reset link. Please try again."
+                    );
+
+                }
+
+
+                resendLink.innerText =
+                    originalText;
+
+                resendLink.style.pointerEvents =
+                    "";
+
+            }
+
+        }
+    );
+
+}
+
+/*======================================
+        END - RESEND RESET LINK
+======================================*/

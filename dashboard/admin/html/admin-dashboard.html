@@ -9,6 +9,21 @@ html
 
     <!-- Main EduVerse CSS -->
     <link rel="stylesheet" href="../css/admin-dashboard.css">
+
+    <!-- =========================
+     PROTECTED PAGE START
+========================== -->
+
+<style>
+    html {
+        visibility: hidden;
+    }
+</style>
+
+<!-- =========================
+     PROTECTED PAGE END
+========================== -->
+
 </head>
 
 <body>
@@ -48,9 +63,17 @@ html
         </nav>
 
         <div class="sidebar-bottom">
-            <a href="../index.html">
-                Logout
-            </a>
+          <!-- =========================
+     LOGOUT START
+========================== -->
+
+<a href="#" id="logoutBtn">
+    Logout
+</a>
+
+<!-- =========================
+     LOGOUT END
+========================== -->
         </div>
 
     </aside>
@@ -256,6 +279,7 @@ html
 
 
     <!-- Admin Dashboard JavaScript -->
-   <script src="../js/admin-dashboard.js"></script>
+ <script type="module" src="../js/admin-dashboard.js"></script>
+ 
 </body>
 </html>

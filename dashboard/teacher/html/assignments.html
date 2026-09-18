@@ -34,8 +34,21 @@
 
     <!-- CSS -->
 
-    <link rel="stylesheet"
-          href="../css/style.css">
+    <link rel="stylesheet"href="../css/style.css">
+
+    <!-- ==========================================================
+        START - PROTECTED PAGE INITIAL STATE
+========================================================== -->
+
+<style>
+    html {
+        visibility: hidden;
+    }
+</style>
+
+<!-- ==========================================================
+        END - PROTECTED PAGE INITIAL STATE
+========================================================== -->
 
 </head>
 
@@ -1027,6 +1040,19 @@ placeholder="Search assignments...">
 <!-- Main JavaScript -->
 
 <script src="../js/assignments.js"></script>
+
+<!-- ==========================================================
+        START - TEACHER AUTH GUARD
+========================================================== -->
+
+<script
+    type="module"
+    src="../js/auth-guard.js">
+</script>
+
+<!-- ==========================================================
+        END - TEACHER AUTH GUARD
+========================================================== -->
 
 </body>
 
