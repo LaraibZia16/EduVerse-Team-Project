@@ -57,7 +57,9 @@ roleButtons.forEach((button) => {
     button.addEventListener("click", () => {
 
         roleButtons.forEach((btn) => {
+
             btn.classList.remove("active");
+
         });
 
         button.classList.add("active");
@@ -153,7 +155,9 @@ function clearLoginError() {
         document.getElementById("loginError");
 
     if (errorBox) {
+
         errorBox.remove();
+
     }
 
 }
@@ -186,7 +190,9 @@ function redirectByRole(role) {
 
     } else {
 
-        throw new Error("Invalid user role.");
+        throw new Error(
+            "Invalid user role."
+        );
 
     }
 
@@ -198,244 +204,413 @@ function redirectByRole(role) {
 
 
 /*======================================
+        START - ACCOUNT STATUS HELPER
+======================================*/
+
+function normalizeAccountStatus(status) {
+
+    const normalizedStatus =
+        String(
+            status || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    /*
+        Existing users may not have a
+        status field yet.
+
+        Missing status = Active.
+    */
+
+    return normalizedStatus === "suspended"
+        ? "suspended"
+        : "active";
+
+}
+
+/*======================================
+        END - ACCOUNT STATUS HELPER
+======================================*/
+
+
+/*======================================
         START - EMAIL/PASSWORD LOGIN
 ======================================*/
 
-loginForm.addEventListener("submit", async (e) => {
+loginForm.addEventListener(
+    "submit",
+    async (e) => {
 
-    e.preventDefault();
+        e.preventDefault();
 
-    clearLoginError();
+        clearLoginError();
 
-    let valid = true;
-
-    emailInput.classList.remove("is-invalid");
-    passwordInput.classList.remove("is-invalid");
-
-
-    /* Email Validation */
-
-    if (!validEmail(emailInput.value.trim())) {
-
-        emailInput.classList.add("is-invalid");
-        valid = false;
-
-    }
+        let valid = true;
 
 
-    /* Password Validation */
-
-    if (passwordInput.value.length < 6) {
-
-        passwordInput.classList.add("is-invalid");
-        valid = false;
-
-    }
-
-
-    if (!valid) {
-        return;
-    }
-
-
-    /* Valid Login Roles */
-
-    if (
-        selectedRole !== "student" &&
-        selectedRole !== "teacher" &&
-        selectedRole !== "admin"
-    ) {
-
-        showLoginError(
-            "Please select a valid role."
+        emailInput.classList.remove(
+            "is-invalid"
         );
 
-        return;
-
-    }
-
-
-    /* Loading */
-
-    loginBtn.disabled = true;
-
-    loginBtn.innerHTML = `
-        <span class="spinner-border spinner-border-sm me-2"></span>
-        Logging In...
-    `;
-
-
-    try {
-
-        /*==================================
-            REMEMBER ME
-        ==================================*/
-
-        const persistence =
-            rememberMe.checked
-                ? browserLocalPersistence
-                : browserSessionPersistence;
-
-        await setPersistence(
-            auth,
-            persistence
+        passwordInput.classList.remove(
+            "is-invalid"
         );
 
 
         /*==================================
-            FIREBASE AUTHENTICATION
+            EMAIL VALIDATION
         ==================================*/
-
-        const userCredential =
-            await signInWithEmailAndPassword(
-                auth,
-                emailInput.value.trim(),
-                passwordInput.value
-            );
-
-        const user = userCredential.user;
-
-
-        /*==================================
-            GET FIRESTORE PROFILE
-        ==================================*/
-
-        const userRef =
-            doc(db, "users", user.uid);
-
-        const userSnapshot =
-            await getDoc(userRef);
-
-
-        if (!userSnapshot.exists()) {
-
-            await signOut(auth);
-
-            throw new Error(
-                "PROFILE_NOT_FOUND"
-            );
-
-        }
-
-
-        const userData =
-            userSnapshot.data();
-
-        const actualRole =
-            userData.role;
-
-
-        /*==================================
-            VERIFY SELECTED ROLE
-        ==================================*/
-
-        if (actualRole !== selectedRole) {
-
-            await signOut(auth);
-
-            throw new Error(
-                "ROLE_MISMATCH"
-            );
-
-        }
-
-
-        /*==================================
-            SUCCESS
-        ==================================*/
-
-        loginBtn.innerHTML = `
-            <i class="fa-solid fa-circle-check me-2"></i>
-            Login Successful
-        `;
-
-        loginBtn.style.background =
-            "#198754";
-
-        showToast();
-
-
-        setTimeout(() => {
-
-            redirectByRole(actualRole);
-
-        }, 1000);
-
-
-    } catch (error) {
-
-        console.error(
-            "Firebase Login Error:",
-            error
-        );
-
 
         if (
-            error.message ===
-            "ROLE_MISMATCH"
+            !validEmail(
+                emailInput.value.trim()
+            )
         ) {
 
-            showLoginError(
-                `This account is not registered as ${selectedRole}. Please select the correct role.`
+            emailInput.classList.add(
+                "is-invalid"
             );
 
-        } else if (
-            error.message ===
-            "PROFILE_NOT_FOUND"
-        ) {
-
-            showLoginError(
-                "Your EduVerse profile was not found."
-            );
-
-        } else if (
-            error.code ===
-            "auth/invalid-credential"
-        ) {
-
-            showLoginError(
-                "Incorrect email or password."
-            );
-
-        } else if (
-            error.code ===
-            "auth/too-many-requests"
-        ) {
-
-            showLoginError(
-                "Too many login attempts. Please try again later."
-            );
-
-        } else if (
-            error.code ===
-            "auth/network-request-failed"
-        ) {
-
-            showLoginError(
-                "Network error. Please check your internet connection."
-            );
-
-        } else {
-
-            showLoginError(
-                "Login failed. Please try again."
-            );
+            valid = false;
 
         }
 
 
-        loginBtn.disabled = false;
+        /*==================================
+            PASSWORD VALIDATION
+        ==================================*/
+
+        if (
+            passwordInput.value.length < 6
+        ) {
+
+            passwordInput.classList.add(
+                "is-invalid"
+            );
+
+            valid = false;
+
+        }
+
+
+        if (!valid) {
+
+            return;
+
+        }
+
+
+        /*==================================
+            VALID LOGIN ROLES
+        ==================================*/
+
+        if (
+            selectedRole !== "student" &&
+            selectedRole !== "teacher" &&
+            selectedRole !== "admin"
+        ) {
+
+            showLoginError(
+                "Please select a valid role."
+            );
+
+            return;
+
+        }
+
+
+        /*==================================
+            LOADING
+        ==================================*/
+
+        loginBtn.disabled = true;
 
         loginBtn.innerHTML = `
-            Login
-            <i class="fa-solid fa-arrow-right ms-2"></i>
+            <span class="spinner-border spinner-border-sm me-2"></span>
+            Logging In...
         `;
 
-        loginBtn.style.background = "";
+
+        try {
+
+            /*==================================
+                REMEMBER ME
+            ==================================*/
+
+            const persistence =
+                rememberMe.checked
+                    ? browserLocalPersistence
+                    : browserSessionPersistence;
+
+
+            await setPersistence(
+                auth,
+                persistence
+            );
+
+
+            /*==================================
+                FIREBASE AUTHENTICATION
+            ==================================*/
+
+            const userCredential =
+                await signInWithEmailAndPassword(
+                    auth,
+                    emailInput.value.trim(),
+                    passwordInput.value
+                );
+
+
+            const user =
+                userCredential.user;
+
+
+            /*==================================
+                GET FIRESTORE PROFILE
+            ==================================*/
+
+            const userRef =
+                doc(
+                    db,
+                    "users",
+                    user.uid
+                );
+
+
+            const userSnapshot =
+                await getDoc(
+                    userRef
+                );
+
+
+            /*==================================
+                PROFILE CHECK
+            ==================================*/
+
+            if (
+                !userSnapshot.exists()
+            ) {
+
+                await signOut(auth);
+
+                throw new Error(
+                    "PROFILE_NOT_FOUND"
+                );
+
+            }
+
+
+            const userData =
+                userSnapshot.data();
+
+
+            const actualRole =
+                String(
+                    userData.role || ""
+                )
+                    .trim()
+                    .toLowerCase();
+
+
+            /*==================================
+                VERIFY SELECTED ROLE
+            ==================================*/
+
+            if (
+                actualRole !==
+                selectedRole
+            ) {
+
+                await signOut(auth);
+
+                throw new Error(
+                    "ROLE_MISMATCH"
+                );
+
+            }
+
+
+            /*==================================
+                ACCOUNT STATUS CHECK
+            ==================================*/
+
+            const accountStatus =
+                normalizeAccountStatus(
+                    userData.status
+                );
+
+
+            if (
+                accountStatus ===
+                "suspended"
+            ) {
+
+                /*
+                    Authentication may have succeeded,
+                    but suspended users must not keep
+                    an authenticated Firebase session.
+                */
+
+                await signOut(auth);
+
+
+                throw new Error(
+                    "ACCOUNT_SUSPENDED"
+                );
+
+            }
+
+
+            /*==================================
+                SUCCESS
+            ==================================*/
+
+            loginBtn.innerHTML = `
+                <i class="fa-solid fa-circle-check me-2"></i>
+                Login Successful
+            `;
+
+
+            loginBtn.style.background =
+                "#198754";
+
+
+            showToast();
+
+
+            setTimeout(() => {
+
+                redirectByRole(
+                    actualRole
+                );
+
+            }, 1000);
+
+
+        } catch (error) {
+
+            console.error(
+                "Firebase Login Error:",
+                error
+            );
+
+
+            /*==================================
+                SUSPENDED ACCOUNT
+            ==================================*/
+
+            if (
+                error.message ===
+                "ACCOUNT_SUSPENDED"
+            ) {
+
+                showLoginError(
+                    "Your account has been suspended. Please contact the EduVerse administrator."
+                );
+
+
+            /*==================================
+                ROLE MISMATCH
+            ==================================*/
+
+            } else if (
+                error.message ===
+                "ROLE_MISMATCH"
+            ) {
+
+                showLoginError(
+                    `This account is not registered as ${selectedRole}. Please select the correct role.`
+                );
+
+
+            /*==================================
+                PROFILE NOT FOUND
+            ==================================*/
+
+            } else if (
+                error.message ===
+                "PROFILE_NOT_FOUND"
+            ) {
+
+                showLoginError(
+                    "Your EduVerse profile was not found."
+                );
+
+
+            /*==================================
+                INVALID CREDENTIALS
+            ==================================*/
+
+            } else if (
+                error.code ===
+                "auth/invalid-credential"
+            ) {
+
+                showLoginError(
+                    "Incorrect email or password."
+                );
+
+
+            /*==================================
+                TOO MANY REQUESTS
+            ==================================*/
+
+            } else if (
+                error.code ===
+                "auth/too-many-requests"
+            ) {
+
+                showLoginError(
+                    "Too many login attempts. Please try again later."
+                );
+
+
+            /*==================================
+                NETWORK ERROR
+            ==================================*/
+
+            } else if (
+                error.code ===
+                "auth/network-request-failed"
+            ) {
+
+                showLoginError(
+                    "Network error. Please check your internet connection."
+                );
+
+
+            /*==================================
+                GENERAL ERROR
+            ==================================*/
+
+            } else {
+
+                showLoginError(
+                    "Login failed. Please try again."
+                );
+
+            }
+
+
+            /*==================================
+                RESET LOGIN BUTTON
+            ==================================*/
+
+            loginBtn.disabled = false;
+
+            loginBtn.innerHTML = `
+                Login
+                <i class="fa-solid fa-arrow-right ms-2"></i>
+            `;
+
+            loginBtn.style.background = "";
+
+        }
 
     }
-
-});
+);
 
 /*======================================
         END - EMAIL/PASSWORD LOGIN
@@ -459,7 +634,9 @@ if (googleLoginBtn) {
                 ADMIN GOOGLE LOGIN BLOCK
             ==================================*/
 
-            if (selectedRole === "admin") {
+            if (
+                selectedRole === "admin"
+            ) {
 
                 showLoginError(
                     "Admin must login using email and password."
@@ -477,7 +654,10 @@ if (googleLoginBtn) {
             const originalButtonHTML =
                 googleLoginBtn.innerHTML;
 
-            googleLoginBtn.disabled = true;
+
+            googleLoginBtn.disabled =
+                true;
+
 
             googleLoginBtn.innerHTML = `
                 <span class="spinner-border spinner-border-sm me-2"></span>
@@ -496,6 +676,7 @@ if (googleLoginBtn) {
                         ? browserLocalPersistence
                         : browserSessionPersistence;
 
+
                 await setPersistence(
                     auth,
                     persistence
@@ -509,11 +690,13 @@ if (googleLoginBtn) {
                 const provider =
                     new GoogleAuthProvider();
 
+
                 const result =
                     await signInWithPopup(
                         auth,
                         provider
                     );
+
 
                 const user =
                     result.user;
@@ -530,17 +713,23 @@ if (googleLoginBtn) {
                         user.uid
                     );
 
+
                 const userSnapshot =
-                    await getDoc(userRef);
+                    await getDoc(
+                        userRef
+                    );
 
 
                 /*==================================
                     PROFILE CHECK
                 ==================================*/
 
-                if (!userSnapshot.exists()) {
+                if (
+                    !userSnapshot.exists()
+                ) {
 
                     await signOut(auth);
+
 
                     throw new Error(
                         "GOOGLE_PROFILE_NOT_FOUND"
@@ -552,8 +741,13 @@ if (googleLoginBtn) {
                 const userData =
                     userSnapshot.data();
 
+
                 const actualRole =
-                    userData.role;
+                    String(
+                        userData.role || ""
+                    )
+                        .trim()
+                        .toLowerCase();
 
 
                 /*==================================
@@ -567,6 +761,7 @@ if (googleLoginBtn) {
 
                     await signOut(auth);
 
+
                     throw new Error(
                         "GOOGLE_ROLE_NOT_ALLOWED"
                     );
@@ -579,13 +774,45 @@ if (googleLoginBtn) {
                 ==================================*/
 
                 if (
-                    actualRole !== selectedRole
+                    actualRole !==
+                    selectedRole
                 ) {
 
                     await signOut(auth);
 
+
                     throw new Error(
                         "GOOGLE_ROLE_MISMATCH"
+                    );
+
+                }
+
+
+                /*==================================
+                    ACCOUNT STATUS CHECK
+                ==================================*/
+
+                const accountStatus =
+                    normalizeAccountStatus(
+                        userData.status
+                    );
+
+
+                if (
+                    accountStatus ===
+                    "suspended"
+                ) {
+
+                    /*
+                        Remove Firebase session before
+                        showing suspension message.
+                    */
+
+                    await signOut(auth);
+
+
+                    throw new Error(
+                        "GOOGLE_ACCOUNT_SUSPENDED"
                     );
 
                 }
@@ -599,6 +826,7 @@ if (googleLoginBtn) {
                     <i class="fa-solid fa-circle-check me-2"></i>
                     Login Successful
                 `;
+
 
                 showToast();
 
@@ -626,12 +854,23 @@ if (googleLoginBtn) {
 
                 if (
                     error.message ===
+                    "GOOGLE_ACCOUNT_SUSPENDED"
+                ) {
+
+                    showLoginError(
+                        "Your account has been suspended. Please contact the EduVerse administrator."
+                    );
+
+
+                } else if (
+                    error.message ===
                     "GOOGLE_PROFILE_NOT_FOUND"
                 ) {
 
                     showLoginError(
                         "No EduVerse account found. Please register with Google first."
                     );
+
 
                 } else if (
                     error.message ===
@@ -642,6 +881,7 @@ if (googleLoginBtn) {
                         `This Google account is not registered as ${selectedRole}. Please select the correct role.`
                     );
 
+
                 } else if (
                     error.message ===
                     "GOOGLE_ROLE_NOT_ALLOWED"
@@ -650,6 +890,7 @@ if (googleLoginBtn) {
                     showLoginError(
                         "Google login is only available for students and teachers."
                     );
+
 
                 } else if (
                     error.code ===
@@ -660,6 +901,7 @@ if (googleLoginBtn) {
                         "Google login was cancelled."
                     );
 
+
                 } else if (
                     error.code ===
                     "auth/popup-blocked"
@@ -669,6 +911,7 @@ if (googleLoginBtn) {
                         "Google popup was blocked by your browser."
                     );
 
+
                 } else if (
                     error.code ===
                     "auth/network-request-failed"
@@ -677,6 +920,7 @@ if (googleLoginBtn) {
                     showLoginError(
                         "Network error. Please check your internet connection."
                     );
+
 
                 } else {
 
@@ -693,6 +937,7 @@ if (googleLoginBtn) {
 
                 googleLoginBtn.disabled =
                     false;
+
 
                 googleLoginBtn.innerHTML =
                     originalButtonHTML;
@@ -718,8 +963,10 @@ function showToast() {
     const toast =
         document.createElement("div");
 
+
     toast.className =
         "login-toast";
+
 
     toast.innerHTML = `
         <i class="fa-solid fa-circle-check"></i>
@@ -730,19 +977,27 @@ function showToast() {
         </div>
     `;
 
-    document.body.appendChild(toast);
+
+    document.body.appendChild(
+        toast
+    );
 
 
     setTimeout(() => {
 
-        toast.classList.add("show");
+        toast.classList.add(
+            "show"
+        );
 
     }, 100);
 
 
     setTimeout(() => {
 
-        toast.classList.remove("show");
+        toast.classList.remove(
+            "show"
+        );
+
 
         setTimeout(() => {
 

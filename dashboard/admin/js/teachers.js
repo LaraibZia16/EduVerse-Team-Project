@@ -1,453 +1,610 @@
-"use strict";
-
-/* =========================================================
-   EduVerse | Admin Teachers
-   Frontend only
-   Uses localStorage
-========================================================= */
+/* ==========================================================
+   START - EDUVERSE ADMIN TEACHERS
+========================================================== */
 
 
-/* =========================================================
-   DEFAULT TEACHERS
-========================================================= */
+/* ==========================================================
+   START - FIREBASE IMPORTS
+========================================================== */
 
-const defaultTeachers = [
+import {
+    auth,
+    db
+} from "../../../assets/js/firebase-config.js";
 
-    {
-        name: "Usman Ali",
-        email: "usman@example.com",
-        subject: "Mathematics",
-        experience: "5 Years",
-        status: "Active",
-        joined: "10 Sep 2026"
-    },
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
 
-    {
-        name: "Sara Ahmed",
-        email: "sara@example.com",
-        subject: "English",
-        experience: "4 Years",
-        status: "Active",
-        joined: "5 Sep 2026"
-    },
+import {
+    collection,
+    doc,
+    getDoc,
+    getDocs,
+    updateDoc
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
 
-    {
-        name: "Hassan Raza",
-        email: "hassan@example.com",
-        subject: "Computer Science",
-        experience: "6 Years",
-        status: "Active",
-        joined: "2 Sep 2026"
-    },
-
-    {
-        name: "Ayesha Khan",
-        email: "ayesha@example.com",
-        subject: "Physics",
-        experience: "3 Years",
-        status: "Inactive",
-        joined: "30 Aug 2026"
-    },
-
-    {
-        name: "Bilal Ahmed",
-        email: "bilal@example.com",
-        subject: "Chemistry",
-        experience: "7 Years",
-        status: "Active",
-        joined: "28 Aug 2026"
-    },
-
-    {
-        name: "Mariam Noor",
-        email: "mariam@example.com",
-        subject: "Biology",
-        experience: "4 Years",
-        status: "Active",
-        joined: "25 Aug 2026"
-    }
-
-];
+/* ==========================================================
+   END - FIREBASE IMPORTS
+========================================================== */
 
 
-/* =========================================================
-   LOAD DATA
-========================================================= */
+/* ==========================================================
+   START - DOM ELEMENTS
+========================================================== */
 
-let teachers =
-    JSON.parse(
-        localStorage.getItem("eduverseTeachers")
-    ) || defaultTeachers;
+const logoutBtn =
+    document.getElementById("logoutBtn");
+
+const menuToggle =
+    document.getElementById("menuToggle");
+
+const sidebarClose =
+    document.getElementById("sidebarClose");
+
+const adminSidebar =
+    document.getElementById("adminSidebar");
+
+const sidebarOverlay =
+    document.getElementById("sidebarOverlay");
+
+const adminName =
+    document.getElementById("adminName");
 
 
-/* =========================================================
-   SAVE DATA
-========================================================= */
+/* ----------------------------------------------------------
+   Statistics
+---------------------------------------------------------- */
 
-function saveTeachers() {
+const totalTeachersElement =
+    document.getElementById("totalTeachers");
 
-    localStorage.setItem(
-        "eduverseTeachers",
-        JSON.stringify(teachers)
-    );
+const activeTeachersElement =
+    document.getElementById("activeTeachers");
 
-}
+const suspendedTeachersElement =
+    document.getElementById("suspendedTeachers");
+
+const assignedTeachersElement =
+    document.getElementById("assignedTeachers");
 
 
-/* =========================================================
-   PAGINATION
-========================================================= */
+/* ----------------------------------------------------------
+   Search / Filters
+---------------------------------------------------------- */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const statusFilter =
+    document.getElementById("statusFilter");
+
+const assignmentFilter =
+    document.getElementById("assignmentFilter");
+
+
+/* ----------------------------------------------------------
+   Table
+---------------------------------------------------------- */
+
+const teachersTableBody =
+    document.getElementById("teachersTableBody");
+
+const teachersResultText =
+    document.getElementById("teachersResultText");
+
+const noTeachers =
+    document.getElementById("noTeachers");
+
+
+/* ----------------------------------------------------------
+   Pagination
+---------------------------------------------------------- */
+
+const paginationSummary =
+    document.getElementById("paginationSummary");
+
+const pageInfo =
+    document.getElementById("pageInfo");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+
+/* ----------------------------------------------------------
+   View Teacher Modal
+---------------------------------------------------------- */
+
+const viewTeacherModal =
+    document.getElementById("viewTeacherModal");
+
+const closeViewModal =
+    document.getElementById("closeViewModal");
+
+const viewTeacherAvatar =
+    document.getElementById("viewTeacherAvatar");
+
+const viewTeacherName =
+    document.getElementById("viewTeacherName");
+
+const viewTeacherEmail =
+    document.getElementById("viewTeacherEmail");
+
+const viewTeacherRole =
+    document.getElementById("viewTeacherRole");
+
+const viewTeacherStatus =
+    document.getElementById("viewTeacherStatus");
+
+const viewTeacherCourseCount =
+    document.getElementById("viewTeacherCourseCount");
+
+const viewTeacherJoined =
+    document.getElementById("viewTeacherJoined");
+
+const viewCourseCountBadge =
+    document.getElementById("viewCourseCountBadge");
+
+const viewAssignedCourses =
+    document.getElementById("viewAssignedCourses");
+
+
+/* ----------------------------------------------------------
+   Status Modal
+---------------------------------------------------------- */
+
+const statusModal =
+    document.getElementById("statusModal");
+
+const closeStatusModal =
+    document.getElementById("closeStatusModal");
+
+const cancelStatusBtn =
+    document.getElementById("cancelStatusBtn");
+
+const confirmStatusBtn =
+    document.getElementById("confirmStatusBtn");
+
+const statusModalLabel =
+    document.getElementById("statusModalLabel");
+
+const statusModalTitle =
+    document.getElementById("statusModalTitle");
+
+const statusConfirmationIcon =
+    document.getElementById("statusConfirmationIcon");
+
+const statusConfirmationHeading =
+    document.getElementById("statusConfirmationHeading");
+
+const statusTeacherName =
+    document.getElementById("statusTeacherName");
+
+const statusHelpText =
+    document.getElementById("statusHelpText");
+
+/* ==========================================================
+   END - DOM ELEMENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - PAGE STATE
+========================================================== */
+
+let allTeachers = [];
+let allCourses = [];
+
+let filteredTeachers = [];
 
 let currentPage = 1;
 
 const teachersPerPage = 5;
 
-let deleteIndex = null;
-
-
-/* =========================================================
-   ELEMENTS
-========================================================= */
-
-const tableBody =
-    document.getElementById(
-        "teachersTableBody"
-    );
-
-const searchInput =
-    document.getElementById(
-        "searchInput"
-    );
-
-const subjectFilter =
-    document.getElementById(
-        "subjectFilter"
-    );
-
-const statusFilter =
-    document.getElementById(
-        "statusFilter"
-    );
-
-const noTeachers =
-    document.getElementById(
-        "noTeachers"
-    );
-
-
-const totalTeachers =
-    document.getElementById(
-        "totalTeachers"
-    );
-
-const activeTeachers =
-    document.getElementById(
-        "activeTeachers"
-    );
-
-const inactiveTeachers =
-    document.getElementById(
-        "inactiveTeachers"
-    );
-
-const totalSubjects =
-    document.getElementById(
-        "totalSubjects"
-    );
-
-
-const prevBtn =
-    document.getElementById(
-        "prevBtn"
-    );
-
-const nextBtn =
-    document.getElementById(
-        "nextBtn"
-    );
-
-const pageInfo =
-    document.getElementById(
-        "pageInfo"
-    );
-
-
-/* =========================================================
-   MODALS
-========================================================= */
-
-const viewModal =
-    document.getElementById(
-        "viewModal"
-    );
-
-const teacherFormModal =
-    document.getElementById(
-        "teacherFormModal"
-    );
-
-const deleteModal =
-    document.getElementById(
-        "deleteModal"
-    );
-
-
-/* =========================================================
-   VIEW ELEMENTS
-========================================================= */
-
-const viewAvatar =
-    document.getElementById(
-        "viewAvatar"
-    );
-
-const viewName =
-    document.getElementById(
-        "viewName"
-    );
-
-const viewEmail =
-    document.getElementById(
-        "viewEmail"
-    );
-
-const viewSubject =
-    document.getElementById(
-        "viewSubject"
-    );
+let selectedTeacherId = null;
+let selectedNewStatus = null;
 
-const viewExperience =
-    document.getElementById(
-        "viewExperience"
-    );
+/* ==========================================================
+   END - PAGE STATE
+========================================================== */
 
-const viewStatus =
-    document.getElementById(
-        "viewStatus"
-    );
 
-const viewJoined =
-    document.getElementById(
-        "viewJoined"
-    );
+/* ==========================================================
+   START - ADMIN AUTH PROTECTION
+========================================================== */
 
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-/* =========================================================
-   FORM ELEMENTS
-========================================================= */
+        if (!user) {
 
-const teacherForm =
-    document.getElementById(
-        "teacherForm"
-    );
+            window.location.replace(
+                "../../../login.html"
+            );
 
-const formTitle =
-    document.getElementById(
-        "formTitle"
-    );
+            return;
+        }
 
-const editIndex =
-    document.getElementById(
-        "editIndex"
-    );
 
-const teacherName =
-    document.getElementById(
-        "teacherName"
-    );
+        try {
 
-const teacherEmail =
-    document.getElementById(
-        "teacherEmail"
-    );
+            const adminSnapshot =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
 
-const teacherSubject =
-    document.getElementById(
-        "teacherSubject"
-    );
 
-const teacherExperience =
-    document.getElementById(
-        "teacherExperience"
-    );
+            if (!adminSnapshot.exists()) {
 
-const teacherStatus =
-    document.getElementById(
-        "teacherStatus"
-    );
+                await signOut(auth);
 
+                window.location.replace(
+                    "../../../login.html"
+                );
 
-/* =========================================================
-   DELETE ELEMENTS
-========================================================= */
+                return;
+            }
 
-const deleteTeacherName =
-    document.getElementById(
-        "deleteTeacherName"
-    );
 
-const confirmDeleteBtn =
-    document.getElementById(
-        "confirmDeleteBtn"
-    );
+            const adminData =
+                adminSnapshot.data();
 
 
-/* =========================================================
-   ADD BUTTON
-========================================================= */
+            if (
+                normalizeRole(adminData.role) !==
+                "admin"
+            ) {
 
-const addTeacherBtn =
-    document.getElementById(
-        "addTeacherBtn"
-    );
+                await signOut(auth);
 
+                window.location.replace(
+                    "../../../login.html"
+                );
 
-/* =========================================================
-   UPDATE STATISTICS
-========================================================= */
+                return;
+            }
 
-function updateStatistics() {
 
-    totalTeachers.textContent =
-        teachers.length;
+            setAdminInformation(
+                adminData,
+                user
+            );
 
 
-    activeTeachers.textContent =
-        teachers.filter(function (teacher) {
+            await loadTeachersAndCourses();
 
-            return teacher.status === "Active";
 
-        }).length;
+        } catch (error) {
 
+            console.error(
+                "Teachers Authentication Error:",
+                error
+            );
 
-    inactiveTeachers.textContent =
-        teachers.filter(function (teacher) {
 
-            return teacher.status === "Inactive";
+            try {
 
-        }).length;
+                await signOut(auth);
 
+            } catch (signOutError) {
 
-    const subjects =
-        new Set(
-            teachers.map(function (teacher) {
+                console.error(
+                    "Sign Out Error:",
+                    signOutError
+                );
 
-                return teacher.subject;
+            }
 
-            })
-        );
 
+            window.location.replace(
+                "../../../login.html"
+            );
 
-    totalSubjects.textContent =
-        subjects.size;
+        }
+
+    }
+);
+
+/* ==========================================================
+   END - ADMIN AUTH PROTECTION
+========================================================== */
+
+
+/* ==========================================================
+   START - ADMIN INFORMATION
+========================================================== */
+
+function setAdminInformation(
+    userData,
+    firebaseUser
+) {
+
+    if (!adminName) {
+        return;
+    }
+
+
+    const name =
+        userData.name ||
+        userData.fullName ||
+        firebaseUser.displayName ||
+        "Admin";
+
+
+    adminName.textContent =
+        name;
 
 }
 
-
-/* =========================================================
-   SUBJECT FILTER
-========================================================= */
-
-function updateSubjectFilter() {
-
-    const currentValue =
-        subjectFilter.value;
+/* ==========================================================
+   END - ADMIN INFORMATION
+========================================================== */
 
 
-    const subjects =
-        [...new Set(
-            teachers.map(function (teacher) {
+/* ==========================================================
+   START - LOAD TEACHERS AND COURSES
+========================================================== */
 
-                return teacher.subject;
+async function loadTeachersAndCourses() {
 
-            })
-        )].sort();
+    try {
+
+        const [
+            usersSnapshot,
+            coursesSnapshot
+        ] = await Promise.all([
+
+            getDocs(
+                collection(
+                    db,
+                    "users"
+                )
+            ),
+
+            getDocs(
+                collection(
+                    db,
+                    "courses"
+                )
+            )
+
+        ]);
 
 
-    subjectFilter.innerHTML = `
-        <option value="all">
-            All Subjects
-        </option>
-    `;
+        allTeachers =
+            usersSnapshot.docs
+                .map((userDocument) => {
+
+                    return {
+                        id: userDocument.id,
+                        ...userDocument.data()
+                    };
+
+                })
+                .filter((user) => {
+
+                    return (
+                        normalizeRole(user.role) ===
+                        "teacher"
+                    );
+
+                });
 
 
-    subjects.forEach(function (subject) {
+        allCourses =
+            coursesSnapshot.docs
+                .map((courseDocument) => {
 
-        const option =
-            document.createElement("option");
+                    return {
+                        id: courseDocument.id,
+                        ...courseDocument.data()
+                    };
 
-        option.value = subject;
-
-        option.textContent = subject;
-
-        subjectFilter.appendChild(option);
-
-    });
+                });
 
 
-    if (
-        subjects.includes(currentValue)
-    ) {
+        allTeachers.sort(
+            sortTeachersByNewest
+        );
 
-        subjectFilter.value =
-            currentValue;
+
+        updateStatistics();
+
+        applyFilters();
+
+
+    } catch (error) {
+
+        console.error(
+            "Load Teachers/Courses Error:",
+            error
+        );
+
+
+        showTeachersLoadError();
 
     }
 
 }
 
-
-/* =========================================================
-   FILTER TEACHERS
-========================================================= */
-
-function getFilteredTeachers() {
-
-    const search =
-        searchInput.value
-            .toLowerCase()
-            .trim();
+/* ==========================================================
+   END - LOAD TEACHERS AND COURSES
+========================================================== */
 
 
-    const selectedSubject =
-        subjectFilter.value;
+/* ==========================================================
+   START - STATISTICS
+========================================================== */
+
+function updateStatistics() {
+
+    const total =
+        allTeachers.length;
 
 
-    const selectedStatus =
-        statusFilter.value;
+    const active =
+        allTeachers.filter(
+            (teacher) => {
+
+                return (
+                    getTeacherStatus(teacher) ===
+                    "active"
+                );
+
+            }
+        ).length;
 
 
-    return teachers.filter(
-        function (teacher) {
+    const suspended =
+        allTeachers.filter(
+            (teacher) => {
 
-            const matchesSearch =
-                teacher.name
-                    .toLowerCase()
-                    .includes(search)
-                ||
-                teacher.email
-                    .toLowerCase()
-                    .includes(search);
+                return (
+                    getTeacherStatus(teacher) ===
+                    "suspended"
+                );
 
-
-            const matchesSubject =
-                selectedSubject === "all"
-                ||
-                teacher.subject ===
-                selectedSubject;
+            }
+        ).length;
 
 
-            const matchesStatus =
-                selectedStatus === "all"
-                ||
-                teacher.status ===
-                selectedStatus;
+    const assigned =
+        allTeachers.filter(
+            (teacher) => {
+
+                return (
+                    getTeacherCourses(
+                        teacher
+                    ).length > 0
+                );
+
+            }
+        ).length;
+
+
+    if (totalTeachersElement) {
+
+        totalTeachersElement.textContent =
+            total;
+
+    }
+
+
+    if (activeTeachersElement) {
+
+        activeTeachersElement.textContent =
+            active;
+
+    }
+
+
+    if (suspendedTeachersElement) {
+
+        suspendedTeachersElement.textContent =
+            suspended;
+
+    }
+
+
+    if (assignedTeachersElement) {
+
+        assignedTeachersElement.textContent =
+            assigned;
+
+    }
+
+}
+
+/* ==========================================================
+   END - STATISTICS
+========================================================== */
+
+
+/* ==========================================================
+   START - TEACHER COURSE MATCHING
+========================================================== */
+
+function getTeacherCourses(teacher) {
+
+    if (!teacher) {
+        return [];
+    }
+
+
+    const teacherId =
+        String(
+            teacher.id || ""
+        ).trim();
+
+
+    const teacherUid =
+        String(
+            teacher.uid || teacher.id || ""
+        ).trim();
+
+
+    const teacherEmail =
+        getTeacherEmail(teacher)
+            .trim()
+            .toLowerCase();
+
+
+    return allCourses.filter(
+        (course) => {
+
+            const courseTeacherId =
+                String(
+                    course.teacherId ||
+                    course.teacherUid ||
+                    course.instructorId ||
+                    ""
+                ).trim();
+
+
+            const courseTeacherEmail =
+                String(
+                    course.teacherEmail ||
+                    course.instructorEmail ||
+                    ""
+                )
+                    .trim()
+                    .toLowerCase();
+
+
+            /*
+               Primary matching:
+               course.teacherId === Firebase teacher UID
+
+               Extra fallbacks are included so existing
+               EduVerse course records remain compatible.
+            */
+
+            const matchesId =
+                courseTeacherId !== "" &&
+                (
+                    courseTeacherId === teacherId ||
+                    courseTeacherId === teacherUid
+                );
+
+
+            const matchesEmail =
+                courseTeacherEmail !== "" &&
+                teacherEmail !== "" &&
+                courseTeacherEmail === teacherEmail;
 
 
             return (
-                matchesSearch &&
-                matchesSubject &&
-                matchesStatus
+                matchesId ||
+                matchesEmail
             );
 
         }
@@ -455,53 +612,144 @@ function getFilteredTeachers() {
 
 }
 
-
-/* =========================================================
-   DISPLAY TEACHERS
-========================================================= */
-
-function displayTeachers() {
-
-    const filteredTeachers =
-        getFilteredTeachers();
+/* ==========================================================
+   END - TEACHER COURSE MATCHING
+========================================================== */
 
 
-    tableBody.innerHTML = "";
+/* ==========================================================
+   START - SEARCH AND FILTERS
+========================================================== */
+
+function applyFilters() {
+
+    const searchTerm =
+        String(
+            searchInput?.value || ""
+        )
+            .trim()
+            .toLowerCase();
 
 
-    const totalPages =
-        Math.ceil(
-            filteredTeachers.length /
-            teachersPerPage
+    const selectedStatus =
+        normalizeStatusFilter(
+            statusFilter?.value || "all"
         );
 
 
-    if (
-        filteredTeachers.length === 0
-    ) {
+    const selectedAssignment =
+        normalizeAssignmentFilter(
+            assignmentFilter?.value || "all"
+        );
 
-        noTeachers.style.display =
-            "block";
 
-        pageInfo.textContent =
-            "Page 1";
+    filteredTeachers =
+        allTeachers.filter(
+            (teacher) => {
 
-        prevBtn.disabled = true;
+                const name =
+                    getTeacherName(teacher)
+                        .toLowerCase();
 
-        nextBtn.disabled = true;
 
+                const email =
+                    getTeacherEmail(teacher)
+                        .toLowerCase();
+
+
+                const status =
+                    getTeacherStatus(teacher);
+
+
+                const assignedCourseCount =
+                    getTeacherCourses(
+                        teacher
+                    ).length;
+
+
+                const matchesSearch =
+                    name.includes(searchTerm) ||
+                    email.includes(searchTerm);
+
+
+                const matchesStatus =
+                    selectedStatus === "all" ||
+                    status === selectedStatus;
+
+
+                let matchesAssignment =
+                    true;
+
+
+                if (
+                    selectedAssignment ===
+                    "assigned"
+                ) {
+
+                    matchesAssignment =
+                        assignedCourseCount > 0;
+
+                }
+
+
+                if (
+                    selectedAssignment ===
+                    "unassigned"
+                ) {
+
+                    matchesAssignment =
+                        assignedCourseCount === 0;
+
+                }
+
+
+                return (
+                    matchesSearch &&
+                    matchesStatus &&
+                    matchesAssignment
+                );
+
+            }
+        );
+
+
+    currentPage = 1;
+
+    renderTeachers();
+
+}
+
+/* ==========================================================
+   END - SEARCH AND FILTERS
+========================================================== */
+
+
+/* ==========================================================
+   START - RENDER TEACHERS
+========================================================== */
+
+function renderTeachers() {
+
+    if (!teachersTableBody) {
         return;
-
     }
 
 
-    noTeachers.style.display =
-        "none";
+    const totalFilteredTeachers =
+        filteredTeachers.length;
 
 
-    if (
-        currentPage > totalPages
-    ) {
+    const totalPages =
+        Math.max(
+            1,
+            Math.ceil(
+                totalFilteredTeachers /
+                teachersPerPage
+            )
+        );
+
+
+    if (currentPage > totalPages) {
 
         currentPage =
             totalPages;
@@ -509,537 +757,1100 @@ function displayTeachers() {
     }
 
 
-    const start =
+    const startIndex =
         (currentPage - 1) *
         teachersPerPage;
 
 
-    const end =
-        start + teachersPerPage;
+    const endIndex =
+        startIndex +
+        teachersPerPage;
 
 
-    const pageTeachers =
+    const teachersForCurrentPage =
         filteredTeachers.slice(
-            start,
-            end
+            startIndex,
+            endIndex
         );
 
 
-    pageTeachers.forEach(
-        function (teacher) {
+    if (
+        totalFilteredTeachers === 0
+    ) {
 
-            const realIndex =
-                teachers.indexOf(
-                    teacher
-                );
-
-
-            const row =
-                document.createElement(
-                    "tr"
-                );
+        teachersTableBody.innerHTML =
+            "";
 
 
-            const initial =
-                teacher.name
-                    .charAt(0)
-                    .toUpperCase();
+        if (noTeachers) {
+
+            noTeachers.hidden =
+                false;
+
+        }
 
 
-            row.innerHTML = `
+        updateResultText(0);
 
-                <td>
 
-                    <div class="teacher-cell">
+        updatePagination(
+            0,
+            1,
+            0,
+            0
+        );
 
-                        <div class="table-avatar">
-                            ${escapeHTML(initial)}
-                        </div>
+
+        return;
+    }
+
+
+    if (noTeachers) {
+
+        noTeachers.hidden =
+            true;
+
+    }
+
+
+    teachersTableBody.innerHTML =
+        teachersForCurrentPage
+            .map(createTeacherRow)
+            .join("");
+
+
+    addTeacherActionEvents();
+
+
+    updateResultText(
+        totalFilteredTeachers
+    );
+
+
+    updatePagination(
+        totalFilteredTeachers,
+        totalPages,
+        startIndex,
+        teachersForCurrentPage.length
+    );
+
+}
+
+/* ==========================================================
+   END - RENDER TEACHERS
+========================================================== */
+
+
+/* ==========================================================
+   START - CREATE TEACHER ROW
+========================================================== */
+
+function createTeacherRow(teacher) {
+
+    const name =
+        getTeacherName(teacher);
+
+
+    const email =
+        getTeacherEmail(teacher);
+
+
+    const initial =
+        getInitial(name);
+
+
+    const status =
+        getTeacherStatus(teacher);
+
+
+    const statusText =
+        formatStatus(status);
+
+
+    const assignedCourses =
+        getTeacherCourses(teacher);
+
+
+    const courseCount =
+        assignedCourses.length;
+
+
+    const joined =
+        formatJoinedDate(teacher);
+
+
+    const statusAction =
+        status === "suspended"
+            ? "reactivate"
+            : "suspend";
+
+
+    const statusButtonText =
+        status === "suspended"
+            ? "Reactivate"
+            : "Suspend";
+
+
+    const statusIcon =
+        status === "suspended"
+            ? "fa-user-check"
+            : "fa-user-lock";
+
+
+    return `
+        <tr>
+
+            <td>
+
+                <div class="table-teacher">
+
+                    <span class="table-teacher-avatar">
+                        ${escapeHTML(initial)}
+                    </span>
+
+
+                    <div class="table-teacher-info">
 
                         <strong>
-                            ${escapeHTML(
-                                teacher.name
-                            )}
+                            ${escapeHTML(name)}
                         </strong>
 
+                        <span>
+                            Teacher
+                        </span>
+
                     </div>
 
-                </td>
+                </div>
+
+            </td>
 
 
-                <td>
-                    ${escapeHTML(
-                        teacher.email
-                    )}
-                </td>
+            <td>
+                ${escapeHTML(email)}
+            </td>
 
 
-                <td>
-                    <span class="subject-badge">
-                        ${escapeHTML(
-                            teacher.subject
-                        )}
-                    </span>
-                </td>
+            <td>
+
+                <span
+                    class="teacher-status-badge status-${escapeHTML(status)}"
+                >
+                    ${escapeHTML(statusText)}
+                </span>
+
+            </td>
 
 
-                <td>
-                    ${escapeHTML(
-                        teacher.experience
-                    )}
-                </td>
+            <td>
+
+                <span class="teacher-course-count">
+
+                    <i class="fa-solid fa-book-open"></i>
+
+                    ${courseCount}
+
+                </span>
+
+            </td>
 
 
-                <td>
+            <td>
 
-                    <span
-                        class="status ${teacher.status.toLowerCase()}"
+                <span class="teacher-joined-date">
+                    ${escapeHTML(joined)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="teacher-action-buttons">
+
+
+                    <button
+                        type="button"
+                        class="view-teacher-btn"
+                        data-teacher-id="${escapeHTML(teacher.id)}"
                     >
-                        ${escapeHTML(
-                            teacher.status
-                        )}
-                    </span>
 
-                </td>
+                        <i class="fa-regular fa-eye"></i>
 
-
-                <td>
-                    ${escapeHTML(
-                        teacher.joined
-                    )}
-                </td>
-
-
-                <td>
-
-                    <div class="action-buttons">
-
-                        <button
-                            class="view-btn"
-                            data-action="view"
-                            data-index="${realIndex}"
-                        >
+                        <span>
                             View
-                        </button>
+                        </span>
+
+                    </button>
 
 
-                        <button
-                            class="edit-btn"
-                            data-action="edit"
-                            data-index="${realIndex}"
+                    <button
+                        type="button"
+                        class="status-teacher-btn ${statusAction}"
+                        data-teacher-id="${escapeHTML(teacher.id)}"
+                    >
+
+                        <i class="fa-solid ${statusIcon}"></i>
+
+                        <span>
+                            ${statusButtonText}
+                        </span>
+
+                    </button>
+
+
+                </div>
+
+            </td>
+
+        </tr>
+    `;
+
+}
+
+/* ==========================================================
+   END - CREATE TEACHER ROW
+========================================================== */
+
+
+/* ==========================================================
+   START - RESULT TEXT
+========================================================== */
+
+function updateResultText(total) {
+
+    if (!teachersResultText) {
+        return;
+    }
+
+
+    if (total === 0) {
+
+        teachersResultText.textContent =
+            "No teachers match your search.";
+
+        return;
+    }
+
+
+    if (total === 1) {
+
+        teachersResultText.textContent =
+            "1 teacher found.";
+
+        return;
+    }
+
+
+    teachersResultText.textContent =
+        `${total} teachers found.`;
+
+}
+
+/* ==========================================================
+   END - RESULT TEXT
+========================================================== */
+
+
+/* ==========================================================
+   START - PAGINATION
+========================================================== */
+
+function updatePagination(
+    totalTeachers,
+    totalPages,
+    startIndex,
+    currentPageTeacherCount
+) {
+
+    if (pageInfo) {
+
+        pageInfo.textContent =
+            `Page ${currentPage} of ${totalPages}`;
+
+    }
+
+
+    if (prevBtn) {
+
+        prevBtn.disabled =
+            currentPage <= 1;
+
+    }
+
+
+    if (nextBtn) {
+
+        nextBtn.disabled =
+            currentPage >= totalPages ||
+            totalTeachers === 0;
+
+    }
+
+
+    if (!paginationSummary) {
+        return;
+    }
+
+
+    if (totalTeachers === 0) {
+
+        paginationSummary.textContent =
+            "Showing 0 teachers";
+
+        return;
+    }
+
+
+    const firstTeacherNumber =
+        startIndex + 1;
+
+
+    const lastTeacherNumber =
+        startIndex +
+        currentPageTeacherCount;
+
+
+    paginationSummary.textContent =
+        `Showing ${firstTeacherNumber}–${lastTeacherNumber} of ${totalTeachers} teachers`;
+
+}
+
+/* ==========================================================
+   END - PAGINATION
+========================================================== */
+
+
+/* ==========================================================
+   START - PAGINATION EVENTS
+========================================================== */
+
+if (prevBtn) {
+
+    prevBtn.addEventListener(
+        "click",
+        () => {
+
+            if (currentPage <= 1) {
+                return;
+            }
+
+
+            currentPage--;
+
+            renderTeachers();
+
+        }
+    );
+
+}
+
+
+if (nextBtn) {
+
+    nextBtn.addEventListener(
+        "click",
+        () => {
+
+            const totalPages =
+                Math.max(
+                    1,
+                    Math.ceil(
+                        filteredTeachers.length /
+                        teachersPerPage
+                    )
+                );
+
+
+            if (
+                currentPage >= totalPages
+            ) {
+                return;
+            }
+
+
+            currentPage++;
+
+            renderTeachers();
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - PAGINATION EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - FILTER EVENTS
+========================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        applyFilters
+    );
+
+}
+
+
+if (statusFilter) {
+
+    statusFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+}
+
+
+if (assignmentFilter) {
+
+    assignmentFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+}
+
+/* ==========================================================
+   END - FILTER EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - TEACHER ACTION EVENTS
+========================================================== */
+
+function addTeacherActionEvents() {
+
+    document
+        .querySelectorAll(
+            ".view-teacher-btn"
+        )
+        .forEach((button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    openTeacherDetails(
+                        button.dataset.teacherId
+                    );
+
+                }
+            );
+
+        });
+
+
+    document
+        .querySelectorAll(
+            ".status-teacher-btn"
+        )
+        .forEach((button) => {
+
+            button.addEventListener(
+                "click",
+                () => {
+
+                    openStatusConfirmation(
+                        button.dataset.teacherId
+                    );
+
+                }
+            );
+
+        });
+
+}
+
+/* ==========================================================
+   END - TEACHER ACTION EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - VIEW TEACHER
+========================================================== */
+
+function openTeacherDetails(
+    teacherId
+) {
+
+    const teacher =
+        findTeacherById(
+            teacherId
+        );
+
+
+    if (
+        !teacher ||
+        !viewTeacherModal
+    ) {
+        return;
+    }
+
+
+    const name =
+        getTeacherName(teacher);
+
+
+    const assignedCourses =
+        getTeacherCourses(teacher);
+
+
+    if (viewTeacherAvatar) {
+
+        viewTeacherAvatar.textContent =
+            getInitial(name);
+
+    }
+
+
+    if (viewTeacherName) {
+
+        viewTeacherName.textContent =
+            name;
+
+    }
+
+
+    if (viewTeacherEmail) {
+
+        viewTeacherEmail.textContent =
+            getTeacherEmail(teacher);
+
+    }
+
+
+    if (viewTeacherRole) {
+
+        viewTeacherRole.textContent =
+            "Teacher";
+
+    }
+
+
+    if (viewTeacherStatus) {
+
+        viewTeacherStatus.textContent =
+            formatStatus(
+                getTeacherStatus(
+                    teacher
+                )
+            );
+
+    }
+
+
+    if (viewTeacherCourseCount) {
+
+        viewTeacherCourseCount.textContent =
+            assignedCourses.length;
+
+    }
+
+
+    if (viewTeacherJoined) {
+
+        viewTeacherJoined.textContent =
+            formatJoinedDate(
+                teacher
+            );
+
+    }
+
+
+    if (viewCourseCountBadge) {
+
+        viewCourseCountBadge.textContent =
+            assignedCourses.length;
+
+    }
+
+
+    renderAssignedCourses(
+        assignedCourses
+    );
+
+
+    openModal(
+        viewTeacherModal
+    );
+
+}
+
+/* ==========================================================
+   END - VIEW TEACHER
+========================================================== */
+
+
+/* ==========================================================
+   START - RENDER ASSIGNED COURSES
+========================================================== */
+
+function renderAssignedCourses(courses) {
+
+    if (!viewAssignedCourses) {
+        return;
+    }
+
+
+    if (
+        !Array.isArray(courses) ||
+        courses.length === 0
+    ) {
+
+        viewAssignedCourses.innerHTML = `
+            <p class="no-assigned-course">
+                No courses assigned.
+            </p>
+        `;
+
+        return;
+    }
+
+
+    viewAssignedCourses.innerHTML =
+        courses
+            .map((course) => {
+
+                const title =
+                    getCourseTitle(course);
+
+
+                const category =
+                    getCourseCategory(course);
+
+
+                const status =
+                    getCourseStatus(course);
+
+
+                return `
+                    <div class="assigned-course-item">
+
+                        <div class="assigned-course-info">
+
+                            <strong>
+                                ${escapeHTML(title)}
+                            </strong>
+
+                            <span>
+                                ${escapeHTML(category)}
+                            </span>
+
+                        </div>
+
+
+                        <span
+                            class="assigned-course-status ${escapeHTML(status)}"
                         >
-                            Edit
-                        </button>
-
-
-                        <button
-                            class="delete-btn"
-                            data-action="delete"
-                            data-index="${realIndex}"
-                        >
-                            Delete
-                        </button>
+                            ${escapeHTML(
+                                formatCourseStatus(
+                                    status
+                                )
+                            )}
+                        </span>
 
                     </div>
+                `;
 
-                </td>
-
-            `;
-
-
-            tableBody.appendChild(row);
-
-        }
-    );
-
-
-    pageInfo.textContent =
-        `Page ${currentPage} of ${totalPages}`;
-
-
-    prevBtn.disabled =
-        currentPage === 1;
-
-
-    nextBtn.disabled =
-        currentPage === totalPages;
+            })
+            .join("");
 
 }
 
+/* ==========================================================
+   END - RENDER ASSIGNED COURSES
+========================================================== */
 
-/* =========================================================
-   VIEW TEACHER
-========================================================= */
 
-function viewTeacher(index) {
+/* ==========================================================
+   START - STATUS CONFIRMATION
+========================================================== */
+
+function openStatusConfirmation(
+    teacherId
+) {
 
     const teacher =
-        teachers[index];
-
-
-    if (!teacher) return;
-
-
-    viewAvatar.textContent =
-        teacher.name
-            .charAt(0)
-            .toUpperCase();
-
-
-    viewName.textContent =
-        teacher.name;
-
-
-    viewEmail.textContent =
-        teacher.email;
-
-
-    viewSubject.textContent =
-        teacher.subject;
-
-
-    viewExperience.textContent =
-        teacher.experience;
-
-
-    viewStatus.textContent =
-        teacher.status;
-
-
-    viewJoined.textContent =
-        teacher.joined;
-
-
-    openModal(viewModal);
-
-}
-
-
-/* =========================================================
-   ADD TEACHER
-========================================================= */
-
-function openAddTeacher() {
-
-    formTitle.textContent =
-        "Add Teacher";
-
-
-    editIndex.value = "";
-
-
-    teacherForm.reset();
-
-
-    teacherStatus.value =
-        "Active";
-
-
-    openModal(
-        teacherFormModal
-    );
-
-}
-
-
-/* =========================================================
-   EDIT TEACHER
-========================================================= */
-
-function editTeacher(index) {
-
-    const teacher =
-        teachers[index];
-
-
-    if (!teacher) return;
-
-
-    formTitle.textContent =
-        "Edit Teacher";
-
-
-    editIndex.value =
-        index;
-
-
-    teacherName.value =
-        teacher.name;
-
-
-    teacherEmail.value =
-        teacher.email;
-
-
-    teacherSubject.value =
-        teacher.subject;
-
-
-    teacherExperience.value =
-        teacher.experience;
-
-
-    teacherStatus.value =
-        teacher.status;
-
-
-    openModal(
-        teacherFormModal
-    );
-
-}
-
-
-/* =========================================================
-   SAVE TEACHER
-========================================================= */
-
-teacherForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        const name =
-            teacherName.value.trim();
-
-
-        const email =
-            teacherEmail.value.trim();
-
-
-        const subject =
-            teacherSubject.value.trim();
-
-
-        const experience =
-            teacherExperience.value.trim();
-
-
-        const status =
-            teacherStatus.value;
-
-
-        if (
-            !name ||
-            !email ||
-            !subject ||
-            !experience
-        ) {
-
-            return;
-
-        }
-
-
-        const index =
-            editIndex.value;
-
-
-        /* Edit */
-
-        if (index !== "") {
-
-            teachers[
-                Number(index)
-            ] = {
-
-                ...teachers[
-                    Number(index)
-                ],
-
-                name: name,
-
-                email: email,
-
-                subject: subject,
-
-                experience: experience,
-
-                status: status
-
-            };
-
-        }
-
-        /* Add */
-
-        else {
-
-            teachers.unshift({
-
-                name: name,
-
-                email: email,
-
-                subject: subject,
-
-                experience: experience,
-
-                status: status,
-
-                joined: getTodayDate()
-
-            });
-
-
-            currentPage = 1;
-
-        }
-
-
-        saveTeachers();
-
-        updateStatistics();
-
-        updateSubjectFilter();
-
-        displayTeachers();
-
-        closeModal(
-            teacherFormModal
+        findTeacherById(
+            teacherId
         );
 
+
+    if (
+        !teacher ||
+        !statusModal
+    ) {
+        return;
     }
-);
 
 
-/* =========================================================
-   DELETE TEACHER
-========================================================= */
-
-function openDeleteTeacher(index) {
-
-    const teacher =
-        teachers[index];
-
-
-    if (!teacher) return;
-
-
-    deleteIndex =
-        index;
-
-
-    deleteTeacherName.textContent =
-        teacher.name;
-
-
-    openModal(
-        deleteModal
-    );
-
-}
-
-
-/* =========================================================
-   CONFIRM DELETE
-========================================================= */
-
-confirmDeleteBtn.addEventListener(
-    "click",
-    function () {
-
-        if (
-            deleteIndex === null
-        ) {
-
-            return;
-
-        }
-
-
-        teachers.splice(
-            deleteIndex,
-            1
+    const currentStatus =
+        getTeacherStatus(
+            teacher
         );
 
 
-        saveTeachers();
-
-        updateStatistics();
-
-        updateSubjectFilter();
-
-        displayTeachers();
+    const willReactivate =
+        currentStatus ===
+        "suspended";
 
 
-        deleteIndex = null;
+    selectedTeacherId =
+        teacher.id;
 
 
-        closeModal(
-            deleteModal
-        );
-
-    }
-);
+    selectedNewStatus =
+        willReactivate
+            ? "active"
+            : "suspended";
 
 
-/* =========================================================
-   TABLE ACTIONS
-========================================================= */
+    if (statusTeacherName) {
 
-tableBody.addEventListener(
-    "click",
-    function (event) {
-
-        const button =
-            event.target.closest(
-                "button"
+        statusTeacherName.textContent =
+            getTeacherName(
+                teacher
             );
 
-
-        if (!button) return;
-
-
-        const index =
-            Number(
-                button.dataset.index
-            );
+    }
 
 
-        const action =
-            button.dataset.action;
+    if (willReactivate) {
 
+        setupReactivateModal();
 
-        if (
-            action === "view"
-        ) {
+    } else {
 
-            viewTeacher(index);
-
-        }
-
-
-        if (
-            action === "edit"
-        ) {
-
-            editTeacher(index);
-
-        }
-
-
-        if (
-            action === "delete"
-        ) {
-
-            openDeleteTeacher(index);
-
-        }
+        setupSuspendModal();
 
     }
-);
 
 
-/* =========================================================
-   MODAL FUNCTIONS
-========================================================= */
+    openModal(
+        statusModal
+    );
+
+}
+
+/* ==========================================================
+   END - STATUS CONFIRMATION
+========================================================== */
+
+
+/* ==========================================================
+   START - SUSPEND MODAL
+========================================================== */
+
+function setupSuspendModal() {
+
+    if (statusModalLabel) {
+
+        statusModalLabel.textContent =
+            "ACCOUNT ACCESS";
+
+    }
+
+
+    if (statusModalTitle) {
+
+        statusModalTitle.textContent =
+            "Suspend Teacher";
+
+    }
+
+
+    if (statusConfirmationHeading) {
+
+        statusConfirmationHeading.textContent =
+            "Suspend this teacher?";
+
+    }
+
+
+    if (statusHelpText) {
+
+        statusHelpText.textContent =
+            "A suspended teacher will not be allowed to access the teacher dashboard until the account is reactivated.";
+
+    }
+
+
+    if (statusConfirmationIcon) {
+
+        statusConfirmationIcon.classList.remove(
+            "reactivate"
+        );
+
+
+        statusConfirmationIcon.innerHTML = `
+            <i class="fa-solid fa-user-lock"></i>
+        `;
+
+    }
+
+
+    if (confirmStatusBtn) {
+
+        confirmStatusBtn.classList.remove(
+            "reactivate"
+        );
+
+
+        confirmStatusBtn.innerHTML = `
+            <i class="fa-solid fa-user-lock"></i>
+
+            <span>
+                Suspend Teacher
+            </span>
+        `;
+
+    }
+
+}
+
+/* ==========================================================
+   END - SUSPEND MODAL
+========================================================== */
+
+
+/* ==========================================================
+   START - REACTIVATE MODAL
+========================================================== */
+
+function setupReactivateModal() {
+
+    if (statusModalLabel) {
+
+        statusModalLabel.textContent =
+            "ACCOUNT ACCESS";
+
+    }
+
+
+    if (statusModalTitle) {
+
+        statusModalTitle.textContent =
+            "Reactivate Teacher";
+
+    }
+
+
+    if (statusConfirmationHeading) {
+
+        statusConfirmationHeading.textContent =
+            "Reactivate this teacher?";
+
+    }
+
+
+    if (statusHelpText) {
+
+        statusHelpText.textContent =
+            "The teacher will regain access to the teacher dashboard after the account is reactivated.";
+
+    }
+
+
+    if (statusConfirmationIcon) {
+
+        statusConfirmationIcon.classList.add(
+            "reactivate"
+        );
+
+
+        statusConfirmationIcon.innerHTML = `
+            <i class="fa-solid fa-user-check"></i>
+        `;
+
+    }
+
+
+    if (confirmStatusBtn) {
+
+        confirmStatusBtn.classList.add(
+            "reactivate"
+        );
+
+
+        confirmStatusBtn.innerHTML = `
+            <i class="fa-solid fa-user-check"></i>
+
+            <span>
+                Reactivate Teacher
+            </span>
+        `;
+
+    }
+
+}
+
+/* ==========================================================
+   END - REACTIVATE MODAL
+========================================================== */
+
+
+/* ==========================================================
+   START - UPDATE TEACHER STATUS
+========================================================== */
+
+if (confirmStatusBtn) {
+
+    confirmStatusBtn.addEventListener(
+        "click",
+        async () => {
+
+            if (
+                !selectedTeacherId ||
+                !selectedNewStatus
+            ) {
+                return;
+            }
+
+
+            try {
+
+                setStatusLoading(true);
+
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "users",
+                        selectedTeacherId
+                    ),
+                    {
+                        status:
+                            selectedNewStatus
+                    }
+                );
+
+
+                closeStatusConfirmation();
+
+
+                await loadTeachersAndCourses();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Teacher Status Update Error:",
+                    error
+                );
+
+
+                if (
+                    error?.code ===
+                    "permission-denied"
+                ) {
+
+                    alert(
+                        "Firestore does not currently allow this teacher status change."
+                    );
+
+                } else {
+
+                    alert(
+                        "Unable to update teacher status. Please try again."
+                    );
+
+                }
+
+
+            } finally {
+
+                setStatusLoading(false);
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - UPDATE TEACHER STATUS
+========================================================== */
+
+
+/* ==========================================================
+   START - STATUS LOADING
+========================================================== */
+
+function setStatusLoading(
+    isLoading
+) {
+
+    if (!confirmStatusBtn) {
+        return;
+    }
+
+
+    confirmStatusBtn.disabled =
+        isLoading;
+
+
+    const text =
+        confirmStatusBtn.querySelector(
+            "span"
+        );
+
+
+    if (!text) {
+        return;
+    }
+
+
+    if (isLoading) {
+
+        text.textContent =
+            "Updating...";
+
+        return;
+    }
+
+
+    text.textContent =
+        selectedNewStatus === "active"
+            ? "Reactivate Teacher"
+            : "Suspend Teacher";
+
+}
+
+/* ==========================================================
+   END - STATUS LOADING
+========================================================== */
+
+
+/* ==========================================================
+   START - MODAL HELPERS
+========================================================== */
 
 function openModal(modal) {
 
-    modal.classList.add("show");
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add(
+        "show"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
 
     document.body.classList.add(
         "modal-open"
@@ -1050,67 +1861,757 @@ function openModal(modal) {
 
 function closeModal(modal) {
 
-    modal.classList.remove("show");
+    if (!modal) {
+        return;
+    }
 
-    document.body.classList.remove(
-        "modal-open"
+
+    modal.classList.remove(
+        "show"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    const anotherModalOpen =
+        document.querySelector(
+            ".teacher-modal.show"
+        );
+
+
+    if (!anotherModalOpen) {
+
+        document.body.classList.remove(
+            "modal-open"
+        );
+
+    }
+
+}
+
+
+function closeTeacherDetails() {
+
+    closeModal(
+        viewTeacherModal
     );
 
 }
 
 
-/* =========================================================
-   CLOSE BUTTONS
-========================================================= */
+function closeStatusConfirmation() {
 
-document
-    .querySelectorAll("[data-close]")
-    .forEach(function (button) {
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                const modalId =
-                    button.dataset.close;
+    closeModal(
+        statusModal
+    );
 
 
-                const modal =
-                    document.getElementById(
-                        modalId
-                    );
+    selectedTeacherId = null;
+    selectedNewStatus = null;
+
+}
+
+/* ==========================================================
+   END - MODAL HELPERS
+========================================================== */
 
 
-                if (modal) {
+/* ==========================================================
+   START - MODAL EVENTS
+========================================================== */
 
-                    closeModal(modal);
+if (closeViewModal) {
 
-                }
+    closeViewModal.addEventListener(
+        "click",
+        closeTeacherDetails
+    );
 
+}
+
+
+if (closeStatusModal) {
+
+    closeStatusModal.addEventListener(
+        "click",
+        closeStatusConfirmation
+    );
+
+}
+
+
+if (cancelStatusBtn) {
+
+    cancelStatusBtn.addEventListener(
+        "click",
+        closeStatusConfirmation
+    );
+
+}
+
+
+if (viewTeacherModal) {
+
+    viewTeacherModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                viewTeacherModal
+            ) {
+
+                closeTeacherDetails();
+
+            }
+
+        }
+    );
+
+}
+
+
+if (statusModal) {
+
+    statusModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                statusModal
+            ) {
+
+                closeStatusConfirmation();
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - MODAL EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - TEACHER HELPERS
+========================================================== */
+
+function findTeacherById(
+    teacherId
+) {
+
+    return allTeachers.find(
+        (teacher) => {
+
+            return (
+                teacher.id ===
+                teacherId
+            );
+
+        }
+    );
+
+}
+
+
+function getTeacherName(teacher) {
+
+    return (
+        teacher.name ||
+        teacher.fullName ||
+        teacher.displayName ||
+        teacher.username ||
+        "EduVerse Teacher"
+    );
+
+}
+
+
+function getTeacherEmail(teacher) {
+
+    return (
+        teacher.email ||
+        "No email available"
+    );
+
+}
+
+
+function getTeacherStatus(teacher) {
+
+    const status =
+        String(
+            teacher.status || "active"
+        )
+            .trim()
+            .toLowerCase();
+
+
+    if (
+        status === "suspended"
+    ) {
+
+        return "suspended";
+
+    }
+
+
+    return "active";
+
+}
+
+
+function normalizeStatusFilter(status) {
+
+    const normalizedStatus =
+        String(
+            status || "all"
+        )
+            .trim()
+            .toLowerCase();
+
+
+    if (
+        normalizedStatus ===
+        "active"
+    ) {
+
+        return "active";
+
+    }
+
+
+    if (
+        normalizedStatus ===
+        "suspended"
+    ) {
+
+        return "suspended";
+
+    }
+
+
+    return "all";
+
+}
+
+
+function normalizeAssignmentFilter(
+    assignment
+) {
+
+    const normalizedAssignment =
+        String(
+            assignment || "all"
+        )
+            .trim()
+            .toLowerCase();
+
+
+    if (
+        normalizedAssignment ===
+        "assigned"
+    ) {
+
+        return "assigned";
+
+    }
+
+
+    if (
+        normalizedAssignment ===
+        "unassigned"
+    ) {
+
+        return "unassigned";
+
+    }
+
+
+    return "all";
+
+}
+
+
+function formatStatus(status) {
+
+    return (
+        String(status)
+            .toLowerCase() ===
+        "suspended"
+            ? "Suspended"
+            : "Active"
+    );
+
+}
+
+
+function getInitial(name) {
+
+    const safeName =
+        String(
+            name || "T"
+        ).trim();
+
+
+    return (
+        safeName.charAt(0) ||
+        "T"
+    ).toUpperCase();
+
+}
+
+/* ==========================================================
+   END - TEACHER HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE HELPERS
+========================================================== */
+
+function getCourseTitle(course) {
+
+    return (
+        course.title ||
+        course.name ||
+        course.courseTitle ||
+        "Untitled Course"
+    );
+
+}
+
+
+function getCourseCategory(course) {
+
+    return (
+        course.category ||
+        course.level ||
+        "EduVerse Course"
+    );
+
+}
+
+
+function getCourseStatus(course) {
+
+    const status =
+        String(
+            course.status || "active"
+        )
+            .trim()
+            .toLowerCase();
+
+
+    if (
+        status === "published"
+    ) {
+
+        return "active";
+
+    }
+
+
+    if (
+        status === "active"
+    ) {
+
+        return "active";
+
+    }
+
+
+    if (
+        status === "draft"
+    ) {
+
+        return "draft";
+
+    }
+
+
+    return "inactive";
+
+}
+
+
+function formatCourseStatus(status) {
+
+    if (status === "active") {
+
+        return "Active";
+
+    }
+
+
+    if (status === "draft") {
+
+        return "Draft";
+
+    }
+
+
+    return "Inactive";
+
+}
+
+/* ==========================================================
+   END - COURSE HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - DATE HELPERS
+========================================================== */
+
+function sortTeachersByNewest(
+    a,
+    b
+) {
+
+    return (
+        getTeacherTimestamp(b) -
+        getTeacherTimestamp(a)
+    );
+
+}
+
+
+function getTeacherTimestamp(
+    teacher
+) {
+
+    const possibleDates = [
+        teacher.createdAt,
+        teacher.created_at,
+        teacher.joinedAt,
+        teacher.registeredAt
+    ];
+
+
+    for (
+        const value of possibleDates
+    ) {
+
+        if (!value) {
+            continue;
+        }
+
+
+        if (
+            typeof value.toDate ===
+            "function"
+        ) {
+
+            return value
+                .toDate()
+                .getTime();
+
+        }
+
+
+        const parsedDate =
+            new Date(value);
+
+
+        if (
+            !Number.isNaN(
+                parsedDate.getTime()
+            )
+        ) {
+
+            return parsedDate.getTime();
+
+        }
+
+    }
+
+
+    return 0;
+
+}
+
+
+function formatJoinedDate(
+    teacher
+) {
+
+    const timestamp =
+        getTeacherTimestamp(
+            teacher
+        );
+
+
+    if (!timestamp) {
+
+        return "Not available";
+
+    }
+
+
+    return new Date(timestamp)
+        .toLocaleDateString(
+            "en-US",
+            {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
             }
         );
 
-    });
+}
+
+/* ==========================================================
+   END - DATE HELPERS
+========================================================== */
 
 
-/* =========================================================
-   CLOSE OUTSIDE MODAL
-========================================================= */
+/* ==========================================================
+   START - ROLE HELPER
+========================================================== */
+
+function normalizeRole(role) {
+
+    return String(
+        role || ""
+    )
+        .trim()
+        .toLowerCase();
+
+}
+
+/* ==========================================================
+   END - ROLE HELPER
+========================================================== */
+
+
+/* ==========================================================
+   START - LOAD ERROR
+========================================================== */
+
+function showTeachersLoadError() {
+
+    allTeachers = [];
+    allCourses = [];
+    filteredTeachers = [];
+
+
+    if (teachersTableBody) {
+
+        teachersTableBody.innerHTML = `
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="table-message"
+                >
+                    Unable to load teachers.
+                </td>
+
+            </tr>
+        `;
+
+    }
+
+
+    if (teachersResultText) {
+
+        teachersResultText.textContent =
+            "Teacher data could not be loaded.";
+
+    }
+
+
+    if (noTeachers) {
+
+        noTeachers.hidden =
+            true;
+
+    }
+
+
+    if (totalTeachersElement) {
+
+        totalTeachersElement.textContent =
+            "0";
+
+    }
+
+
+    if (activeTeachersElement) {
+
+        activeTeachersElement.textContent =
+            "0";
+
+    }
+
+
+    if (suspendedTeachersElement) {
+
+        suspendedTeachersElement.textContent =
+            "0";
+
+    }
+
+
+    if (assignedTeachersElement) {
+
+        assignedTeachersElement.textContent =
+            "0";
+
+    }
+
+
+    if (paginationSummary) {
+
+        paginationSummary.textContent =
+            "Showing 0 teachers";
+
+    }
+
+
+    if (pageInfo) {
+
+        pageInfo.textContent =
+            "Page 1 of 1";
+
+    }
+
+
+    if (prevBtn) {
+
+        prevBtn.disabled =
+            true;
+
+    }
+
+
+    if (nextBtn) {
+
+        nextBtn.disabled =
+            true;
+
+    }
+
+}
+
+/* ==========================================================
+   END - LOAD ERROR
+========================================================== */
+
+
+/* ==========================================================
+   START - MOBILE SIDEBAR
+========================================================== */
+
+function openSidebar() {
+
+    if (
+        !adminSidebar ||
+        !sidebarOverlay
+    ) {
+        return;
+    }
+
+
+    adminSidebar.classList.add(
+        "open"
+    );
+
+
+    sidebarOverlay.classList.add(
+        "show"
+    );
+
+
+    document.body.classList.add(
+        "sidebar-open"
+    );
+
+}
+
+
+function closeSidebar() {
+
+    if (
+        !adminSidebar ||
+        !sidebarOverlay
+    ) {
+        return;
+    }
+
+
+    adminSidebar.classList.remove(
+        "open"
+    );
+
+
+    sidebarOverlay.classList.remove(
+        "show"
+    );
+
+
+    document.body.classList.remove(
+        "sidebar-open"
+    );
+
+}
+
+
+if (menuToggle) {
+
+    menuToggle.addEventListener(
+        "click",
+        openSidebar
+    );
+
+}
+
+
+if (sidebarClose) {
+
+    sidebarClose.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+}
+
+
+if (sidebarOverlay) {
+
+    sidebarOverlay.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+}
+
 
 document
-    .querySelectorAll(".modal")
-    .forEach(function (modal) {
+    .querySelectorAll(
+        ".sidebar-nav .nav-link"
+    )
+    .forEach((link) => {
 
-        modal.addEventListener(
+        link.addEventListener(
             "click",
-            function (event) {
+            () => {
 
                 if (
-                    event.target ===
-                    modal
+                    window.innerWidth <=
+                    991
                 ) {
 
-                    closeModal(modal);
+                    closeSidebar();
 
                 }
 
@@ -1119,222 +2620,174 @@ document
 
     });
 
+/* ==========================================================
+   END - MOBILE SIDEBAR
+========================================================== */
 
-/* =========================================================
-   ESCAPE KEY
-========================================================= */
+
+/* ==========================================================
+   START - ESCAPE KEY
+========================================================== */
 
 document.addEventListener(
     "keydown",
-    function (event) {
+    (event) => {
 
         if (
-            event.key !== "Escape"
+            event.key !==
+            "Escape"
         ) {
+            return;
+        }
+
+
+        if (
+            statusModal?.classList.contains(
+                "show"
+            )
+        ) {
+
+            closeStatusConfirmation();
 
             return;
-
         }
 
 
-        document
-            .querySelectorAll(
-                ".modal.show"
+        if (
+            viewTeacherModal?.classList.contains(
+                "show"
             )
-            .forEach(function (modal) {
-
-                closeModal(modal);
-
-            });
-
-    }
-);
-
-
-/* =========================================================
-   SEARCH
-========================================================= */
-
-searchInput.addEventListener(
-    "input",
-    function () {
-
-        currentPage = 1;
-
-        displayTeachers();
-
-    }
-);
-
-
-/* =========================================================
-   SUBJECT FILTER
-========================================================= */
-
-subjectFilter.addEventListener(
-    "change",
-    function () {
-
-        currentPage = 1;
-
-        displayTeachers();
-
-    }
-);
-
-
-/* =========================================================
-   STATUS FILTER
-========================================================= */
-
-statusFilter.addEventListener(
-    "change",
-    function () {
-
-        currentPage = 1;
-
-        displayTeachers();
-
-    }
-);
-
-
-/* =========================================================
-   PREVIOUS
-========================================================= */
-
-prevBtn.addEventListener(
-    "click",
-    function () {
-
-        if (
-            currentPage > 1
         ) {
 
-            currentPage--;
+            closeTeacherDetails();
 
-            displayTeachers();
+            return;
+        }
+
+
+        if (
+            adminSidebar?.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeSidebar();
 
         }
 
     }
 );
 
-
-/* =========================================================
-   NEXT
-========================================================= */
-
-nextBtn.addEventListener(
-    "click",
-    function () {
-
-        const filteredTeachers =
-            getFilteredTeachers();
+/* ==========================================================
+   END - ESCAPE KEY
+========================================================== */
 
 
-        const totalPages =
-            Math.ceil(
-                filteredTeachers.length /
-                teachersPerPage
-            );
+/* ==========================================================
+   START - ADMIN LOGOUT
+========================================================== */
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async (event) => {
+
+            event.preventDefault();
 
 
-        if (
-            currentPage < totalPages
-        ) {
+            try {
 
-            currentPage++;
-
-            displayTeachers();
-
-        }
-
-    }
-);
+                logoutBtn.style.pointerEvents =
+                    "none";
 
 
-/* =========================================================
-   ADD BUTTON
-========================================================= */
-
-addTeacherBtn.addEventListener(
-    "click",
-    openAddTeacher
-);
+                const logoutText =
+                    logoutBtn.querySelector(
+                        "span:last-child"
+                    );
 
 
-/* =========================================================
-   TODAY DATE
-========================================================= */
+                if (logoutText) {
 
-function getTodayDate() {
+                    logoutText.textContent =
+                        "Logging Out...";
 
-    const today =
-        new Date();
+                }
 
 
-    const day =
-        String(
-            today.getDate()
-        ).padStart(2, "0");
+                await signOut(auth);
 
 
-    const month =
-        today.toLocaleString(
-            "en-US",
-            {
-                month: "short"
+                window.location.replace(
+                    "../../../logout.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Teachers Logout Error:",
+                    error
+                );
+
+
+                logoutBtn.style.pointerEvents =
+                    "";
+
+
+                const logoutText =
+                    logoutBtn.querySelector(
+                        "span:last-child"
+                    );
+
+
+                if (logoutText) {
+
+                    logoutText.textContent =
+                        "Logout";
+
+                }
+
+
+                alert(
+                    "Unable to logout. Please try again."
+                );
+
             }
-        );
 
-
-    const year =
-        today.getFullYear();
-
-
-    return `${day} ${month} ${year}`;
+        }
+    );
 
 }
 
+/* ==========================================================
+   END - ADMIN LOGOUT
+========================================================== */
 
-/* =========================================================
-   SECURITY
-========================================================= */
+
+/* ==========================================================
+   START - HTML SECURITY
+========================================================== */
 
 function escapeHTML(value) {
 
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+    return String(
+        value ?? ""
+    )
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
 }
 
+/* ==========================================================
+   END - HTML SECURITY
+========================================================== */
 
-/* =========================================================
-   INITIAL LOAD
-========================================================= */
 
-updateStatistics();
-
-updateSubjectFilter();
-
-displayTeachers();
+/* ==========================================================
+   END - EDUVERSE ADMIN TEACHERS
+========================================================== */

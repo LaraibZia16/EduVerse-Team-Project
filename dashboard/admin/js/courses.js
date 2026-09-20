@@ -1,301 +1,1378 @@
-"use strict";
+/* ==========================================================
+   START - EDUVERSE ADMIN MANAGE COURSES
+========================================================== */
 
 
-/* =========================================================
-   EDUVERSE ADMIN - COURSES
-   ========================================================= */
+/* ==========================================================
+   START - FIREBASE IMPORTS
+========================================================== */
+
+import {
+    auth,
+    db
+} from "../../../assets/js/firebase-config.js";
+
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-auth.js";
+
+import {
+    collection,
+    addDoc,
+    doc,
+    getDoc,
+    getDocs,
+    updateDoc,
+    deleteDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.9.0/firebase-firestore.js";
+
+/* ==========================================================
+   END - FIREBASE IMPORTS
+========================================================== */
 
 
-const STORAGE_KEY = "eduverseCourses";
+/* ==========================================================
+   START - DOM ELEMENTS
+========================================================== */
 
-let courses = [];
+const logoutBtn = document.getElementById("logoutBtn");
+
+const menuToggle = document.getElementById("menuToggle");
+const sidebarClose = document.getElementById("sidebarClose");
+const adminSidebar = document.getElementById("adminSidebar");
+const sidebarOverlay = document.getElementById("sidebarOverlay");
+
+const adminName = document.getElementById("adminName");
+
+
+/* ----------------------------------------------------------
+   Course Statistics
+---------------------------------------------------------- */
+
+const totalCoursesElement =
+    document.getElementById("totalCourses");
+
+const activeCoursesElement =
+    document.getElementById("activeCourses");
+
+const inactiveCoursesElement =
+    document.getElementById("inactiveCourses");
+
+const totalEnrollmentsElement =
+    document.getElementById("totalEnrollments");
+
+
+/* ----------------------------------------------------------
+   Search / Filters
+---------------------------------------------------------- */
+
+const searchInput =
+    document.getElementById("searchInput");
+
+const categoryFilter =
+    document.getElementById("categoryFilter");
+
+const statusFilter =
+    document.getElementById("statusFilter");
+
+
+/* ----------------------------------------------------------
+   Table
+---------------------------------------------------------- */
+
+const coursesTableBody =
+    document.getElementById("coursesTableBody");
+
+const coursesResultText =
+    document.getElementById("coursesResultText");
+
+const noCourses =
+    document.getElementById("noCourses");
+
+
+/* ----------------------------------------------------------
+   Pagination
+---------------------------------------------------------- */
+
+const paginationSummary =
+    document.getElementById("paginationSummary");
+
+const pageInfo =
+    document.getElementById("pageInfo");
+
+const prevBtn =
+    document.getElementById("prevBtn");
+
+const nextBtn =
+    document.getElementById("nextBtn");
+
+
+/* ----------------------------------------------------------
+   Add Course
+---------------------------------------------------------- */
+
+const addCourseBtn =
+    document.getElementById("addCourseBtn");
+
+
+/* ----------------------------------------------------------
+   View Modal
+---------------------------------------------------------- */
+
+const viewCourseModal =
+    document.getElementById("viewCourseModal");
+
+const closeViewModal =
+    document.getElementById("closeViewModal");
+
+const viewCourseTitle =
+    document.getElementById("viewCourseTitle");
+
+const viewCourseCategory =
+    document.getElementById("viewCourseCategory");
+
+const viewCourseTeacher =
+    document.getElementById("viewCourseTeacher");
+
+const viewCourseEnrollments =
+    document.getElementById("viewCourseEnrollments");
+
+const viewCourseStatus =
+    document.getElementById("viewCourseStatus");
+
+const viewCourseCreated =
+    document.getElementById("viewCourseCreated");
+
+const viewCourseDescription =
+    document.getElementById("viewCourseDescription");
+
+
+/* ----------------------------------------------------------
+   Add / Edit Modal
+---------------------------------------------------------- */
+
+const courseFormModal =
+    document.getElementById("courseFormModal");
+
+const closeCourseFormModal =
+    document.getElementById("closeCourseFormModal");
+
+const cancelCourseBtn =
+    document.getElementById("cancelCourseBtn");
+
+const courseForm =
+    document.getElementById("courseForm");
+
+const courseId =
+    document.getElementById("courseId");
+
+const courseTitle =
+    document.getElementById("courseTitle");
+
+const courseCategory =
+    document.getElementById("courseCategory");
+
+const courseTeacher =
+    document.getElementById("courseTeacher");
+
+const courseStatus =
+    document.getElementById("courseStatus");
+
+const courseDescription =
+    document.getElementById("courseDescription");
+
+const courseFormLabel =
+    document.getElementById("courseFormLabel");
+
+const courseFormTitle =
+    document.getElementById("courseFormTitle");
+
+const courseFormMessage =
+    document.getElementById("courseFormMessage");
+
+const saveCourseBtn =
+    document.getElementById("saveCourseBtn");
+
+
+/* ----------------------------------------------------------
+   Delete Modal
+---------------------------------------------------------- */
+
+const deleteCourseModal =
+    document.getElementById("deleteCourseModal");
+
+const closeDeleteModal =
+    document.getElementById("closeDeleteModal");
+
+const cancelDeleteBtn =
+    document.getElementById("cancelDeleteBtn");
+
+const confirmDeleteBtn =
+    document.getElementById("confirmDeleteBtn");
+
+const deleteCourseName =
+    document.getElementById("deleteCourseName");
+
+/* ==========================================================
+   END - DOM ELEMENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - PAGE STATE
+========================================================== */
+
+let allCourses = [];
+let filteredCourses = [];
+let allTeachers = [];
 
 let currentPage = 1;
 
-const itemsPerPage = 5;
+let courseToDeleteId = null;
 
-let editingCourseId = null;
+const coursesPerPage = 5;
 
-let deletingCourseId = null;
-
-
-/* =========================================================
-   DEFAULT COURSES
-   ========================================================= */
-
-const defaultCourses = [
-
-    {
-        id: 1,
-        name: "HTML & CSS Fundamentals",
-        instructor: "Usman Ali",
-        category: "Web Development",
-        students: 42,
-        status: "active",
-        created: "15 Sep 2026",
-        description:
-            "Learn the fundamentals of HTML and CSS and build responsive web pages."
-    },
-
-    {
-        id: 2,
-        name: "JavaScript Essentials",
-        instructor: "Ahmed Raza",
-        category: "Programming",
-        students: 35,
-        status: "active",
-        created: "12 Sep 2026",
-        description:
-            "Learn JavaScript fundamentals, DOM manipulation and modern JavaScript concepts."
-    },
-
-    {
-        id: 3,
-        name: "UI/UX Design Basics",
-        instructor: "Fatima Noor",
-        category: "Design",
-        students: 28,
-        status: "active",
-        created: "10 Sep 2026",
-        description:
-            "Understand user interface and user experience design principles."
-    },
-
-    {
-        id: 4,
-        name: "Python Programming",
-        instructor: "Hamza Khan",
-        category: "Programming",
-        students: 31,
-        status: "active",
-        created: "08 Sep 2026",
-        description:
-            "Learn Python programming from basic syntax to practical programming concepts."
-    },
-
-    {
-        id: 5,
-        name: "React JS Development",
-        instructor: "Zain Ali",
-        category: "Web Development",
-        students: 24,
-        status: "draft",
-        created: "06 Sep 2026",
-        description:
-            "Build modern web applications using React components and state management."
-    },
-
-    {
-        id: 6,
-        name: "Database Management",
-        instructor: "Sara Ahmed",
-        category: "Database",
-        students: 19,
-        status: "active",
-        created: "04 Sep 2026",
-        description:
-            "Learn database concepts, tables, queries and database management."
-    },
-
-    {
-        id: 7,
-        name: "Digital Marketing",
-        instructor: "Hina Ahmed",
-        category: "Digital Marketing",
-        students: 16,
-        status: "inactive",
-        created: "02 Sep 2026",
-        description:
-            "Learn the basics of digital marketing, SEO and online promotion."
-    }
-
-];
+/* ==========================================================
+   END - PAGE STATE
+========================================================== */
 
 
-/* =========================================================
-   PAGE LOAD
-   ========================================================= */
+/* ==========================================================
+   START - ADMIN AUTH PROTECTION
+========================================================== */
 
-document.addEventListener("DOMContentLoaded", function () {
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-    loadCourses();
+        if (!user) {
 
-    setupEvents();
+            window.location.replace(
+                "../../../login.html"
+            );
 
-    populateCategoryFilter();
+            return;
+        }
 
-    updateStats();
-
-    renderCourses();
-
-});
-
-
-/* =========================================================
-   LOAD COURSES
-   ========================================================= */
-
-function loadCourses() {
-
-    const savedCourses = localStorage.getItem(STORAGE_KEY);
-
-    if (savedCourses) {
 
         try {
 
-            courses = JSON.parse(savedCourses);
+            const adminSnapshot =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
+
+
+            if (!adminSnapshot.exists()) {
+
+                await signOut(auth);
+
+                window.location.replace(
+                    "../../../login.html"
+                );
+
+                return;
+            }
+
+
+            const adminData =
+                adminSnapshot.data();
+
+
+            if (
+                normalizeRole(adminData.role) !==
+                "admin"
+            ) {
+
+                await signOut(auth);
+
+                window.location.replace(
+                    "../../../login.html"
+                );
+
+                return;
+            }
+
+
+            setAdminInformation(
+                adminData,
+                user
+            );
+
+
+            /*
+               Admin authentication passed.
+
+               Load teachers first because course
+               table and form need teacher names.
+            */
+
+            await loadTeachers();
+
+            await loadCourses();
+
 
         } catch (error) {
 
-            courses = [...defaultCourses];
+            console.error(
+                "Manage Courses Authentication Error:",
+                error
+            );
 
-            saveCourses();
+
+            try {
+
+                await signOut(auth);
+
+            } catch (signOutError) {
+
+                console.error(
+                    "Sign Out Error:",
+                    signOutError
+                );
+
+            }
+
+
+            window.location.replace(
+                "../../../login.html"
+            );
 
         }
 
-    } else {
+    }
+);
 
-        courses = [...defaultCourses];
+/* ==========================================================
+   END - ADMIN AUTH PROTECTION
+========================================================== */
 
-        saveCourses();
+
+/* ==========================================================
+   START - ADMIN INFORMATION
+========================================================== */
+
+function setAdminInformation(
+    userData,
+    firebaseUser
+) {
+
+    if (!adminName) {
+        return;
+    }
+
+
+    const name =
+        userData.name ||
+        userData.fullName ||
+        firebaseUser.displayName ||
+        "Admin";
+
+
+    adminName.textContent = name;
+
+}
+
+/* ==========================================================
+   END - ADMIN INFORMATION
+========================================================== */
+
+
+/* ==========================================================
+   START - LOAD TEACHERS
+========================================================== */
+
+async function loadTeachers() {
+
+    try {
+
+        const usersSnapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "users"
+                )
+            );
+
+
+        allTeachers =
+            usersSnapshot.docs
+                .map((userDocument) => {
+
+                    return {
+                        id: userDocument.id,
+                        ...userDocument.data()
+                    };
+
+                })
+                .filter((user) => {
+
+                    return (
+                        normalizeRole(user.role) ===
+                        "teacher"
+                    );
+
+                });
+
+
+        allTeachers.sort(
+            (a, b) => {
+
+                return getUserName(a)
+                    .localeCompare(
+                        getUserName(b)
+                    );
+
+            }
+        );
+
+
+        renderTeacherOptions();
+
+
+    } catch (error) {
+
+        console.error(
+            "Load Teachers Error:",
+            error
+        );
+
+
+        allTeachers = [];
+
+        renderTeacherOptions();
 
     }
 
 }
 
+/* ==========================================================
+   END - LOAD TEACHERS
+========================================================== */
 
-/* =========================================================
-   SAVE COURSES
-   ========================================================= */
 
-function saveCourses() {
+/* ==========================================================
+   START - TEACHER OPTIONS
+========================================================== */
 
-    localStorage.setItem(
-        STORAGE_KEY,
-        JSON.stringify(courses)
+function renderTeacherOptions(
+    selectedTeacherId = ""
+) {
+
+    if (!courseTeacher) {
+        return;
+    }
+
+
+    if (allTeachers.length === 0) {
+
+        courseTeacher.innerHTML = `
+            <option value="">
+                No registered teachers available
+            </option>
+        `;
+
+        return;
+    }
+
+
+    courseTeacher.innerHTML = `
+        <option value="">
+            Select Teacher
+        </option>
+
+        ${allTeachers
+            .map((teacher) => {
+
+                const teacherName =
+                    getUserName(teacher);
+
+                const selected =
+                    teacher.id ===
+                    selectedTeacherId
+                        ? "selected"
+                        : "";
+
+                return `
+                    <option
+                        value="${escapeHTML(teacher.id)}"
+                        ${selected}
+                    >
+                        ${escapeHTML(teacherName)}
+                    </option>
+                `;
+
+            })
+            .join("")}
+    `;
+
+}
+
+/* ==========================================================
+   END - TEACHER OPTIONS
+========================================================== */
+
+
+/* ==========================================================
+   START - LOAD COURSES
+========================================================== */
+
+async function loadCourses() {
+
+    try {
+
+        const coursesSnapshot =
+            await getDocs(
+                collection(
+                    db,
+                    "courses"
+                )
+            );
+
+
+        allCourses =
+            coursesSnapshot.docs.map(
+                (courseDocument) => {
+
+                    return {
+                        id: courseDocument.id,
+                        ...courseDocument.data()
+                    };
+
+                }
+            );
+
+
+        allCourses.sort(
+            sortCoursesByNewest
+        );
+
+
+        updateStatistics();
+
+        updateCategoryFilter();
+
+        applyFilters();
+
+
+    } catch (error) {
+
+        console.error(
+            "Manage Courses Data Error:",
+            error
+        );
+
+
+        showCoursesLoadError();
+
+    }
+
+}
+
+/* ==========================================================
+   END - LOAD COURSES
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE STATISTICS
+========================================================== */
+
+function updateStatistics() {
+
+    const activeCourses =
+        allCourses.filter(
+            (course) => {
+
+                return (
+                    normalizeCourseStatus(
+                        course.status
+                    ) === "active"
+                );
+
+            }
+        ).length;
+
+
+    const draftInactiveCourses =
+        allCourses.filter(
+            (course) => {
+
+                const status =
+                    normalizeCourseStatus(
+                        course.status
+                    );
+
+                return (
+                    status === "draft" ||
+                    status === "inactive"
+                );
+
+            }
+        ).length;
+
+
+    const totalEnrollments =
+        allCourses.reduce(
+            (total, course) => {
+
+                return (
+                    total +
+                    getEnrollmentCount(course)
+                );
+
+            },
+            0
+        );
+
+
+    if (totalCoursesElement) {
+
+        totalCoursesElement.textContent =
+            allCourses.length;
+
+    }
+
+
+    if (activeCoursesElement) {
+
+        activeCoursesElement.textContent =
+            activeCourses;
+
+    }
+
+
+    if (inactiveCoursesElement) {
+
+        inactiveCoursesElement.textContent =
+            draftInactiveCourses;
+
+    }
+
+
+    if (totalEnrollmentsElement) {
+
+        totalEnrollmentsElement.textContent =
+            totalEnrollments;
+
+    }
+
+}
+
+/* ==========================================================
+   END - COURSE STATISTICS
+========================================================== */
+
+
+/* ==========================================================
+   START - CATEGORY FILTER
+========================================================== */
+
+function updateCategoryFilter() {
+
+    if (!categoryFilter) {
+        return;
+    }
+
+
+    const currentValue =
+        categoryFilter.value || "all";
+
+
+    const categories = [
+        ...new Set(
+            allCourses
+                .map((course) => {
+
+                    return String(
+                        course.category || ""
+                    ).trim();
+
+                })
+                .filter(Boolean)
+        )
+    ].sort(
+        (a, b) => a.localeCompare(b)
+    );
+
+
+    categoryFilter.innerHTML = `
+        <option value="all">
+            All Categories
+        </option>
+
+        ${categories
+            .map((category) => {
+
+                return `
+                    <option
+                        value="${escapeHTML(category)}"
+                    >
+                        ${escapeHTML(category)}
+                    </option>
+                `;
+
+            })
+            .join("")}
+    `;
+
+
+    const categoryStillExists =
+        currentValue === "all" ||
+        categories.includes(
+            currentValue
+        );
+
+
+    categoryFilter.value =
+        categoryStillExists
+            ? currentValue
+            : "all";
+
+}
+
+/* ==========================================================
+   END - CATEGORY FILTER
+========================================================== */
+
+
+/* ==========================================================
+   START - SEARCH AND FILTER
+========================================================== */
+
+function applyFilters() {
+
+    const searchTerm =
+        String(
+            searchInput?.value || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    const selectedCategory =
+        String(
+            categoryFilter?.value || "all"
+        )
+            .trim()
+            .toLowerCase();
+
+
+    const selectedStatus =
+        normalizeCourseStatusFilter(
+            statusFilter?.value || "all"
+        );
+
+
+    filteredCourses =
+        allCourses.filter(
+            (course) => {
+
+                const title =
+                    String(
+                        course.title || ""
+                    ).toLowerCase();
+
+
+                const category =
+                    String(
+                        course.category || ""
+                    ).toLowerCase();
+
+
+                const description =
+                    String(
+                        course.description || ""
+                    ).toLowerCase();
+
+
+                const teacherName =
+                    getCourseTeacherName(course)
+                        .toLowerCase();
+
+
+                const status =
+                    normalizeCourseStatus(
+                        course.status
+                    );
+
+
+                const matchesSearch =
+                    title.includes(searchTerm) ||
+                    category.includes(searchTerm) ||
+                    description.includes(searchTerm) ||
+                    teacherName.includes(searchTerm);
+
+
+                const matchesCategory =
+                    selectedCategory === "all" ||
+                    category === selectedCategory;
+
+
+                const matchesStatus =
+                    selectedStatus === "all" ||
+                    status === selectedStatus;
+
+
+                return (
+                    matchesSearch &&
+                    matchesCategory &&
+                    matchesStatus
+                );
+
+            }
+        );
+
+
+    currentPage = 1;
+
+    renderCourses();
+
+}
+
+/* ==========================================================
+   END - SEARCH AND FILTER
+========================================================== */
+
+
+/* ==========================================================
+   START - RENDER COURSES
+========================================================== */
+
+function renderCourses() {
+
+    if (!coursesTableBody) {
+        return;
+    }
+
+
+    const totalFilteredCourses =
+        filteredCourses.length;
+
+
+    const totalPages =
+        Math.max(
+            1,
+            Math.ceil(
+                totalFilteredCourses /
+                coursesPerPage
+            )
+        );
+
+
+    if (currentPage > totalPages) {
+
+        currentPage = totalPages;
+
+    }
+
+
+    const startIndex =
+        (currentPage - 1) *
+        coursesPerPage;
+
+
+    const endIndex =
+        startIndex +
+        coursesPerPage;
+
+
+    const coursesForCurrentPage =
+        filteredCourses.slice(
+            startIndex,
+            endIndex
+        );
+
+
+    if (totalFilteredCourses === 0) {
+
+        coursesTableBody.innerHTML = "";
+
+
+        if (noCourses) {
+
+            noCourses.hidden = false;
+
+        }
+
+
+        updateResultsText(0);
+
+
+        updatePagination(
+            0,
+            1,
+            0,
+            0
+        );
+
+
+        return;
+    }
+
+
+    if (noCourses) {
+
+        noCourses.hidden = true;
+
+    }
+
+
+    coursesTableBody.innerHTML =
+        coursesForCurrentPage
+            .map(createCourseRow)
+            .join("");
+
+
+    addCourseActionEvents();
+
+
+    updateResultsText(
+        totalFilteredCourses
+    );
+
+
+    updatePagination(
+        totalFilteredCourses,
+        totalPages,
+        startIndex,
+        coursesForCurrentPage.length
     );
 
 }
 
-
-/* =========================================================
-   EVENTS
-   ========================================================= */
-
-function setupEvents() {
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-    const categoryFilter =
-        document.getElementById("categoryFilter");
-
-    const statusFilter =
-        document.getElementById("statusFilter");
-
-    const addButton =
-        document.getElementById("openAddCourseBtn");
-
-    const courseForm =
-        document.getElementById("courseForm");
-
-    const confirmDelete =
-        document.getElementById("confirmDeleteBtn");
+/* ==========================================================
+   END - RENDER COURSES
+========================================================== */
 
 
-    if (searchInput) {
+/* ==========================================================
+   START - CREATE COURSE ROW
+========================================================== */
 
-        searchInput.addEventListener(
-            "input",
-            function () {
+function createCourseRow(course) {
 
-                currentPage = 1;
+    const title =
+        getCourseTitle(course);
 
-                renderCourses();
 
-            }
+    const category =
+        course.category ||
+        "Uncategorized";
+
+
+    const teacherName =
+        getCourseTeacherName(course);
+
+
+    const teacherInitial =
+        getInitial(teacherName);
+
+
+    const enrollmentCount =
+        getEnrollmentCount(course);
+
+
+    const status =
+        normalizeCourseStatus(
+            course.status
         );
+
+
+    const formattedStatus =
+        formatCourseStatus(status);
+
+
+    return `
+        <tr>
+
+            <td>
+
+                <div class="table-course">
+
+                    <span class="table-course-icon">
+
+                        <i class="fa-solid fa-book-open"></i>
+
+                    </span>
+
+
+                    <div class="table-course-info">
+
+                        <strong>
+                            ${escapeHTML(title)}
+                        </strong>
+
+                        <span>
+                            ${escapeHTML(
+                                getShortDescription(
+                                    course.description
+                                )
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <span class="category-badge">
+                    ${escapeHTML(category)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="course-teacher">
+
+                    <span class="teacher-mini-avatar">
+                        ${escapeHTML(teacherInitial)}
+                    </span>
+
+                    <span>
+                        ${escapeHTML(teacherName)}
+                    </span>
+
+                </div>
+
+            </td>
+
+
+            <td>
+
+                <span class="enrollment-count">
+
+                    <i class="fa-solid fa-user-graduate"></i>
+
+                    ${enrollmentCount}
+
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <span
+                    class="course-status-badge status-${escapeHTML(status)}"
+                >
+                    ${escapeHTML(formattedStatus)}
+                </span>
+
+            </td>
+
+
+            <td>
+
+                <div class="course-action-buttons">
+
+
+                    <button
+                        type="button"
+                        class="view-course-btn"
+                        data-course-id="${escapeHTML(course.id)}"
+                        aria-label="View course"
+                        title="View Course"
+                    >
+
+                        <i class="fa-regular fa-eye"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="edit-course-btn"
+                        data-course-id="${escapeHTML(course.id)}"
+                        aria-label="Edit course"
+                        title="Edit Course"
+                    >
+
+                        <i class="fa-regular fa-pen-to-square"></i>
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="delete-course-btn"
+                        data-course-id="${escapeHTML(course.id)}"
+                        aria-label="Delete course"
+                        title="Delete Course"
+                    >
+
+                        <i class="fa-solid fa-trash"></i>
+
+                    </button>
+
+
+                </div>
+
+            </td>
+
+        </tr>
+    `;
+
+}
+
+/* ==========================================================
+   END - CREATE COURSE ROW
+========================================================== */
+
+
+/* ==========================================================
+   START - RESULT TEXT
+========================================================== */
+
+function updateResultsText(total) {
+
+    if (!coursesResultText) {
+        return;
+    }
+
+
+    if (total === 0) {
+
+        coursesResultText.textContent =
+            "No courses match your search.";
+
+        return;
+    }
+
+
+    if (total === 1) {
+
+        coursesResultText.textContent =
+            "1 course found.";
+
+        return;
+    }
+
+
+    coursesResultText.textContent =
+        `${total} courses found.`;
+
+}
+
+/* ==========================================================
+   END - RESULT TEXT
+========================================================== */
+
+
+/* ==========================================================
+   START - PAGINATION
+========================================================== */
+
+function updatePagination(
+    totalCourses,
+    totalPages,
+    startIndex,
+    currentPageCourseCount
+) {
+
+    if (pageInfo) {
+
+        pageInfo.textContent =
+            `Page ${currentPage} of ${totalPages}`;
 
     }
 
 
-    if (categoryFilter) {
+    if (prevBtn) {
 
-        categoryFilter.addEventListener(
-            "change",
-            function () {
-
-                currentPage = 1;
-
-                renderCourses();
-
-            }
-        );
+        prevBtn.disabled =
+            currentPage <= 1;
 
     }
 
 
-    if (statusFilter) {
+    if (nextBtn) {
 
-        statusFilter.addEventListener(
-            "change",
-            function () {
-
-                currentPage = 1;
-
-                renderCourses();
-
-            }
-        );
+        nextBtn.disabled =
+            currentPage >= totalPages ||
+            totalCourses === 0;
 
     }
 
 
-    if (addButton) {
-
-        addButton.addEventListener(
-            "click",
-            openAddModal
-        );
-
+    if (!paginationSummary) {
+        return;
     }
 
 
-    if (courseForm) {
+    if (totalCourses === 0) {
 
-        courseForm.addEventListener(
-            "submit",
-            saveCourse
-        );
+        paginationSummary.textContent =
+            "Showing 0 courses";
 
+        return;
     }
 
 
-    if (confirmDelete) {
-
-        confirmDelete.addEventListener(
-            "click",
-            deleteCourse
-        );
-
-    }
+    const firstCourseNumber =
+        startIndex + 1;
 
 
-    document.addEventListener(
+    const lastCourseNumber =
+        startIndex +
+        currentPageCourseCount;
+
+
+    paginationSummary.textContent =
+        `Showing ${firstCourseNumber}–${lastCourseNumber} of ${totalCourses} courses`;
+
+}
+
+
+/* ----------------------------------------------------------
+   Previous Page
+---------------------------------------------------------- */
+
+if (prevBtn) {
+
+    prevBtn.addEventListener(
         "click",
-        handleTableActions
+        () => {
+
+            if (currentPage <= 1) {
+                return;
+            }
+
+
+            currentPage--;
+
+            renderCourses();
+
+        }
     );
 
+}
 
-    document.querySelectorAll("[data-close]").forEach(
-        function (button) {
+
+/* ----------------------------------------------------------
+   Next Page
+---------------------------------------------------------- */
+
+if (nextBtn) {
+
+    nextBtn.addEventListener(
+        "click",
+        () => {
+
+            const totalPages =
+                Math.max(
+                    1,
+                    Math.ceil(
+                        filteredCourses.length /
+                        coursesPerPage
+                    )
+                );
+
+
+            if (
+                currentPage >= totalPages
+            ) {
+                return;
+            }
+
+
+            currentPage++;
+
+            renderCourses();
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - PAGINATION
+========================================================== */
+
+
+/* ==========================================================
+   START - SEARCH / FILTER EVENTS
+========================================================== */
+
+if (searchInput) {
+
+    searchInput.addEventListener(
+        "input",
+        applyFilters
+    );
+
+}
+
+
+if (categoryFilter) {
+
+    categoryFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+}
+
+
+if (statusFilter) {
+
+    statusFilter.addEventListener(
+        "change",
+        applyFilters
+    );
+
+}
+
+/* ==========================================================
+   END - SEARCH / FILTER EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE ACTION EVENTS
+========================================================== */
+
+function addCourseActionEvents() {
+
+    const viewButtons =
+        document.querySelectorAll(
+            ".view-course-btn"
+        );
+
+
+    const editButtons =
+        document.querySelectorAll(
+            ".edit-course-btn"
+        );
+
+
+    const deleteButtons =
+        document.querySelectorAll(
+            ".delete-course-btn"
+        );
+
+
+    viewButtons.forEach(
+        (button) => {
 
             button.addEventListener(
                 "click",
-                function () {
+                () => {
 
-                    closeModal(
-                        button.dataset.close
+                    openCourseDetails(
+                        button.dataset.courseId
                     );
 
                 }
@@ -305,18 +1382,16 @@ function setupEvents() {
     );
 
 
-    document.querySelectorAll(".modal-overlay").forEach(
-        function (modal) {
+    editButtons.forEach(
+        (button) => {
 
-            modal.addEventListener(
+            button.addEventListener(
                 "click",
-                function (event) {
+                () => {
 
-                    if (event.target === modal) {
-
-                        closeModal(modal.id);
-
-                    }
+                    openEditCourseModal(
+                        button.dataset.courseId
+                    );
 
                 }
             );
@@ -325,987 +1400,755 @@ function setupEvents() {
     );
 
 
-    document.addEventListener(
-        "keydown",
-        function (event) {
+    deleteButtons.forEach(
+        (button) => {
 
-            if (event.key === "Escape") {
+            button.addEventListener(
+                "click",
+                () => {
 
-                document
-                    .querySelectorAll(".modal-overlay.active")
-                    .forEach(function (modal) {
+                    openDeleteCourseModal(
+                        button.dataset.courseId
+                    );
 
-                        closeModal(modal.id);
-
-                    });
-
-            }
+                }
+            );
 
         }
     );
 
 }
 
-
-/* =========================================================
-   FILTER COURSES
-   ========================================================= */
-
-function getFilteredCourses() {
-
-    const searchInput =
-        document.getElementById("searchInput");
-
-    const categoryFilter =
-        document.getElementById("categoryFilter");
-
-    const statusFilter =
-        document.getElementById("statusFilter");
+/* ==========================================================
+   END - COURSE ACTION EVENTS
+========================================================== */
 
 
-    const search =
-        searchInput
-            ? searchInput.value.trim().toLowerCase()
-            : "";
+/* ==========================================================
+   START - VIEW COURSE
+========================================================== */
 
+function openCourseDetails(courseDocumentId) {
 
-    const category =
-        categoryFilter
-            ? categoryFilter.value
-            : "all";
-
-
-    const status =
-        statusFilter
-            ? statusFilter.value
-            : "all";
-
-
-    return courses.filter(function (course) {
-
-        const matchesSearch =
-            course.name.toLowerCase().includes(search) ||
-            course.instructor.toLowerCase().includes(search);
-
-
-        const matchesCategory =
-            category === "all" ||
-            course.category === category;
-
-
-        const matchesStatus =
-            status === "all" ||
-            course.status === status;
-
-
-        return (
-            matchesSearch &&
-            matchesCategory &&
-            matchesStatus
-        );
-
-    });
-
-}
-
-
-/* =========================================================
-   RENDER COURSES
-   ========================================================= */
-
-function renderCourses() {
-
-    const tableBody =
-        document.getElementById("coursesTableBody");
-
-    const emptyState =
-        document.getElementById("emptyState");
-
-
-    if (!tableBody) return;
-
-
-    const filteredCourses =
-        getFilteredCourses();
-
-
-    const totalPages =
-        Math.ceil(
-            filteredCourses.length / itemsPerPage
+    const selectedCourse =
+        findCourseById(
+            courseDocumentId
         );
 
 
     if (
-        currentPage > totalPages &&
-        totalPages > 0
+        !selectedCourse ||
+        !viewCourseModal
     ) {
-
-        currentPage = totalPages;
-
-    }
-
-
-    const start =
-        (currentPage - 1) * itemsPerPage;
-
-
-    const paginatedCourses =
-        filteredCourses.slice(
-            start,
-            start + itemsPerPage
-        );
-
-
-    tableBody.innerHTML = "";
-
-
-    if (paginatedCourses.length === 0) {
-
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="7" class="no-results">
-                    No courses found.
-                </td>
-            </tr>
-        `;
-
-        if (emptyState) {
-
-            emptyState.classList.add("show");
-
-        }
-
-    } else {
-
-        if (emptyState) {
-
-            emptyState.classList.remove("show");
-
-        }
-
-
-        paginatedCourses.forEach(
-            function (course) {
-
-                const row =
-                    document.createElement("tr");
-
-
-                row.innerHTML = `
-
-                    <td>
-
-                        <div class="course-info">
-
-                            <div class="course-icon">
-                                📚
-                            </div>
-
-                            <div>
-
-                                <strong>
-                                    ${escapeHTML(course.name)}
-                                </strong>
-
-                                <span>
-                                    Course
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </td>
-
-
-                    <td>
-                        ${escapeHTML(course.instructor)}
-                    </td>
-
-
-                    <td>
-                        <span class="category-badge">
-                            ${escapeHTML(course.category)}
-                        </span>
-                    </td>
-
-
-                    <td>
-                        ${course.students}
-                    </td>
-
-
-                    <td>
-
-                        <span class="
-                            status-badge
-                            ${course.status}
-                        ">
-
-                            ${capitalize(course.status)}
-
-                        </span>
-
-                    </td>
-
-
-                    <td>
-                        ${escapeHTML(course.created)}
-                    </td>
-
-
-                    <td>
-
-                        <div class="action-buttons">
-
-                            <button
-                                class="action-btn view"
-                                data-action="view"
-                                data-id="${course.id}"
-                                title="View"
-                            >
-                                👁
-                            </button>
-
-
-                            <button
-                                class="action-btn edit"
-                                data-action="edit"
-                                data-id="${course.id}"
-                                title="Edit"
-                            >
-                                ✏️
-                            </button>
-
-
-                            <button
-                                class="action-btn delete"
-                                data-action="delete"
-                                data-id="${course.id}"
-                                title="Delete"
-                            >
-                                🗑
-                            </button>
-
-                        </div>
-
-                    </td>
-
-                `;
-
-
-                tableBody.appendChild(row);
-
-            }
-        );
-
-    }
-
-
-    renderPagination(
-        filteredCourses.length,
-        totalPages
-    );
-
-}
-
-
-/* =========================================================
-   TABLE ACTIONS
-   ========================================================= */
-
-function handleTableActions(event) {
-
-    const button =
-        event.target.closest("[data-action]");
-
-
-    if (!button) return;
-
-
-    const id =
-        Number(button.dataset.id);
-
-
-    const action =
-        button.dataset.action;
-
-
-    if (action === "view") {
-
-        viewCourse(id);
-
-    }
-
-
-    if (action === "edit") {
-
-        editCourse(id);
-
-    }
-
-
-    if (action === "delete") {
-
-        openDeleteModal(id);
-
-    }
-
-}
-
-
-/* =========================================================
-   VIEW COURSE
-   ========================================================= */
-
-function viewCourse(id) {
-
-    const course =
-        courses.find(function (item) {
-
-            return item.id === id;
-
-        });
-
-
-    if (!course) return;
-
-
-    document.getElementById(
-        "viewCourseName"
-    ).textContent = course.name;
-
-
-    document.getElementById(
-        "viewInstructor"
-    ).textContent =
-        "Instructor: " + course.instructor;
-
-
-    document.getElementById(
-        "viewCategory"
-    ).textContent = course.category;
-
-
-    document.getElementById(
-        "viewStudents"
-    ).textContent =
-        course.students + " students";
-
-
-    document.getElementById(
-        "viewStatus"
-    ).textContent =
-        capitalize(course.status);
-
-
-    document.getElementById(
-        "viewCreated"
-    ).textContent = course.created;
-
-
-    document.getElementById(
-        "viewDescription"
-    ).textContent =
-        course.description ||
-        "No description available.";
-
-
-    openModal("viewModal");
-
-}
-
-
-/* =========================================================
-   OPEN ADD MODAL
-   ========================================================= */
-
-function openAddModal() {
-
-    editingCourseId = null;
-
-
-    const form =
-        document.getElementById("courseForm");
-
-
-    form.reset();
-
-
-    document.getElementById(
-        "courseId"
-    ).value = "";
-
-
-    document.getElementById(
-        "courseModalTitle"
-    ).textContent = "Add Course";
-
-
-    document.getElementById(
-        "courseModalSubtitle"
-    ).textContent =
-        "Create a new course";
-
-
-    document.getElementById(
-        "courseStatus"
-    ).value = "active";
-
-
-    openModal("courseModal");
-
-}
-
-
-/* =========================================================
-   EDIT COURSE
-   ========================================================= */
-
-function editCourse(id) {
-
-    const course =
-        courses.find(function (item) {
-
-            return item.id === id;
-
-        });
-
-
-    if (!course) return;
-
-
-    editingCourseId = id;
-
-
-    document.getElementById(
-        "courseId"
-    ).value = course.id;
-
-
-    document.getElementById(
-        "courseName"
-    ).value = course.name;
-
-
-    document.getElementById(
-        "instructor"
-    ).value = course.instructor;
-
-
-    document.getElementById(
-        "category"
-    ).value = course.category;
-
-
-    document.getElementById(
-        "studentCount"
-    ).value = course.students;
-
-
-    document.getElementById(
-        "courseStatus"
-    ).value = course.status;
-
-
-    document.getElementById(
-        "description"
-    ).value = course.description || "";
-
-
-    document.getElementById(
-        "courseModalTitle"
-    ).textContent = "Edit Course";
-
-
-    document.getElementById(
-        "courseModalSubtitle"
-    ).textContent =
-        "Update course information";
-
-
-    openModal("courseModal");
-
-}
-
-
-/* =========================================================
-   SAVE COURSE
-   ========================================================= */
-
-function saveCourse(event) {
-
-    event.preventDefault();
-
-
-    const name =
-        document.getElementById(
-            "courseName"
-        ).value.trim();
-
-
-    const instructor =
-        document.getElementById(
-            "instructor"
-        ).value.trim();
-
-
-    const category =
-        document.getElementById(
-            "category"
-        ).value;
-
-
-    const students =
-        Number(
-            document.getElementById(
-                "studentCount"
-            ).value
-        );
-
-
-    const status =
-        document.getElementById(
-            "courseStatus"
-        ).value;
-
-
-    const description =
-        document.getElementById(
-            "description"
-        ).value.trim();
-
-
-    if (!name || !instructor || !category) {
-
         return;
-
     }
 
 
-    if (editingCourseId) {
+    if (viewCourseTitle) {
 
-        const index =
-            courses.findIndex(
-                function (course) {
-
-                    return course.id === editingCourseId;
-
-                }
+        viewCourseTitle.textContent =
+            getCourseTitle(
+                selectedCourse
             );
 
-
-        if (index !== -1) {
-
-            courses[index].name = name;
-
-            courses[index].instructor =
-                instructor;
-
-            courses[index].category =
-                category;
-
-            courses[index].students =
-                students;
-
-            courses[index].status =
-                status;
-
-            courses[index].description =
-                description;
-
-        }
-
-    } else {
-
-        const newCourse = {
-
-            id: Date.now(),
-
-            name: name,
-
-            instructor: instructor,
-
-            category: category,
-
-            students: students,
-
-            status: status,
-
-            created: getTodayDate(),
-
-            description: description
-
-        };
+    }
 
 
-        courses.unshift(newCourse);
+    if (viewCourseCategory) {
+
+        viewCourseCategory.textContent =
+            selectedCourse.category ||
+            "Uncategorized";
 
     }
 
 
-    saveCourses();
+    if (viewCourseTeacher) {
 
-    populateCategoryFilter();
+        viewCourseTeacher.textContent =
+            getCourseTeacherName(
+                selectedCourse
+            );
 
-    updateStats();
-
-    currentPage = 1;
-
-    renderCourses();
-
-    closeModal("courseModal");
-
-}
+    }
 
 
-/* =========================================================
-   DELETE MODAL
-   ========================================================= */
+    if (viewCourseEnrollments) {
 
-function openDeleteModal(id) {
+        viewCourseEnrollments.textContent =
+            getEnrollmentCount(
+                selectedCourse
+            );
 
-    const course =
-        courses.find(function (item) {
-
-            return item.id === id;
-
-        });
+    }
 
 
-    if (!course) return;
+    if (viewCourseStatus) {
+
+        viewCourseStatus.textContent =
+            formatCourseStatus(
+                selectedCourse.status
+            );
+
+    }
 
 
-    deletingCourseId = id;
+    if (viewCourseCreated) {
+
+        viewCourseCreated.textContent =
+            formatCourseDate(
+                selectedCourse
+            );
+
+    }
 
 
-    document.getElementById(
-        "deleteCourseName"
-    ).textContent = course.name;
+    if (viewCourseDescription) {
+
+        viewCourseDescription.textContent =
+            selectedCourse.description ||
+            "No description available.";
+
+    }
 
 
-    openModal("deleteModal");
-
-}
-
-
-/* =========================================================
-   DELETE COURSE
-   ========================================================= */
-
-function deleteCourse() {
-
-    if (!deletingCourseId) return;
-
-
-    courses =
-        courses.filter(function (course) {
-
-            return course.id !== deletingCourseId;
-
-        });
-
-
-    saveCourses();
-
-    populateCategoryFilter();
-
-    updateStats();
-
-    renderCourses();
-
-    closeModal("deleteModal");
-
-
-    deletingCourseId = null;
+    openModal(
+        viewCourseModal
+    );
 
 }
 
-
-/* =========================================================
-   CATEGORY FILTER
-   ========================================================= */
-
-function populateCategoryFilter() {
-
-    const select =
-        document.getElementById(
-            "categoryFilter"
-        );
+/* ==========================================================
+   END - VIEW COURSE
+========================================================== */
 
 
-    if (!select) return;
+/* ==========================================================
+   START - ADD COURSE
+========================================================== */
 
+if (addCourseBtn) {
 
-    const currentValue =
-        select.value;
+    addCourseBtn.addEventListener(
+        "click",
+        () => {
 
-
-    const categories =
-        [...new Set(
-            courses.map(function (course) {
-
-                return course.category;
-
-            })
-        )].sort();
-
-
-    select.innerHTML =
-        `<option value="all">
-            All Categories
-        </option>`;
-
-
-    categories.forEach(
-        function (category) {
-
-            const option =
-                document.createElement("option");
-
-
-            option.value = category;
-
-            option.textContent = category;
-
-
-            select.appendChild(option);
+            openAddCourseModal();
 
         }
     );
 
+}
+
+
+function openAddCourseModal() {
 
     if (
-        categories.includes(currentValue)
+        !courseFormModal ||
+        !courseForm
     ) {
+        return;
+    }
 
-        select.value = currentValue;
+
+    courseForm.reset();
+
+
+    if (courseId) {
+        courseId.value = "";
+    }
+
+
+    if (courseStatus) {
+        courseStatus.value = "active";
+    }
+
+
+    if (courseFormLabel) {
+
+        courseFormLabel.textContent =
+            "ADD COURSE";
 
     }
 
-}
+
+    if (courseFormTitle) {
+
+        courseFormTitle.textContent =
+            "Create New Course";
+
+    }
 
 
-/* =========================================================
-   UPDATE STATS
-   ========================================================= */
+    renderTeacherOptions();
 
-function updateStats() {
+    hideCourseFormMessage();
 
-    const total =
-        courses.length;
-
-
-    const active =
-        courses.filter(function (course) {
-
-            return course.status === "active";
-
-        }).length;
+    openModal(
+        courseFormModal
+    );
 
 
-    const draft =
-        courses.filter(function (course) {
+    setTimeout(() => {
 
-            return course.status === "draft";
+        courseTitle?.focus();
 
-        }).length;
-
-
-    const categories =
-        new Set(
-            courses.map(function (course) {
-
-                return course.category;
-
-            })
-        ).size;
-
-
-    document.getElementById(
-        "totalCourses"
-    ).textContent = total;
-
-
-    document.getElementById(
-        "activeCourses"
-    ).textContent = active;
-
-
-    document.getElementById(
-        "draftCourses"
-    ).textContent = draft;
-
-
-    document.getElementById(
-        "totalCategories"
-    ).textContent = categories;
+    }, 100);
 
 }
 
+/* ==========================================================
+   END - ADD COURSE
+========================================================== */
 
-/* =========================================================
-   PAGINATION
-   ========================================================= */
 
-function renderPagination(
-    totalItems,
-    totalPages
+/* ==========================================================
+   START - EDIT COURSE
+========================================================== */
+
+function openEditCourseModal(
+    courseDocumentId
 ) {
 
-    const pagination =
-        document.getElementById(
-            "pagination"
+    const selectedCourse =
+        findCourseById(
+            courseDocumentId
         );
-
-
-    if (!pagination) return;
-
-
-    pagination.innerHTML = "";
-
-
-    if (totalPages <= 1) return;
-
-
-    const previous =
-        document.createElement("button");
-
-
-    previous.textContent = "‹";
-
-    previous.disabled =
-        currentPage === 1;
-
-
-    previous.addEventListener(
-        "click",
-        function () {
-
-            if (currentPage > 1) {
-
-                currentPage--;
-
-                renderCourses();
-
-            }
-
-        }
-    );
-
-
-    pagination.appendChild(previous);
-
-
-    for (
-        let page = 1;
-        page <= totalPages;
-        page++
-    ) {
-
-        const button =
-            document.createElement("button");
-
-
-        button.textContent = page;
-
-
-        if (page === currentPage) {
-
-            button.classList.add("active");
-
-        }
-
-
-        button.addEventListener(
-            "click",
-            function () {
-
-                currentPage = page;
-
-                renderCourses();
-
-            }
-        );
-
-
-        pagination.appendChild(button);
-
-    }
-
-
-    const next =
-        document.createElement("button");
-
-
-    next.textContent = "›";
-
-    next.disabled =
-        currentPage === totalPages;
-
-
-    next.addEventListener(
-        "click",
-        function () {
-
-            if (currentPage < totalPages) {
-
-                currentPage++;
-
-                renderCourses();
-
-            }
-
-        }
-    );
-
-
-    pagination.appendChild(next);
-
-}
-
-
-/* =========================================================
-   MODALS
-   ========================================================= */
-
-function openModal(id) {
-
-    const modal =
-        document.getElementById(id);
-
-
-    if (modal) {
-
-        modal.classList.add("active");
-
-        document.body.classList.add(
-            "modal-open"
-        );
-
-    }
-
-}
-
-
-function closeModal(id) {
-
-    const modal =
-        document.getElementById(id);
-
-
-    if (modal) {
-
-        modal.classList.remove("active");
-
-    }
 
 
     if (
-        !document.querySelector(
-            ".modal-overlay.active"
-        )
+        !selectedCourse ||
+        !courseFormModal
     ) {
+        return;
+    }
+
+
+    if (courseId) {
+
+        courseId.value =
+            selectedCourse.id;
+
+    }
+
+
+    if (courseTitle) {
+
+        courseTitle.value =
+            selectedCourse.title || "";
+
+    }
+
+
+    if (courseCategory) {
+
+        courseCategory.value =
+            selectedCourse.category || "";
+
+    }
+
+
+    renderTeacherOptions(
+        selectedCourse.teacherId || ""
+    );
+
+
+    if (courseStatus) {
+
+        courseStatus.value =
+            normalizeCourseStatus(
+                selectedCourse.status
+            );
+
+    }
+
+
+    if (courseDescription) {
+
+        courseDescription.value =
+            selectedCourse.description || "";
+
+    }
+
+
+    if (courseFormLabel) {
+
+        courseFormLabel.textContent =
+            "EDIT COURSE";
+
+    }
+
+
+    if (courseFormTitle) {
+
+        courseFormTitle.textContent =
+            "Update Course";
+
+    }
+
+
+    hideCourseFormMessage();
+
+
+    openModal(
+        courseFormModal
+    );
+
+
+    setTimeout(() => {
+
+        courseTitle?.focus();
+
+    }, 100);
+
+}
+
+/* ==========================================================
+   END - EDIT COURSE
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE FORM SUBMIT
+========================================================== */
+
+if (courseForm) {
+
+    courseForm.addEventListener(
+        "submit",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            const editingCourseId =
+                courseId?.value.trim() || "";
+
+
+            const title =
+                courseTitle?.value.trim() || "";
+
+
+            const category =
+                courseCategory?.value.trim() || "";
+
+
+            const teacherId =
+                courseTeacher?.value.trim() || "";
+
+
+            const status =
+                normalizeCourseStatus(
+                    courseStatus?.value
+                );
+
+
+            const description =
+                courseDescription?.value.trim() || "";
+
+
+            if (title.length < 3) {
+
+                showCourseFormMessage(
+                    "Please enter a valid course title.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (category.length < 2) {
+
+                showCourseFormMessage(
+                    "Please enter a valid category.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (!teacherId) {
+
+                showCourseFormMessage(
+                    "Please assign a teacher.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const selectedTeacher =
+                allTeachers.find(
+                    (teacher) => {
+
+                        return (
+                            teacher.id ===
+                            teacherId
+                        );
+
+                    }
+                );
+
+
+            if (!selectedTeacher) {
+
+                showCourseFormMessage(
+                    "Selected teacher is not available.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            if (description.length < 10) {
+
+                showCourseFormMessage(
+                    "Course description must contain at least 10 characters.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            const teacherName =
+                getUserName(
+                    selectedTeacher
+                );
+
+
+            try {
+
+                setCourseFormLoading(true);
+
+
+                if (editingCourseId) {
+
+                    await updateExistingCourse(
+                        editingCourseId,
+                        {
+                            title,
+                            category,
+                            teacherId,
+                            teacherName,
+                            status,
+                            description
+                        }
+                    );
+
+
+                    showCourseFormMessage(
+                        "Course updated successfully.",
+                        "success"
+                    );
+
+
+                } else {
+
+                    await createNewCourse({
+                        title,
+                        category,
+                        teacherId,
+                        teacherName,
+                        status,
+                        description
+                    });
+
+
+                    showCourseFormMessage(
+                        "Course created successfully.",
+                        "success"
+                    );
+
+                }
+
+
+                await loadCourses();
+
+
+                setTimeout(() => {
+
+                    closeCourseForm();
+
+                }, 700);
+
+
+            } catch (error) {
+
+                console.error(
+                    "Save Course Error:",
+                    error
+                );
+
+
+                showCourseFormMessage(
+                    getCourseSaveErrorMessage(
+                        error
+                    ),
+                    "error"
+                );
+
+
+            } finally {
+
+                setCourseFormLoading(false);
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - COURSE FORM SUBMIT
+========================================================== */
+
+
+/* ==========================================================
+   START - CREATE NEW COURSE
+========================================================== */
+
+async function createNewCourse(data) {
+
+    await addDoc(
+        collection(
+            db,
+            "courses"
+        ),
+        {
+            title: data.title,
+            category: data.category,
+
+            teacherId: data.teacherId,
+            teacherName: data.teacherName,
+
+            description: data.description,
+            status: data.status,
+
+            /*
+               Temporary count only.
+
+               Later the real enrollment system will
+               calculate this from Firestore enrollments.
+            */
+            enrollmentCount: 0,
+
+            createdAt: serverTimestamp(),
+            updatedAt: serverTimestamp()
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - CREATE NEW COURSE
+========================================================== */
+
+
+/* ==========================================================
+   START - UPDATE COURSE
+========================================================== */
+
+async function updateExistingCourse(
+    courseDocumentId,
+    data
+) {
+
+    await updateDoc(
+        doc(
+            db,
+            "courses",
+            courseDocumentId
+        ),
+        {
+            title: data.title,
+            category: data.category,
+
+            teacherId: data.teacherId,
+            teacherName: data.teacherName,
+
+            description: data.description,
+            status: data.status,
+
+            updatedAt: serverTimestamp()
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - UPDATE COURSE
+========================================================== */
+
+
+/* ==========================================================
+   START - DELETE COURSE
+========================================================== */
+
+function openDeleteCourseModal(
+    courseDocumentId
+) {
+
+    const selectedCourse =
+        findCourseById(
+            courseDocumentId
+        );
+
+
+    if (
+        !selectedCourse ||
+        !deleteCourseModal
+    ) {
+        return;
+    }
+
+
+    courseToDeleteId =
+        selectedCourse.id;
+
+
+    if (deleteCourseName) {
+
+        deleteCourseName.textContent =
+            getCourseTitle(
+                selectedCourse
+            );
+
+    }
+
+
+    openModal(
+        deleteCourseModal
+    );
+
+}
+
+
+if (confirmDeleteBtn) {
+
+    confirmDeleteBtn.addEventListener(
+        "click",
+        async () => {
+
+            if (!courseToDeleteId) {
+                return;
+            }
+
+
+            try {
+
+                setDeleteLoading(true);
+
+
+                await deleteDoc(
+                    doc(
+                        db,
+                        "courses",
+                        courseToDeleteId
+                    )
+                );
+
+
+                courseToDeleteId = null;
+
+
+                closeDeleteCourseModal();
+
+
+                await loadCourses();
+
+
+            } catch (error) {
+
+                console.error(
+                    "Delete Course Error:",
+                    error
+                );
+
+
+                alert(
+                    error?.code ===
+                    "permission-denied"
+                        ? "Firestore does not currently allow this course to be deleted."
+                        : "Unable to delete course. Please try again."
+                );
+
+
+            } finally {
+
+                setDeleteLoading(false);
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - DELETE COURSE
+========================================================== */
+
+
+/* ==========================================================
+   START - MODAL HELPERS
+========================================================== */
+
+function openModal(modal) {
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.add(
+        "show"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "false"
+    );
+
+
+    document.body.classList.add(
+        "modal-open"
+    );
+
+}
+
+
+function closeModal(modal) {
+
+    if (!modal) {
+        return;
+    }
+
+
+    modal.classList.remove(
+        "show"
+    );
+
+
+    modal.setAttribute(
+        "aria-hidden",
+        "true"
+    );
+
+
+    const anotherModalOpen =
+        document.querySelector(
+            ".course-modal.show"
+        );
+
+
+    if (!anotherModalOpen) {
 
         document.body.classList.remove(
             "modal-open"
@@ -1316,91 +2159,1060 @@ function closeModal(id) {
 }
 
 
-/* =========================================================
-   TODAY DATE
-   ========================================================= */
+function closeViewCourseModal() {
 
-function getTodayDate() {
+    closeModal(
+        viewCourseModal
+    );
 
-    const date = new Date();
-
-
-    const day =
-        String(
-            date.getDate()
-        ).padStart(2, "0");
+}
 
 
-    const monthNames = [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-        "Oct",
-        "Nov",
-        "Dec"
+function closeCourseForm() {
+
+    closeModal(
+        courseFormModal
+    );
+
+
+    if (courseForm) {
+
+        courseForm.reset();
+
+    }
+
+
+    if (courseId) {
+
+        courseId.value = "";
+
+    }
+
+
+    hideCourseFormMessage();
+
+}
+
+
+function closeDeleteCourseModal() {
+
+    closeModal(
+        deleteCourseModal
+    );
+
+
+    courseToDeleteId = null;
+
+}
+
+/* ==========================================================
+   END - MODAL HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - MODAL EVENTS
+========================================================== */
+
+if (closeViewModal) {
+
+    closeViewModal.addEventListener(
+        "click",
+        closeViewCourseModal
+    );
+
+}
+
+
+if (closeCourseFormModal) {
+
+    closeCourseFormModal.addEventListener(
+        "click",
+        closeCourseForm
+    );
+
+}
+
+
+if (cancelCourseBtn) {
+
+    cancelCourseBtn.addEventListener(
+        "click",
+        closeCourseForm
+    );
+
+}
+
+
+if (closeDeleteModal) {
+
+    closeDeleteModal.addEventListener(
+        "click",
+        closeDeleteCourseModal
+    );
+
+}
+
+
+if (cancelDeleteBtn) {
+
+    cancelDeleteBtn.addEventListener(
+        "click",
+        closeDeleteCourseModal
+    );
+
+}
+
+
+if (viewCourseModal) {
+
+    viewCourseModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                viewCourseModal
+            ) {
+
+                closeViewCourseModal();
+
+            }
+
+        }
+    );
+
+}
+
+
+if (courseFormModal) {
+
+    courseFormModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                courseFormModal
+            ) {
+
+                closeCourseForm();
+
+            }
+
+        }
+    );
+
+}
+
+
+if (deleteCourseModal) {
+
+    deleteCourseModal.addEventListener(
+        "click",
+        (event) => {
+
+            if (
+                event.target ===
+                deleteCourseModal
+            ) {
+
+                closeDeleteCourseModal();
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - MODAL EVENTS
+========================================================== */
+
+
+/* ==========================================================
+   START - FORM MESSAGE
+========================================================== */
+
+function showCourseFormMessage(
+    message,
+    type
+) {
+
+    if (!courseFormMessage) {
+        return;
+    }
+
+
+    courseFormMessage.textContent =
+        message;
+
+
+    courseFormMessage.className =
+        `course-form-message ${type}`;
+
+
+    courseFormMessage.hidden =
+        false;
+
+}
+
+
+function hideCourseFormMessage() {
+
+    if (!courseFormMessage) {
+        return;
+    }
+
+
+    courseFormMessage.textContent = "";
+
+
+    courseFormMessage.className =
+        "course-form-message";
+
+
+    courseFormMessage.hidden =
+        true;
+
+}
+
+/* ==========================================================
+   END - FORM MESSAGE
+========================================================== */
+
+
+/* ==========================================================
+   START - FORM LOADING
+========================================================== */
+
+function setCourseFormLoading(
+    isLoading
+) {
+
+    if (!saveCourseBtn) {
+        return;
+    }
+
+
+    saveCourseBtn.disabled =
+        isLoading;
+
+
+    const buttonText =
+        saveCourseBtn.querySelector(
+            "span"
+        );
+
+
+    if (buttonText) {
+
+        buttonText.textContent =
+            isLoading
+                ? "Saving..."
+                : "Save Course";
+
+    }
+
+}
+
+
+function setDeleteLoading(
+    isLoading
+) {
+
+    if (!confirmDeleteBtn) {
+        return;
+    }
+
+
+    confirmDeleteBtn.disabled =
+        isLoading;
+
+
+    const buttonText =
+        confirmDeleteBtn.querySelector(
+            "span"
+        );
+
+
+    if (buttonText) {
+
+        buttonText.textContent =
+            isLoading
+                ? "Deleting..."
+                : "Delete Course";
+
+    }
+
+}
+
+/* ==========================================================
+   END - FORM LOADING
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE HELPERS
+========================================================== */
+
+function findCourseById(
+    courseDocumentId
+) {
+
+    return allCourses.find(
+        (course) => {
+
+            return (
+                course.id ===
+                courseDocumentId
+            );
+
+        }
+    );
+
+}
+
+
+function getCourseTitle(course) {
+
+    return (
+        course.title ||
+        course.name ||
+        "Untitled Course"
+    );
+
+}
+
+
+function getCourseTeacherName(course) {
+
+    if (course.teacherName) {
+
+        return course.teacherName;
+
+    }
+
+
+    if (course.teacherId) {
+
+        const teacher =
+            allTeachers.find(
+                (item) => {
+
+                    return (
+                        item.id ===
+                        course.teacherId
+                    );
+
+                }
+            );
+
+
+        if (teacher) {
+
+            return getUserName(
+                teacher
+            );
+
+        }
+
+    }
+
+
+    return "Not Assigned";
+
+}
+
+
+function getEnrollmentCount(course) {
+
+    const possibleValues = [
+        course.enrollmentCount,
+        course.enrolledStudents,
+        course.studentsCount
     ];
 
 
-    const month =
-        monthNames[
-            date.getMonth()
-        ];
+    for (const value of possibleValues) {
+
+        const numericValue =
+            Number(value);
 
 
-    const year =
-        date.getFullYear();
+        if (
+            Number.isFinite(numericValue) &&
+            numericValue >= 0
+        ) {
+
+            return Math.floor(
+                numericValue
+            );
+
+        }
+
+    }
 
 
-    return `${day} ${month} ${year}`;
-
-}
-
-
-/* =========================================================
-   HELPERS
-   ========================================================= */
-
-function capitalize(value) {
-
-    return value.charAt(0).toUpperCase()
-        + value.slice(1);
+    return 0;
 
 }
 
 
-function escapeHTML(value) {
+function normalizeCourseStatus(status) {
 
-    return String(value)
-
-        .replace(
-            /&/g,
-            "&amp;"
+    const normalizedStatus =
+        String(
+            status || ""
         )
+            .trim()
+            .toLowerCase();
 
-        .replace(
-            /</g,
-            "&lt;"
+
+    if (
+        normalizedStatus === "draft"
+    ) {
+
+        return "draft";
+
+    }
+
+
+    if (
+        normalizedStatus === "inactive"
+    ) {
+
+        return "inactive";
+
+    }
+
+
+    return "active";
+
+}
+
+
+function normalizeCourseStatusFilter(
+    status
+) {
+
+    const normalizedStatus =
+        String(
+            status || ""
         )
+            .trim()
+            .toLowerCase();
 
-        .replace(
-            />/g,
-            "&gt;"
-        )
 
-        .replace(
-            /"/g,
-            "&quot;"
-        )
+    if (
+        normalizedStatus === "all"
+    ) {
 
-        .replace(
-            /'/g,
-            "&#039;"
+        return "all";
+
+    }
+
+
+    return normalizeCourseStatus(
+        normalizedStatus
+    );
+
+}
+
+
+function formatCourseStatus(status) {
+
+    const normalizedStatus =
+        normalizeCourseStatus(
+            status
+        );
+
+
+    return (
+        normalizedStatus
+            .charAt(0)
+            .toUpperCase() +
+        normalizedStatus.slice(1)
+    );
+
+}
+
+
+function getShortDescription(
+    description
+) {
+
+    const safeDescription =
+        String(
+            description ||
+            "No description available."
+        ).trim();
+
+
+    if (
+        safeDescription.length <= 55
+    ) {
+
+        return safeDescription;
+
+    }
+
+
+    return (
+        safeDescription.slice(
+            0,
+            52
+        ) + "..."
+    );
+
+}
+
+/* ==========================================================
+   END - COURSE HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - USER / TEACHER HELPERS
+========================================================== */
+
+function normalizeRole(role) {
+
+    return String(
+        role || ""
+    )
+        .trim()
+        .toLowerCase();
+
+}
+
+
+function getUserName(user) {
+
+    return (
+        user.name ||
+        user.fullName ||
+        user.displayName ||
+        user.username ||
+        "EduVerse Teacher"
+    );
+
+}
+
+
+function getInitial(name) {
+
+    const safeName =
+        String(
+            name || "T"
+        ).trim();
+
+
+    return (
+        safeName.charAt(0) ||
+        "T"
+    ).toUpperCase();
+
+}
+
+/* ==========================================================
+   END - USER / TEACHER HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSE DATE HELPERS
+========================================================== */
+
+function sortCoursesByNewest(a, b) {
+
+    return (
+        getCourseTimestamp(b) -
+        getCourseTimestamp(a)
+    );
+
+}
+
+
+function getCourseTimestamp(course) {
+
+    const possibleDates = [
+        course.createdAt,
+        course.created_at,
+        course.updatedAt
+    ];
+
+
+    for (const value of possibleDates) {
+
+        if (!value) {
+            continue;
+        }
+
+
+        if (
+            typeof value.toDate ===
+            "function"
+        ) {
+
+            return value
+                .toDate()
+                .getTime();
+
+        }
+
+
+        const parsedDate =
+            new Date(value);
+
+
+        if (
+            !Number.isNaN(
+                parsedDate.getTime()
+            )
+        ) {
+
+            return parsedDate.getTime();
+
+        }
+
+    }
+
+
+    return 0;
+
+}
+
+
+function formatCourseDate(course) {
+
+    const timestamp =
+        getCourseTimestamp(course);
+
+
+    if (!timestamp) {
+
+        return "Recently";
+
+    }
+
+
+    return new Date(timestamp)
+        .toLocaleDateString(
+            "en-US",
+            {
+                month: "short",
+                day: "numeric",
+                year: "numeric"
+            }
         );
 
 }
+
+/* ==========================================================
+   END - COURSE DATE HELPERS
+========================================================== */
+
+
+/* ==========================================================
+   START - FIRESTORE ERROR MESSAGE
+========================================================== */
+
+function getCourseSaveErrorMessage(
+    error
+) {
+
+    if (
+        error?.code ===
+        "permission-denied"
+    ) {
+
+        return (
+            "Firestore currently does not allow course changes. " +
+            "We need to update the security rules."
+        );
+
+    }
+
+
+    return (
+        "Unable to save course. Please try again."
+    );
+
+}
+
+/* ==========================================================
+   END - FIRESTORE ERROR MESSAGE
+========================================================== */
+
+
+/* ==========================================================
+   START - COURSES LOAD ERROR
+========================================================== */
+
+function showCoursesLoadError() {
+
+    if (coursesTableBody) {
+
+        coursesTableBody.innerHTML = `
+            <tr>
+
+                <td
+                    colspan="6"
+                    class="table-message"
+                >
+                    Unable to load courses.
+                </td>
+
+            </tr>
+        `;
+
+    }
+
+
+    if (coursesResultText) {
+
+        coursesResultText.textContent =
+            "Course data could not be loaded.";
+
+    }
+
+
+    if (noCourses) {
+
+        noCourses.hidden = true;
+
+    }
+
+
+    if (paginationSummary) {
+
+        paginationSummary.textContent =
+            "Showing 0 courses";
+
+    }
+
+
+    if (pageInfo) {
+
+        pageInfo.textContent =
+            "Page 1 of 1";
+
+    }
+
+
+    if (prevBtn) {
+
+        prevBtn.disabled = true;
+
+    }
+
+
+    if (nextBtn) {
+
+        nextBtn.disabled = true;
+
+    }
+
+}
+
+/* ==========================================================
+   END - COURSES LOAD ERROR
+========================================================== */
+
+
+/* ==========================================================
+   START - MOBILE SIDEBAR
+========================================================== */
+
+function openSidebar() {
+
+    if (
+        !adminSidebar ||
+        !sidebarOverlay
+    ) {
+        return;
+    }
+
+
+    adminSidebar.classList.add(
+        "open"
+    );
+
+
+    sidebarOverlay.classList.add(
+        "show"
+    );
+
+
+    document.body.classList.add(
+        "sidebar-open"
+    );
+
+}
+
+
+function closeSidebar() {
+
+    if (
+        !adminSidebar ||
+        !sidebarOverlay
+    ) {
+        return;
+    }
+
+
+    adminSidebar.classList.remove(
+        "open"
+    );
+
+
+    sidebarOverlay.classList.remove(
+        "show"
+    );
+
+
+    document.body.classList.remove(
+        "sidebar-open"
+    );
+
+}
+
+
+if (menuToggle) {
+
+    menuToggle.addEventListener(
+        "click",
+        openSidebar
+    );
+
+}
+
+
+if (sidebarClose) {
+
+    sidebarClose.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+}
+
+
+if (sidebarOverlay) {
+
+    sidebarOverlay.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+}
+
+
+document
+    .querySelectorAll(
+        ".sidebar-nav .nav-link"
+    )
+    .forEach((link) => {
+
+        link.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    window.innerWidth <=
+                    991
+                ) {
+
+                    closeSidebar();
+
+                }
+
+            }
+        );
+
+    });
+
+/* ==========================================================
+   END - MOBILE SIDEBAR
+========================================================== */
+
+
+/* ==========================================================
+   START - ESC KEY
+========================================================== */
+
+document.addEventListener(
+    "keydown",
+    (event) => {
+
+        if (
+            event.key !== "Escape"
+        ) {
+            return;
+        }
+
+
+        if (
+            deleteCourseModal?.classList.contains(
+                "show"
+            )
+        ) {
+
+            closeDeleteCourseModal();
+
+            return;
+        }
+
+
+        if (
+            courseFormModal?.classList.contains(
+                "show"
+            )
+        ) {
+
+            closeCourseForm();
+
+            return;
+        }
+
+
+        if (
+            viewCourseModal?.classList.contains(
+                "show"
+            )
+        ) {
+
+            closeViewCourseModal();
+
+            return;
+        }
+
+
+        if (
+            adminSidebar?.classList.contains(
+                "open"
+            )
+        ) {
+
+            closeSidebar();
+
+        }
+
+    }
+);
+
+/* ==========================================================
+   END - ESC KEY
+========================================================== */
+
+
+/* ==========================================================
+   START - FIREBASE ADMIN LOGOUT
+========================================================== */
+
+if (logoutBtn) {
+
+    logoutBtn.addEventListener(
+        "click",
+        async (event) => {
+
+            event.preventDefault();
+
+
+            try {
+
+                logoutBtn.style.pointerEvents =
+                    "none";
+
+
+                const logoutText =
+                    logoutBtn.querySelector(
+                        "span:last-child"
+                    );
+
+
+                if (logoutText) {
+
+                    logoutText.textContent =
+                        "Logging Out...";
+
+                }
+
+
+                await signOut(auth);
+
+
+                window.location.replace(
+                    "../../../logout.html"
+                );
+
+
+            } catch (error) {
+
+                console.error(
+                    "Manage Courses Logout Error:",
+                    error
+                );
+
+
+                logoutBtn.style.pointerEvents =
+                    "";
+
+
+                const logoutText =
+                    logoutBtn.querySelector(
+                        "span:last-child"
+                    );
+
+
+                if (logoutText) {
+
+                    logoutText.textContent =
+                        "Logout";
+
+                }
+
+
+                alert(
+                    "Unable to logout. Please try again."
+                );
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - FIREBASE ADMIN LOGOUT
+========================================================== */
+
+
+/* ==========================================================
+   START - HTML SECURITY
+========================================================== */
+
+function escapeHTML(value) {
+
+    return String(
+        value ?? ""
+    )
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+/* ==========================================================
+   END - HTML SECURITY
+========================================================== */
+
+
+/* ==========================================================
+   END - EDUVERSE ADMIN MANAGE COURSES
+========================================================== */

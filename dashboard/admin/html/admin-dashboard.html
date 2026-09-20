@@ -1,285 +1,1184 @@
-html
+<!-- ==========================================================
+     START - EDUVERSE ADMIN DASHBOARD
+========================================================== -->
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- ======================================================
+         START - META
+    ======================================================= -->
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="EduVerse Admin Dashboard">
 
     <title>EduVerse | Admin Dashboard</title>
 
-    <!-- Main EduVerse CSS -->
+    <!-- ======================================================
+         END - META
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - GOOGLE FONT
+    ======================================================= -->
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- ======================================================
+         END - GOOGLE FONT
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - FONT AWESOME
+    ======================================================= -->
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- ======================================================
+         END - FONT AWESOME
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - EDUVERSE STYLES
+    ======================================================= -->
+
+    <link rel="stylesheet" href="../../../assets/css/variables.css">
+
+    <link rel="stylesheet" href="../../../assets/css/global.css">
+
     <link rel="stylesheet" href="../css/admin-dashboard.css">
 
-    <!-- =========================
-     PROTECTED PAGE START
-========================== -->
-
-<style>
-    html {
-        visibility: hidden;
-    }
-</style>
-
-<!-- =========================
-     PROTECTED PAGE END
-========================== -->
+    <!-- ======================================================
+         END - EDUVERSE STYLES
+    ======================================================= -->
 
 </head>
 
+
 <body>
 
-    <!-- =========================
-         ADMIN SIDEBAR
-    ========================== -->
-    <aside class="sidebar">
+    <!-- ======================================================
+         START - ADMIN DASHBOARD WRAPPER
+    ======================================================= -->
 
-        <div class="sidebar-header">
-            <h2>EduVerse</h2>
-            <p>Admin Dashboard</p>
-        </div>
-
-        <nav class="sidebar-nav">
-
-            <a href="admin-dashboard.html" class="active">
-                Dashboard
-            </a>
-
-            <a href="users.html">
-                Users
-            </a>
-
-            <a href="students.html">
-                Students
-            </a>
-
-            <a href="teachers.html">
-                Teachers
-            </a>
-
-            <a href="courses.html">
-                Courses
-            </a>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-          <!-- =========================
-     LOGOUT START
-========================== -->
-
-<a href="#" id="logoutBtn">
-    Logout
-</a>
-
-<!-- =========================
-     LOGOUT END
-========================== -->
-        </div>
-
-    </aside>
+    <div class="admin-layout">
 
 
-    <!-- =========================
-         MAIN CONTENT
-    ========================== -->
-    <main class="main-content">
+        <!-- ==================================================
+             START - MOBILE OVERLAY
+        =================================================== -->
 
-        <!-- Header -->
-        <header class="dashboard-header">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-            <div>
-                <h1>Admin Dashboard</h1>
-                <p>Welcome back, Admin</p>
+        <!-- ==================================================
+             END - MOBILE OVERLAY
+        =================================================== -->
+
+
+        <!-- ==================================================
+             START - SIDEBAR
+        =================================================== -->
+
+        <aside class="admin-sidebar" id="adminSidebar">
+
+            <!-- Sidebar Brand -->
+
+            <div class="sidebar-brand">
+
+                <a href="../../../index.html" class="brand-link" aria-label="EduVerse Home">
+
+                    <img src="../../../assets/images/logo/white-logo.png" alt="EduVerse Logo" class="brand-logo">
+
+                </a>
+
+
+                <button class="sidebar-close" id="sidebarClose" type="button" aria-label="Close sidebar">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+
             </div>
 
-            <div class="admin-profile">
-                <div class="profile-avatar">A</div>
+
+            <!-- Admin Label -->
+
+            <div class="sidebar-label">
+
+                <span class="sidebar-label-icon">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </span>
 
                 <div>
-                    <strong>Admin</strong>
-                    <span>Administrator</span>
+                    <strong>Admin Panel</strong>
+                    <span>Platform Management</span>
                 </div>
+
             </div>
 
-        </header>
+
+            <!-- Navigation -->
+
+            <nav class="sidebar-nav" aria-label="Admin navigation">
+
+                <p class="nav-title">
+                    MAIN MENU
+                </p>
 
 
-        <!-- =========================
-             STATISTICS
-        ========================== -->
-<section class="stats-grid">
+                <a href="admin-dashboard.html" class="nav-link active">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </span>
 
-    <div class="stat-card">
-        <div class="stat-icon">👥</div>
-        <div>
-            <p>Total Users</p>
-            <h2 id="totalUsers">0</h2>
+                    <span>Dashboard</span>
+                </a>
+
+
+                <a href="users.html" class="nav-link">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+
+                    <span>Manage Users</span>
+                </a>
+
+
+                <a href="students.html" class="nav-link">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </span>
+
+                    <span>Students</span>
+                </a>
+
+
+                <a href="teachers.html" class="nav-link">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </span>
+
+                    <span>Teachers</span>
+                </a>
+
+
+                <a href="courses.html" class="nav-link">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </span>
+
+                    <span>Courses</span>
+                </a>
+
+            </nav>
+
+
+            <!-- Sidebar Bottom -->
+
+            <div class="sidebar-footer">
+
+                <a href="../../../index.html" class="nav-link website-link">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                    <span>View Website</span>
+                </a>
+
+
+                <!-- IMPORTANT:
+                     Keep id="logoutBtn".
+                     Existing Firebase logout uses this ID.
+                -->
+
+                <a href="#" class="nav-link logout-link" id="logoutBtn">
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+
+                    <span>Logout</span>
+                </a>
+
+            </div>
+
+        </aside>
+
+        <!-- ==================================================
+             END - SIDEBAR
+        =================================================== -->
+
+
+        <!-- ==================================================
+             START - MAIN AREA
+        =================================================== -->
+
+        <div class="admin-main">
+
+
+            <!-- ==============================================
+                 START - TOPBAR
+            =============================================== -->
+
+            <header class="admin-topbar">
+
+                <div class="topbar-left">
+
+                    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Open sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+
+
+                    <div class="topbar-heading">
+
+                        <h1>
+                            Dashboard
+                        </h1>
+
+                        <p>
+                            Welcome back! Here's what's happening on EduVerse.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+                    <button class="notification-btn" type="button" aria-label="Notifications">
+                        <i class="fa-regular fa-bell"></i>
+
+                        <span class="notification-dot"></span>
+                    </button>
+
+                    <!-- Start - Admin Profile Trigger -->
+
+                    <button class="admin-profile" id="adminProfileBtn" type="button" aria-label="Open admin profile">
+
+                        <div class="profile-avatar" id="adminProfileAvatar">
+                            <span id="adminAvatarInitial">A</span>
+
+                            <img id="adminAvatarImage" src="" alt="Admin profile" hidden>
+                        </div>
+
+                        <div class="profile-info">
+
+                            <strong id="adminName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                        <i class="fa-solid fa-chevron-down profile-arrow"></i>
+
+                    </button>
+
+                    <!-- End - Admin Profile Trigger -->
+
+
+                </div>
+
+            </header>
+
+            <!-- ==============================================
+                 END - TOPBAR
+            =============================================== -->
+
+
+            <!-- ==============================================
+                 START - DASHBOARD CONTENT
+            =============================================== -->
+
+            <main class="dashboard-content">
+
+
+                <!-- ==========================================
+                     START - WELCOME CARD
+                =========================================== -->
+
+                <section class="welcome-card">
+
+                    <div class="welcome-content">
+
+                        <span class="welcome-badge">
+
+                            <i class="fa-solid fa-star"></i>
+
+                            EDUVERSE ADMIN
+                        </span>
+
+
+                        <h2>
+                            Manage EduVerse with ease.
+                        </h2>
+
+
+                        <p>
+                            Monitor users, students, teachers and courses
+                            from one simple dashboard.
+                        </p>
+
+                    </div>
+
+
+                    <div class="welcome-icon">
+
+                        <i class="fa-solid fa-graduation-cap"></i>
+
+                    </div>
+
+                </section>
+
+                <!-- ==========================================
+                     END - WELCOME CARD
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - STATISTICS
+                =========================================== -->
+
+                <section class="stats-grid" aria-label="Platform statistics">
+
+
+                    <!-- Total Users -->
+
+                    <a href="users.html" class="stat-card">
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </div>
+
+
+                        <div class="stat-content">
+
+                            <p>
+                                Total Users
+                            </p>
+
+                            <h3 id="totalUsers">
+                                0
+                            </h3>
+
+                            <span>
+                                Registered accounts
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Students -->
+
+                    <a href="students.html" class="stat-card">
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-user-graduate"></i>
+
+                        </div>
+
+
+                        <div class="stat-content">
+
+                            <p>
+                                Students
+                            </p>
+
+                            <h3 id="totalStudents">
+                                0
+                            </h3>
+
+                            <span>
+                                Learning on EduVerse
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Teachers -->
+
+                    <a href="teachers.html" class="stat-card">
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-chalkboard-user"></i>
+
+                        </div>
+
+
+                        <div class="stat-content">
+
+                            <p>
+                                Teachers
+                            </p>
+
+                            <h3 id="totalTeachers">
+                                0
+                            </h3>
+
+                            <span>
+                                Teaching on EduVerse
+                            </span>
+
+                        </div>
+
+                    </a>
+
+
+                    <!-- Courses -->
+
+                    <a href="courses.html" class="stat-card">
+
+                        <div class="stat-icon">
+
+                            <i class="fa-solid fa-book-open"></i>
+
+                        </div>
+
+
+                        <div class="stat-content">
+
+                            <p>
+                                Courses
+                            </p>
+
+                            <h3 id="totalCourses">
+                                0
+                            </h3>
+
+                            <span>
+                                Available courses
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </section>
+
+                <!-- ==========================================
+                     END - STATISTICS
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - DASHBOARD GRID
+                =========================================== -->
+
+                <div class="dashboard-grid">
+
+
+                    <!-- ======================================
+                         START - RECENT USERS
+                    ======================================= -->
+
+                    <section class="dashboard-card recent-users-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    RECENT USERS
+                                </span>
+
+                                <h2>
+                                    New Members
+                                </h2>
+
+                                <p>
+                                    Latest users registered on EduVerse.
+                                </p>
+
+                            </div>
+
+
+                            <a href="users.html" class="text-link">
+                                View All
+
+                                <i class="fa-solid fa-arrow-right"></i>
+                            </a>
+
+                        </div>
+
+
+                        <div class="table-wrapper">
+
+                            <table class="users-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            User
+                                        </th>
+
+                                        <th>
+                                            Role
+                                        </th>
+
+                                        <th>
+                                            Joined
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="recentUsersTable">
+
+                                    <tr>
+
+                                        <td colspan="3" class="table-message">
+                                            Loading users...
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ======================================
+                         END - RECENT USERS
+                    ======================================= -->
+
+
+                    <!-- ======================================
+                         START - QUICK MANAGEMENT
+                    ======================================= -->
+
+                    <section class="dashboard-card quick-card">
+
+                        <div class="card-header">
+
+                            <div>
+
+                                <span class="section-label">
+                                    QUICK ACCESS
+                                </span>
+
+                                <h2>
+                                    Quick Management
+                                </h2>
+
+                                <p>
+                                    Jump directly to management pages.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="quick-links">
+
+
+                            <a href="users.html" class="quick-link">
+
+                                <span class="quick-icon">
+                                    <i class="fa-solid fa-users"></i>
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Manage Users
+                                    </strong>
+
+                                    <span>
+                                        Search and manage accounts
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </a>
+
+
+                            <a href="students.html" class="quick-link">
+
+                                <span class="quick-icon">
+                                    <i class="fa-solid fa-user-graduate"></i>
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Students
+                                    </strong>
+
+                                    <span>
+                                        View student accounts
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </a>
+
+
+                            <a href="teachers.html" class="quick-link">
+
+                                <span class="quick-icon">
+                                    <i class="fa-solid fa-chalkboard-user"></i>
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Teachers
+                                    </strong>
+
+                                    <span>
+                                        View teacher accounts
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </a>
+
+
+                            <a href="courses.html" class="quick-link">
+
+                                <span class="quick-icon">
+                                    <i class="fa-solid fa-book-open"></i>
+                                </span>
+
+                                <div>
+
+                                    <strong>
+                                        Courses
+                                    </strong>
+
+                                    <span>
+                                        Manage course information
+                                    </span>
+
+                                </div>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </a>
+
+                        </div>
+
+                    </section>
+
+                    <!-- ======================================
+                         END - QUICK MANAGEMENT
+                    ======================================= -->
+
+                </div>
+
+                <!-- ==========================================
+                     END - DASHBOARD GRID
+                =========================================== -->
+
+                <!-- ======================================================
+     START - ANALYTICS
+======================================================= -->
+
+                <section class="analytics-section">
+
+                    <div class="analytics-header">
+
+                        <div>
+                            <span class="section-label">
+                                ANALYTICS
+                            </span>
+
+                            <h2>
+                                Platform Analytics
+                            </h2>
+
+                            <p>
+                                Quick visual overview of EduVerse activity.
+                            </p>
+                        </div>
+
+                    </div>
+
+
+                    <div class="charts-grid">
+
+
+                        <!-- ==============================================
+             START - USER DISTRIBUTION CHART
+        =============================================== -->
+
+                        <div class="dashboard-card chart-card">
+
+                            <div class="chart-header">
+
+                                <div>
+                                    <h3>User Distribution</h3>
+
+                                    <p>
+                                        Students, teachers and administrators.
+                                    </p>
+                                </div>
+
+                                <span class="chart-icon">
+                                    <i class="fa-solid fa-chart-pie"></i>
+                                </span>
+
+                            </div>
+
+
+                            <div class="chart-wrapper">
+
+                                <canvas id="userDistributionChart" aria-label="User distribution chart"></canvas>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ==============================================
+             END - USER DISTRIBUTION CHART
+        =============================================== -->
+
+
+                        <!-- ==============================================
+             START - PLATFORM OVERVIEW CHART
+        =============================================== -->
+
+                        <div class="dashboard-card chart-card">
+
+                            <div class="chart-header">
+
+                                <div>
+                                    <h3>Platform Overview</h3>
+
+                                    <p>
+                                        Current EduVerse platform totals.
+                                    </p>
+                                </div>
+
+                                <span class="chart-icon">
+                                    <i class="fa-solid fa-chart-column"></i>
+                                </span>
+
+                            </div>
+
+
+                            <div class="chart-wrapper">
+
+                                <canvas id="platformOverviewChart" aria-label="Platform overview chart"></canvas>
+
+                            </div>
+
+                        </div>
+
+                        <!-- ==============================================
+             END - PLATFORM OVERVIEW CHART
+        =============================================== -->
+
+
+                    </div>
+
+                </section>
+
+                <!-- ======================================================
+     END - ANALYTICS
+======================================================= -->
+
+                <!-- ==========================================
+                     START - RECENT ACTIVITY
+                =========================================== -->
+
+                <section class="dashboard-card activity-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <span class="section-label">
+                                PLATFORM
+                            </span>
+
+                            <h2>
+                                Platform Overview
+                            </h2>
+
+                            <p>
+                                A quick summary of your EduVerse platform.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="activity-list" id="recentActivity">
+
+                        <div class="activity-item">
+
+                            <span class="activity-icon">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Admin Dashboard
+                                </strong>
+
+                                <p>
+                                    Dashboard loaded successfully.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+                <!-- ==========================================
+                     END - RECENT ACTIVITY
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - FOOTER
+                =========================================== -->
+
+                <footer class="dashboard-footer">
+
+                    <p>
+                        © 2026 EduVerse. All Rights Reserved.
+                    </p>
+
+                    <span>
+                        Learn Smarter. Teach Better. Grow Together.
+                    </span>
+
+                </footer>
+
+                <!-- ==========================================
+                     END - FOOTER
+                =========================================== -->
+
+
+            </main>
+
+            <!-- ==============================================
+                 END - DASHBOARD CONTENT
+            =============================================== -->
+
+
         </div>
+
+        <!-- ==================================================
+             END - MAIN AREA
+        =================================================== -->
+
+
     </div>
 
+    <!-- ======================================================
+         END - ADMIN DASHBOARD WRAPPER
+    ======================================================= -->
 
-    <div class="stat-card">
-        <div class="stat-icon">🎓</div>
-        <div>
-            <p>Students</p>
-            <h2 id="totalStudents">0</h2>
-        </div>
-    </div>
+    <!-- ======================================================
+     START - ADMIN PROFILE MODAL
+======================================================= -->
 
+    <div class="profile-modal" id="adminProfileModal" aria-hidden="true">
 
-    <div class="stat-card">
-        <div class="stat-icon">👨‍🏫</div>
-        <div>
-            <p>Teachers</p>
-            <h2 id="totalTeachers">0</h2>
-        </div>
-    </div>
+        <div class="profile-modal-dialog">
 
+            <!-- Start - Modal Header -->
 
-    <div class="stat-card">
-        <div class="stat-icon">📚</div>
-        <div>
-            <p>Courses</p>
-            <h2 id="totalCourses">0</h2>
-        </div>
-    </div>
+            <div class="profile-modal-header">
 
-</section>
-
-        <!-- =========================
-             RECENT USERS
-        ========================== -->
-        <section class="dashboard-section">
-
-            <div class="section-header">
                 <div>
-                    <h2>Recent Users</h2>
-                    <p>Recently registered users</p>
+                    <span class="section-label">
+                        MY PROFILE
+                    </span>
+
+                    <h2>
+                        Admin Profile
+                    </h2>
                 </div>
 
-                <a href="users.html" class="view-all">
-                    View All
-                </a>
-            </div>
-
-
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Joined</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="recentUsersTable">
-
-                        <tr>
-                            <td colspan="4">
-                                Loading users...
-                            </td>
-                        </tr>
-
-                    </tbody>
-
-                </table>
+                <button type="button" class="profile-modal-close" id="closeAdminProfile"
+                    aria-label="Close admin profile">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
 
             </div>
 
-        </section>
+            <!-- End - Modal Header -->
 
 
-        <!-- =========================
-             QUICK ACTIONS
-        ========================== -->
-        <section class="dashboard-section">
+            <!-- Start - Modal Body -->
 
-            <div class="section-header">
-                <div>
-                    <h2>Quick Management</h2>
-                    <p>Manage your EduVerse platform</p>
-                </div>
-            </div>
+            <div class="profile-modal-body">
 
 
-            <div class="quick-actions">
+                <!-- Start - Profile Picture -->
 
-                <a href="users.html" class="quick-action">
-                    <span>👥</span>
-                    <div>
-                        <h3>Manage Users</h3>
-                        <p>View and manage all users</p>
+                <div class="profile-photo-section">
+
+                    <div class="profile-photo-wrapper">
+
+                        <div class="profile-photo-preview" id="profilePhotoPreview">
+
+                            <span id="profileModalInitial">
+                                A
+                            </span>
+
+                            <img id="profileModalImage" src="" alt="Admin profile picture" hidden>
+
+                        </div>
+
+
+                        <label for="profileImageInput" class="profile-photo-edit" title="Change profile picture">
+                            <i class="fa-solid fa-camera"></i>
+                        </label>
+
+
+                        <input type="file" id="profileImageInput" accept="image/png, image/jpeg, image/webp" hidden>
+
                     </div>
-                </a>
 
 
-                <a href="students.html" class="quick-action">
-                    <span>🎓</span>
-                    <div>
-                        <h3>Manage Students</h3>
-                        <p>View student information</p>
+                    <div class="profile-photo-info">
+
+                        <h3 id="profileDisplayName">
+                            Admin
+                        </h3>
+
+                        <p>
+                            Administrator
+                        </p>
+
+                        <button type="button" class="change-photo-btn" id="changePhotoBtn">
+                            <i class="fa-solid fa-camera"></i>
+
+                            Change Photo
+                        </button>
+
+                        <small>
+                            JPG, PNG or WebP
+                        </small>
+
                     </div>
-                </a>
 
-
-                <a href="teachers.html" class="quick-action">
-                    <span>👨‍🏫</span>
-                    <div>
-                        <h3>Manage Teachers</h3>
-                        <p>View teacher information</p>
-                    </div>
-                </a>
-
-
-                <a href="courses.html" class="quick-action">
-                    <span>📚</span>
-                    <div>
-                        <h3>Manage Courses</h3>
-                        <p>Monitor available courses</p>
-                    </div>
-                </a>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             RECENT ACTIVITY
-        ========================== -->
-        <section class="dashboard-section">
-
-            <div class="section-header">
-                <div>
-                    <h2>Recent Activity</h2>
-                    <p>Latest platform activity</p>
-                </div>
-            </div>
-
-
-            <div id="recentActivity" class="activity-list">
-
-                <div class="activity-item">
-                    <span>🔔</span>
-                    <div>
-                        <strong>Admin Dashboard</strong>
-                        <p>Dashboard loaded successfully.</p>
-                    </div>
                 </div>
 
+                <!-- End - Profile Picture -->
+
+
+                <!-- Start - Profile Form -->
+
+                <form class="admin-profile-form" id="adminProfileForm">
+
+                    <div class="profile-form-grid">
+
+
+                        <!-- Name -->
+
+                        <div class="profile-form-group">
+
+                            <label for="profileName">
+                                Full Name
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fa-regular fa-user"></i>
+
+                                <input type="text" id="profileName" autocomplete="name" required>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Email -->
+
+                        <div class="profile-form-group">
+
+                            <label for="profileEmail">
+                                Email Address
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fa-regular fa-envelope"></i>
+
+                                <input type="email" id="profileEmail" readonly>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Role -->
+
+                        <div class="profile-form-group">
+
+                            <label for="profileRole">
+                                Role
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fa-solid fa-shield-halved"></i>
+
+                                <input type="text" id="profileRole" value="Administrator" readonly>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Status -->
+
+                        <div class="profile-form-group">
+
+                            <label for="profileStatus">
+                                Account Status
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fa-solid fa-circle-check"></i>
+
+                                <input type="text" id="profileStatus" readonly>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Joined -->
+
+                        <div class="profile-form-group profile-form-full">
+
+                            <label for="profileJoined">
+                                Joined
+                            </label>
+
+                            <div class="profile-input-wrapper">
+
+                                <i class="fa-regular fa-calendar"></i>
+
+                                <input type="text" id="profileJoined" readonly>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <!-- Start - Message -->
+
+                    <p class="profile-message" id="profileMessage" aria-live="polite"></p>
+
+                    <!-- End - Message -->
+
+
+                    <!-- Start - Actions -->
+
+                    <div class="profile-form-actions">
+
+                        <button type="button" class="profile-cancel-btn" id="cancelProfileBtn">
+                            Cancel
+                        </button>
+
+                        <button type="submit" class="profile-save-btn" id="saveProfileBtn">
+                            <i class="fa-solid fa-floppy-disk"></i>
+
+                            <span>
+                                Save Changes
+                            </span>
+                        </button>
+
+                    </div>
+
+                    <!-- End - Actions -->
+
+                </form>
+
+                <!-- End - Profile Form -->
+
+
             </div>
 
-        </section>
+            <!-- End - Modal Body -->
 
-    </main>
+        </div>
 
+    </div>
 
-    <!-- Admin Dashboard JavaScript -->
- <script type="module" src="../js/admin-dashboard.js"></script>
- 
+    <!-- ======================================================
+     END - ADMIN PROFILE MODAL
+======================================================= -->
+
+    <!-- ======================================================
+     START - CHART JS
+======================================================= -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- ======================================================
+     END - CHART JS
+======================================================= -->
+
+    <!-- ======================================================
+         START - ADMIN DASHBOARD SCRIPT
+    ======================================================= -->
+
+    <script type="module" src="../js/admin-dashboard.js"></script>
+
+    <!-- ======================================================
+         END - ADMIN DASHBOARD SCRIPT
+    ======================================================= -->
+
 </body>
+
 </html>
+
+<!-- ==========================================================
+     END - EDUVERSE ADMIN DASHBOARD
+========================================================== -->

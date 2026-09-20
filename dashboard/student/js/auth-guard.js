@@ -1,4 +1,15 @@
 /* ==========================================================
+        START - HIDE PAGE UNTIL AUTH CHECK
+========================================================== */
+
+document.documentElement.style.visibility = "hidden";
+
+/* ==========================================================
+        END - HIDE PAGE UNTIL AUTH CHECK
+========================================================== */
+
+
+/* ==========================================================
         START - FIREBASE IMPORTS
 ========================================================== */
 
@@ -28,7 +39,9 @@ import {
 
 onAuthStateChanged(auth, async (user) => {
 
-    /* User Not Logged In */
+    /* ------------------------------------------------------
+       User Not Logged In
+    ------------------------------------------------------ */
 
     if (!user) {
 
@@ -42,7 +55,9 @@ onAuthStateChanged(auth, async (user) => {
 
     try {
 
-        /* Get Firestore User Profile */
+        /* --------------------------------------------------
+           Get Firestore User Profile
+        -------------------------------------------------- */
 
         const userRef = doc(
             db,
@@ -50,19 +65,18 @@ onAuthStateChanged(auth, async (user) => {
             user.uid
         );
 
+
         const userSnapshot =
             await getDoc(userRef);
 
 
-        /* Profile Not Found */
+        /* --------------------------------------------------
+           Profile Not Found
+        -------------------------------------------------- */
 
         if (!userSnapshot.exists()) {
 
-            await signOut(auth);
-
-            window.location.replace(
-                "../../../login.html"
-            );
+            await denyAccess();
 
             return;
         }
@@ -72,23 +86,57 @@ onAuthStateChanged(auth, async (user) => {
             userSnapshot.data();
 
 
-        /* Only Student Allowed */
+        /* --------------------------------------------------
+           Only Student Allowed
+        -------------------------------------------------- */
 
-        if (userData.role !== "student") {
+        if (
+            normalizeRole(userData.role) !==
+            "student"
+        ) {
 
-            await signOut(auth);
+            await denyAccess();
 
-            window.location.replace(
-                "../../../login.html"
+            return;
+        }
+
+
+        /* --------------------------------------------------
+           Suspended Student Not Allowed
+
+           Old users may not have a status field.
+           Missing status is treated as Active.
+        -------------------------------------------------- */
+
+        if (
+            normalizeStatus(userData.status) ===
+            "suspended"
+        ) {
+
+            console.warn(
+                "Student account is suspended."
+            );
+
+
+            await denyAccess(
+                "suspended"
             );
 
             return;
         }
 
 
+        /* --------------------------------------------------
+           Student Verified - Show Page
+        -------------------------------------------------- */
+
         console.log(
             "Student page access granted."
         );
+
+
+        document.documentElement.style.visibility =
+            "visible";
 
 
     } catch (error) {
@@ -99,23 +147,7 @@ onAuthStateChanged(auth, async (user) => {
         );
 
 
-        try {
-
-            await signOut(auth);
-
-        } catch (signOutError) {
-
-            console.error(
-                "Sign Out Error:",
-                signOutError
-            );
-
-        }
-
-
-        window.location.replace(
-            "../../../login.html"
-        );
+        await denyAccess();
 
     }
 
@@ -123,4 +155,95 @@ onAuthStateChanged(auth, async (user) => {
 
 /* ==========================================================
         END - STUDENT AUTH GUARD
+========================================================== */
+
+
+/* ==========================================================
+        START - ACCESS DENIED
+========================================================== */
+
+async function denyAccess(reason = "") {
+
+    try {
+
+        await signOut(auth);
+
+    } catch (signOutError) {
+
+        console.error(
+            "Sign Out Error:",
+            signOutError
+        );
+
+    }
+
+
+    /*
+       Suspended reason is passed to login page.
+
+       Later we can use this to show a proper
+       "Account Suspended" message.
+    */
+
+    if (reason === "suspended") {
+
+        window.location.replace(
+            "../../../login.html?reason=suspended"
+        );
+
+        return;
+    }
+
+
+    window.location.replace(
+        "../../../login.html"
+    );
+
+}
+
+/* ==========================================================
+        END - ACCESS DENIED
+========================================================== */
+
+
+/* ==========================================================
+        START - HELPERS
+========================================================== */
+
+function normalizeRole(role) {
+
+    return String(
+        role || ""
+    )
+        .trim()
+        .toLowerCase();
+
+}
+
+
+function normalizeStatus(status) {
+
+    const normalizedStatus =
+        String(
+            status || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    /*
+       Only an explicit "suspended"
+       value blocks access.
+
+       Missing status = Active.
+    */
+
+    return normalizedStatus === "suspended"
+        ? "suspended"
+        : "active";
+
+}
+
+/* ==========================================================
+        END - HELPERS
 ========================================================== */

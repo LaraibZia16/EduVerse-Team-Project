@@ -39,7 +39,9 @@ import {
 
 onAuthStateChanged(auth, async (user) => {
 
-    /* User Not Logged In */
+    /* ------------------------------------------------------
+       User Not Logged In
+    ------------------------------------------------------ */
 
     if (!user) {
 
@@ -53,7 +55,9 @@ onAuthStateChanged(auth, async (user) => {
 
     try {
 
-        /* Get Firestore User Profile */
+        /* --------------------------------------------------
+           Get Firestore User Profile
+        -------------------------------------------------- */
 
         const userRef = doc(
             db,
@@ -61,19 +65,18 @@ onAuthStateChanged(auth, async (user) => {
             user.uid
         );
 
+
         const userSnapshot =
             await getDoc(userRef);
 
 
-        /* Profile Not Found */
+        /* --------------------------------------------------
+           Profile Not Found
+        -------------------------------------------------- */
 
         if (!userSnapshot.exists()) {
 
-            await signOut(auth);
-
-            window.location.replace(
-                "../../../login.html"
-            );
+            await denyAccess();
 
             return;
         }
@@ -83,25 +86,53 @@ onAuthStateChanged(auth, async (user) => {
             userSnapshot.data();
 
 
-        /* Only Teacher Allowed */
+        /* --------------------------------------------------
+           Only Teacher Allowed
+        -------------------------------------------------- */
 
-        if (userData.role !== "teacher") {
+        if (
+            normalizeRole(userData.role) !==
+            "teacher"
+        ) {
 
-            await signOut(auth);
+            await denyAccess();
 
-            window.location.replace(
-                "../../../login.html"
+            return;
+        }
+
+
+        /* --------------------------------------------------
+           Suspended Teacher Not Allowed
+
+           Missing status = Active.
+        -------------------------------------------------- */
+
+        if (
+            normalizeStatus(userData.status) ===
+            "suspended"
+        ) {
+
+            console.warn(
+                "Teacher account is suspended."
+            );
+
+
+            await denyAccess(
+                "suspended"
             );
 
             return;
         }
 
 
-        /* Teacher Verified - Show Page */
+        /* --------------------------------------------------
+           Teacher Verified - Show Page
+        -------------------------------------------------- */
 
         console.log(
             "Teacher page access granted."
         );
+
 
         document.documentElement.style.visibility =
             "visible";
@@ -115,23 +146,7 @@ onAuthStateChanged(auth, async (user) => {
         );
 
 
-        try {
-
-            await signOut(auth);
-
-        } catch (signOutError) {
-
-            console.error(
-                "Sign Out Error:",
-                signOutError
-            );
-
-        }
-
-
-        window.location.replace(
-            "../../../login.html"
-        );
+        await denyAccess();
 
     }
 
@@ -139,4 +154,81 @@ onAuthStateChanged(auth, async (user) => {
 
 /* ==========================================================
         END - TEACHER AUTH GUARD
+========================================================== */
+
+
+/* ==========================================================
+        START - ACCESS DENIED
+========================================================== */
+
+async function denyAccess(reason = "") {
+
+    try {
+
+        await signOut(auth);
+
+    } catch (signOutError) {
+
+        console.error(
+            "Sign Out Error:",
+            signOutError
+        );
+
+    }
+
+
+    if (reason === "suspended") {
+
+        window.location.replace(
+            "../../../login.html?reason=suspended"
+        );
+
+        return;
+    }
+
+
+    window.location.replace(
+        "../../../login.html"
+    );
+
+}
+
+/* ==========================================================
+        END - ACCESS DENIED
+========================================================== */
+
+
+/* ==========================================================
+        START - HELPERS
+========================================================== */
+
+function normalizeRole(role) {
+
+    return String(
+        role || ""
+    )
+        .trim()
+        .toLowerCase();
+
+}
+
+
+function normalizeStatus(status) {
+
+    const normalizedStatus =
+        String(
+            status || ""
+        )
+            .trim()
+            .toLowerCase();
+
+
+    return normalizedStatus === "suspended"
+        ? "suspended"
+        : "active";
+
+}
+
+/* ==========================================================
+        END - HELPERS
 ========================================================== */

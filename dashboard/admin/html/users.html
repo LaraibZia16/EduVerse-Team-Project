@@ -1,319 +1,1113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
+    <!-- ======================================================
+         START - META
+    ======================================================= -->
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>EduVerse | Users</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="../css/users.css">
+    <meta
+        name="description"
+        content="EduVerse Admin Manage Users"
+    >
+
+    <title>Manage Users | EduVerse Admin</title>
+
+    <!-- ======================================================
+         END - META
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - FAVICON
+    ======================================================= -->
+
+    <link
+        rel="icon"
+        type="image/png"
+        href="../../../assets/images/logo/favicon.png"
+    >
+
+    <!-- ======================================================
+         END - FAVICON
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - GOOGLE FONT
+    ======================================================= -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- ======================================================
+         END - GOOGLE FONT
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - FONT AWESOME
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+
+    <!-- ======================================================
+         END - FONT AWESOME
+    ======================================================= -->
+
+
+    <!-- ======================================================
+         START - STYLES
+    ======================================================= -->
+
+    <link
+        rel="stylesheet"
+        href="../../../assets/css/variables.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../../../assets/css/global.css"
+    >
+
+    <link
+        rel="stylesheet"
+        href="../css/users.css"
+    >
+
+    <!-- ======================================================
+         END - STYLES
+    ======================================================= -->
 
 </head>
 
+
 <body>
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
 
-        <div class="sidebar-header">
-            <h2>EduVerse</h2>
-            <p>Admin Dashboard</p>
-        </div>
+    <!-- ======================================================
+         START - ADMIN LAYOUT
+    ======================================================= -->
 
-        <nav class="sidebar-nav">
-            <a href="admin-dashboard.html">Dashboard</a>
-            <a href="users.html" class="active">Users</a>
-            <a href="students.html">Students</a>
-            <a href="teachers.html">Teachers</a>
-            <a href="courses.html">Courses</a>
-        </nav>
-
-        <div class="sidebar-bottom">
-            <a href="../../index.html">Logout</a>
-        </div>
-
-    </aside>
+    <div class="admin-layout">
 
 
-    <!-- Main Content -->
-    <main class="main-content">
+        <!-- ==================================================
+             START - SIDEBAR OVERLAY
+        =================================================== -->
 
-        <header class="page-header">
-            <div>
-                <h1>Users</h1>
-                <p>Manage all EduVerse users</p>
-            </div>
+        <div
+            class="sidebar-overlay"
+            id="sidebarOverlay"
+        ></div>
 
-            <button class="add-user-btn" id="addUserBtn">
-                + Add User
-            </button>
-        </header>
-
-
-        <!-- Statistics -->
-        <section class="stats-grid">
-
-            <div class="stat-card">
-                <span>👥</span>
-                <div>
-                    <p>Total Users</p>
-                    <h2 id="totalUsers">0</h2>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <span>🎓</span>
-                <div>
-                    <p>Students</p>
-                    <h2 id="totalStudents">0</h2>
-                </div>
-            </div>
-
-            <div class="stat-card">
-                <span>👨‍🏫</span>
-                <div>
-                    <p>Teachers</p>
-                    <h2 id="totalTeachers">0</h2>
-                </div>
-            </div>
-
-        </section>
+        <!-- ==================================================
+             END - SIDEBAR OVERLAY
+        =================================================== -->
 
 
-        <!-- Search & Filter -->
-        <section class="users-section">
+        <!-- ==================================================
+             START - SIDEBAR
+        =================================================== -->
 
-            <div class="controls">
+        <aside
+            class="admin-sidebar"
+            id="adminSidebar"
+        >
 
-                <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="Search by name or email..."
+
+            <!-- ==============================================
+                 START - BRAND
+            =============================================== -->
+
+            <div class="sidebar-brand">
+
+                <a
+                    href="admin-dashboard.html"
+                    class="brand-link"
                 >
 
-                <select id="roleFilter">
-                    <option value="all">All Roles</option>
-                    <option value="Student">Students</option>
-                    <option value="Teacher">Teachers</option>
-                    <option value="Admin">Admins</option>
-                </select>
+                    <img
+                        src="../../../assets/images/logo/white-logo.png"
+                        alt="EduVerse Logo"
+                        class="brand-logo"
+                    >
 
-            </div>
-
-
-            <!-- Users Table -->
-            <div class="table-container">
-
-                <table>
-
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Role</th>
-                            <th>Joined</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody id="usersTableBody"></tbody>
-
-                </table>
-
-            </div>
+                </a>
 
 
-            <!-- No Users -->
-            <div id="noUsers" class="no-users">
-                No users found.
-            </div>
+                <button
+                    class="sidebar-close"
+                    id="sidebarClose"
+                    type="button"
+                    aria-label="Close sidebar"
+                >
 
+                    <i class="fa-solid fa-xmark"></i>
 
-            <!-- Pagination -->
-            <div class="pagination">
-
-                <button id="prevBtn">
-                    Previous
                 </button>
 
-                <span id="pageInfo">
-                    Page 1
+            </div>
+
+            <!-- ==============================================
+                 END - BRAND
+            =============================================== -->
+
+
+            <!-- ==============================================
+                 START - ADMIN LABEL
+            =============================================== -->
+
+            <div class="sidebar-label">
+
+                <span class="sidebar-label-icon">
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
                 </span>
 
-                <button id="nextBtn">
-                    Next
-                </button>
 
-            </div>
+                <div>
 
-        </section>
+                    <strong>Admin Panel</strong>
 
-    </main>
+                    <span>Platform Management</span>
 
-
-    <!-- View User Modal -->
-    <div class="modal" id="viewModal">
-
-        <div class="modal-box">
-
-            <div class="modal-header">
-                <h2>User Details</h2>
-                <button class="close-btn" data-close="viewModal">
-                    ×
-                </button>
-            </div>
-
-            <div class="user-details">
-
-                <div class="detail-item">
-                    <span>Name</span>
-                    <strong id="viewName"></strong>
-                </div>
-
-                <div class="detail-item">
-                    <span>Email</span>
-                    <strong id="viewEmail"></strong>
-                </div>
-
-                <div class="detail-item">
-                    <span>Role</span>
-                    <strong id="viewRole"></strong>
-                </div>
-
-                <div class="detail-item">
-                    <span>Joined</span>
-                    <strong id="viewJoined"></strong>
-                </div>
-
-                <div class="detail-item">
-                    <span>Status</span>
-                    <strong id="viewStatus"></strong>
                 </div>
 
             </div>
 
-        </div>
+            <!-- ==============================================
+                 END - ADMIN LABEL
+            =============================================== -->
+
+
+            <!-- ==============================================
+                 START - NAVIGATION
+            =============================================== -->
+
+            <nav class="sidebar-nav">
+
+                <p class="nav-title">
+                    MAIN MENU
+                </p>
+
+
+                <a
+                    href="admin-dashboard.html"
+                    class="nav-link"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-house"></i>
+                    </span>
+
+                    <span>Dashboard</span>
+
+                </a>
+
+
+                <a
+                    href="users.html"
+                    class="nav-link active"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </span>
+
+                    <span>Manage Users</span>
+
+                </a>
+
+
+                <a
+                    href="students.html"
+                    class="nav-link"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </span>
+
+                    <span>Students</span>
+
+                </a>
+
+
+                <a
+                    href="teachers.html"
+                    class="nav-link"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-chalkboard-user"></i>
+                    </span>
+
+                    <span>Teachers</span>
+
+                </a>
+
+
+                <a
+                    href="courses.html"
+                    class="nav-link"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </span>
+
+                    <span>Courses</span>
+
+                </a>
+
+            </nav>
+
+            <!-- ==============================================
+                 END - NAVIGATION
+            =============================================== -->
+
+
+            <!-- ==============================================
+                 START - SIDEBAR FOOTER
+            =============================================== -->
+
+            <div class="sidebar-footer">
+
+                <a
+                    href="../../../index.html"
+                    class="nav-link website-link"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    </span>
+
+                    <span>View Website</span>
+
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-link logout-link"
+                    id="logoutBtn"
+                >
+
+                    <span class="nav-icon">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                    </span>
+
+                    <span>Logout</span>
+
+                </a>
+
+            </div>
+
+            <!-- ==============================================
+                 END - SIDEBAR FOOTER
+            =============================================== -->
+
+
+        </aside>
+
+        <!-- ==================================================
+             END - SIDEBAR
+        =================================================== -->
+
+
+        <!-- ==================================================
+             START - MAIN
+        =================================================== -->
+
+        <main class="admin-main">
+
+
+            <!-- ==============================================
+                 START - TOPBAR
+            =============================================== -->
+
+            <header class="admin-topbar">
+
+
+                <div class="topbar-left">
+
+
+                    <button
+                        class="menu-toggle"
+                        id="menuToggle"
+                        type="button"
+                        aria-label="Open sidebar"
+                    >
+
+                        <i class="fa-solid fa-bars"></i>
+
+                    </button>
+
+
+                    <div class="topbar-heading">
+
+                        <h1>Manage Users</h1>
+
+                        <p>
+                            View and manage EduVerse registered users.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="topbar-actions">
+
+
+                    <div class="admin-profile">
+
+                        <div class="profile-avatar">
+                            A
+                        </div>
+
+
+                        <div class="profile-info">
+
+                            <strong id="adminName">
+                                Admin
+                            </strong>
+
+                            <span>
+                                Administrator
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </header>
+
+            <!-- ==============================================
+                 END - TOPBAR
+            =============================================== -->
+
+
+            <!-- ==============================================
+                 START - PAGE CONTENT
+            =============================================== -->
+
+            <div class="users-content">
+
+
+                <!-- ==========================================
+                     START - PAGE INTRO
+                =========================================== -->
+
+                <section class="users-intro">
+
+
+                    <div>
+
+                        <span class="section-label">
+                            USER MANAGEMENT
+                        </span>
+
+                        <h2>
+                            Registered Users
+                        </h2>
+
+                        <p>
+                            Search, filter and view users registered
+                            on the EduVerse platform.
+                        </p>
+
+                    </div>
+
+
+                </section>
+
+                <!-- ==========================================
+                     END - PAGE INTRO
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - USER STATISTICS
+                =========================================== -->
+
+                <section class="user-stats-grid">
+
+
+                    <div class="user-stat-card">
+
+                        <span class="user-stat-icon">
+
+                            <i class="fa-solid fa-users"></i>
+
+                        </span>
+
+
+                        <div>
+
+                            <p>Total Users</p>
+
+                            <h3 id="totalUsers">0</h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="user-stat-card">
+
+                        <span class="user-stat-icon">
+
+                            <i class="fa-solid fa-user-graduate"></i>
+
+                        </span>
+
+
+                        <div>
+
+                            <p>Students</p>
+
+                            <h3 id="totalStudents">0</h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="user-stat-card">
+
+                        <span class="user-stat-icon">
+
+                            <i class="fa-solid fa-chalkboard-user"></i>
+
+                        </span>
+
+
+                        <div>
+
+                            <p>Teachers</p>
+
+                            <h3 id="totalTeachers">0</h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="user-stat-card">
+
+                        <span class="user-stat-icon">
+
+                            <i class="fa-solid fa-shield-halved"></i>
+
+                        </span>
+
+
+                        <div>
+
+                            <p>Admins</p>
+
+                            <h3 id="totalAdmins">0</h3>
+
+                        </div>
+
+                    </div>
+
+
+                </section>
+
+                <!-- ==========================================
+                     END - USER STATISTICS
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - USERS CARD
+                =========================================== -->
+
+                <section class="users-card">
+
+
+                    <!-- ======================================
+                         START - CARD HEADER
+                    ======================================= -->
+
+                    <div class="users-card-header">
+
+
+                        <div>
+
+                            <h2>
+                                All Users
+                            </h2>
+
+                            <p id="usersResultText">
+                                Loading registered users...
+                            </p>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- ======================================
+                         END - CARD HEADER
+                    ======================================= -->
+
+
+                    <!-- ======================================
+                         START - SEARCH AND FILTER
+                    ======================================= -->
+
+                    <div class="users-toolbar">
+
+
+                        <div class="user-search">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            <input
+                                type="search"
+                                id="searchInput"
+                                placeholder="Search by name or email..."
+                                autocomplete="off"
+                                aria-label="Search users"
+                            >
+
+                        </div>
+
+
+                        <div class="filter-wrapper">
+
+                            <i class="fa-solid fa-filter"></i>
+
+                            <select
+                                id="roleFilter"
+                                aria-label="Filter users by role"
+                            >
+
+                                <option value="all">
+                                    All Roles
+                                </option>
+
+                                <option value="student">
+                                    Students
+                                </option>
+
+                                <option value="teacher">
+                                    Teachers
+                                </option>
+
+                                <option value="admin">
+                                    Admins
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- ======================================
+                         END - SEARCH AND FILTER
+                    ======================================= -->
+
+
+                    <!-- ======================================
+                         START - USERS TABLE
+                    ======================================= -->
+
+                    <div class="users-table-wrapper">
+
+
+                        <table class="users-table">
+
+
+                            <thead>
+
+                                <tr>
+
+                                    <th>User</th>
+
+                                    <th>Role</th>
+
+                                    <th>Joined</th>
+
+                                    <th>Status</th>
+
+                                    <th>Action</th>
+
+                                </tr>
+
+                            </thead>
+
+
+                            <tbody id="usersTableBody">
+
+                                <tr>
+
+                                    <td
+                                        colspan="5"
+                                        class="table-message"
+                                    >
+                                        Loading users...
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+
+                        </table>
+
+
+                    </div>
+
+                    <!-- ======================================
+                         END - USERS TABLE
+                    ======================================= -->
+
+
+                    <!-- ======================================
+                         START - NO USERS
+                    ======================================= -->
+
+                    <div
+                        class="no-users"
+                        id="noUsers"
+                        hidden
+                    >
+
+                        <span>
+
+                            <i class="fa-solid fa-user-slash"></i>
+
+                        </span>
+
+                        <h3>No users found</h3>
+
+                        <p>
+                            Try changing your search or role filter.
+                        </p>
+
+                    </div>
+
+                    <!-- ======================================
+                         END - NO USERS
+                    ======================================= -->
+
+
+                    <!-- ======================================
+                         START - PAGINATION
+                    ======================================= -->
+
+                    <div class="users-pagination">
+
+
+                        <p id="paginationSummary">
+                            Showing 0 users
+                        </p>
+
+
+                        <div class="pagination-controls">
+
+
+                            <button
+                                type="button"
+                                class="pagination-btn"
+                                id="prevBtn"
+                                disabled
+                            >
+
+                                <i class="fa-solid fa-chevron-left"></i>
+
+                                <span>Previous</span>
+
+                            </button>
+
+
+                            <span
+                                class="page-info"
+                                id="pageInfo"
+                            >
+                                Page 1 of 1
+                            </span>
+
+
+                            <button
+                                type="button"
+                                class="pagination-btn"
+                                id="nextBtn"
+                                disabled
+                            >
+
+                                <span>Next</span>
+
+                                <i class="fa-solid fa-chevron-right"></i>
+
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+                    <!-- ======================================
+                         END - PAGINATION
+                    ======================================= -->
+
+
+                </section>
+
+                <!-- ==========================================
+                     END - USERS CARD
+                =========================================== -->
+
+
+                <!-- ==========================================
+                     START - FOOTER
+                =========================================== -->
+
+                <footer class="users-footer">
+
+                    <p>
+                        © 2026 EduVerse. Admin Panel.
+                    </p>
+
+                    <p>
+                        Learn Smarter. Teach Better. Grow Together.
+                    </p>
+
+                </footer>
+
+                <!-- ==========================================
+                     END - FOOTER
+                =========================================== -->
+
+
+            </div>
+
+            <!-- ==============================================
+                 END - PAGE CONTENT
+            =============================================== -->
+
+
+        </main>
+
+        <!-- ==================================================
+             END - MAIN
+        =================================================== -->
+
 
     </div>
 
+    <!-- ======================================================
+         END - ADMIN LAYOUT
+    ======================================================= -->
 
-    <!-- Add/Edit User Modal -->
-    <div class="modal" id="userFormModal">
 
-        <div class="modal-box">
+    <!-- ======================================================
+         START - VIEW USER MODAL
+    ======================================================= -->
 
-            <div class="modal-header">
+    <div
+        class="user-modal"
+        id="viewUserModal"
+        aria-hidden="true"
+    >
 
-                <h2 id="formTitle">
-                    Add User
-                </h2>
 
-                <button class="close-btn" data-close="userFormModal">
-                    ×
+        <div class="user-modal-dialog">
+
+
+            <div class="user-modal-header">
+
+
+                <div>
+
+                    <span class="section-label">
+                        USER DETAILS
+                    </span>
+
+                    <h2>
+                        User Profile
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="modal-close"
+                    id="closeViewModal"
+                    aria-label="Close user details"
+                >
+
+                    <i class="fa-solid fa-xmark"></i>
+
                 </button>
+
 
             </div>
 
 
-            <form id="userForm">
-
-                <input type="hidden" id="editIndex">
+            <div class="user-modal-body">
 
 
-                <div class="form-group">
+                <div class="modal-user-profile">
 
-                    <label for="userName">
+
+                    <span
+                        class="modal-user-avatar"
+                        id="viewUserAvatar"
+                    >
+                        U
+                    </span>
+
+
+                    <div>
+
+                        <h3 id="viewUserName">
+                            User Name
+                        </h3>
+
+                        <p id="viewUserEmail">
+                            user@example.com
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+
+                <div class="user-detail-grid">
+
+
+                    <div class="user-detail-item">
+
+                        <span>Role</span>
+
+                        <strong id="viewUserRole">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="user-detail-item">
+
+                        <span>Joined</span>
+
+                        <strong id="viewUserJoined">
+                            —
+                        </strong>
+
+                    </div>
+
+
+                    <div class="user-detail-item">
+
+                        <span>Status</span>
+
+                        <strong id="viewUserStatus">
+                            Active
+                        </strong>
+
+                    </div>
+
+
+                    <div class="user-detail-item">
+
+                        <span>User ID</span>
+
+                        <strong
+                            id="viewUserId"
+                            class="user-id-text"
+                        >
+                            —
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+    <!-- ======================================================
+         END - VIEW USER MODAL
+    ======================================================= -->
+
+    <!-- ======================================================
+     START - EDIT USER MODAL
+======================================================= -->
+
+<div
+    class="user-modal"
+    id="editUserModal"
+    aria-hidden="true"
+>
+
+    <div class="user-modal-dialog">
+
+        <div class="user-modal-header">
+
+            <div>
+                <span class="section-label">
+                    EDIT USER
+                </span>
+
+                <h2>
+                    Update User Profile
+                </h2>
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeEditModal"
+                aria-label="Close edit user"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+        </div>
+
+
+        <div class="user-modal-body">
+
+            <form id="editUserForm">
+
+                <input
+                    type="hidden"
+                    id="editUserId"
+                >
+
+
+                <div class="edit-form-group">
+
+                    <label for="editUserName">
                         Full Name
                     </label>
 
                     <input
                         type="text"
-                        id="userName"
-                        placeholder="Enter full name"
+                        id="editUserName"
                         required
+                        minlength="2"
+                        maxlength="60"
                     >
 
                 </div>
 
 
-                <div class="form-group">
+                <div class="edit-form-group">
 
-                    <label for="userEmail">
+                    <label for="editUserEmail">
                         Email
                     </label>
 
                     <input
                         type="email"
-                        id="userEmail"
-                        placeholder="Enter email"
-                        required
+                        id="editUserEmail"
+                        disabled
                     >
+
+                    <small>
+                        Email is linked with Firebase Authentication
+                        and cannot be changed here.
+                    </small>
 
                 </div>
 
 
-                <div class="form-group">
+                <div class="edit-form-group">
 
-                    <label for="userRole">
+                    <label for="editUserRole">
                         Role
                     </label>
 
-                    <select id="userRole" required>
+                    <input
+                        type="text"
+                        id="editUserRole"
+                        disabled
+                    >
 
-                        <option value="Student">
-                            Student
-                        </option>
-
-                        <option value="Teacher">
-                            Teacher
-                        </option>
-
-                        <option value="Admin">
-                            Admin
-                        </option>
-
-                    </select>
+                    <small>
+                        User roles are protected for account security.
+                    </small>
 
                 </div>
 
 
-                <div class="form-group">
-
-                    <label for="userStatus">
-                        Status
-                    </label>
-
-                    <select id="userStatus" required>
-
-                        <option value="Active">
-                            Active
-                        </option>
-
-                        <option value="Inactive">
-                            Inactive
-                        </option>
-
-                    </select>
-
-                </div>
+                <div
+                    class="edit-form-message"
+                    id="editFormMessage"
+                    hidden
+                ></div>
 
 
-                <div class="form-actions">
+                <div class="edit-form-actions">
 
                     <button
                         type="button"
-                        class="cancel-btn"
-                        data-close="userFormModal"
+                        class="edit-cancel-btn"
+                        id="cancelEditBtn"
                     >
                         Cancel
                     </button>
 
                     <button
                         type="submit"
-                        class="save-btn"
+                        class="edit-save-btn"
+                        id="saveEditBtn"
                     >
-                        Save User
+                        <i class="fa-solid fa-floppy-disk"></i>
+
+                        <span>
+                            Save Changes
+                        </span>
                     </button>
 
                 </div>
@@ -324,60 +1118,26 @@
 
     </div>
 
+</div>
 
-    <!-- Delete Confirmation Modal -->
-    <div class="modal" id="deleteModal">
+<!-- ======================================================
+     END - EDIT USER MODAL
+======================================================= -->
 
-        <div class="modal-box delete-box">
+    <!-- ======================================================
+         START - SCRIPTS
+    ======================================================= -->
 
-            <div class="delete-icon">
-                🗑️
-            </div>
+    <script
+        type="module"
+        src="../js/users.js"
+    ></script>
 
-            <h2>Delete User?</h2>
+    <!-- ======================================================
+         END - SCRIPTS
+    ======================================================= -->
 
-            <p>
-                Are you sure you want to delete
-                <strong id="deleteUserName"></strong>?
-            </p>
-
-            <div class="form-actions">
-
-                <button
-                    class="cancel-btn"
-                    data-close="deleteModal"
-                >
-                    Cancel
-                </button>
-
-                <button
-                    class="delete-btn"
-                    id="confirmDeleteBtn"
-                >
-                    Delete
-                </button>
-
-            </div>
-
-        </div>
-
-    </div>
-
-
-    <script src="../js/users.js"></script>
-
-    <!-- ==========================================================
-        START - ADMIN AUTH GUARD
-========================================================== -->
-
-<script
-    type="module"
-    src="../js/auth-guard.js">
-</script>
-
-<!-- ==========================================================
-        END - ADMIN AUTH GUARD
-========================================================== -->
 
 </body>
+
 </html>
