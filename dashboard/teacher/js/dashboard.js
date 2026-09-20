@@ -258,12 +258,12 @@ document.addEventListener("DOMContentLoaded", function () {
           {
             label: "New Students",
             data: chartDataSets["This Month"].data,
-            borderColor: "#6C63FF",
+            borderColor: "rgb(10, 10, 136)",
             backgroundColor: "rgba(108,99,255,0.15)",
             borderWidth: 3,
             tension: 0.4,   // makes the line curved instead of sharp angles
             fill: true,
-            pointBackgroundColor: "#6C63FF",
+            pointBackgroundColor: "rgb(10, 10, 136)",
             pointRadius: 4
           }
         ]

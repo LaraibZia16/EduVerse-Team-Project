@@ -169,7 +169,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         toast.style.padding = "12px 18px";
         toast.style.borderRadius = "10px";
-        toast.style.background = type === "error" ? "#dc3545" : "#6c63ff";
+        toast.style.background = type === "error" ? "#dc3545" : "rgb(10, 10, 136)";
         toast.style.color = "#ffffff";
         toast.style.fontSize = "14px";
         toast.style.fontWeight = "500";
@@ -585,7 +585,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     height:65px;
                     margin:0 auto 15px;
                     border-radius:50%;
-                    background:#6c63ff;
+                    background:rgb(10, 10, 136);
                     color:#fff;
                     display:flex;
                     align-items:center;
@@ -608,7 +608,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     id="closeCustomModal"
                     style="
                         border:none;
-                        background:#6c63ff;
+                        background:rgb(10, 10, 136);
                         color:#fff;
                         padding:10px 25px;
                         border-radius:8px;
@@ -720,7 +720,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         width:100%;
                         padding:12px;
                         border:none;
-                        background:#6c63ff;
+                        background:rgb(10, 10, 136);
                         color:#fff;
                         border-radius:8px;
                         cursor:pointer;

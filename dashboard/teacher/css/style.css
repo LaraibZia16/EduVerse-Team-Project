@@ -33,7 +33,7 @@ body{
 
 :root{
 
-    --primary:#6C63FF;
+    --primary:rgb(10, 10, 136);
     --primary-dark:#5b54e8;
 
     --secondary:#8b85ff;
@@ -158,7 +158,7 @@ body{
 
     border-radius:16px;
 
-    background:linear-gradient(135deg,#6C63FF,#8f88ff);
+    background:linear-gradient(135deg,rgb(10, 10, 136),#8f88ff);
 
     display:flex;
 
@@ -253,13 +253,13 @@ body{
 
     font-size:18px;
 
-    color:#6C63FF;
+    color:rgb(10, 10, 136);
 
 }
 
 .sidebar-menu a:hover{
 
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
 
     color:#fff;
 
@@ -275,7 +275,7 @@ body{
 
 .sidebar-menu .active a{
 
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
 
     color:#fff;
 
@@ -320,7 +320,7 @@ body{
 
     flex:1;
 
-    margin-left:280px;
+    /* margin-left:280px; */
 
     padding:30px;
 
@@ -376,7 +376,7 @@ body{
 
     border:none;
 
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
 
     color:#fff;
 
@@ -593,7 +593,7 @@ body{
 
 .welcome-section{
 
-    background:linear-gradient(135deg,#6C63FF,#8d87ff);
+    background:rgb(10, 10, 136);
 
     border-radius:22px;
 
@@ -669,7 +669,7 @@ body{
 
     background:#fff;
 
-    color:#6C63FF;
+    color:rgb(10, 10, 136);
 
     border:none;
 
@@ -687,7 +687,7 @@ body{
 
     background:#fff;
 
-    color:#6C63FF;
+    color:rgb(10, 10, 136);
 
 }
 
@@ -732,7 +732,7 @@ body{
 }
 
 .stat-icon.purple{
-    background:linear-gradient(135deg,#6C63FF,#847dff);
+    background:linear-gradient(135deg,rgb(10, 10, 136),#847dff);
 }
 
 .stat-icon.blue{
@@ -890,7 +890,7 @@ body{
 
 .progress-bar{
     border-radius:20px;
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
 }
 
 /* ==========================================================
@@ -1019,7 +1019,7 @@ body{
 ========================================================== */
 
 .btn-primary{
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
     border:none;
 }
 
@@ -1028,12 +1028,12 @@ body{
 }
 
 .btn-outline-primary{
-    border:2px solid #6C63FF;
-    color:#6C63FF;
+    border:2px solid rgb(10, 10, 136);
+    color:rgb(10, 10, 136);
 }
 
 .btn-outline-primary:hover{
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
     color:#fff;
 }
 
@@ -1042,8 +1042,8 @@ body{
 ========================================================== */
 
 .promo-card{
-    background:linear-gradient(135deg,#6C63FF,#8A84FF);
-    color:#fff;
+    background:white;
+    color:rgb(10, 10, 136);
     border-radius:20px;
     padding:25px;
     text-align:center;
@@ -1094,7 +1094,7 @@ body{
 }
 
 ::-webkit-scrollbar-thumb{
-    background:#6C63FF;
+    background:rgb(10, 10, 136);
     border-radius:20px;
 }
 
@@ -1113,7 +1113,7 @@ body{
     }
 
     .main-content{
-        margin-left:240px;
+        /* margin-left:240px; */
     }
 
 }
@@ -1327,6 +1327,8 @@ html{
     font-weight:600;
 
     padding:11px 22px;
+
+    margin:5px;
 
 }
 
@@ -1685,7 +1687,7 @@ a:hover{
 
     width:280px;
 
-    background:linear-gradient(180deg,#6C5CE7,#5848dc);
+    background:rgb(10, 10, 136);
 
     color:#fff;
 
