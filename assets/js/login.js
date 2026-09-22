@@ -1012,3 +1012,47 @@ function showToast() {
 /*======================================
         END - SUCCESS TOAST
 ======================================*/
+
+/*======================================
+    START - LOGIN IMAGE GSAP ANIMATION
+======================================*/
+
+const loginImage = document.querySelector(".login-image");
+
+if (loginImage && typeof gsap !== "undefined") {
+
+    const loginImageTimeline = gsap.timeline();
+
+    // Slow reveal and settle
+    loginImageTimeline.fromTo(
+        loginImage,
+        {
+            opacity: 0,
+            y: 55,
+            scale: 0.90,
+            filter: "blur(10px)"
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2,
+            ease: "power3.out"
+        }
+    );
+
+    // Gentle continuous floating
+    loginImageTimeline.to(loginImage, {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+}
+
+/*======================================
+    END - LOGIN IMAGE GSAP ANIMATION
+======================================*/

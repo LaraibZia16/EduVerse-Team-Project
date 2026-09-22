@@ -340,7 +340,7 @@
       datasets: [{
         label: "Attendance %",
         data: a.monthly.map(m => m.percentage),
-        borderColor: "#6C63FF",
+        borderColor: "rgb(10, 10, 136)",
         backgroundColor: "rgba(108,99,255,.15)",
         tension: 0.35,
         fill: true
@@ -508,7 +508,7 @@
       datasets: [{
         label: "Overall %",
         data: student.subjects.map(s => s.overall),
-        backgroundColor: "#6C63FF",
+        backgroundColor: "rgb(10, 10, 136)",
         borderRadius: 8
       }]
     });

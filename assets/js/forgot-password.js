@@ -392,3 +392,46 @@ if (resendLink) {
 /*======================================
         END - RESEND RESET LINK
 ======================================*/
+/*======================================
+    START - FORGOT IMAGE GSAP ANIMATION
+======================================*/
+
+const forgotImage = document.querySelector(".forgot-image");
+
+if (forgotImage && typeof gsap !== "undefined") {
+
+    const forgotImageTimeline = gsap.timeline();
+
+    // Slow reveal and settle
+    forgotImageTimeline.fromTo(
+        forgotImage,
+        {
+            opacity: 0,
+            y: 55,
+            scale: 0.90,
+            filter: "blur(10px)"
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2,
+            ease: "power3.out"
+        }
+    );
+
+    // Gentle continuous floating
+    forgotImageTimeline.to(forgotImage, {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+}
+
+/*======================================
+    END - FORGOT IMAGE GSAP ANIMATION
+======================================*/

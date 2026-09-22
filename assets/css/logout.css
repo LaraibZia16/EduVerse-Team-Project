@@ -187,7 +187,7 @@ body{
 
     margin-bottom:30px;
 
-    animation:floatImage 5s ease-in-out infinite;
+    /* animation:floatImage 5s ease-in-out infinite; */
 
 }
 
@@ -400,7 +400,7 @@ body{
             ANIMATION
 ======================================*/
 
-@keyframes floatImage{
+/* @keyframes floatImage{
 
     0%{
 
@@ -420,7 +420,7 @@ body{
 
     }
 
-}
+} */
 
 /*======================================
             RESPONSIVE

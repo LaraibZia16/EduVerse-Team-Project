@@ -11,8 +11,7 @@
     <meta name="keywords" content="Education, Online Courses, Learning Platform">
     <meta name="author" content="EduVerse Team">
 
-    <title>EduVerse | Courses</title>
-
+    <title>EduVerse | Contact</title>
 
     <!--========== Favicon ==========-->
 
@@ -30,8 +29,7 @@
 
     <!--========== Font Awesome ==========-->
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
     <!--========== Bootstrap CSS ==========-->
@@ -44,7 +42,6 @@
     <link rel="stylesheet" href="assets/css/variables.css">
     <link rel="stylesheet" href="assets/css/global.css">
     <link rel="stylesheet" href="assets/css/utilities.css">
-    <link rel="stylesheet" href="assets/css/components.css">
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/contact.css">
     <link rel="stylesheet" href="assets/css/responsive.css">
@@ -53,269 +50,262 @@
 
 <body>
 
-      <!--======================================
+    <!--======================================
                 HEADER START
     =======================================-->
 
     <!--========== Navbar Start ==========-->
-<nav class="navbar custom-navbar navbar-expand-lg fixed-top">
+    <nav class="navbar custom-navbar navbar-expand-lg fixed-top">
 
-    <div class="container">
+        <div class="container">
 
-        <!--========== Logo ==========-->
+            <!--========== Logo ==========-->
 
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo" class="logo">
-        </a>
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo" class="logo">
+            </a>
 
 
-        <!--========== Desktop Navigation ==========-->
+            <!--========== Desktop Navigation ==========-->
 
-        <div class="collapse navbar-collapse justify-content-center">
+            <div class="collapse navbar-collapse justify-content-center">
 
-            <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav mx-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link " href="index.html">Home</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="index.html">Home</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link " href="courses.html">Courses</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="courses.html">Courses</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="contact.html">Contact</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="contact.html">Contact</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html#features">Features</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html#features">Features</a>
+                    </li>
 
-            </ul>
+                </ul>
+
+            </div>
+
+
+            <!--========== Desktop Buttons ==========-->
+
+            <div class="navbar-actions d-none d-lg-flex align-items-center">
+
+                <a href="login.html" class="btn btn-login">
+                    Login
+                </a>
+
+                <a href="register.html" class="btn btn-primary-custom">
+                    Get Started
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!--========== Mobile Toggle ==========-->
+
+            <button class="menu-toggle d-lg-none" id="menuToggle" type="button" aria-label="Open Menu"
+                aria-controls="mobileMenu" aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
 
         </div>
 
+    </nav>
 
-        <!--========== Desktop Buttons ==========-->
-
-        <div class="navbar-actions d-none d-lg-flex align-items-center">
-
-            <a href="login.html" class="btn btn-login">
-                Login
-            </a>
-
-            <a href="register.html" class="btn btn-primary-custom">
-                Get Started
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!--========== Mobile Toggle ==========-->
-
-        <button class="menu-toggle d-lg-none"
-                id="menuToggle"
-                type="button"
-                aria-label="Open Menu"
-                aria-controls="mobileMenu"
-                aria-expanded="false">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-    </div>
-
-</nav>
-
-<!--======================================
+    <!--======================================
         MOBILE OVERLAY
 =======================================-->
 
-<div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!--======================================
+    <!--======================================
         MOBILE MENU
 =======================================-->
 
-<aside class="mobile-menu" id="mobileMenu">
+    <aside class="mobile-menu" id="mobileMenu">
 
-    <!--========== Close Button ==========-->
+        <!--========== Close Button ==========-->
 
-    <button class="close-menu"
-            id="closeMenu"
-            type="button"
-            aria-label="Close Menu">
+        <button class="close-menu" id="closeMenu" type="button" aria-label="Close Menu">
 
-        <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-xmark"></i>
 
-    </button>
+        </button>
 
-    <!--========== Mobile Logo ==========-->
+        <!--========== Mobile Logo ==========-->
 
-    <a href="index.html" class="mobile-logo">
+        <a href="index.html" class="mobile-logo">
 
-        <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo">
+            <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo">
 
-    </a>
-
-    <!--========== Mobile Navigation ==========-->
-
-    <ul class="mobile-nav">
-
-        <li>
-            <a href="index.html">Home</a>
-        </li>
-
-        <li>
-            <a class="active" href="courses.html">Courses</a>
-        </li>
-
-        <li>
-            <a href="about.html">About</a>
-        </li>
-
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
-
-        <li>
-            <a href="index.html#features">Features</a>
-        </li>
-    </ul>
-
-    <!--========== Mobile Buttons ==========-->
-
-    <div class="mobile-buttons">
-
-        <a href="login.html" class="btn btn-login w-100">
-            Login
         </a>
 
-        <a href="register.html" class="btn btn-primary-custom w-100">
-            Get Started
-        </a>
+        <!--========== Mobile Navigation ==========-->
 
-    </div>
+        <ul class="mobile-nav">
 
-    <!--========== Social Icons ==========-->
+            <li>
+                <a href="index.html">Home</a>
+            </li>
 
-    <div class="mobile-social">
+            <li>
+                <a href="courses.html">Courses</a>
+            </li>
 
-        <a href="#" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
+            <li>
+                <a href="about.html">About</a>
+            </li>
 
-        <a href="#" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
+            <li>
+                <a class="active" href="contact.html">Contact</a>
+            </li>
 
-        <a href="#" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
+            <li>
+                <a href="index.html#features">Features</a>
+            </li>
+        </ul>
 
-    </div>
+        <!--========== Mobile Buttons ==========-->
 
-</aside>
+        <div class="mobile-buttons">
 
- <!--========== Navbar End ==========-->
+            <a href="login.html" class="btn btn-login w-100">
+                Login
+            </a>
+
+            <a href="register.html" class="btn btn-primary-custom w-100">
+                Get Started
+            </a>
+
+        </div>
+
+        <!--========== Social Icons ==========-->
+
+        <div class="mobile-social">
+
+            <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="#" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!--========== Navbar End ==========-->
 
     <!--======================================
                 HEADER END
     =======================================-->
 
-  <!--======================================
+    <!--======================================
                  MAIN START
     =======================================-->
 
     <main>
-<!--======================================
+        <!--======================================
             CONTACT HERO START
 =======================================-->
 
-<section class="contact-hero-section">
+        <section class="contact-hero-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="row align-items-center gy-5">
+                <div class="row align-items-center gy-5">
 
-            <!-- Left Content -->
+                    <!-- Left Content -->
 
-            <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                <div class="contact-hero-content">
+                        <div class="contact-hero-content">
 
-                    <span class=" hero-badge">
+                            <span class=" hero-badge">
 
-                        <i class="fa-solid fa-envelope-open-text"></i>
+                                <i class="fa-solid fa-envelope-open-text"></i>
 
-                        Contact Us
+                                Contact Us
 
-                    </span>
+                            </span>
 
-                    <h1 class="hero-title">
+                            <h1 class="hero-title">
 
-                        We'd Love To
-                        <span>Hear From You!</span>
+                                We'd Love To
+                                <span>Hear From You!</span>
 
-                    </h1>
+                            </h1>
 
-                    <p class="hero-text">
+                            <p class="hero-text">
 
-                        Have a question, suggestion, or need assistance?
-                        Our friendly team is always ready to help you.
-                        Reach out anytime and we'll respond as quickly as possible.
+                                Have a question, suggestion, or need assistance?
+                                Our friendly team is always ready to help you.
+                                Reach out anytime and we'll respond as quickly as possible.
 
-                    </p>
+                            </p>
 
-                    <!-- Feature Pills -->
+                            <!-- Feature Pills -->
 
-                    <div class="contact-hero-features">
+                            <div class="contact-hero-features">
 
-                        <div class="contact-feature-pill">
+                                <div class="contact-feature-pill">
 
-                            <i class="fa-solid fa-headset"></i>
+                                    <i class="fa-solid fa-headset"></i>
 
-                            <span>Quick Support</span>
+                                    <span>Quick Support</span>
 
-                        </div>
+                                </div>
 
-                        <div class="contact-feature-pill">
+                                <div class="contact-feature-pill">
 
-                            <i class="fa-solid fa-shield-halved"></i>
+                                    <i class="fa-solid fa-shield-halved"></i>
 
-                            <span>Trusted Service</span>
+                                    <span>Trusted Service</span>
 
-                        </div>
+                                </div>
 
-                        <div class="contact-feature-pill">
+                                <div class="contact-feature-pill">
 
-                            <i class="fa-solid fa-users"></i>
+                                    <i class="fa-solid fa-users"></i>
 
-                            <span>24/7 Assistance</span>
+                                    <span>24/7 Assistance</span>
 
-                        </div>
+                                </div>
 
-                        <div class="contact-feature-pill">
+                                <div class="contact-feature-pill">
 
-                            <i class="fa-solid fa-comments"></i>
+                                    <i class="fa-solid fa-comments"></i>
 
-                             <span>100% Secure</span>
+                                    <span>100% Secure</span>
 
-                        </div>
+                                </div>
 
-                    </div>
+                            </div>
 
-                    <!-- Contact Info -->
+                            <!-- Contact Info -->
 
-                    <!-- <div class="contact-hero-info">
+                            <!-- <div class="contact-hero-info">
 
                         <div class="contact-info-item">
 
@@ -335,213 +325,58 @@
 
                     </div> -->
 
+                        </div>
+
+                    </div>
+
+                    <!-- Right Image -->
+
+                    <div class="col-lg-6">
+
+                        <div class="contact-hero-image">
+
+                            <img src="assets/images/contact/contact.png" alt="Contact EduVerse" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
                 </div>
 
             </div>
 
-            <!-- Right Image -->
+        </section>
 
-            <div class="col-lg-6">
-
-                <div class="contact-hero-image">
-
-                    <img src="assets/images/contact/contact.png"
-                        alt="Contact EduVerse"
-                        class="img-fluid">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
             CONTACT HERO END
 =======================================-->
 
-<!--======================================
+        <!--======================================
         CONTACT INFO START
 =======================================-->
 
-<section class="contact-info-section">
+        <section class="contact-info-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="row g-4">
-
-            <!-- Address -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="contact-info-card">
-
-                    <div class="contact-info-icon">
-
-                        <i class="fa-solid fa-location-dot"></i>
-
-                    </div>
-
-                    <h4>Our Address</h4>
-
-                    <p>
-                        Karachi, Pakistan
-                    </p>
-
-                </div>
-
-            </div>
-
-            <!-- Phone -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="contact-info-card">
-
-                    <div class="contact-info-icon">
-
-                        <i class="fa-solid fa-phone"></i>
-
-                    </div>
-
-                    <h4>Call Us</h4>
-
-                    <p>
-                        +92 300 1234567
-                    </p>
-
-                </div>
-
-            </div>
-
-            <!-- Email -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="contact-info-card">
-
-                    <div class="contact-info-icon">
-
-                        <i class="fa-solid fa-envelope"></i>
-
-                    </div>
-
-                    <h4>Email Us</h4>
-
-                    <p>
-                        support@eduverse.com
-                    </p>
-
-                </div>
-
-            </div>
-
-            <!-- Hours -->
-
-            <div class="col-lg-3 col-md-6">
-
-                <div class="contact-info-card">
-
-                    <div class="contact-info-icon">
-
-                        <i class="fa-solid fa-clock"></i>
-
-                    </div>
-
-                    <h4>Working Hours</h4>
-
-                    <p>
-                        Mon - Sat <br>
-                        9:00 AM - 6:00 PM
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
-        CONTACT INFO END
-=======================================-->
-
-<!--======================================
-        CONTACT FORM START
-=======================================-->
-
-<section class="contact-form-section" id="contact-form">
-
-    <div class="container">
-
-        <div class="row g-4">
-
-            <!--========== Contact Details ==========-->
-
-            <div class="col-lg-4">
-
-                <div class="contact-details-card">
-
-                    <h3 class="contact-box-title">
-
-                        Get In Touch
-
-                    </h3>
+                <div class="row g-4">
 
                     <!-- Address -->
 
-                    <div class="contact-detail-item">
+                    <div class="col-lg-3 col-md-6">
 
-                        <div class="detail-icon">
+                        <div class="contact-info-card">
 
-                            <i class="fa-solid fa-location-dot"></i>
+                            <div class="contact-info-icon">
 
-                        </div>
+                                <i class="fa-solid fa-location-dot"></i>
 
-                        <div>
+                            </div>
 
-                            <h6>Address</h6>
+                            <h4>Our Address</h4>
 
                             <p>
-
                                 Karachi, Pakistan
-
-                            </p>
-
-                        </div>
-
-                    </div>
-
-                    <!-- Email -->
-
-                    <div class="contact-detail-item">
-
-                        <div class="detail-icon">
-
-                            <i class="fa-solid fa-envelope"></i>
-
-                        </div>
-
-                        <div>
-
-                            <h6>Email</h6>
-
-                            <p>
-
-                                support@eduverse.com
-
-                            </p>
-
-                            <p>
-
-                                info@eduverse.com
-
                             </p>
 
                         </div>
@@ -550,28 +385,42 @@
 
                     <!-- Phone -->
 
-                    <div class="contact-detail-item">
+                    <div class="col-lg-3 col-md-6">
 
-                        <div class="detail-icon">
+                        <div class="contact-info-card">
 
-                            <i class="fa-solid fa-phone"></i>
+                            <div class="contact-info-icon">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                            </div>
+
+                            <h4>Call Us</h4>
+
+                            <p>
+                                +92 300 1234567
+                            </p>
 
                         </div>
 
-                        <div>
+                    </div>
 
-                            <h6>Phone</h6>
+                    <!-- Email -->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <div class="contact-info-card">
+
+                            <div class="contact-info-icon">
+
+                                <i class="fa-solid fa-envelope"></i>
+
+                            </div>
+
+                            <h4>Email Us</h4>
 
                             <p>
-
-                                +92 300 1234567
-
-                            </p>
-
-                            <p>
-
-                                +92 321 7654321
-
+                                support@eduverse.com
                             </p>
 
                         </div>
@@ -580,430 +429,849 @@
 
                     <!-- Hours -->
 
-                    <div class="contact-detail-item">
+                    <div class="col-lg-3 col-md-6">
 
-                        <div class="detail-icon">
+                        <div class="contact-info-card">
 
-                            <i class="fa-solid fa-clock"></i>
+                            <div class="contact-info-icon">
 
-                        </div>
+                                <i class="fa-solid fa-clock"></i>
 
-                        <div>
+                            </div>
 
-                            <h6>Working Hours</h6>
-
-                            <p>
-
-                                Monday - Saturday
-
-                            </p>
+                            <h4>Working Hours</h4>
 
                             <p>
-
+                                Mon - Sat <br>
                                 9:00 AM - 6:00 PM
-
                             </p>
 
                         </div>
 
-                        
-
-                    </div>
-                    <!-- Follow -->
-
-<div class="contact-social">
-
-    <h5>Follow Us</h5>
-
-    <div class="contact-social-icons">
-
-        <a href="#">
-
-            <i class="fab fa-facebook-f"></i>
-
-        </a>
-
-        <a href="#">
-
-            <i class="fab fa-instagram"></i>
-
-        </a>
-
-        <a href="#">
-
-            <i class="fab fa-linkedin-in"></i>
-
-        </a>
-
-        <a href="#">
-
-            <i class="fab fa-youtube"></i>
-
-        </a>
-
-    </div>
-
-</div>
-
-                </div>
-
-            </div>
-
-            <!--========== Contact Form ==========-->
-
-            <div class="col-lg-8">
-
-                <div class="contact-form-card ">
-
-                    <h3 class="contact-box-title">
-
-                        Send Us A Message
-
-                    </h3>
-
-                    <form id="contactForm">
-
-                       <div class="row g-3">
-
-    <!-- Name -->
-
-    <div class="col-md-6">
-
-        <input
-            type="text"
-            id="name"
-            class="form-control"
-            placeholder="Your Name *"
-            required>
-
-            <small class="error-message" id="nameError"></small>
-
-    </div>
-
-    <!-- Email -->
-
-    <div class="col-md-6">
-
-        <input
-            type="email"
-            id="email"
-            class="form-control"
-            placeholder="Your Email *"
-            required>
-
-            <small class="error-message" id="emailError"></small>
-
-    </div>
-
-    <!-- Phone -->
-
-    <div class="col-md-6">
-
-        <input
-            type="tel"
-            id="phone"
-            class="form-control"
-            placeholder="Phone Number *"
-            required>
-
-            <small class="error-message" id="phoneError"></small>
-
-    </div>
-
-  <div class="col-md-6">
-
-    <select
-        id="contactMethod"
-        class="form-select"
-        required>
-
-        <option selected disabled>
-
-            Preferred Contact
-
-        </option>
-
-        <option>
-
-            Email
-
-        </option>
-
-        <option>
-
-            Phone
-
-        </option>
-
-        <option>
-
-            WhatsApp
-
-        </option>
-
-    </select>
-
-    <small
-        class="error-message"
-        id="contactMethodError"></small>
-
-</div>
-
-    <!-- Subject -->
-<div class="col-md-6">
-
-    <select
-        id="subject"
-        class="form-select"
-        required>
-
-        <small class="error-message" id="subjectError"></small>
-
-        <option selected disabled>
-
-            Select Subject
-
-        </option>
-
-        <option>
-
-            Admission Inquiry
-
-        </option>
-
-        <option>
-
-            Course Information
-
-        </option>
-
-        <option>
-
-            Technical Support
-
-        </option>
-
-        <option>
-
-            Become an Instructor
-
-        </option>
-
-        <option>
-
-            Report an Issue
-
-        </option>
-
-        <option>
-
-            Other
-
-        </option>
-
-    </select>
-
-</div>
-
-    <!-- Category -->
-
- <div class="col-md-6">
-
-    <select
-        id="userType"
-        class="form-select"
-        required>
-
-        <small class="error-message" id="userTypeError"></small>
-
-        <option selected disabled>
-
-            I Am A
-
-        </option>
-
-        <option>
-
-            Student
-
-        </option>
-
-        <option>
-
-            Teacher
-
-        </option>
-
-        <option>
-
-            Parent
-
-        </option>
-
-        <option>
-
-            Guest
-
-        </option>
-
-    </select>
-
-</div>
-
-    <!-- Message -->
-
-    <div class="col-12">
-
-        <textarea
-            id="message"
-            class="form-control"
-            rows="6"
-            placeholder="Your Message *"
-            required></textarea>
-
-            <small class="error-message" id="messageError"></small>
-
-    </div>
-
-    <!-- Button -->
-
-    <div class="col-12">
-
-        <button
-            id="submitBtn"
-            type="submit"
-            class="contact-submit-btn">
-
-            Send Message
-
-            <i class="fa-solid fa-paper-plane"></i>
-
-        </button>
-
-    </div>
-
-</div>
-
-                    </form>
-
-                    <div class="contact-note">
-
-                        <i class="fa-solid fa-lock"></i>
-
-                        Your information is 100% secure and will never be shared.
-
                     </div>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
+        <!--======================================
+        CONTACT INFO END
+=======================================-->
 
-</section>
+        <!--======================================
+        CONTACT FORM START
+=======================================-->
 
-<!--======================================
+        <section class="contact-form-section" id="contact-form">
+
+            <div class="container">
+
+                <div class="row g-4">
+
+                    <!--========== Contact Details ==========-->
+
+                    <div class="col-lg-4">
+
+                        <div class="contact-details-card">
+
+                            <h3 class="contact-box-title">
+
+                                Get In Touch
+
+                            </h3>
+
+                            <!-- Address -->
+
+                            <div class="contact-detail-item">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-solid fa-location-dot"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h6>Address</h6>
+
+                                    <p>
+
+                                        Karachi, Pakistan
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Email -->
+
+                            <div class="contact-detail-item">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-solid fa-envelope"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h6>Email</h6>
+
+                                    <p>
+
+                                        support@eduverse.com
+
+                                    </p>
+
+                                    <p>
+
+                                        info@eduverse.com
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Phone -->
+
+                            <div class="contact-detail-item">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-solid fa-phone"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h6>Phone</h6>
+
+                                    <p>
+
+                                        +92 300 1234567
+
+                                    </p>
+
+                                    <p>
+
+                                        +92 321 7654321
+
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                            <!-- Hours -->
+
+                            <div class="contact-detail-item">
+
+                                <div class="detail-icon">
+
+                                    <i class="fa-solid fa-clock"></i>
+
+                                </div>
+
+                                <div>
+
+                                    <h6>Working Hours</h6>
+
+                                    <p>
+
+                                        Monday - Saturday
+
+                                    </p>
+
+                                    <p>
+
+                                        9:00 AM - 6:00 PM
+
+                                    </p>
+
+                                </div>
+
+
+
+                            </div>
+                            <!-- Follow -->
+
+                            <div class="contact-social">
+
+                                <h5>Follow Us</h5>
+
+                                <div class="contact-social-icons">
+
+                                    <a href="#">
+
+                                        <i class="fab fa-facebook-f"></i>
+
+                                    </a>
+
+                                    <a href="#">
+
+                                        <i class="fab fa-instagram"></i>
+
+                                    </a>
+
+                                    <a href="#">
+
+                                        <i class="fab fa-linkedin-in"></i>
+
+                                    </a>
+
+                                    <a href="#">
+
+                                        <i class="fab fa-youtube"></i>
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--========== Contact Form ==========-->
+
+                    <div class="col-lg-8">
+
+                        <div class="contact-form-card ">
+
+                            <h3 class="contact-box-title">
+
+                                Send Us A Message
+
+                            </h3>
+
+                            <form id="contactForm">
+
+                                <div class="row g-3">
+
+                                    <!-- Name -->
+
+                                    <div class="col-md-6">
+
+                                        <input type="text" id="name" class="form-control" placeholder="Your Name *"
+                                            required>
+
+                                        <small class="error-message" id="nameError"></small>
+
+                                    </div>
+
+                                    <!-- Email -->
+
+                                    <div class="col-md-6">
+
+                                        <input type="email" id="email" class="form-control" placeholder="Your Email *"
+                                            required>
+
+                                        <small class="error-message" id="emailError"></small>
+
+                                    </div>
+
+                                    <!-- Phone -->
+
+                                    <div class="col-md-6">
+
+                                        <input type="tel" id="phone" class="form-control" placeholder="Phone Number *"
+                                            required>
+
+                                        <small class="error-message" id="phoneError"></small>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+                                        <select id="contactMethod" class="form-select" required>
+
+                                            <option selected disabled>
+
+                                                Preferred Contact
+
+                                            </option>
+
+                                            <option>
+
+                                                Email
+
+                                            </option>
+
+                                            <option>
+
+                                                Phone
+
+                                            </option>
+
+                                            <option>
+
+                                                WhatsApp
+
+                                            </option>
+
+                                        </select>
+
+                                        <small class="error-message" id="contactMethodError"></small>
+
+                                    </div>
+
+                                    <!-- Subject -->
+                                    <div class="col-md-6">
+
+                                        <select id="subject" class="form-select" required>
+
+                                            <option selected disabled>
+
+                                                Select Subject
+
+                                            </option>
+
+                                            <option>
+
+                                                Admission Inquiry
+
+                                            </option>
+
+                                            <option>
+
+                                                Course Information
+
+                                            </option>
+
+                                            <option>
+
+                                                Technical Support
+
+                                            </option>
+
+                                            <option>
+
+                                                Become an Instructor
+
+                                            </option>
+
+                                            <option>
+
+                                                Report an Issue
+
+                                            </option>
+
+                                            <option>
+
+                                                Other
+
+                                            </option>
+
+                                        </select>
+
+                                        <small class="error-message" id="subjectError"></small>
+
+                                    </div>
+
+                                    <!-- Category -->
+
+                                    <div class="col-md-6">
+
+                                        <select id="userType" class="form-select" required>
+
+                                            <option selected disabled>
+
+                                                I Am A
+
+                                            </option>
+
+                                            <option>
+
+                                                Student
+
+                                            </option>
+
+                                            <option>
+
+                                                Teacher
+
+                                            </option>
+
+                                            <option>
+
+                                                Parent
+
+                                            </option>
+
+                                            <option>
+
+                                                Guest
+
+                                            </option>
+
+                                        </select>
+
+                                        <small class="error-message" id="userTypeError"></small>
+
+                                    </div>
+
+                                    <!-- Message -->
+
+                                    <div class="col-12">
+
+                                        <textarea id="message" class="form-control" rows="6"
+                                            placeholder="Your Message *" required></textarea>
+
+                                        <small class="error-message" id="messageError"></small>
+
+                                    </div>
+
+                                    <!-- Button -->
+
+                                    <div class="col-12">
+
+                                        <button id="submitBtn" type="submit" class="contact-submit-btn">
+
+                                            Send Message
+
+                                            <i class="fa-solid fa-paper-plane"></i>
+
+                                        </button>
+
+                                    </div>
+
+                                </div>
+
+                            </form>
+
+                            <div class="contact-note">
+
+                                <i class="fa-solid fa-lock"></i>
+
+                                Your information is 100% secure and will never be shared.
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================
         CONTACT FORM END
 =======================================-->
-<!--======================================
+        <!--======================================
                 FAQ START
 =======================================-->
 
-<section class="faq-section">
+        <section class="faq-section">
 
-    <div class="container">
+            <div class="container">
 
-        <!--========== Top Area ==========-->
+                <!--========== Top Area ==========-->
 
-        <div class="row align-items-center faq-top gy-5">
+                <div class="row align-items-center faq-top gy-5">
 
-            <!-- Left Content -->
+                    <!-- Left Content -->
 
-            <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                <div class="faq-content">
+                        <div class="faq-content">
 
-                    <span class="faq-badge">
+                            <span class="faq-badge">
 
-                        <i class="fa-solid fa-circle-question"></i>
+                                <i class="fa-solid fa-circle-question"></i>
 
-                        Frequently Asked Questions
+                                Frequently Asked Questions
+
+                            </span>
+
+                            <h2 class="faq-title">
+
+                                Got Questions?
+
+                                <span>We've Got Answers.</span>
+
+                            </h2>
+
+                            <p class="faq-description">
+
+                                Find answers to the most common questions about EduVerse,
+                                including admissions, courses, certificates, teachers,
+                                technical support and everything you need to begin your
+                                learning journey.
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Right Image -->
+
+                    <div class="col-lg-6">
+
+                        <div class="faq-image">
+
+                            <img src="assets/images/contact/faq.png" alt="FAQ Illustration" class="img-fluid">
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--========== FAQ Accordion ==========-->
+
+                <div class="faq-wrapper">
+
+                    <div class="accordion faq-accordion" id="faqAccordion">
+
+                        <!-- FAQ 1 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq1">
+
+                                    How do I enroll in a course?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Create your account, browse available courses,
+                                    choose your preferred course and enroll instantly.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 2 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq2">
+
+                                    Can teachers upload their own courses?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Yes. Verified teachers can create, manage and
+                                    publish their own courses from their dashboard.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 3 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq3">
+
+                                    Will I receive a certificate?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Yes. Eligible courses provide a digital certificate
+                                    after successful completion.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 4 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq4">
+
+                                    How can I reset my password?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Click the Forgot Password option on the login page
+                                    and follow the reset instructions.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 5 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq5">
+
+                                    Is EduVerse free to use?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    EduVerse offers both free and premium learning
+                                    opportunities for students and teachers.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 6 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq6">
+
+                                    Can I access courses on mobile devices?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Yes. EduVerse works perfectly on desktop,
+                                    tablet and mobile devices.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 7 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq7">
+
+                                    How can I contact support?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Use the contact form, email or phone number
+                                    available on this page.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- FAQ 8 -->
+
+                        <div class="accordion-item">
+
+                            <h2 class="accordion-header">
+
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#faq8">
+
+                                    Is my personal information secure?
+
+                                </button>
+
+                            </h2>
+
+                            <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+
+                                <div class="accordion-body">
+
+                                    Yes. Your information is protected using secure
+                                    practices and is never shared without permission.
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!--======================================
+                FAQ END
+=======================================-->
+
+        <!--======================================
+            MAP START
+=======================================-->
+
+        <section class="map-section">
+
+            <div class="container">
+
+                <div class="section-heading text-center">
+
+                    <span class="section-badge">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Visit Our Office
 
                     </span>
 
-                    <h2 class="faq-title">
+                    <h2>
 
-                        Got Questions?
-
-                        <span>We've Got Answers.</span>
+                        Find <span>EduVerse</span> On The Map
 
                     </h2>
 
-                    <p class="faq-description">
+                    <p>
 
-                        Find answers to the most common questions about EduVerse,
-                        including admissions, courses, certificates, teachers,
-                        technical support and everything you need to begin your
-                        learning journey.
+                        We'd love to meet you! Visit our office during working hours
+                        or use the map below to find the easiest route.
 
                     </p>
 
                 </div>
 
-            </div>
+                <!--========== Map Info ==========-->
 
-            <!-- Right Image -->
+                <div class="row g-4 map-info-row">
 
-            <div class="col-lg-6">
+                    <!-- Address -->
 
-                <div class="faq-image">
+                    <div class="col-lg-4 col-md-6">
 
-                    <img
-                        src="assets/images/contact/faq.png"
-                        alt="FAQ Illustration"
-                        class="img-fluid">
+                        <div class="map-info-card">
 
-                </div>
+                            <div class="map-info-icon">
 
-            </div>
+                                <i class="fa-solid fa-location-dot"></i>
 
-        </div>
+                            </div>
 
-        <!--========== FAQ Accordion ==========-->
+                            <div>
 
-        <div class="faq-wrapper">
+                                <h6>Office Address</h6>
 
-            <div class="accordion faq-accordion" id="faqAccordion">
+                                <p>Karachi, Pakistan</p>
 
-                <!-- FAQ 1 -->
+                            </div>
 
-                <div class="accordion-item">
+                        </div>
 
-                    <h2 class="accordion-header">
+                    </div>
 
-                        <button
-                            class="accordion-button"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#faq1">
+                    <!-- Working Hours -->
 
-                            How do I enroll in a course?
+                    <div class="col-lg-4 col-md-6">
 
-                        </button>
+                        <div class="map-info-card">
 
-                    </h2>
+                            <div class="map-info-icon">
 
-                    <div
-                        id="faq1"
-                        class="accordion-collapse collapse show"
-                        data-bs-parent="#faqAccordion">
+                                <i class="fa-solid fa-clock"></i>
 
-                        <div class="accordion-body">
+                            </div>
 
-                            Create your account, browse available courses,
-                            choose your preferred course and enroll instantly.
+                            <div>
+
+                                <h6>Working Hours</h6>
+
+                                <p>Mon - Sat | 9:00 AM - 6:00 PM</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Phone -->
+
+                    <div class="col-lg-4 col-md-12">
+
+                        <div class="map-info-card">
+
+                            <div class="map-info-icon">
+
+                                <i class="fa-solid fa-phone"></i>
+
+                            </div>
+
+                            <div>
+
+                                <h6>Call Us</h6>
+
+                                <p>+92 300 1234567</p>
+
+                            </div>
 
                         </div>
 
@@ -1011,474 +1279,102 @@
 
                 </div>
 
-                <!-- FAQ 2 -->
+                <div class="map-card">
 
-                <div class="accordion-item">
+                    <iframe src="https://www.google.com/maps?q=Karachi,Pakistan&output=embed" loading="lazy"
+                        allowfullscreen>
 
-                    <h2 class="accordion-header">
+                    </iframe>
 
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#faq2">
+                    <a href="https://maps.google.com/?q=Karachi,Pakistan" target="_blank" class="map-direction-btn">
 
-                            Can teachers upload their own courses?
+                        <i class="fa-solid fa-location-arrow"></i>
 
-                        </button>
+                        Open in Google Maps
 
-                    </h2>
-
-                    <div
-                        id="faq2"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Yes. Verified teachers can create, manage and
-                            publish their own courses from their dashboard.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 3 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#faq3">
-
-                            Will I receive a certificate?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq3"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Yes. Eligible courses provide a digital certificate
-                            after successful completion.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 4 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#faq4">
-
-                            How can I reset my password?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq4"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Click the Forgot Password option on the login page
-                            and follow the reset instructions.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 5 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#faq5">
-
-                            Is EduVerse free to use?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq5"
-                        class="accordion-collapse collapse"
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            EduVerse offers both free and premium learning
-                            opportunities for students and teachers.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 6 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-
-                            type="button"
-
-                            data-bs-toggle="collapse"
-
-                            data-bs-target="#faq6">
-
-                            Can I access courses on mobile devices?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq6"
-
-                        class="accordion-collapse collapse"
-
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Yes. EduVerse works perfectly on desktop,
-                            tablet and mobile devices.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 7 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-
-                            type="button"
-
-                            data-bs-toggle="collapse"
-
-                            data-bs-target="#faq7">
-
-                            How can I contact support?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq7"
-
-                        class="accordion-collapse collapse"
-
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Use the contact form, email or phone number
-                            available on this page.
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- FAQ 8 -->
-
-                <div class="accordion-item">
-
-                    <h2 class="accordion-header">
-
-                        <button
-                            class="accordion-button collapsed"
-
-                            type="button"
-
-                            data-bs-toggle="collapse"
-
-                            data-bs-target="#faq8">
-
-                            Is my personal information secure?
-
-                        </button>
-
-                    </h2>
-
-                    <div
-                        id="faq8"
-
-                        class="accordion-collapse collapse"
-
-                        data-bs-parent="#faqAccordion">
-
-                        <div class="accordion-body">
-
-                            Yes. Your information is protected using secure
-                            practices and is never shared without permission.
-
-                        </div>
-
-                    </div>
+                    </a>
 
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
-
-</section>
-
-<!--======================================
-                FAQ END
-=======================================-->
-
-<!--======================================
-            MAP START
-=======================================-->
-
-<section class="map-section">
-
-    <div class="container">
-
-        <div class="section-heading text-center">
-
-            <span class="section-badge">
-
-                <i class="fa-solid fa-location-dot"></i>
-
-                Visit Our Office
-
-            </span>
-
-            <h2>
-
-                Find <span>EduVerse</span> On The Map
-
-            </h2>
-
-            <p>
-
-                We'd love to meet you! Visit our office during working hours
-                or use the map below to find the easiest route.
-
-            </p>
-
-        </div>
-
-        <!--========== Map Info ==========-->
-
-<div class="row g-4 map-info-row">
-
-    <!-- Address -->
-
-    <div class="col-lg-4 col-md-6">
-
-        <div class="map-info-card">
-
-            <div class="map-info-icon">
-
-                <i class="fa-solid fa-location-dot"></i>
-
-            </div>
-
-            <div>
-
-                <h6>Office Address</h6>
-
-                <p>Karachi, Pakistan</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Working Hours -->
-
-    <div class="col-lg-4 col-md-6">
-
-        <div class="map-info-card">
-
-            <div class="map-info-icon">
-
-                <i class="fa-solid fa-clock"></i>
-
-            </div>
-
-            <div>
-
-                <h6>Working Hours</h6>
-
-                <p>Mon - Sat | 9:00 AM - 6:00 PM</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Phone -->
-
-    <div class="col-lg-4 col-md-12">
-
-        <div class="map-info-card">
-
-            <div class="map-info-icon">
-
-                <i class="fa-solid fa-phone"></i>
-
-            </div>
-
-            <div>
-
-                <h6>Call Us</h6>
-
-                <p>+92 300 1234567</p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-        <div class="map-card">
-
-            <iframe
-
-                src="https://www.google.com/maps?q=Karachi,Pakistan&output=embed"
-
-                loading="lazy"
-
-                allowfullscreen>
-
-            </iframe>
-
-            <a
-    href="https://maps.google.com/?q=Karachi,Pakistan"
-    target="_blank"
-    class="map-direction-btn">
-
-    <i class="fa-solid fa-location-arrow"></i>
-
-    Open in Google Maps
-
-</a>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
             MAP END
 =======================================-->
 
-<!--======================================
+        <!--======================================
             CONTACT CTA START
 =======================================-->
 
-<section class="contact-cta-section">
+        <section class="contact-cta-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="contact-cta-card">
+                <div class="contact-cta-card">
 
-            <div class="row align-items-center gy-5">
+                    <div class="row align-items-center gy-5">
 
-                <!-- Left Content -->
+                        <!-- Left Content -->
 
-                <div class="col-lg-6">
+                        <div class="col-lg-6">
 
-                    <div class="contact-cta-content">
+                            <div class="contact-cta-content">
 
-                        <span class="contact-cta-badge">
+                                <span class="contact-cta-badge">
 
-                            <i class="fa-solid fa-headset"></i>
+                                    <i class="fa-solid fa-headset"></i>
 
-                            Need More Help?
+                                    Need More Help?
 
-                        </span>
+                                </span>
 
-                        <h2>
+                                <h2>
 
-                            We're Always Ready To
-                            <span>Help You.</span>
+                                    We're Always Ready To
+                                    <span>Help You.</span>
 
-                        </h2>
+                                </h2>
 
-                        <p>
+                                <p>
 
-                            Whether you're a student, teacher or parent,
-                            our support team is always ready to answer your
-                            questions and guide you throughout your learning
-                            journey.
+                                    Whether you're a student, teacher or parent,
+                                    our support team is always ready to answer your
+                                    questions and guide you throughout your learning
+                                    journey.
 
-                        </p>
+                                </p>
 
-                        <div class="contact-cta-buttons">
+                                <div class="contact-cta-buttons">
 
-                            <a
-                                href="#contact-form"
-                                class="btn contact-btn-primary">
+                                    <a href="#contact-form" class="btn contact-btn-primary">
 
-                                Contact Support
+                                        Contact Support
 
-                            </a>
+                                    </a>
 
-                            <a
-                                href="courses.html"
-                                class="btn contact-btn-outline">
+                                    <a href="courses.html" class="btn contact-btn-outline">
 
-                                Browse Courses
+                                        Browse Courses
 
-                            </a>
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Right Image -->
+
+                        <div class="col-lg-6">
+
+                            <div class="contact-cta-image">
+
+                                <img src="assets/images/contact/support.png" alt="Support" class="img-fluid">
+
+                            </div>
 
                         </div>
 
@@ -1486,33 +1382,11 @@
 
                 </div>
 
-                <!-- Right Image -->
-
-                <div class="col-lg-6">
-
-                    <div class="contact-cta-image">
-
-                        <img
-
-                            src="assets/images/contact/support.png"
-
-                            alt="Support"
-
-                            class="img-fluid">
-
-                    </div>
-
-                </div>
-
             </div>
 
-        </div>
+        </section>
 
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
             CONTACT CTA END
 =======================================-->
 
@@ -1524,54 +1398,183 @@
 
 
 
-</main>
+    </main>
 
-<!--======================================
+    <!--======================================
                   MAIN END
 =======================================-->
 
-<!--======================================
+    <!--======================================
             FOOTER START
 =======================================-->
 
-<footer class="edu-footer">
+    <footer class="edu-footer">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="edu-footer-top">
+            <div class="edu-footer-top">
 
-            <div class="row gy-5">
+                <div class="row gy-5">
 
-                <!-- Logo -->
+                    <!-- Logo -->
 
-                <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6">
 
-                    <div class="edu-footer-brand">
+                        <div class="edu-footer-brand">
 
-                        <a href="index.html" class="edu-footer-logo">
+                            <a href="index.html" class="edu-footer-logo">
 
-                            <img src="assets/images/logo/dark-logo.png"
-                                 alt="EduVerse Logo">
+                                <img src="assets/images/logo/dark-logo.png" alt="EduVerse Logo">
 
-                        </a>
+                            </a>
 
-                        <p class="edu-footer-text">
+                            <p class="edu-footer-text">
 
-                            EduVerse is an AI-powered learning platform that
-                            connects students and teachers through interactive
-                            courses, quizzes and smart education.
+                                EduVerse is an AI-powered learning platform that
+                                connects students and teachers through interactive
+                                courses, quizzes and smart education.
+
+                            </p>
+
+                            <div class="edu-footer-social">
+
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Links -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Quick Links
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="index.html">Home</a></li>
+
+                            <li><a href="courses.html">Courses</a></li>
+
+                            <li><a href="about.html">About</a></li>
+
+                            <li><a href="contact.html">Contact</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Student -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Students
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="#">Dashboard</a></li>
+
+                            <li><a href="#">Assignments</a></li>
+
+                            <li><a href="#">Quizzes</a></li>
+
+                            <li><a href="#">Certificates</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Teacher -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Teachers
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="#">Dashboard</a></li>
+
+                            <li><a href="#">Upload Course</a></li>
+
+                            <li><a href="#">Manage Students</a></li>
+
+                            <li><a href="#">Analytics</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Newsletter -->
+
+                    <div class="col-lg-2 col-md-12">
+
+                        <h5 class="edu-footer-title">
+                            Newsletter
+                        </h5>
+
+                        <p class="edu-footer-news-text">
+
+                            Subscribe to receive our latest courses and updates.
 
                         </p>
 
-                        <div class="edu-footer-social">
+                        <form class="edu-footer-newsletter">
 
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <input type="email" placeholder="Email Address" required>
 
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <button type="submit">
 
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <i class="fas fa-paper-plane"></i>
 
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom -->
+
+            <div class="edu-footer-bottom">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6">
+
+                        <p>
+
+                            © 2026 EduVerse. All Rights Reserved.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="edu-footer-bottom-links">
+
+                            <a href="#">Privacy Policy</a>
+
+                            <a href="#">Terms</a>
+
+                            <a href="#">Sitemap</a>
 
                         </div>
 
@@ -1579,151 +1582,18 @@
 
                 </div>
 
-                <!-- Quick Links -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Quick Links
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="index.html">Home</a></li>
-
-                        <li><a href="courses.html">Courses</a></li>
-
-                        <li><a href="about.html">About</a></li>
-
-                        <li><a href="contact.html">Contact</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Student -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Students
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="#">Dashboard</a></li>
-
-                        <li><a href="#">Assignments</a></li>
-
-                        <li><a href="#">Quizzes</a></li>
-
-                        <li><a href="#">Certificates</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Teacher -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Teachers
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="#">Dashboard</a></li>
-
-                        <li><a href="#">Upload Course</a></li>
-
-                        <li><a href="#">Manage Students</a></li>
-
-                        <li><a href="#">Analytics</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Newsletter -->
-
-                <div class="col-lg-2 col-md-12">
-
-                    <h5 class="edu-footer-title">
-                        Newsletter
-                    </h5>
-
-                    <p class="edu-footer-news-text">
-
-                        Subscribe to receive our latest courses and updates.
-
-                    </p>
-
-                    <form class="edu-footer-newsletter">
-
-                        <input
-                            type="email"
-                            placeholder="Email Address"
-                            required>
-
-                        <button type="submit">
-
-                            <i class="fas fa-paper-plane"></i>
-
-                        </button>
-
-                    </form>
-
-                </div>
-
             </div>
 
         </div>
 
-        <!-- Bottom -->
+    </footer>
 
-        <div class="edu-footer-bottom">
-
-            <div class="row align-items-center">
-
-                <div class="col-lg-6">
-
-                    <p>
-
-                        © 2026 EduVerse. All Rights Reserved.
-
-                    </p>
-
-                </div>
-
-                <div class="col-lg-6">
-
-                    <div class="edu-footer-bottom-links">
-
-                        <a href="#">Privacy Policy</a>
-
-                        <a href="#">Terms</a>
-
-                        <a href="#">Sitemap</a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
-<!--======================================
+    <!--======================================
             FOOTER END
 =======================================-->
 
 
-<!--======================================
+    <!--======================================
                 JAVASCRIPT
 =======================================-->
 
@@ -1732,6 +1602,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
+    <!--========== GSAP JS START ==========-->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <!--========== GSAP JS END ==========-->
+
     <!-- Main JS -->
 
     <script src="assets/js/main.js"></script>
@@ -1739,7 +1615,7 @@
     <!-- Custum JS -->
 
     <script src="assets/js/home.js"></script>
-     <script src="assets/js/contact.js"></script>
+    <script src="assets/js/contact.js"></script>
 
 </body>
 
