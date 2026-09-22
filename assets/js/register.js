@@ -825,3 +825,47 @@ googleRegisterBtn.addEventListener("click", async () => {
 /*======================================
         END - GOOGLE REGISTRATION
 ======================================*/
+
+/*======================================
+    START - REGISTER IMAGE GSAP ANIMATION
+======================================*/
+
+const registerImage = document.querySelector(".register-image");
+
+if (registerImage && typeof gsap !== "undefined") {
+
+    const registerImageTimeline = gsap.timeline();
+
+    // Slow reveal and settle
+    registerImageTimeline.fromTo(
+        registerImage,
+        {
+            opacity: 0,
+            y: 55,
+            scale: 0.90,
+            filter: "blur(10px)"
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2,
+            ease: "power3.out"
+        }
+    );
+
+    // Gentle continuous floating
+    registerImageTimeline.to(registerImage, {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+}
+
+/*======================================
+    END - REGISTER IMAGE GSAP ANIMATION
+======================================*/

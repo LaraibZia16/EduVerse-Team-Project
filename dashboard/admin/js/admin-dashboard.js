@@ -31,6 +31,18 @@ import {
 
 
 /* ==========================================================
+   START - CLOUDINARY CONFIG
+========================================================== */
+
+const CLOUDINARY_CLOUD_NAME = "fmp8gzwy";
+const CLOUDINARY_UPLOAD_PRESET = "eduverse_profile_upload";
+
+/* ==========================================================
+   END - CLOUDINARY CONFIG
+========================================================== */
+
+
+/* ==========================================================
    START - DOM ELEMENTS
 ========================================================== */
 
@@ -76,8 +88,20 @@ const cancelProfileBtn =
 const adminAvatarInitial =
     document.getElementById("adminAvatarInitial");
 
+const adminAvatarImage =
+    document.getElementById("adminAvatarImage");
+
 const profileModalInitial =
     document.getElementById("profileModalInitial");
+
+const profileModalImage =
+    document.getElementById("profileModalImage");
+
+const profileImageInput =
+    document.getElementById("profileImageInput");
+
+const changePhotoBtn =
+    document.getElementById("changePhotoBtn");
 
 const profileDisplayName =
     document.getElementById("profileDisplayName");
@@ -96,6 +120,7 @@ const profileStatus =
 
 const profileJoined =
     document.getElementById("profileJoined");
+
 
 // Start - Admin Profile Save Elements
 
@@ -142,32 +167,11 @@ let platformOverviewChart = null;
    START - ADMIN AUTH PROTECTION
 ========================================================== */
 
-onAuthStateChanged(auth, async (user) => {
+onAuthStateChanged(
+    auth,
+    async (user) => {
 
-    if (!user) {
-
-        window.location.replace(
-            "../../../login.html"
-        );
-
-        return;
-    }
-
-
-    try {
-
-        const userSnapshot = await getDoc(
-            doc(
-                db,
-                "users",
-                user.uid
-            )
-        );
-
-
-        if (!userSnapshot.exists()) {
-
-            await signOut(auth);
+        if (!user) {
 
             window.location.replace(
                 "../../../login.html"
@@ -175,73 +179,99 @@ onAuthStateChanged(auth, async (user) => {
 
             return;
         }
-
-
-        const userData = userSnapshot.data();
-
-
-        if (userData.role !== "admin") {
-
-            await signOut(auth);
-
-            window.location.replace(
-                "../../../login.html"
-            );
-
-            return;
-        }
-
-
-        /* ----------------------------------------------
-           Admin is authenticated successfully
-        ---------------------------------------------- */
-
-        setAdminInformation(
-            userData,
-            user
-        );
-
-
-        /*
-           Dashboard data is loaded separately.
-
-           IMPORTANT:
-           If dashboard data fails, the admin will NOT
-           be signed out.
-        */
-
-        loadDashboardData();
-
-
-    } catch (error) {
-
-        console.error(
-            "Admin Authentication Error:",
-            error
-        );
 
 
         try {
 
-            await signOut(auth);
+            const userSnapshot =
+                await getDoc(
+                    doc(
+                        db,
+                        "users",
+                        user.uid
+                    )
+                );
 
-        } catch (signOutError) {
+
+            if (!userSnapshot.exists()) {
+
+                await signOut(auth);
+
+                window.location.replace(
+                    "../../../login.html"
+                );
+
+                return;
+            }
+
+
+            const userData =
+                userSnapshot.data();
+
+
+            if (userData.role !== "admin") {
+
+                await signOut(auth);
+
+                window.location.replace(
+                    "../../../login.html"
+                );
+
+                return;
+            }
+
+
+            /* ----------------------------------------------
+               Admin is authenticated successfully
+            ---------------------------------------------- */
+
+            setAdminInformation(
+                userData,
+                user
+            );
+
+
+            /*
+               Dashboard data is loaded separately.
+
+               IMPORTANT:
+               If dashboard data fails, the admin will NOT
+               be signed out.
+            */
+
+            loadDashboardData();
+
+
+        } catch (error) {
 
             console.error(
-                "Sign Out Error:",
-                signOutError
+                "Admin Authentication Error:",
+                error
+            );
+
+
+            try {
+
+                await signOut(auth);
+
+            } catch (signOutError) {
+
+                console.error(
+                    "Sign Out Error:",
+                    signOutError
+                );
+
+            }
+
+
+            window.location.replace(
+                "../../../login.html"
             );
 
         }
 
-
-        window.location.replace(
-            "../../../login.html"
-        );
-
     }
-
-});
+);
 
 /* ==========================================================
    END - ADMIN AUTH PROTECTION
@@ -308,6 +338,19 @@ function setAdminInformation(
             initial;
 
     }
+
+
+    /* Start - Load Saved Profile Image */
+
+    const profileImage =
+        userData.profileImage || "";
+
+    updateProfileImageDisplay(
+        profileImage,
+        initial
+    );
+
+    /* End - Load Saved Profile Image */
 
 
     /* ----------------------------------------------
@@ -430,24 +473,26 @@ async function loadDashboardData() {
 
 async function loadUsers() {
 
-    const usersSnapshot = await getDocs(
-        collection(
-            db,
-            "users"
-        )
-    );
+    const usersSnapshot =
+        await getDocs(
+            collection(
+                db,
+                "users"
+            )
+        );
 
 
-    allUsers = usersSnapshot.docs.map(
-        (userDocument) => {
+    allUsers =
+        usersSnapshot.docs.map(
+            (userDocument) => {
 
-            return {
-                id: userDocument.id,
-                ...userDocument.data()
-            };
+                return {
+                    id: userDocument.id,
+                    ...userDocument.data()
+                };
 
-        }
-    );
+            }
+        );
 
 }
 
@@ -462,32 +507,32 @@ async function loadUsers() {
 
 async function loadCourses() {
 
-    const coursesSnapshot = await getDocs(
-        collection(
-            db,
-            "courses"
-        )
-    );
+    const coursesSnapshot =
+        await getDocs(
+            collection(
+                db,
+                "courses"
+            )
+        );
 
 
-    allCourses = coursesSnapshot.docs.map(
-        (courseDocument) => {
+    allCourses =
+        coursesSnapshot.docs.map(
+            (courseDocument) => {
 
-            return {
-                id: courseDocument.id,
-                ...courseDocument.data()
-            };
+                return {
+                    id: courseDocument.id,
+                    ...courseDocument.data()
+                };
 
-        }
-    );
+            }
+        );
 
 }
 
 /* ==========================================================
    END - LOAD REAL FIRESTORE COURSES
 ========================================================== */
-
-
 /* ==========================================================
    START - ROLE HELPER
 ========================================================== */
@@ -985,8 +1030,6 @@ function renderPlatformOverview() {
 /* ==========================================================
    END - PLATFORM OVERVIEW
 ========================================================== */
-
-
 /* ==========================================================
    START - CHARTS
 ========================================================== */
@@ -1499,7 +1542,338 @@ function closeAdminProfileModal() {
 }
 
 
-/* Start - Profile Button */
+/* Start - Change Profile Photo */
+
+if (changePhotoBtn && profileImageInput) {
+
+    changePhotoBtn.addEventListener(
+        "click",
+        () => {
+
+            profileImageInput.click();
+
+        }
+    );
+
+}
+
+/* End - Change Profile Photo */
+
+
+/* ==========================================================
+   START - CLOUDINARY PROFILE IMAGE UPLOAD
+========================================================== */
+
+if (profileImageInput) {
+
+    profileImageInput.addEventListener(
+        "change",
+        async (event) => {
+
+            const file =
+                event.target.files[0];
+
+            if (!file) {
+                return;
+            }
+
+
+            const currentUser =
+                auth.currentUser;
+
+            if (!currentUser) {
+
+                alert(
+                    "Unable to identify logged-in admin."
+                );
+
+                profileImageInput.value = "";
+
+                return;
+            }
+
+
+            /* Start - File Validation */
+
+            const allowedTypes = [
+                "image/jpeg",
+                "image/png",
+                "image/webp"
+            ];
+
+
+            if (!allowedTypes.includes(file.type)) {
+
+                alert(
+                    "Please select a JPG, PNG, or WebP image."
+                );
+
+                profileImageInput.value = "";
+
+                return;
+            }
+
+
+            const maxFileSize =
+                5 * 1024 * 1024;
+
+
+            if (file.size > maxFileSize) {
+
+                alert(
+                    "Profile image must be smaller than 5 MB."
+                );
+
+                profileImageInput.value = "";
+
+                return;
+            }
+
+            /* End - File Validation */
+
+
+            try {
+
+                /* Start - Upload To Cloudinary */
+
+                const formData =
+                    new FormData();
+
+                formData.append(
+                    "file",
+                    file
+                );
+
+                formData.append(
+                    "upload_preset",
+                    CLOUDINARY_UPLOAD_PRESET
+                );
+
+
+                const response =
+                    await fetch(
+                        `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+                        {
+                            method: "POST",
+                            body: formData
+                        }
+                    );
+
+
+                if (!response.ok) {
+
+                    throw new Error(
+                        "Cloudinary upload failed."
+                    );
+
+                }
+
+
+                const imageData =
+                    await response.json();
+
+
+                if (!imageData.secure_url) {
+
+                    throw new Error(
+                        "Cloudinary image URL was not returned."
+                    );
+
+                }
+
+                /* End - Upload To Cloudinary */
+
+
+                /* Start - Save Image URL To Firestore */
+
+                await updateDoc(
+                    doc(
+                        db,
+                        "users",
+                        currentUser.uid
+                    ),
+                    {
+                        profileImage:
+                            imageData.secure_url
+                    }
+                );
+
+                /* End - Save Image URL To Firestore */
+
+
+                /* Start - Update Profile Images */
+
+                const currentName =
+                    profileName
+                        ? profileName.value.trim()
+                        : "Admin";
+
+                const currentInitial =
+                    getInitial(currentName);
+
+
+                updateProfileImageDisplay(
+                    imageData.secure_url,
+                    currentInitial
+                );
+
+                /* End - Update Profile Images */
+
+
+                if (profileMessage) {
+
+                    profileMessage.textContent =
+                        "Profile photo updated successfully.";
+
+                    profileMessage.className =
+                        "profile-message success";
+
+                }
+
+
+            } catch (error) {
+
+                console.error(
+                    "Profile Image Upload Error:",
+                    error
+                );
+
+
+                if (profileMessage) {
+
+                    profileMessage.textContent =
+                        "Unable to update profile photo.";
+
+                    profileMessage.className =
+                        "profile-message error";
+
+                } else {
+
+                    alert(
+                        "Unable to upload profile image."
+                    );
+
+                }
+
+
+            } finally {
+
+                profileImageInput.value = "";
+
+            }
+
+        }
+    );
+
+}
+
+/* ==========================================================
+   END - CLOUDINARY PROFILE IMAGE UPLOAD
+========================================================== */
+
+
+/* ==========================================================
+   START - PROFILE IMAGE DISPLAY HELPER
+========================================================== */
+
+function updateProfileImageDisplay(
+    imageUrl,
+    initial
+) {
+
+    const hasImage =
+        Boolean(imageUrl);
+
+
+    /* Start - Topbar Avatar */
+
+    if (adminAvatarImage) {
+
+        if (hasImage) {
+
+            adminAvatarImage.src =
+                imageUrl;
+
+            adminAvatarImage.style.display =
+                "block";
+
+        } else {
+
+            adminAvatarImage.removeAttribute(
+                "src"
+            );
+
+            adminAvatarImage.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    if (adminAvatarInitial) {
+
+        adminAvatarInitial.textContent =
+            initial;
+
+        adminAvatarInitial.style.display =
+            hasImage
+                ? "none"
+                : "";
+
+    }
+
+    /* End - Topbar Avatar */
+
+
+    /* Start - Profile Modal Avatar */
+
+    if (profileModalImage) {
+
+        if (hasImage) {
+
+            profileModalImage.src =
+                imageUrl;
+
+            profileModalImage.style.display =
+                "block";
+
+        } else {
+
+            profileModalImage.removeAttribute(
+                "src"
+            );
+
+            profileModalImage.style.display =
+                "none";
+
+        }
+
+    }
+
+
+    if (profileModalInitial) {
+
+        profileModalInitial.textContent =
+            initial;
+
+        profileModalInitial.style.display =
+            hasImage
+                ? "none"
+                : "";
+
+    }
+
+    /* End - Profile Modal Avatar */
+
+}
+
+/* ==========================================================
+   END - PROFILE IMAGE DISPLAY HELPER
+========================================================== */
+/* ==========================================================
+   START - PROFILE BUTTON
+========================================================== */
 
 if (adminProfileBtn) {
 
@@ -1510,10 +1884,14 @@ if (adminProfileBtn) {
 
 }
 
-/* End - Profile Button */
+/* ==========================================================
+   END - PROFILE BUTTON
+========================================================== */
 
 
-/* Start - Close Button */
+/* ==========================================================
+   START - PROFILE MODAL CLOSE BUTTONS
+========================================================== */
 
 if (closeAdminProfile) {
 
@@ -1524,10 +1902,6 @@ if (closeAdminProfile) {
 
 }
 
-/* End - Close Button */
-
-
-/* Start - Cancel Button */
 
 if (cancelProfileBtn) {
 
@@ -1538,10 +1912,8 @@ if (cancelProfileBtn) {
 
 }
 
-/* End - Cancel Button */
 
-
-/* Start - Click Outside Modal */
+/* Close modal when clicking outside modal content */
 
 if (adminProfileModal) {
 
@@ -1563,10 +1935,8 @@ if (adminProfileModal) {
 
 }
 
-/* End - Click Outside Modal */
 
-
-/* Start - ESC Key */
+/* Close profile modal with Escape key */
 
 document.addEventListener(
     "keydown",
@@ -1587,10 +1957,13 @@ document.addEventListener(
     }
 );
 
-/* End - ESC Key */
+/* ==========================================================
+   END - PROFILE MODAL CLOSE BUTTONS
+========================================================== */
+
 
 /* ==========================================================
-   START - SAVE ADMIN PROFILE
+   START - ADMIN PROFILE SAVE
 ========================================================== */
 
 if (adminProfileForm) {
@@ -1622,18 +1995,18 @@ if (adminProfileForm) {
             }
 
 
-            const newName =
+            const updatedName =
                 profileName
                     ? profileName.value.trim()
                     : "";
 
 
-            if (!newName) {
+            if (!updatedName) {
 
                 if (profileMessage) {
 
                     profileMessage.textContent =
-                        "Please enter your full name.";
+                        "Please enter your name.";
 
                     profileMessage.className =
                         "profile-message error";
@@ -1646,32 +2019,24 @@ if (adminProfileForm) {
 
             try {
 
-                /* Start - Loading State */
+                /* Start - Disable Save Button */
 
                 if (saveProfileBtn) {
 
-                    saveProfileBtn.disabled = true;
+                    saveProfileBtn.disabled =
+                        true;
 
                     saveProfileBtn.innerHTML = `
                         <i class="fa-solid fa-spinner fa-spin"></i>
-                        <span>Saving...</span>
+                        Saving...
                     `;
 
                 }
 
-                if (profileMessage) {
-
-                    profileMessage.textContent = "";
-
-                    profileMessage.className =
-                        "profile-message";
-
-                }
-
-                /* End - Loading State */
+                /* End - Disable Save Button */
 
 
-                /* Start - Update Firestore */
+                /* Start - Update Firestore Name */
 
                 await updateDoc(
                     doc(
@@ -1680,23 +2045,19 @@ if (adminProfileForm) {
                         currentUser.uid
                     ),
                     {
-                        name: newName
+                        name: updatedName
                     }
                 );
 
-                /* End - Update Firestore */
+                /* End - Update Firestore Name */
 
 
-                /* Start - Update Screen */
-
-                const initial =
-                    getInitial(newName);
-
+                /* Start - Update Visible Name */
 
                 if (adminName) {
 
                     adminName.textContent =
-                        newName;
+                        updatedName;
 
                 }
 
@@ -1704,27 +2065,38 @@ if (adminProfileForm) {
                 if (profileDisplayName) {
 
                     profileDisplayName.textContent =
-                        newName;
+                        updatedName;
 
                 }
 
 
-                if (adminAvatarInitial) {
-
-                    adminAvatarInitial.textContent =
-                        initial;
-
-                }
+                const updatedInitial =
+                    getInitial(updatedName);
 
 
-                if (profileModalInitial) {
+                /*
+                   If a profile image exists, this updates
+                   the fallback initial without removing
+                   the current profile image.
+                */
 
-                    profileModalInitial.textContent =
-                        initial;
+                const currentImageUrl =
+                    adminAvatarImage &&
+                    adminAvatarImage.getAttribute(
+                        "src"
+                    )
+                        ? adminAvatarImage.getAttribute(
+                            "src"
+                        )
+                        : "";
 
-                }
 
-                /* End - Update Screen */
+                updateProfileImageDisplay(
+                    currentImageUrl,
+                    updatedInitial
+                );
+
+                /* End - Update Visible Name */
 
 
                 /* Start - Success Message */
@@ -1763,16 +2135,21 @@ if (adminProfileForm) {
 
             } finally {
 
+                /* Start - Restore Save Button */
+
                 if (saveProfileBtn) {
 
-                    saveProfileBtn.disabled = false;
+                    saveProfileBtn.disabled =
+                        false;
 
                     saveProfileBtn.innerHTML = `
                         <i class="fa-solid fa-floppy-disk"></i>
-                        <span>Save Changes</span>
+                        Save Changes
                     `;
 
                 }
+
+                /* End - Restore Save Button */
 
             }
 
@@ -1782,16 +2159,12 @@ if (adminProfileForm) {
 }
 
 /* ==========================================================
-   END - SAVE ADMIN PROFILE
-========================================================== */
-
-/* ==========================================================
-   END - ADMIN PROFILE MODAL
+   END - ADMIN PROFILE SAVE
 ========================================================== */
 
 
 /* ==========================================================
-   START - FIREBASE ADMIN LOGOUT
+   START - LOGOUT
 ========================================================== */
 
 if (logoutBtn) {
@@ -1805,60 +2178,19 @@ if (logoutBtn) {
 
             try {
 
-                logoutBtn.style.pointerEvents =
-                    "none";
-
-
-                const logoutText =
-                    logoutBtn.querySelector(
-                        "span:last-child"
-                    );
-
-
-                if (logoutText) {
-
-                    logoutText.textContent =
-                        "Logging Out...";
-
-                }
-
-
                 await signOut(auth);
 
 
                 window.location.replace(
-                    "../../../logout.html"
+                    "../../../login.html"
                 );
 
 
             } catch (error) {
 
                 console.error(
-                    "Admin Logout Error:",
+                    "Logout Error:",
                     error
-                );
-
-
-                logoutBtn.style.pointerEvents =
-                    "";
-
-
-                const logoutText =
-                    logoutBtn.querySelector(
-                        "span:last-child"
-                    );
-
-
-                if (logoutText) {
-
-                    logoutText.textContent =
-                        "Logout";
-
-                }
-
-
-                alert(
-                    "Unable to logout. Please try again."
                 );
 
             }
@@ -1869,12 +2201,12 @@ if (logoutBtn) {
 }
 
 /* ==========================================================
-   END - FIREBASE ADMIN LOGOUT
+   END - LOGOUT
 ========================================================== */
 
 
 /* ==========================================================
-   START - SECURITY HELPER
+   START - HTML ESCAPE HELPER
 ========================================================== */
 
 function escapeHTML(value) {
@@ -1882,16 +2214,31 @@ function escapeHTML(value) {
     return String(
         value ?? ""
     )
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
+        .replaceAll(
+            "&",
+            "&amp;"
+        )
+        .replaceAll(
+            "<",
+            "&lt;"
+        )
+        .replaceAll(
+            ">",
+            "&gt;"
+        )
+        .replaceAll(
+            '"',
+            "&quot;"
+        )
+        .replaceAll(
+            "'",
+            "&#039;"
+        );
 
 }
 
 /* ==========================================================
-   END - SECURITY HELPER
+   END - HTML ESCAPE HELPER
 ========================================================== */
 
 

@@ -419,3 +419,47 @@ function showToast(){
     },3000);
 
 }
+
+/*======================================
+    CONTACT HERO GSAP ANIMATION START
+======================================*/
+
+const contactHeroImage = document.querySelector(".contact-hero-image img");
+
+if (contactHeroImage && typeof gsap !== "undefined") {
+
+    const contactHeroTimeline = gsap.timeline();
+
+    // Slow reveal and settle
+    contactHeroTimeline.fromTo(
+        contactHeroImage,
+        {
+            opacity: 0,
+            y: 55,
+            scale: 0.90,
+            filter: "blur(10px)"
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2,
+            ease: "power3.out"
+        }
+    );
+
+    // Gentle continuous floating
+    contactHeroTimeline.to(contactHeroImage, {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+}
+
+/*======================================
+    CONTACT HERO GSAP ANIMATION END
+======================================*/

@@ -268,3 +268,47 @@ if (slider && track && cards.length) {
     startAuto();
 
 }
+
+/*======================================
+        HERO GSAP ANIMATION START
+======================================*/
+
+const heroImage = document.querySelector(".hero-image");
+
+if (heroImage && typeof gsap !== "undefined") {
+
+    const heroTimeline = gsap.timeline();
+
+    // Slow reveal and settle
+    heroTimeline.fromTo(
+        heroImage,
+        {
+            opacity: 0,
+            y: 55,
+            scale: 0.90,
+            filter: "blur(10px)"
+        },
+        {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            filter: "blur(0px)",
+            duration: 2,
+            ease: "power3.out"
+        }
+    );
+
+    // Gentle continuous floating
+    heroTimeline.to(heroImage, {
+        y: -10,
+        duration: 2.8,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true
+    });
+
+}
+
+/*======================================
+        HERO GSAP ANIMATION END
+======================================*/

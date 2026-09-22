@@ -102,11 +102,11 @@ body{
 
     margin-bottom:35px;
 
-    animation:floatImage 5s ease-in-out infinite;
+    /* animation:floatImage 5s ease-in-out infinite; */
 
 }
 
-@keyframes floatImage{
+/* @keyframes floatImage{
 
     0%{
 
@@ -126,7 +126,7 @@ body{
 
     }
 
-}
+} */
 
 .login-left h2{
 

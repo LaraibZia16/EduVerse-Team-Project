@@ -688,9 +688,9 @@ const coursesData={
 
         "Start your web development journey by learning how websites are structured and styled. You will create responsive layouts and complete practical website projects.",
 
-        "assets/images/courses/html-css.jpg",
+        "assets/images/courses/html-css.png",
 
-        "assets/images/teachers/teacher4.jpg",
+        "assets/images/courses/teachers/teacher4.png",
 
         [
 
@@ -841,9 +841,9 @@ const coursesData={
 
         "Build a strong foundation in modern JavaScript and learn how to create interactive web experiences using real-world examples and projects.",
 
-        "assets/images/courses/javascript.jpg",
+        "assets/images/courses/javascript.png",
 
-        "assets/images/teachers/teacher5.jpg",
+       "assets/images/courses/teachers/teacher5.png",
 
         [
 
@@ -996,9 +996,9 @@ const coursesData={
 
         "Learn how to use Bootstrap components and utilities to create responsive and attractive websites faster.",
 
-        "assets/images/courses/bootstrap.jpg",
+        "assets/images/courses/bootstrap.png",
 
-        "assets/images/teachers/teacher6.jpg",
+        "assets/images/courses/teachers/teacher6.png",
 
         [
 
@@ -1151,9 +1151,9 @@ const coursesData={
 
         "Learn Python step by step and develop a strong programming foundation through practical exercises and real-world projects.",
 
-        "assets/images/courses/python.jpg",
+        "assets/images/courses/python.png",
 
-        "assets/images/teachers/teacher7.jpg",
+        "assets/images/courses/teachers/teacher7.png",
 
         [
 
@@ -1304,9 +1304,9 @@ const coursesData={
 
         "Develop strong Java programming skills with object-oriented programming, collections and practical application development.",
 
-        "assets/images/courses/java.jpg",
+        "assets/images/courses/java.png",
 
-        "assets/images/teachers/teacher8.jpg",
+        "assets/images/courses/teachers/teacher8.png",
 
         [
 
@@ -1457,9 +1457,9 @@ const coursesData={
 
         "Learn advanced C++ concepts and develop strong object-oriented programming skills through practical examples and projects.",
 
-        "assets/images/courses/cpp.jpg",
+        "assets/images/courses/cpp.png",
 
-        "assets/images/teachers/teacher9.jpg",
+        "assets/images/courses/teachers/teacher9.png",
 
         [
 
@@ -1614,9 +1614,9 @@ const coursesData={
 
         "Learn how to create, format and manage professional documents using Microsoft Word and its most useful features.",
 
-        "assets/images/courses/ms-word.jpg",
+        "assets/images/courses/ms-word.png",
 
-        "assets/images/teachers/teacher10.jpg",
+        "assets/images/courses/teachers/teacher10.png",
 
         [
 
@@ -1761,9 +1761,9 @@ const coursesData={
 
         "Develop practical Excel skills for data analysis, reporting and dashboard creation using real-world examples.",
 
-        "assets/images/courses/ms-excel.jpg",
+        "assets/images/courses/ms-excel.png",
 
-        "assets/images/teachers/teacher11.jpg",
+        "assets/images/courses/teachers/teacher11.png",
 
         [
 
@@ -1912,9 +1912,9 @@ const coursesData={
 
         "Learn how to design clear, engaging and professional presentations using PowerPoint's most important tools.",
 
-        "assets/images/courses/ms-powerpoint.jpg",
+        "assets/images/courses/ms-powerpoint.png",
 
-        "assets/images/teachers/teacher12.jpg",
+        "assets/images/courses/teachers/teacher12.png",
 
         [
 
@@ -2065,9 +2065,9 @@ const coursesData={
 
         "Learn Photoshop from the basics and create professional graphics, edited images and social media designs.",
 
-        "assets/images/courses/photoshop.jpg",
+        "assets/images/courses/photoshop.png",
 
-        "assets/images/teachers/teacher13.jpg",
+        "assets/images/courses/teachers/teacher13.png",
 
         [
 
@@ -2212,9 +2212,9 @@ const coursesData={
 
         "Master Illustrator's vector design tools and create professional logos, icons and brand assets.",
 
-        "assets/images/courses/illustrator.jpg",
+        "assets/images/courses/illustrator.png",
 
-        "assets/images/teachers/teacher14.jpg",
+       "assets/images/courses/teachers/teacher14.png",
 
         [
 
@@ -2365,9 +2365,9 @@ const coursesData={
 
         "Learn the complete UI/UX design process from understanding users to creating wireframes, prototypes and polished digital interfaces.",
 
-        "assets/images/courses/uiux.jpg",
+        "assets/images/courses/uiux.png",
 
-        "assets/images/teachers/teacher15.jpg",
+        "assets/images/courses/teachers/teacher15.png",
 
         [
 
@@ -2522,9 +2522,9 @@ const coursesData={
 
         "Understand the fundamentals of cyber security and learn practical methods for protecting personal and organizational systems.",
 
-        "assets/images/courses/cyber.jpg",
+        "assets/images/courses/cyber.png",
 
-        "assets/images/teachers/teacher16.jpg",
+        "assets/images/courses/teachers/teacher16.png",
 
         [
 
@@ -2669,9 +2669,9 @@ const coursesData={
 
         "Learn ethical security testing concepts and understand how security professionals identify and report vulnerabilities in authorized environments.",
 
-        "assets/images/courses/hacking.jpg",
+        "assets/images/courses/hacking.png",
 
-        "assets/images/teachers/teacher17.jpg",
+        "assets/images/courses/teachers/teacher17.png",
 
         [
 
@@ -2816,9 +2816,9 @@ const coursesData={
 
         "Develop advanced knowledge of network security and learn how organizations protect their infrastructure from modern threats.",
 
-        "assets/images/courses/network-security.jpg",
+        "assets/images/courses/network-security.png",
 
-        "assets/images/teachers/teacher18.jpg",
+        "assets/images/courses/teachers/teacher18.png",
 
         [
 
@@ -2955,8 +2955,8 @@ const coursesData={
 
     "This complete bootcamp takes you through the full frontend development journey. You will learn HTML5, CSS3, Bootstrap, JavaScript, responsive design and practical website development while building real-world projects.",
 
-    "assets/images/courses/web-development.jpg",
-    "assets/images/teachers/teacher5.jpg",
+    "assets/images/courses/web-development.png",
+    "assets/images/courses/teachers/teacher5.png",
 
     [
         "HTML5 & Semantic Web Development",
@@ -3052,8 +3052,8 @@ const coursesData={
 
     "This masterclass covers the complete UI/UX design process, from understanding users and creating wireframes to designing polished interfaces and interactive prototypes using modern design tools.",
 
-    "assets/images/courses/uiux-masterclass.jpg",
-    "assets/images/teachers/teacher15.jpg",
+    "assets/images/courses/uiux-masterclass.png",
+    "assets/images/courses/teachers/teacher15.png",
 
     [
         "UX Research",
@@ -3149,8 +3149,8 @@ const coursesData={
 
     "This course introduces the most important digital marketing concepts and shows you how businesses use search engines, social media, content and analytics to reach their target audience.",
 
-    "assets/images/courses/digital-marketing.jpg",
-    "assets/images/teachers/teacher12.jpg",
+    "assets/images/courses/digital-marketing.png",
+    "assets/images/courses/teachers/teacher12.png",
 
     [
         "Digital Marketing Basics",
@@ -3246,8 +3246,8 @@ const coursesData={
 
     "This course combines data science fundamentals with practical machine learning. You will learn how to clean and analyze data, create visualizations and build machine learning models using Python.",
 
-    "assets/images/courses/data-science.jpg",
-    "assets/images/teachers/teacher2.jpg",
+    "assets/images/courses/data-science.png",
+    "assets/images/courses/teachers/teacher2.png",
 
     [
         "Python for Data Science",

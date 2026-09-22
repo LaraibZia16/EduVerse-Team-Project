@@ -1,54 +1,82 @@
 /*======================================
-            LOGOUT PAGE
+        START - LOGOUT GSAP ANIMATION
 ======================================*/
 
-document.addEventListener("DOMContentLoaded",()=>{
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (typeof gsap === "undefined") {
+        return;
+    }
+
+    const logoutCard =
+        document.querySelector(".logout-card");
+
+    const featureCards =
+        document.querySelectorAll(".logout-feature-card");
+
 
     /*==================================
-            CARD ANIMATION
+            GSAP TIMELINE
     ==================================*/
 
-    const logoutCard=document.querySelector(".logout-card");
+    const logoutTimeline = gsap.timeline();
 
-    logoutCard.style.opacity="0";
-
-    logoutCard.style.transform="translateY(40px)";
-
-    setTimeout(()=>{
-
-        logoutCard.style.transition=".8s ease";
-
-        logoutCard.style.opacity="1";
-
-        logoutCard.style.transform="translateY(0)";
-
-    },200);
 
     /*==================================
-        FEATURE CARD ANIMATION
+            MAIN CARD REVEAL
     ==================================*/
 
-    const featureCards=document.querySelectorAll(".logout-feature-card");
+    if (logoutCard) {
 
-    featureCards.forEach((card,index)=>{
+        logoutTimeline.fromTo(
+            logoutCard,
+            {
+                opacity: 0,
+                y: 45,
+                scale: 0.96
+            },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1.2,
+                ease: "power3.out"
+            }
+        );
 
-        card.style.opacity="0";
+    }
 
-        card.style.transform="translateY(30px)";
 
-        setTimeout(()=>{
+    /*==================================
+        FEATURE CARDS STAGGER REVEAL
+    ==================================*/
 
-            card.style.transition=".6s ease";
+    if (featureCards.length > 0) {
 
-            card.style.opacity="1";
+        logoutTimeline.fromTo(
+            featureCards,
+            {
+                opacity: 0,
+                y: 30
+            },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.15,
+                ease: "power2.out"
+            },
+            "-=0.5"
+        );
 
-            card.style.transform="translateY(0)";
-
-        },500+(index*150));
-
-    });
+    }
 
 });
+
+/*======================================
+        END - LOGOUT GSAP ANIMATION
+======================================*/
+
 
 /*======================================
         FUTURE BACKEND READY

@@ -126,10 +126,10 @@
 .contact-hero-image img{
     width:100%;
     max-width:620px;
-    animation:contactFloat 5s ease-in-out infinite;
+    /* animation:contactFloat 5s ease-in-out infinite; */
 }
 
-@keyframes contactFloat{
+/* @keyframes contactFloat{
 
     0%{
         transform:translateY(0);
@@ -143,7 +143,7 @@
         transform:translateY(0);
     }
 
-}
+} */
 
 /*=========================
       Responsive
@@ -161,6 +161,7 @@
 
 .contact-hero-content{
     max-width:100%;
+    
 }
 
 }
@@ -169,6 +170,8 @@
 
 .contact-hero-section{
     padding:60px 0;
+    margin-top: 30px;
+    justify-content: center !important;
 }
 
 .contact-hero-title{
@@ -1694,5 +1697,63 @@ textarea.form-control{
     box-shadow:0 0 0 .18rem rgba(220,53,69,.15);
 
 }
+/*======================================
+    CONTACT MOBILE OVERFLOW FIX START
+======================================*/
+
+@media (max-width: 767px){
+
+    .contact-hero-image img,
+    .faq-image img,
+    .contact-cta-image img{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+}
 
 
+/*======================================
+    CONTACT MOBILE OVERFLOW FIX END
+======================================*/
+
+/*======================================
+    CONTACT HERO MOBILE CENTER START
+======================================*/
+
+@media (max-width:767px){
+
+    .contact-hero-content{
+        text-align:center;
+    }
+
+    .contact-hero-features{
+        align-items:center;
+        width:100%;
+    }
+
+    .contact-feature-pill{
+        width:100%;
+        max-width:320px;
+        justify-content:flex-start;
+        text-align:left;
+    }
+
+    .contact-hero-info{
+        align-items:center;
+    }
+
+    .contact-info-item{
+        justify-content:center;
+    }
+
+    .contact-hero-image{
+        text-align:center;
+    }
+
+}
+
+/*======================================
+    CONTACT HERO MOBILE CENTER END
+======================================*/

@@ -121,7 +121,8 @@
 .btn-primary-custom:hover{
     transform:translateY(-3px);
     box-shadow:0 12px 25px rgba(0,0,0,.15);
-    color:var(--primary-color);
+    color:var(--primary-color) !important;
+    background:transparent !important;
     border:2px solid var(--primary-color);
 }
 
@@ -743,11 +744,11 @@
 
     filter:drop-shadow(0 35px 60px rgba(13,45,110,.15));
 
-    animation:heroFloat 5s ease-in-out infinite;
+    /* animation:heroFloat 5s ease-in-out infinite; */
 
-    transition:
+    /* transition:
     transform .35s ease,
-    filter .35s ease;
+    filter .35s ease; */
 
 }
 
@@ -813,7 +814,7 @@
       HERO ANIMATION START
 ======================================*/
 
-@keyframes heroFloat{
+/* @keyframes heroFloat{
 
     0%{
 
@@ -833,7 +834,7 @@
 
     }
 
-}
+} */
 
 /*======================================
       HERO ANIMATION END

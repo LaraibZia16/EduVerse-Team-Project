@@ -30,8 +30,7 @@
 
     <!--========== Font Awesome ==========-->
 
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
 
     <!--========== Bootstrap CSS ==========-->
@@ -57,290 +56,299 @@
     =======================================-->
 
     <!--========== Navbar Start ==========-->
-<nav class="navbar custom-navbar navbar-expand-lg fixed-top">
+    <nav class="navbar custom-navbar navbar-expand-lg fixed-top">
 
-    <div class="container">
+        <div class="container">
 
-        <!--========== Logo ==========-->
+            <!--========== Logo ==========-->
 
-        <a class="navbar-brand" href="index.html">
-            <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo" class="logo">
-        </a>
+            <a class="navbar-brand" href="index.html">
+                <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo" class="logo">
+            </a>
 
 
-        <!--========== Desktop Navigation ==========-->
+            <!--========== Desktop Navigation ==========-->
 
-        <div class="collapse navbar-collapse justify-content-center">
+            <div class="collapse navbar-collapse justify-content-center">
 
-            <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav mx-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link active" href="index.html">Home</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Home</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="courses.html">Courses</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="courses.html">Courses</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="about.html">About</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="contact.html">Contact</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="#features">Features</a>
-                </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
 
-            </ul>
+                </ul>
+
+            </div>
+
+
+            <!--========== Desktop Buttons ==========-->
+
+            <div class="navbar-actions d-none d-lg-flex align-items-center">
+
+                <a href="login.html" class="btn btn-login">
+                    Login
+                </a>
+
+                <a href="register.html" class="btn btn-primary-custom">
+                    Get Started
+                    <i class="fa-solid fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+
+            <!--========== Mobile Toggle ==========-->
+
+            <button class="menu-toggle d-lg-none" id="menuToggle" type="button" aria-label="Open Menu"
+                aria-controls="mobileMenu" aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
 
         </div>
 
+    </nav>
 
-        <!--========== Desktop Buttons ==========-->
-
-        <div class="navbar-actions d-none d-lg-flex align-items-center">
-
-            <a href="login.html" class="btn btn-login">
-                Login
-            </a>
-
-            <a href="register.html" class="btn btn-primary-custom">
-                Get Started
-                <i class="fa-solid fa-arrow-right"></i>
-            </a>
-
-        </div>
-
-
-        <!--========== Mobile Toggle ==========-->
-
-        <button class="menu-toggle d-lg-none"
-                id="menuToggle"
-                type="button"
-                aria-label="Open Menu"
-                aria-controls="mobileMenu"
-                aria-expanded="false">
-
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </button>
-
-    </div>
-
-</nav>
-
-<!--======================================
+    <!--======================================
         MOBILE OVERLAY
 =======================================-->
 
-<div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!--======================================
+    <!--======================================
         MOBILE MENU
 =======================================-->
 
-<aside class="mobile-menu" id="mobileMenu">
+    <aside class="mobile-menu" id="mobileMenu">
 
-    <!--========== Close Button ==========-->
+        <!--========== Close Button ==========-->
 
-    <button class="close-menu"
-            id="closeMenu"
-            type="button"
-            aria-label="Close Menu">
+        <button class="close-menu" id="closeMenu" type="button" aria-label="Close Menu">
 
-        <i class="fa-solid fa-xmark"></i>
+            <i class="fa-solid fa-xmark"></i>
 
-    </button>
+        </button>
 
-    <!--========== Mobile Logo ==========-->
+        <!--========== Mobile Logo ==========-->
 
-    <a href="index.html" class="mobile-logo">
+        <a href="index.html" class="mobile-logo">
 
-        <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo">
+            <img src="assets/images/logo/white-logo.png" alt="EduVerse Logo">
 
-    </a>
-
-    <!--========== Mobile Navigation ==========-->
-
-    <ul class="mobile-nav">
-
-        <li>
-            <a class="active" href="index.html">Home</a>
-        </li>
-
-        <li>
-            <a href="courses.html">Courses</a>
-        </li>
-
-        <li>
-            <a href="about.html">About</a>
-        </li>
-
-        <li>
-            <a href="contact.html">Contact</a>
-        </li>
-
-        <li>
-            <a href="index.html#features">Features</a>
-        </li>
-
-    </ul>
-
-    <!--========== Mobile Buttons ==========-->
-
-    <div class="mobile-buttons">
-
-        <a href="login.html" class="btn btn-login w-100">
-            Login
         </a>
 
-        <a href="register.html" class="btn btn-primary-custom w-100">
-            Get Started
-        </a>
+        <!--========== Mobile Navigation ==========-->
 
-    </div>
+        <ul class="mobile-nav">
 
-    <!--========== Social Icons ==========-->
+            <li>
+                <a class="active" href="index.html">Home</a>
+            </li>
 
-    <div class="mobile-social">
+            <li>
+                <a href="courses.html">Courses</a>
+            </li>
 
-        <a href="#" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
-        </a>
+            <li>
+                <a href="about.html">About</a>
+            </li>
 
-        <a href="#" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
-        </a>
+            <li>
+                <a href="contact.html">Contact</a>
+            </li>
 
-        <a href="#" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
-        </a>
+            <li>
+                <a href="index.html#features">Features</a>
+            </li>
 
-    </div>
+        </ul>
 
-</aside>
+        <!--========== Mobile Buttons ==========-->
 
- <!--========== Navbar End ==========-->
+        <div class="mobile-buttons">
+
+            <a href="login.html" class="btn btn-login w-100">
+                Login
+            </a>
+
+            <a href="register.html" class="btn btn-primary-custom w-100">
+                Get Started
+            </a>
+
+        </div>
+
+        <!--========== Social Icons ==========-->
+
+        <div class="mobile-social">
+
+            <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="#" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+
+            <a href="#" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+
+        </div>
+
+    </aside>
+
+    <!--========== Navbar End ==========-->
 
     <!--======================================
                 HEADER END
     =======================================-->
 
-  <!--======================================
+    <!--======================================
                  MAIN START
     =======================================-->
 
     <main>
 
-<!--======================================
+        <!--======================================
             HERO SECTION START
 =======================================-->
 
-<section class="hero-section">
+        <section class="hero-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="row align-items-center hero-row">
+                <div class="row align-items-center hero-row">
 
-            <!--========== Hero Content ==========-->
+                    <!--========== Hero Content ==========-->
 
-            <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                <div class="hero-content">
+                        <div class="hero-content">
 
-                    <span class="hero-badge">
-                        <i class="fa-solid fa-star"></i>
-                        AI-Powered Learning Platform
-                    </span>
-
-                    <h1 class="hero-title">
-                        Learn Smarter.
-                        <br>
-                        Teach Better.
-                        <br>
-                        Grow Together.
-                    </h1>
-
-                    <p class="hero-description">
-                        EduVerse is an all-in-one platform for students and teachers
-                        to connect, learn, teach, and achieve more together.
-                    </p>
-
-                    <!--========== Hero Buttons ==========-->
-
-                    <div class="hero-buttons">
-
-                        <a href="register.html" class="hero-card-btn">
-
-                            <div class="hero-btn-icon">
-                                <i class="fa-solid fa-user-graduate"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>I'm a Student</h6>
-
-                                <span>Start Learning</span>
-
-                            </div>
-
-                        </a>
-
-                        <a href="register.html" class="hero-card-btn">
-
-                            <div class="hero-btn-icon">
-                                <i class="fa-solid fa-chalkboard-user"></i>
-                            </div>
-
-                            <div>
-
-                                <h6>I'm a Teacher</h6>
-
-                                <span>Start Teaching</span>
-
-                            </div>
-
-                        </a>
-
-                    </div>
-
-                    <!--========== Trusted Users ==========-->
-
-                    <div class="hero-trust">
-
-                        <div class="trust-images">
-
-                            <img src="assets/images/hero/users-1.png" alt="User">
-
-                            <img src="assets/images/hero/users-2.png" alt="User">
-
-                            <img src="assets/images/hero/users-3.png" alt="User">
-
-                            <img src="assets/images/hero/users-4.png" alt="User">
-
-                        </div>
-
-                        <div class="trust-content">
-
-                            <div class="trust-stars">
-
+                            <span class="hero-badge">
                                 <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
-                                <i class="fa-solid fa-star"></i>
+                                AI-Powered Learning Platform
+                            </span>
 
-                            </div>
+                            <h1 class="hero-title">
+                                Learn Smarter.
+                                <br>
+                                Teach Better.
+                                <br>
+                                Grow Together.
+                            </h1>
 
-                            <p>
-                                Trusted by 50K+ students & teachers
+                            <p class="hero-description">
+                                EduVerse is an all-in-one platform for students and teachers
+                                to connect, learn, teach, and achieve more together.
                             </p>
 
+                            <!--========== Hero Buttons ==========-->
+
+                            <div class="hero-buttons">
+
+                                <a href="register.html" class="hero-card-btn">
+
+                                    <div class="hero-btn-icon">
+                                        <i class="fa-solid fa-user-graduate"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <h6>I'm a Student</h6>
+
+                                        <span>Start Learning</span>
+
+                                    </div>
+
+                                </a>
+
+                                <a href="register.html" class="hero-card-btn">
+
+                                    <div class="hero-btn-icon">
+                                        <i class="fa-solid fa-chalkboard-user"></i>
+                                    </div>
+
+                                    <div>
+
+                                        <h6>I'm a Teacher</h6>
+
+                                        <span>Start Teaching</span>
+
+                                    </div>
+
+                                </a>
+
+                            </div>
+
+                            <!--========== Trusted Users ==========-->
+
+                            <div class="hero-trust">
+
+                                <div class="trust-images">
+
+                                    <img src="assets/images/hero/users-1.png" alt="User">
+
+                                    <img src="assets/images/hero/users-2.png" alt="User">
+
+                                    <img src="assets/images/hero/users-3.png" alt="User">
+
+                                    <img src="assets/images/hero/users-4.png" alt="User">
+
+                                </div>
+
+                                <div class="trust-content">
+
+                                    <div class="trust-stars">
+
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+
+                                    </div>
+
+                                    <p>
+                                        Trusted by 50K+ students & teachers
+                                    </p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!--========== Hero Image ==========-->
+
+                    <div class="col-lg-6">
+
+                        <div class="hero-image-wrapper">
+
+                            <img src="assets/images/hero/hero.png" alt="EduVerse Hero" class="img-fluid hero-image">
+
                         </div>
 
                     </div>
@@ -349,788 +357,749 @@
 
             </div>
 
-            <!--========== Hero Image ==========-->
+        </section>
 
-            <div class="col-lg-6">
-
-                <div class="hero-image-wrapper">
-
-                    <img
-                        src="assets/images/hero/hero.png"
-                        alt="EduVerse Hero"
-                        class="img-fluid hero-image">
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
             HERO SECTION END
 =======================================-->
 
-<!--======================================
+        <!--======================================
         FEATURES SECTION START
 =======================================-->
 
-<section class="features-section py-5" id="features">
+        <section class="features-section py-5" id="features">
 
-    <div class="container">
+            <div class="container">
 
-        <!--========== SECTION HEADING START ==========-->
+                <!--========== SECTION HEADING START ==========-->
 
-        <div class="section-heading text-center">
+                <div class="section-heading text-center">
 
-            <span class="hero-badge">
-                <i class="fa-solid fa-star"></i> 
-               Explore Our Features
-            </span>
+                    <span class="hero-badge">
+                        <i class="fa-solid fa-star"></i>
+                        Explore Our Features
+                    </span>
 
-            <h2 class="section-title">
-                Everything You Need To Learn Smarter
-            </h2>
+                    <h2 class="section-title">
+                        Everything You Need To Learn Smarter
+                    </h2>
 
-            <p class="section-description">
-                EduVerse provides all the essential tools to help students and teachers learn, teach, and grow together.
-            </p>
+                    <p class="section-description">
+                        EduVerse provides all the essential tools to help students and teachers learn, teach, and grow
+                        together.
+                    </p>
 
-        </div>
+                </div>
 
-        <!--========== SECTION HEADING END ==========-->
-
-
-        <!--========== FEATURES GRID START ==========-->
+                <!--========== SECTION HEADING END ==========-->
 
 
-<div class="features-grid mt-5">
+                <!--========== FEATURES GRID START ==========-->
 
-    <!--===== CARD 1 =====-->
 
-    <div class="feature-item">
+                <div class="features-grid mt-5">
 
-        <article class="feature-card">
+                    <!--===== CARD 1 =====-->
 
-            <div class="feature-icon">
+                    <div class="feature-item">
 
-                <img src="assets/images/hero/liveclasses.png"
-                     alt="Live Classes">
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/liveclasses.png" alt="Live Classes">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Live Classes
+                            </h3>
+
+                            <p class="feature-text">
+                                Join live classes with expert instructors and interactive learning.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 2 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/videoleactures.png" alt="Video Courses">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Video Courses
+                            </h3>
+
+                            <p class="feature-text">
+                                Learn anytime with HD recorded lessons at your own pace.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 3 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/practicequiz.png" alt="Practice Quizzes">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Practice Quizzes
+                            </h3>
+
+                            <p class="feature-text">
+                                Practice quizzes with instant results and explanations.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 4 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/Assignment.png" alt="Assignments">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Assignments
+                            </h3>
+
+                            <p class="feature-text">
+                                Submit assignments and receive instructor feedback online.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 5 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/AI.png" alt="AI Assistant">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                AI Assistant
+                            </h3>
+
+                            <p class="feature-text">
+                                Get AI-powered study help and personalized recommendations.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 6 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/Ptracker.png" alt="Progress Tracker">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Progress Tracker
+                            </h3>
+
+                            <p class="feature-text">
+                                Monitor lessons, quiz scores and learning progress easily.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+                    <!--===== CARD 7 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/certificate.png" alt="Course Certificates">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Course Certificates
+                            </h3>
+
+                            <p class="feature-text">
+                                Earn verified certificates after successfully completing your courses.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--===== CARD 8 =====-->
+
+                    <div class="feature-item">
+
+                        <article class="feature-card">
+
+                            <div class="feature-icon">
+
+                                <img src="assets/images/hero/community.png" alt="Learning Community">
+
+                            </div>
+
+                            <h3 class="feature-title">
+                                Learning Community
+                            </h3>
+
+                            <p class="feature-text">
+                                Connect with students and teachers through discussions and group learning.
+                            </p>
+
+                            <a href="courses.html" class="feature-link">
+
+                                Explore
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </a>
+
+                        </article>
+
+                    </div>
+
+
+
+                </div>
+
+                <!--========== FEATURES GRID END ==========-->
+
+                <!--========== FEATURES GRID END ==========-->
 
             </div>
 
-            <h3 class="feature-title">
-                Live Classes
-            </h3>
+        </section>
 
-            <p class="feature-text">
-                Join live classes with expert instructors and interactive learning.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-
-    <!--===== CARD 2 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/videoleactures.png"
-                     alt="Video Courses">
-
-            </div>
-
-            <h3 class="feature-title">
-                Video Courses
-            </h3>
-
-            <p class="feature-text">
-                Learn anytime with HD recorded lessons at your own pace.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-
-    <!--===== CARD 3 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/practicequiz.png"
-                     alt="Practice Quizzes">
-
-            </div>
-
-            <h3 class="feature-title">
-                Practice Quizzes
-            </h3>
-
-            <p class="feature-text">
-                Practice quizzes with instant results and explanations.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-
-    <!--===== CARD 4 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/Assignment.png"
-                     alt="Assignments">
-
-            </div>
-
-            <h3 class="feature-title">
-                Assignments
-            </h3>
-
-            <p class="feature-text">
-                Submit assignments and receive instructor feedback online.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-
-    <!--===== CARD 5 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/AI.png"
-                     alt="AI Assistant">
-
-            </div>
-
-            <h3 class="feature-title">
-                AI Assistant
-            </h3>
-
-            <p class="feature-text">
-                Get AI-powered study help and personalized recommendations.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-
-    <!--===== CARD 6 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/Ptracker.png"
-                     alt="Progress Tracker">
-
-            </div>
-
-            <h3 class="feature-title">
-                Progress Tracker
-            </h3>
-
-            <p class="feature-text">
-                Monitor lessons, quiz scores and learning progress easily.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-    
-    <!--===== CARD 7 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/certificate.png"
-                     alt="Course Certificates">
-
-            </div>
-
-            <h3 class="feature-title">
-                Course Certificates
-            </h3>
-
-            <p class="feature-text">
-                Earn verified certificates after successfully completing your courses.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-
-    
-    <!--===== CARD 8 =====-->
-
-    <div class="feature-item">
-
-        <article class="feature-card">
-
-            <div class="feature-icon">
-
-                <img src="assets/images/hero/community.png"
-                     alt="Learning Community">
-
-            </div>
-
-            <h3 class="feature-title">
-               Learning Community
-            </h3>
-
-            <p class="feature-text">
-                Connect with students and teachers through discussions and group learning.
-            </p>
-
-            <a href="courses.html" class="feature-link">
-
-                Explore
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </article>
-
-    </div>
-
-    
-
-</div>
-
-<!--========== FEATURES GRID END ==========-->
-
-        <!--========== FEATURES GRID END ==========-->
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
         FEATURES SECTION END
 =======================================-->
 
 
-<!--======================================
+        <!--======================================
       POPULAR COURSES SECTION START
 =======================================-->
 
-<section class="courses-section py-5" id="courses">
+        <section class="courses-section py-5" id="courses">
 
-    <div class="container">
+            <div class="container">
 
-        <!--========== SECTION HEADING START ==========-->
+                <!--========== SECTION HEADING START ==========-->
 
-        <div class="section-heading text-center">
+                <div class="section-heading text-center">
 
-            <span class="hero-badge">
-                 <i class="fa-solid fa-star"></i>
-                Popular Courses
-            </span>
+                    <span class="hero-badge">
+                        <i class="fa-solid fa-star"></i>
+                        Popular Courses
+                    </span>
 
-            <h2 class="section-title">
-                Learn From Industry Experts
-            </h2>
+                    <h2 class="section-title">
+                        Learn From Industry Experts
+                    </h2>
 
-            <p class="section-description">
-                Choose from our most popular courses and build skills for your
-                future career.
-            </p>
+                    <p class="section-description">
+                        Choose from our most popular courses and build skills for your
+                        future career.
+                    </p>
 
-        </div>
+                </div>
 
-        <!--========== SECTION HEADING END ==========-->
+                <!--========== SECTION HEADING END ==========-->
 
 
 
-        <!--========== COURSE GRID START ==========-->
+                <!--========== COURSE GRID START ==========-->
 
-        <div class="row g-4 mt-4">
+                <div class="row g-4 mt-4">
 
-            <!--================ COURSE 1 ================-->
+                    <!--================ COURSE 1 ================-->
 
-            <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-3 col-md-6">
 
-                <article class="course-card">
+                        <article class="course-card">
 
-                    <div class="course-image">
+                            <div class="course-image">
 
-                        <img
-                            src="assets/images/hero/web-development-course.png"
-                            alt="Web Development">
+                                <img src="assets/images/hero/web-development-course.png" alt="Web Development">
 
-                        <span class="course-category">
-                            Development
-                        </span>
+                                <span class="course-category">
+                                    Development
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <div class="course-rating">
+
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <span>4.9 (620)</span>
+
+                                </div>
+
+                                <h3 class="course-title">
+                                    Complete Web Development Bootcamp
+                                </h3>
+
+                                <p class="course-instructor">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                    By John Anderson
+
+                                </p>
+
+                                <div class="course-info">
+
+                                    <span>
+
+                                        <i class="fa-solid fa-video"></i>
+
+                                        45 Lessons
+
+                                    </span>
+
+                                    <span>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        2.4K Students
+
+                                    </span>
+
+                                </div>
+
+                                <div class="course-footer">
+
+                                    <h4 class="course-price">
+                                        $49
+                                    </h4>
+
+                                    <a href="courses.html" class="course-btn">
+
+                                        Enroll
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
 
                     </div>
 
-                    <div class="course-content">
 
-                        <div class="course-rating">
 
-                            <i class="fa-solid fa-star"></i>
+                    <!--================ COURSE 2 ================-->
 
-                            <span>4.9 (620)</span>
+                    <div class="col-lg-3 col-md-6">
 
-                        </div>
+                        <article class="course-card">
 
-                        <h3 class="course-title">
-                            Complete Web Development Bootcamp
-                        </h3>
+                            <div class="course-image">
 
-                        <p class="course-instructor">
+                                <img src="assets/images/hero/ui-ux-design-course.png" alt="UI UX">
 
-                            <i class="fa-solid fa-user"></i>
+                                <span class="course-category">
+                                    Design
+                                </span>
 
-                            By John Anderson
+                            </div>
 
-                        </p>
+                            <div class="course-content">
 
-                        <div class="course-info">
+                                <div class="course-rating">
 
-                            <span>
+                                    <i class="fa-solid fa-star"></i>
 
-                                <i class="fa-solid fa-video"></i>
+                                    <span>4.8 (540)</span>
 
-                                45 Lessons
+                                </div>
 
-                            </span>
+                                <h3 class="course-title">
+                                    UI / UX Design Masterclass
+                                </h3>
 
-                            <span>
+                                <p class="course-instructor">
 
-                                <i class="fa-solid fa-users"></i>
+                                    <i class="fa-solid fa-user"></i>
 
-                                2.4K Students
+                                    By Sarah Wilson
 
-                            </span>
+                                </p>
 
-                        </div>
+                                <div class="course-info">
 
-                        <div class="course-footer">
+                                    <span>
 
-                            <h4 class="course-price">
-                                $49
-                            </h4>
+                                        <i class="fa-solid fa-video"></i>
 
-                            <a href="courses.html"
-                               class="course-btn">
+                                        38 Lessons
 
-                                Enroll
+                                    </span>
 
-                            </a>
+                                    <span>
 
-                        </div>
+                                        <i class="fa-solid fa-users"></i>
+
+                                        1.8K Students
+
+                                    </span>
+
+                                </div>
+
+                                <div class="course-footer">
+
+                                    <h4 class="course-price">
+                                        $39
+                                    </h4>
+
+                                    <a href="courses.html" class="course-btn">
+
+                                        Enroll
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
 
                     </div>
 
-                </article>
+
+
+                    <!--================ COURSE 3 ================-->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <article class="course-card">
+
+                            <div class="course-image">
+
+                                <img src="assets/images/hero/digital-marketing-course.png" alt="Digital Marketing">
+
+                                <span class="course-category">
+                                    Marketing
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <div class="course-rating">
+
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <span>4.7 (410)</span>
+
+                                </div>
+
+                                <h3 class="course-title">
+                                    Digital Marketing Fundamentals
+                                </h3>
+
+                                <p class="course-instructor">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                    By David Miller
+
+                                </p>
+
+                                <div class="course-info">
+
+                                    <span>
+
+                                        <i class="fa-solid fa-video"></i>
+
+                                        32 Lessons
+
+                                    </span>
+
+                                    <span>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        1.5K Students
+
+                                    </span>
+
+                                </div>
+
+                                <div class="course-footer">
+
+                                    <h4 class="course-price">
+                                        $35
+                                    </h4>
+
+                                    <a href="courses.html" class="course-btn">
+
+                                        Enroll
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+
+
+                    <!--================ COURSE 4 ================-->
+
+                    <div class="col-lg-3 col-md-6">
+
+                        <article class="course-card">
+
+                            <div class="course-image">
+
+                                <img src="assets/images/hero/data-science-course.png" alt="Data Science">
+
+                                <span class="course-category">
+                                    Data Science
+                                </span>
+
+                            </div>
+
+                            <div class="course-content">
+
+                                <div class="course-rating">
+
+                                    <i class="fa-solid fa-star"></i>
+
+                                    <span>4.9 (730)</span>
+
+                                </div>
+
+                                <h3 class="course-title">
+                                    Data Science & Machine Learning
+                                </h3>
+
+                                <p class="course-instructor">
+
+                                    <i class="fa-solid fa-user"></i>
+
+                                    By Emily Watson
+
+                                </p>
+
+                                <div class="course-info">
+
+                                    <span>
+
+                                        <i class="fa-solid fa-video"></i>
+
+                                        52 Lessons
+
+                                    </span>
+
+                                    <span>
+
+                                        <i class="fa-solid fa-users"></i>
+
+                                        3.2K Students
+
+                                    </span>
+
+                                </div>
+
+                                <div class="course-footer">
+
+                                    <h4 class="course-price">
+                                        $59
+                                    </h4>
+
+                                    <a href="courses.html" class="course-btn">
+
+                                        Enroll
+
+                                    </a>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </div>
+
+                <!--========== COURSE GRID END ==========-->
+
+
+
+                <!--========== VIEW ALL BUTTON START ==========-->
+
+                <div class="text-center mt-5">
+
+                    <a href="courses.html" class="btn-primary-custom">
+
+                        Browse All Courses
+
+                        <i class="fa-solid fa-arrow-right"></i>
+
+                    </a>
+
+                </div>
+
+                <!--========== VIEW ALL BUTTON END ==========-->
 
             </div>
 
+        </section>
 
-
-            <!--================ COURSE 2 ================-->
-
-            <div class="col-lg-3 col-md-6">
-
-                <article class="course-card">
-
-                    <div class="course-image">
-
-                        <img
-                            src="assets/images/hero/ui-ux-design-course.png"
-                            alt="UI UX">
-
-                        <span class="course-category">
-                            Design
-                        </span>
-
-                    </div>
-
-                    <div class="course-content">
-
-                        <div class="course-rating">
-
-                            <i class="fa-solid fa-star"></i>
-
-                            <span>4.8 (540)</span>
-
-                        </div>
-
-                        <h3 class="course-title">
-                            UI / UX Design Masterclass
-                        </h3>
-
-                        <p class="course-instructor">
-
-                            <i class="fa-solid fa-user"></i>
-
-                            By Sarah Wilson
-
-                        </p>
-
-                        <div class="course-info">
-
-                            <span>
-
-                                <i class="fa-solid fa-video"></i>
-
-                                38 Lessons
-
-                            </span>
-
-                            <span>
-
-                                <i class="fa-solid fa-users"></i>
-
-                                1.8K Students
-
-                            </span>
-
-                        </div>
-
-                        <div class="course-footer">
-
-                            <h4 class="course-price">
-                                $39
-                            </h4>
-
-                            <a href="courses.html"
-                               class="course-btn">
-
-                                Enroll
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-
-            <!--================ COURSE 3 ================-->
-
-            <div class="col-lg-3 col-md-6">
-
-                <article class="course-card">
-
-                    <div class="course-image">
-
-                        <img
-                            src="assets/images/hero/digital-marketing-course.png"
-                            alt="Digital Marketing">
-
-                        <span class="course-category">
-                            Marketing
-                        </span>
-
-                    </div>
-
-                    <div class="course-content">
-
-                        <div class="course-rating">
-
-                            <i class="fa-solid fa-star"></i>
-
-                            <span>4.7 (410)</span>
-
-                        </div>
-
-                        <h3 class="course-title">
-                            Digital Marketing Fundamentals
-                        </h3>
-
-                        <p class="course-instructor">
-
-                            <i class="fa-solid fa-user"></i>
-
-                            By David Miller
-
-                        </p>
-
-                        <div class="course-info">
-
-                            <span>
-
-                                <i class="fa-solid fa-video"></i>
-
-                                32 Lessons
-
-                            </span>
-
-                            <span>
-
-                                <i class="fa-solid fa-users"></i>
-
-                                1.5K Students
-
-                            </span>
-
-                        </div>
-
-                        <div class="course-footer">
-
-                            <h4 class="course-price">
-                                $35
-                            </h4>
-
-                            <a href="courses.html"
-                               class="course-btn">
-
-                                Enroll
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-
-
-            <!--================ COURSE 4 ================-->
-
-            <div class="col-lg-3 col-md-6">
-
-                <article class="course-card">
-
-                    <div class="course-image">
-
-                        <img
-                            src="assets/images/hero/data-science-course.png"
-                            alt="Data Science">
-
-                        <span class="course-category">
-                            Data Science
-                        </span>
-
-                    </div>
-
-                    <div class="course-content">
-
-                        <div class="course-rating">
-
-                            <i class="fa-solid fa-star"></i>
-
-                            <span>4.9 (730)</span>
-
-                        </div>
-
-                        <h3 class="course-title">
-                            Data Science & Machine Learning
-                        </h3>
-
-                        <p class="course-instructor">
-
-                            <i class="fa-solid fa-user"></i>
-
-                            By Emily Watson
-
-                        </p>
-
-                        <div class="course-info">
-
-                            <span>
-
-                                <i class="fa-solid fa-video"></i>
-
-                                52 Lessons
-
-                            </span>
-
-                            <span>
-
-                                <i class="fa-solid fa-users"></i>
-
-                                3.2K Students
-
-                            </span>
-
-                        </div>
-
-                        <div class="course-footer">
-
-                            <h4 class="course-price">
-                                $59
-                            </h4>
-
-                            <a href="courses.html"
-                               class="course-btn">
-
-                                Enroll
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
-
-            </div>
-
-        </div>
-
-        <!--========== COURSE GRID END ==========-->
-
-
-
-        <!--========== VIEW ALL BUTTON START ==========-->
-
-        <div class="text-center mt-5">
-
-            <a href="courses.html"
-               class="btn-primary-custom">
-
-                Browse All Courses
-
-                <i class="fa-solid fa-arrow-right"></i>
-
-            </a>
-
-        </div>
-
-        <!--========== VIEW ALL BUTTON END ==========-->
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
       POPULAR COURSES SECTION END
 =======================================-->
 
-<!--======================================
+        <!--======================================
       STUDENT & TEACHER CTA START
 =======================================-->
 
-<section class="cta-section py-5">
+        <section class="cta-section py-5">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="row g-4">
+                <div class="row g-4">
 
-            <!--========== STUDENT CARD START ==========-->
+                    <!--========== STUDENT CARD START ==========-->
 
-            <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                <div class="cta-card student-card">
+                        <div class="cta-card student-card">
 
-                    <div class="row align-items-center">
+                            <div class="row align-items-center">
 
-                        <div class="col-md-7">
+                                <div class="col-md-7">
 
-                            <span class="cta-badge">
-                                 <i class="fa-solid fa-star"></i>
-                                For Students
-                            </span>
+                                    <span class="cta-badge">
+                                        <i class="fa-solid fa-star"></i>
+                                        For Students
+                                    </span>
 
-                            <h2 class="cta-title">
-                                Learn Anytime,
-                                Anywhere
-                            </h2>
+                                    <h2 class="cta-title">
+                                        Learn Anytime,
+                                        Anywhere
+                                    </h2>
 
-                            <!-- <p class="cta-description">
+                                    <!-- <p class="cta-description">
 
                                 Access premium courses,
                                 live classes, quizzes,
@@ -1139,96 +1108,93 @@
 
                             </p> -->
 
-                            <ul class="cta-list">
+                                    <ul class="cta-list">
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Live Interactive Classes
+                                            Live Interactive Classes
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    HD Recorded Courses
+                                            HD Recorded Courses
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Practice Quizzes
+                                            Practice Quizzes
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Track Learning Progress
+                                            Track Learning Progress
 
-                                </li>
+                                        </li>
 
-                            </ul>
+                                    </ul>
 
-                            <a href="register.html"
-                               class="btn-primary-custom">
+                                    <a href="register.html" class="btn-primary-custom">
 
-                                Start Learning
+                                        Start Learning
 
-                                <i class="fa-solid fa-arrow-right"></i>
+                                        <i class="fa-solid fa-arrow-right"></i>
 
-                            </a>
+                                    </a>
 
-                        </div>
+                                </div>
 
-                        <div class="col-md-5 text-center">
+                                <div class="col-md-5 text-center">
 
-                            <img
-                                src="assets/images/hero/student.png"
-                                alt="Student Illustration"
-                                class="img-fluid cta-image">
+                                    <img src="assets/images/hero/student.png" alt="Student Illustration"
+                                        class="img-fluid cta-image">
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
-                </div>
-
-            </div>
-
-            <!--========== STUDENT CARD END ==========-->
+                    <!--========== STUDENT CARD END ==========-->
 
 
 
-            <!--========== TEACHER CARD START ==========-->
+                    <!--========== TEACHER CARD START ==========-->
 
-            <div class="col-lg-6">
+                    <div class="col-lg-6">
 
-                <div class="cta-card teacher-card">
+                        <div class="cta-card teacher-card">
 
-                    <div class="row align-items-center">
+                            <div class="row align-items-center">
 
-                        <div class="col-md-7">
+                                <div class="col-md-7">
 
-                            <span class="cta-badge">
-                             <i class="fa-solid fa-star"></i>
-                                For Teachers
+                                    <span class="cta-badge">
+                                        <i class="fa-solid fa-star"></i>
+                                        For Teachers
 
-                            </span>
+                                    </span>
 
-                            <h2 class="cta-title">
+                                    <h2 class="cta-title">
 
-                                Teach & Inspire
-                                Thousands
+                                        Teach & Inspire
+                                        Thousands
 
-                            </h2>
+                                    </h2>
 
-                            <!-- <p class="cta-description">
+                                    <!-- <p class="cta-description">
 
                                 Create courses, upload
                                 lectures, manage students
@@ -1237,151 +1203,152 @@
 
                             </p> -->
 
-                            <ul class="cta-list">
+                                    <ul class="cta-list">
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Upload Video Courses
+                                            Upload Video Courses
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Manage Students
+                                            Manage Students
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Create Assignments
+                                            Create Assignments
 
-                                </li>
+                                        </li>
 
-                                <li>
+                                        <li>
 
-                                    <i class="fa-solid fa-circle-check"></i>
+                                            <i class="fa-solid fa-circle-check"></i>
 
-                                    Analytics Dashboard
+                                            Analytics Dashboard
 
-                                </li>
+                                        </li>
 
-                            </ul>
+                                    </ul>
 
-                            <a href="register.html"
-                               class="btn-primary-custom">
+                                    <a href="register.html" class="btn-primary-custom">
 
-                                Become Instructor
+                                        Become Instructor
 
-                                <i class="fa-solid fa-arrow-right"></i>
+                                        <i class="fa-solid fa-arrow-right"></i>
 
-                            </a>
+                                    </a>
 
-                        </div>
+                                </div>
 
-                        <div class="col-md-5 text-center">
+                                <div class="col-md-5 text-center">
 
-                            <img
-                                src="assets/images/hero/teacher.png"
-                                alt="Teacher Illustration"
-                                class="img-fluid cta-image">
+                                    <img src="assets/images/hero/teacher.png" alt="Teacher Illustration"
+                                        class="img-fluid cta-image">
+
+                                </div>
+
+                            </div>
 
                         </div>
 
                     </div>
 
+                    <!--========== TEACHER CARD END ==========-->
+
                 </div>
 
             </div>
 
-            <!--========== TEACHER CARD END ==========-->
+        </section>
 
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
       STUDENT & TEACHER CTA END
 =======================================-->
 
-<!--======================================
+        <!--======================================
         STATISTICS SECTION START
 =======================================-->
 
-<section class="statistics-section">
+        <section class="statistics-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="stats-box">
+                <div class="stats-box">
 
-            <div class="row g-0">
+                    <div class="row g-0">
 
-                <div class="col-lg-3 col-md-6 col-6">
+                        <div class="col-lg-3 col-md-6 col-6">
 
-                    <div class="stat-item">
+                            <div class="stat-item">
 
-                        <div class="stat-icon">
-                            <i class="fas fa-user-graduate"></i>
+                                <div class="stat-icon">
+                                    <i class="fas fa-user-graduate"></i>
+                                </div>
+
+                                <h2>50K+</h2>
+
+                                <p>Active Students</p>
+
+                            </div>
+
                         </div>
 
-                        <h2>50K+</h2>
+                        <div class="col-lg-3 col-md-6 col-6">
 
-                        <p>Active Students</p>
+                            <div class="stat-item">
 
-                    </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-chalkboard-teacher"></i>
+                                </div>
 
-                </div>
+                                <h2>2K+</h2>
 
-                <div class="col-lg-3 col-md-6 col-6">
+                                <p>Expert Teachers</p>
 
-                    <div class="stat-item">
+                            </div>
 
-                        <div class="stat-icon">
-                            <i class="fas fa-chalkboard-teacher"></i>
                         </div>
 
-                        <h2>2K+</h2>
+                        <div class="col-lg-3 col-md-6 col-6">
 
-                        <p>Expert Teachers</p>
+                            <div class="stat-item">
 
-                    </div>
+                                <div class="stat-icon">
+                                    <i class="fas fa-book-open"></i>
+                                </div>
 
-                </div>
+                                <h2>1000+</h2>
 
-                <div class="col-lg-3 col-md-6 col-6">
+                                <p>Courses</p>
 
-                    <div class="stat-item">
+                            </div>
 
-                        <div class="stat-icon">
-                            <i class="fas fa-book-open"></i>
                         </div>
 
-                        <h2>1000+</h2>
+                        <div class="col-lg-3 col-md-6 col-6">
 
-                        <p>Courses</p>
+                            <div class="stat-item">
 
-                    </div>
+                                <div class="stat-icon">
+                                    <i class="far fa-star"></i>
+                                </div>
 
-                </div>
+                                <h2>98%</h2>
 
-                <div class="col-lg-3 col-md-6 col-6">
+                                <p>Satisfaction Rate</p>
 
-                    <div class="stat-item">
+                            </div>
 
-                        <div class="stat-icon">
-                            <i class="far fa-star"></i>
                         </div>
-
-                        <h2>98%</h2>
-
-                        <p>Satisfaction Rate</p>
 
                     </div>
 
@@ -1389,293 +1356,289 @@
 
             </div>
 
-        </div>
+        </section>
 
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
         STATISTICS SECTION END
 =======================================-->
 
-<!--======================================
+        <!--======================================
         TESTIMONIALS START
 =======================================-->
 
-<section class="testimonial-section">
+        <section class="testimonial-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="section-header text-center">
+                <div class="section-header text-center">
 
-            <span class="hero-badge">
-                <i class="fas fa-comment-dots"></i>
-                Testimonials
-            </span>
+                    <span class="hero-badge">
+                        <i class="fas fa-comment-dots"></i>
+                        Testimonials
+                    </span>
 
-            <h2>What Our Students Say</h2>
+                    <h2>What Our Students Say</h2>
 
-            <p>
-                Thousands of learners trust EduVerse to improve their
-                skills and achieve their career goals.
-            </p>
+                    <p>
+                        Thousands of learners trust EduVerse to improve their
+                        skills and achieve their career goals.
+                    </p>
 
-        </div>
+                </div>
 
-        <div class="testimonial-slider">
+                <div class="testimonial-slider">
 
-            <button class="slider-btn prev-btn">
-                <i class="fas fa-chevron-left"></i>
-            </button>
+                    <button class="slider-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
 
-            <div class="testimonial-wrapper">
+                    <div class="testimonial-wrapper">
 
-                <div class="testimonial-track">
+                        <div class="testimonial-track">
 
-                    <!-- Card 1 -->
+                            <!-- Card 1 -->
 
-                    <div class="testimonial-card">
+                            <div class="testimonial-card">
 
-                        <div class="student-info">
+                                <div class="student-info">
 
-                            <img src="assets/images/hero/user1.png" alt="Student">
+                                    <img src="assets/images/hero/user1.png" alt="Student">
 
-                            <div>
+                                    <div>
 
-                                <h5>Ali Raza</h5>
+                                        <h5>Ali Raza</h5>
 
-                                <span>Web Development Student</span>
+                                        <span>Web Development Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    EduVerse completely changed my learning experience.
+                                    The courses are easy to understand and very practical.
+                                </p>
+
+                            </div>
+
+                            <!-- Card 2 -->
+
+                            <div class="testimonial-card">
+
+                                <div class="student-info">
+
+                                    <img src="assets/images/hero/user2.png" alt="Student">
+
+                                    <div>
+
+                                        <h5>Fatima Khan</h5>
+
+                                        <span>UI/UX Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    Amazing instructors and beautiful interface.
+                                    Highly recommended for beginners.
+                                </p>
+
+                            </div>
+
+                            <!-- Card 3 -->
+
+                            <div class="testimonial-card">
+
+                                <div class="student-info">
+
+                                    <img src="assets/images/hero/user3.png" alt="Student">
+
+                                    <div>
+
+                                        <h5>Ahmed Hassan</h5>
+
+                                        <span>Python Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    I landed my internship after completing
+                                    the Python roadmap on EduVerse.
+                                </p>
+
+                            </div>
+
+                            <!-- Card 4 -->
+
+                            <div class="testimonial-card">
+
+                                <div class="student-info">
+
+                                    <img src="assets/images/hero/user4.png" alt="Student">
+
+                                    <div>
+
+                                        <h5>Ayesha Noor</h5>
+
+                                        <span>Graphic Design Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    Every lesson is well structured and enjoyable.
+                                    Support from teachers is excellent.
+                                </p>
+
+                            </div>
+
+                            <!-- Card 5 -->
+
+                            <div class="testimonial-card">
+
+                                <div class="student-info">
+
+                                    <img src="assets/images/hero/user5.png" alt="Student">
+
+                                    <div>
+
+                                        <h5>Hamza Ali</h5>
+
+                                        <span>Digital Marketing Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    One of the best online learning platforms I have ever used.
+                                </p>
+
+                            </div>
+
+                            <!-- Card 6 -->
+
+                            <div class="testimonial-card">
+
+                                <div class="student-info">
+
+                                    <img src="assets/images/hero/user6.png" alt="Student">
+
+                                    <div>
+
+                                        <h5>Zainab Malik</h5>
+
+                                        <span>Business Student</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="stars">
+                                    ★★★★★
+                                </div>
+
+                                <p>
+                                    Professional courses with an easy learning path.
+                                    Perfect for university students.
+                                </p>
 
                             </div>
 
                         </div>
 
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            EduVerse completely changed my learning experience.
-                            The courses are easy to understand and very practical.
-                        </p>
-
                     </div>
 
-                    <!-- Card 2 -->
-
-                    <div class="testimonial-card">
-
-                        <div class="student-info">
-
-                            <img src="assets/images/hero/user2.png" alt="Student">
-
-                            <div>
-
-                                <h5>Fatima Khan</h5>
-
-                                <span>UI/UX Student</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            Amazing instructors and beautiful interface.
-                            Highly recommended for beginners.
-                        </p>
-
-                    </div>
-
-                    <!-- Card 3 -->
-
-                    <div class="testimonial-card">
-
-                        <div class="student-info">
-
-                            <img src="assets/images/hero/user3.png" alt="Student">
-
-                            <div>
-
-                                <h5>Ahmed Hassan</h5>
-
-                                <span>Python Student</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            I landed my internship after completing
-                            the Python roadmap on EduVerse.
-                        </p>
-
-                    </div>
-
-                    <!-- Card 4 -->
-
-                    <div class="testimonial-card">
-
-                        <div class="student-info">
-
-                            <img src="assets/images/hero/user4.png" alt="Student">
-
-                            <div>
-
-                                <h5>Ayesha Noor</h5>
-
-                                <span>Graphic Design Student</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            Every lesson is well structured and enjoyable.
-                            Support from teachers is excellent.
-                        </p>
-
-                    </div>
-
-                    <!-- Card 5 -->
-
-                    <div class="testimonial-card">
-
-                        <div class="student-info">
-
-                            <img src="assets/images/hero/user5.png" alt="Student">
-
-                            <div>
-
-                                <h5>Hamza Ali</h5>
-
-                                <span>Digital Marketing Student</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            One of the best online learning platforms I have ever used.
-                        </p>
-
-                    </div>
-
-                    <!-- Card 6 -->
-
-                    <div class="testimonial-card">
-
-                        <div class="student-info">
-
-                            <img src="assets/images/hero/user6.png" alt="Student">
-
-                            <div>
-
-                                <h5>Zainab Malik</h5>
-
-                                <span>Business Student</span>
-
-                            </div>
-
-                        </div>
-
-                        <div class="stars">
-                            ★★★★★
-                        </div>
-
-                        <p>
-                            Professional courses with an easy learning path.
-                            Perfect for university students.
-                        </p>
-
-                    </div>
+                    <button class="slider-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
 
                 </div>
 
             </div>
 
-            <button class="slider-btn next-btn">
-                <i class="fas fa-chevron-right"></i>
-            </button>
+        </section>
 
-        </div>
-
-    </div>
-
-</section>
-
-<!--======================================
+        <!--======================================
         TESTIMONIALS END
 =======================================-->
 
-<!--======================================
+        <!--======================================
             CTA SECTION START
 =======================================-->
 
-<section class="edu-cta-section">
+        <section class="edu-cta-section">
 
-    <div class="container">
+            <div class="container">
 
-        <div class="edu-cta-wrapper">
+                <div class="edu-cta-wrapper">
 
-            <div class="row align-items-center">
+                    <div class="row align-items-center">
 
-                <!-- LEFT -->
+                        <!-- LEFT -->
 
-                <div class="col-lg-6">
+                        <div class="col-lg-6">
 
-                    <div class="edu-cta-left">
+                            <div class="edu-cta-left">
 
-                        <div class="edu-cta-badge">
+                                <div class="edu-cta-badge">
 
-                            <i class="fas fa-graduation-cap"></i>
+                                    <i class="fas fa-graduation-cap"></i>
 
-                            <span>Join EduVerse Today</span>
+                                    <span>Join EduVerse Today</span>
 
-                        </div>
+                                </div>
 
-                        <h2 class="edu-cta-title">
+                                <h2 class="edu-cta-title">
 
-                            Ready to Transform
-                            <br>
-                            Your Learning
-                            <br>
+                                    Ready to Transform
+                                    <br>
+                                    Your Learning
+                                    <br>
 
-                            <span class="edu-cta-highlight">
+                                    <span class="edu-cta-highlight">
 
-                                Experience?
+                                        Experience?
 
-                            </span>
+                                    </span>
 
-                        </h2>
+                                </h2>
 
-                        <p class="edu-cta-text">
+                                <p class="edu-cta-text">
 
-                            Join thousands of students and teachers who are
-                            already learning, teaching and growing with
-                            EduVerse.
+                                    Join thousands of students and teachers who are
+                                    already learning, teaching and growing with
+                                    EduVerse.
 
-                        </p>
+                                </p>
 
-                        <!-- MINI STATS -->
+                                <!-- MINI STATS -->
 
-                        <!-- <div class="edu-cta-stats">
+                                <!-- <div class="edu-cta-stats">
 
                             <div class="edu-cta-stat">
 
@@ -1721,86 +1684,85 @@
 
                         </div> -->
 
-                        <!-- BUTTONS -->
+                                <!-- BUTTONS -->
 
-                        <div class="edu-cta-buttons">
+                                <div class="edu-cta-buttons">
 
-                            <a href="register.html"
-                               class="edu-cta-primary">
+                                    <a href="register.html" class="edu-cta-primary">
 
-                                Get Started
+                                        Get Started
 
-                                <i class="fas fa-arrow-right"></i>
+                                        <i class="fas fa-arrow-right"></i>
 
-                            </a>
+                                    </a>
 
-                            <a href="courses.html"
-                               class="edu-cta-secondary">
+                                    <a href="courses.html" class="edu-cta-secondary">
 
-                                <i class="fas fa-book-open"></i>
+                                        <i class="fas fa-book-open"></i>
 
-                                Explore Courses
+                                        Explore Courses
 
-                            </a>
+                                    </a>
 
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- RIGHT -->
-
-                <div class="col-lg-6">
-
-                    <div class="edu-cta-right">
-
-                        <div class="edu-cta-circle"></div>
-
-                        <img
-                        src="assets/images/hero/CTA-Student.png"
-                        alt="Student"
-                        class="edu-cta-image">
-
-                        <!-- Floating Card -->
-
-                        <div class="edu-cta-card edu-cta-card-one">
-
-                            <i class="fas fa-book-open"></i>
-
-                            <div>
-
-                                <strong>Upgrade</strong>
-
-                                <span>Your Skills</span>
+                                </div>
 
                             </div>
 
                         </div>
 
-                        <div class="edu-cta-card edu-cta-card-two">
+                        <!-- RIGHT -->
 
-                            <i class="fas fa-graduation-cap"></i>
+                        <div class="col-lg-6">
 
-                            <div>
+                            <div class="edu-cta-right">
 
-                                <strong>Learn</strong>
+                                <div class="edu-cta-circle"></div>
 
-                                <span>Anytime</span>
+                                <img src="assets/images/hero/CTA-Student.png" alt="Student" class="edu-cta-image">
 
-                            </div>
+                                <!-- Floating Card -->
 
-                        </div>
+                                <div class="edu-cta-card edu-cta-card-one">
 
-                        <div class="edu-cta-card edu-cta-card-three">
+                                    <i class="fas fa-book-open"></i>
 
-                            <i class="fas fa-trophy"></i>
+                                    <div>
 
-                            <div>
+                                        <strong>Upgrade</strong>
 
-                                <strong>Achieve</strong>
+                                        <span>Your Skills</span>
 
-                                <span>Your Goals</span>
+                                    </div>
+
+                                </div>
+
+                                <div class="edu-cta-card edu-cta-card-two">
+
+                                    <i class="fas fa-graduation-cap"></i>
+
+                                    <div>
+
+                                        <strong>Learn</strong>
+
+                                        <span>Anytime</span>
+
+                                    </div>
+
+                                </div>
+
+                                <div class="edu-cta-card edu-cta-card-three">
+
+                                    <i class="fas fa-trophy"></i>
+
+                                    <div>
+
+                                        <strong>Achieve</strong>
+
+                                        <span>Your Goals</span>
+
+                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -1812,12 +1774,8 @@
 
             </div>
 
-        </div>
-
-    </div>
-
-</section>
-<!--======================================
+        </section>
+        <!--======================================
             CTA SECTION END
 =======================================-->
 
@@ -1828,48 +1786,177 @@
                   MAIN END
     =======================================-->
 
-<!--======================================
+    <!--======================================
             FOOTER START
 =======================================-->
 
-<footer class="edu-footer">
+    <footer class="edu-footer">
 
-    <div class="container">
+        <div class="container">
 
-        <div class="edu-footer-top">
+            <div class="edu-footer-top">
 
-            <div class="row gy-5">
+                <div class="row gy-5">
 
-                <!-- Logo -->
+                    <!-- Logo -->
 
-                <div class="col-lg-4 col-md-6">
+                    <div class="col-lg-4 col-md-6">
 
-                    <div class="edu-footer-brand">
+                        <div class="edu-footer-brand">
 
-                        <a href="index.html" class="edu-footer-logo">
+                            <a href="index.html" class="edu-footer-logo">
 
-                            <img src="assets/images/logo/dark-logo.png"
-                                 alt="EduVerse Logo">
+                                <img src="assets/images/logo/dark-logo.png" alt="EduVerse Logo">
 
-                        </a>
+                            </a>
 
-                        <p class="edu-footer-text">
+                            <p class="edu-footer-text">
 
-                            EduVerse is an AI-powered learning platform that
-                            connects students and teachers through interactive
-                            courses, quizzes and smart education.
+                                EduVerse is an AI-powered learning platform that
+                                connects students and teachers through interactive
+                                courses, quizzes and smart education.
+
+                            </p>
+
+                            <div class="edu-footer-social">
+
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+
+                                <a href="#"><i class="fab fa-youtube"></i></a>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Quick Links -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Quick Links
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="index.html">Home</a></li>
+
+                            <li><a href="courses.html">Courses</a></li>
+
+                            <li><a href="about.html">About</a></li>
+
+                            <li><a href="contact.html">Contact</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Student -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Students
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="#">Dashboard</a></li>
+
+                            <li><a href="#">Assignments</a></li>
+
+                            <li><a href="#">Quizzes</a></li>
+
+                            <li><a href="#">Certificates</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Teacher -->
+
+                    <div class="col-lg-2 col-md-6">
+
+                        <h5 class="edu-footer-title">
+                            Teachers
+                        </h5>
+
+                        <ul class="edu-footer-links">
+
+                            <li><a href="#">Dashboard</a></li>
+
+                            <li><a href="#">Upload Course</a></li>
+
+                            <li><a href="#">Manage Students</a></li>
+
+                            <li><a href="#">Analytics</a></li>
+
+                        </ul>
+
+                    </div>
+
+                    <!-- Newsletter -->
+
+                    <div class="col-lg-2 col-md-12">
+
+                        <h5 class="edu-footer-title">
+                            Newsletter
+                        </h5>
+
+                        <p class="edu-footer-news-text">
+
+                            Subscribe to receive our latest courses and updates.
 
                         </p>
 
-                        <div class="edu-footer-social">
+                        <form class="edu-footer-newsletter">
 
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <input type="email" placeholder="Email Address" required>
 
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <button type="submit">
 
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                <i class="fas fa-paper-plane"></i>
 
-                            <a href="#"><i class="fab fa-youtube"></i></a>
+                            </button>
+
+                        </form>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- Bottom -->
+
+            <div class="edu-footer-bottom">
+
+                <div class="row align-items-center">
+
+                    <div class="col-lg-6">
+
+                        <p>
+
+                            © 2026 EduVerse. All Rights Reserved.
+
+                        </p>
+
+                    </div>
+
+                    <div class="col-lg-6">
+
+                        <div class="edu-footer-bottom-links">
+
+                            <a href="#">Privacy Policy</a>
+
+                            <a href="#">Terms</a>
+
+                            <a href="#">Sitemap</a>
 
                         </div>
 
@@ -1877,146 +1964,13 @@
 
                 </div>
 
-                <!-- Quick Links -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Quick Links
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="index.html">Home</a></li>
-
-                        <li><a href="courses.html">Courses</a></li>
-
-                        <li><a href="about.html">About</a></li>
-
-                        <li><a href="contact.html">Contact</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Student -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Students
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="#">Dashboard</a></li>
-
-                        <li><a href="#">Assignments</a></li>
-
-                        <li><a href="#">Quizzes</a></li>
-
-                        <li><a href="#">Certificates</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Teacher -->
-
-                <div class="col-lg-2 col-md-6">
-
-                    <h5 class="edu-footer-title">
-                        Teachers
-                    </h5>
-
-                    <ul class="edu-footer-links">
-
-                        <li><a href="#">Dashboard</a></li>
-
-                        <li><a href="#">Upload Course</a></li>
-
-                        <li><a href="#">Manage Students</a></li>
-
-                        <li><a href="#">Analytics</a></li>
-
-                    </ul>
-
-                </div>
-
-                <!-- Newsletter -->
-
-                <div class="col-lg-2 col-md-12">
-
-                    <h5 class="edu-footer-title">
-                        Newsletter
-                    </h5>
-
-                    <p class="edu-footer-news-text">
-
-                        Subscribe to receive our latest courses and updates.
-
-                    </p>
-
-                    <form class="edu-footer-newsletter">
-
-                        <input
-                            type="email"
-                            placeholder="Email Address"
-                            required>
-
-                        <button type="submit">
-
-                            <i class="fas fa-paper-plane"></i>
-
-                        </button>
-
-                    </form>
-
-                </div>
-
             </div>
 
         </div>
 
-        <!-- Bottom -->
+    </footer>
 
-        <div class="edu-footer-bottom">
-
-            <div class="row align-items-center">
-
-                <div class="col-lg-6">
-
-                    <p>
-
-                        © 2026 EduVerse. All Rights Reserved.
-
-                    </p>
-
-                </div>
-
-                <div class="col-lg-6">
-
-                    <div class="edu-footer-bottom-links">
-
-                        <a href="#">Privacy Policy</a>
-
-                        <a href="#">Terms</a>
-
-                        <a href="#">Sitemap</a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</footer>
-
-<!--======================================
+    <!--======================================
             FOOTER END
 =======================================-->
 
@@ -2030,6 +1984,12 @@
     <!-- Bootstrap JS -->
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!--========== GSAP JS START ==========-->
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <!--========== GSAP JS END ==========-->
 
     <!-- Main JS -->
 

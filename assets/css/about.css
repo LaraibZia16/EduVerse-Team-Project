@@ -34,10 +34,10 @@
 .about-story-image img{
     width:100%;
     max-width:600px;
-    animation:storyFloat 5s ease-in-out infinite;
+    /* animation:storyFloat 5s ease-in-out infinite; */
 }
 
-@keyframes storyFloat{
+/* @keyframes storyFloat{
 
     0%{
         transform:translateY(0);
@@ -51,7 +51,7 @@
         transform:translateY(0);
     }
 
-}
+} */
 
 /*=========================
         Content
